@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Research blog and tutorial archive for pathogen genomics, environmental surveillance, and public-health bioinformatics."
+    />
+    <title>Syed Adnan Haider | Pathogen Genomics Portfolio</title>
+    <link rel="preconnect" href="https://unpkg.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="#top" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Portfolio</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="#pipelines">Pipelines</a>
+        <a href="#writing">Writing</a>
+        <a href="#tutorials">Tutorials</a>
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="social-actions" aria-label="Profile links">
+        <a class="profile-link" href="https://github.com/adnanhaider81" aria-label="GitHub" title="GitHub">
+          <i data-lucide="github"></i>
+          <span>GitHub</span>
+        </a>
+        <a class="profile-link" href="https://www.linkedin.com/in/sahaider/" aria-label="LinkedIn" title="LinkedIn">
+          <i data-lucide="linkedin"></i>
+          <span>LinkedIn</span>
+        </a>
+        <a
+          class="profile-link"
+          href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en"
+          aria-label="Google Scholar"
+          title="Google Scholar"
+        >
+          <i data-lucide="graduation-cap"></i>
+          <span>Scholar</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <img class="hero-image" src="assets/genomics-hero.png" alt="" aria-hidden="true" />
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Outbreak genomics | environmental surveillance | reproducible bioinformatics</p>
+          <h1 id="hero-title">Genomic surveillance from bench to public-health action.</h1>
+          <p class="hero-copy">
+            A research blog and practical portfolio showing wet-lab sequencing, viral genomic surveillance,
+            reproducible pipelines, training materials, and public-health reporting from real laboratory settings.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="#pipelines">
+              <i data-lucide="workflow"></i>
+              View pipelines
+            </a>
+            <a class="secondary-action" href="#writing">
+              <i data-lucide="book-open"></i>
+              Read articles
+            </a>
+            <a class="secondary-action" href="https://www.linkedin.com/in/sahaider/">
+              <i data-lucide="linkedin"></i>
+              LinkedIn
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="quick-stats" aria-label="Research snapshot">
+        <article>
+          <strong>25+</strong>
+          <span>Peer-reviewed publications</span>
+        </article>
+        <article>
+          <strong>13</strong>
+          <span>Public GitHub repositories</span>
+        </article>
+        <article>
+          <strong>620+</strong>
+          <span>Google Scholar citations</span>
+        </article>
+        <article>
+          <strong>9+</strong>
+          <span>Years in genomics labs</span>
+        </article>
+      </section>
+
+      <section class="section-shell pipeline-section" id="pipelines" aria-labelledby="pipelines-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">GitHub Portfolio</p>
+            <h2 id="pipelines-title">Reproducible pipelines with methods, runbooks, and outputs.</h2>
+          </div>
+          <p>
+            Each repository is presented like a compact methods note: scientific purpose, input assumptions,
+            installation steps, run commands, quality-control checkpoints, interpretation notes, and expected outputs.
+          </p>
+        </div>
+        <div class="pipeline-explainer" aria-label="Pipeline documentation structure">
+          <article>
+            <i data-lucide="clipboard-check"></i>
+            <h3>Scientific Question</h3>
+            <p>Each workflow starts by naming the surveillance or outbreak question it is designed to answer.</p>
+          </article>
+          <article>
+            <i data-lucide="square-terminal"></i>
+            <h3>Runnable Method</h3>
+            <p>Commands, environments, dry runs, expected folders, and outputs are written for practical reuse.</p>
+          </article>
+          <article>
+            <i data-lucide="microscope"></i>
+            <h3>Interpretation</h3>
+            <p>QC thresholds, coverage caveats, lineage calls, phylogeny, and reporting decisions are made explicit.</p>
+          </article>
+        </div>
+        <div class="pipeline-groups" id="pipelineGrid"></div>
+        <section class="pipeline-detail" id="pipelineDetail" aria-live="polite" hidden></section>
+      </section>
+
+      <section class="section-shell" id="writing" aria-labelledby="writing-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Journal</p>
+            <h2 id="writing-title">Research Notes and Tutorials</h2>
+          </div>
+          <p class="writing-intro">
+            Long-form articles with methods context, field limitations, practical checklists, and references.
+          </p>
+          <div class="search-wrap">
+            <i data-lucide="search"></i>
+            <input id="searchInput" type="search" placeholder="Search posts" aria-label="Search posts" />
+          </div>
+        </div>
+
+        <div class="filter-row" id="filterRow" aria-label="Post filters"></div>
+        <div class="post-grid" id="postGrid"></div>
+        <p class="empty-state" id="emptyState" hidden>No matching posts yet.</p>
+      </section>
+
+      <section class="reader" id="reader" aria-live="polite" hidden></section>
+
+      <section class="section-shell split-section" id="tutorials" aria-labelledby="tutorials-title">
+        <div>
+          <p class="section-kicker">Tutorial Tracks</p>
+          <h2 id="tutorials-title">Practical tutorial tracks to publish next.</h2>
+          <p class="section-note">
+            These recurring themes can become short posts, workshop handouts, and teaching material that documents
+            practical expertise.
+          </p>
+        </div>
+        <div class="series-grid">
+          <article class="series-card">
+            <i data-lucide="workflow"></i>
+            <h3>FASTQ to Report</h3>
+            <p>QC, trimming, mapping, consensus generation, lineage assignment, and concise reporting.</p>
+          </article>
+          <article class="series-card">
+            <i data-lucide="dna"></i>
+            <h3>Nanopore Field Notes</h3>
+            <p>ONT setup, library choices, run monitoring, troubleshooting, and environmental-sample caveats.</p>
+          </article>
+          <article class="series-card">
+            <i data-lucide="git-branch"></i>
+            <h3>Phylogenetics in Practice</h3>
+            <p>Nextstrain, IQ-TREE, TreeTime, contextual datasets, and figures for outbreak communication.</p>
+          </article>
+          <article class="series-card">
+            <i data-lucide="square-terminal"></i>
+            <h3>Reproducible Pipelines</h3>
+            <p>Nextflow, Snakemake, containers, metadata checks, and lab-ready runbooks.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="work-band" id="work" aria-labelledby="work-title">
+        <div class="work-copy">
+          <p class="section-kicker">Applied Research Identity</p>
+          <h2 id="work-title">A bridge between wet lab, code, and public-health action.</h2>
+          <p>
+            My work focuses on viral outbreak investigation, wastewater and environmental surveillance, direct
+            detection workflows, and analysis pipelines that make genomic evidence traceable and useful for
+            decision-making.
+          </p>
+        </div>
+        <div class="focus-list">
+          <span>Poliovirus environmental surveillance</span>
+          <span>SARS-CoV-2, dengue, RSV, mpox, norovirus, CCHFV</span>
+          <span>Oxford Nanopore, Illumina, Ion Torrent</span>
+          <span>Nextflow, Snakemake, Docker, Bash, Python, R</span>
+          <span>Nextstrain, phylogenetics, dashboards, SOPs</span>
+        </div>
+      </section>
+
+      <section class="section-shell training-section" id="training" aria-labelledby="training-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Capacity Building</p>
+            <h2 id="training-title">Training and practical applied work.</h2>
+          </div>
+          <p>
+            This frames the applied side of the portfolio: not only analyzing data, but making workflows teachable,
+            auditable, and useful for public-health laboratories.
+          </p>
+        </div>
+        <div class="training-grid">
+          <article>
+            <span>2024-present</span>
+            <h3>Poliovirus environmental surveillance</h3>
+            <p>Direct detection sequencing, ONT/Illumina run setup, QC review, SOPs, and rapid reporting workflows.</p>
+          </article>
+          <article>
+            <span>2021-2024</span>
+            <h3>National viral genomic surveillance</h3>
+            <p>SARS-CoV-2, dengue, RSV, norovirus, mpox, CCHFV, dashboards, manuscript methods, and partner reports.</p>
+          </article>
+          <article>
+            <span>2015-2021</span>
+            <h3>Clinical genomics implementation</h3>
+            <p>Whole-exome and targeted-panel workflows, variant annotation, clinician-facing reports, and validation notes.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-shell contact-section" id="contact" aria-labelledby="contact-title">
+        <div>
+          <p class="section-kicker">Connect</p>
+          <h2 id="contact-title">For collaborations, tutorials, and research conversations.</h2>
+        </div>
+        <div class="contact-actions">
+          <a href="https://www.linkedin.com/in/sahaider/">
+            <i data-lucide="linkedin"></i>
+            LinkedIn
+          </a>
+          <a href="mailto:adnanhaider81@gmail.com">
+            <i data-lucide="mail"></i>
+            Email
+          </a>
+          <a href="https://orcid.org/0009-0008-7426-6561">
+            <i data-lucide="badge-check"></i>
+            ORCID
+          </a>
+          <a href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en">
+            <i data-lucide="graduation-cap"></i>
+            Google Scholar
+          </a>
+          <a href="https://www.researchgate.net/profile/Syed-Haider/research">
+            <i data-lucide="library"></i>
+            ResearchGate
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>(c) <span id="year"></span> Syed Adnan Haider</span>
+      <a href="#top">Back to top</a>
+    </footer>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
