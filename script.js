@@ -561,6 +561,408 @@ const posts = [
   }
 ];
 
+const articleExpansions = {
+  "manuscript-to-reproducible-genomics-repository": {
+    minutes: 18,
+    sections: [
+      {
+        heading: "How I would audit my own repository",
+        paragraphs: [
+          "Before sharing a repository publicly, I read it as if I were a collaborator seeing the project for the first time. I ask whether the scientific question is visible before the commands, whether the inputs are described without exposing private data, and whether the outputs are named in a way that a future reader can connect back to the manuscript figure or table.",
+          "The most useful audit is not only technical. It also checks whether the repository preserves decision points: why a depth threshold was used, why a reference was selected, why a sequence was excluded, and which step produced the final interpretation. These details are often more important than a long list of tools."
+        ]
+      },
+      {
+        heading: "A practical reproducibility standard",
+        paragraphs: [
+          "For my own genomics work, a repository becomes useful when it can support three readers: the analyst who wants to rerun the workflow, the collaborator who wants to understand the analysis logic, and the trainee who wants to learn the method. The same structure can serve all three if the README, config files, workflow rules, and output guide are written together.",
+          "I also separate reproducibility from full data release. Clinical and public-health sequence data may be restricted, but the workflow logic, environment files, synthetic examples, command structure, and citation trail can still be public. That balance keeps the analysis transparent while respecting governance."
+        ],
+        points: [
+          "A repository should include the purpose, not only installation steps.",
+          "A dry run should be possible before real compute begins.",
+          "Output folders should match the biological interpretation: QC, consensus, trees, mutations, reports.",
+          "Restricted data should be represented by templates, synthetic examples, or documented local paths.",
+          "Tool citations should be close to the workflow they support."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "The FAIR Guiding Principles for scientific data management and stewardship",
+        url: "https://www.nature.com/articles/sdata201618"
+      },
+      {
+        title: "Ten Simple Rules for Reproducible Computational Research",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285"
+      },
+      {
+        title: "Ten Simple Rules for Making Research Software More Robust",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005412"
+      }
+    ]
+  },
+  "culture-free-nanopore-polio-surveillance": {
+    minutes: 17,
+    sections: [
+      {
+        heading: "What makes environmental samples difficult",
+        paragraphs: [
+          "Environmental surveillance samples are not clean clinical isolates. They may contain multiple enteroviruses, degraded RNA, PCR inhibitors, uneven concentration efficiency, and mixtures of closely related sequences. A direct sequencing workflow must therefore be written with uncertainty in mind from the beginning.",
+          "For VP1 or capsid-focused work, the first interpretive question is whether the recovered sequence is long enough, specific enough, and clean enough to support a poliovirus interpretation. The second question is whether the sequence supports a public-health conclusion or only a follow-up action."
+        ]
+      },
+      {
+        heading: "Controls and thresholds I would not skip",
+        paragraphs: [
+          "Direct sequencing becomes more convincing when every batch includes negative controls, positive or synthetic controls where appropriate, barcode review, run-yield review, and read-level classification summaries. These checks help separate true weak signal from contamination, carryover, or barcode misassignment.",
+          "A useful report should state how many reads supported the target, how the reads were distributed across VP1 or capsid regions, whether the consensus contains ambiguous positions, and whether the same result appears after repeat analysis. The conclusion should be short but the evidence trail should be complete."
+        ],
+        points: [
+          "Record site, date, concentration method, extraction batch, and PCR result.",
+          "Keep barcode/sample maps free of patient or site identifiers in public outputs.",
+          "Inspect read length and target-region coverage before accepting consensus.",
+          "Use cautious language when coverage is partial or controls are borderline."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Rapid and sensitive direct detection and identification of poliovirus using nanopore sequencing",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7448630/"
+      },
+      {
+        title: "WHO guidelines for environmental surveillance of poliovirus circulation",
+        url: "https://polioeradication.org/wp-content/uploads/2016/07/WHO_V-B_03.03_eng.pdf"
+      },
+      {
+        title: "Wastewater and Environmental Surveillance: summary for Poliovirus",
+        url: "https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus"
+      }
+    ]
+  },
+  "host-subtraction-competitive-mapping": {
+    minutes: 18,
+    sections: [
+      {
+        heading: "Why databases shape the answer",
+        paragraphs: [
+          "Metagenomic interpretation is never independent of the reference database. If close relatives are absent, if assemblies are mislabelled, or if the database overrepresents a well-studied organism, the top hit can look more meaningful than it is. This is why I prefer a second-pass confirmatory mapping step for important signals.",
+          "The confirmatory panel should include the suspected organism, close relatives, expected background organisms, and any locally relevant alternatives. The output should not simply say present or absent. It should show whether the reads distribute across the genome and whether they map better to one organism than to plausible competitors."
+        ]
+      },
+      {
+        heading: "A reporting structure for uncertain signals",
+        paragraphs: [
+          "For high-consequence detections, I would separate evidence into three levels. Strong evidence means independent genomic regions, convincing breadth, clean controls, and a plausible sample context. Partial evidence means some target support but not enough for a final claim. Investigation-only evidence means a lead that should trigger follow-up rather than a conclusion.",
+          "This style of reporting is slower than naming a top hit, but it is safer. It gives public-health teams a path: repeat extraction, targeted PCR, culture where appropriate, deeper sequencing, or review of sampling and contamination history."
+        ],
+        points: [
+          "Do not rely on read count alone.",
+          "Compare breadth of coverage across close alternatives.",
+          "Inspect control samples from the same extraction and library batch.",
+          "Keep confirmatory assay recommendations next to the metagenomic call."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Application of metagenomic next-generation sequencing in the diagnosis of infectious diseases",
+        url: "https://www.frontiersin.org/articles/10.3389/fcimb.2024.1458316/full"
+      },
+      {
+        title: "The diagnostic value of metagenomic next-generation sequencing in infectious diseases",
+        url: "https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-020-05746-5"
+      },
+      {
+        title: "Kraken 2 metagenomic sequence classification",
+        url: "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0"
+      }
+    ]
+  },
+  "fastq-to-public-health-report": {
+    minutes: 18,
+    sections: [
+      {
+        heading: "From files to decisions",
+        paragraphs: [
+          "The important shift in a surveillance workflow is moving from file production to decision support. A FASTQ file becomes useful only after the workflow can show read quality, trimming behavior, mapping performance, depth, consensus uncertainty, lineage support, and an interpretation that a non-specialist can follow.",
+          "I like to design the output folder so it mirrors the conversation I expect to have with a laboratory or response team. First, what was the sample and how good was the run? Second, what genome or region was recovered? Third, what classification or phylogenetic placement is supported? Fourth, what caveats should travel with the result?"
+        ]
+      },
+      {
+        heading: "What belongs in the final report",
+        paragraphs: [
+          "A final public-health genomics report should be concise but not thin. It should include the dataset, tools and versions, reference used, masking threshold, coverage summary, lineage or genotype result, mutation highlights where relevant, and a short interpretation paragraph. The report should also say what was not resolved.",
+          "This is where automated outputs and human judgment meet. MultiQC can help reveal batch effects, Nextclade can organize quality flags and mutation calls, Pangolin can support SARS-CoV-2 lineage assignment, and tree-building tools can provide context. None of those outputs should replace the analyst's explanation."
+        ],
+        points: [
+          "Start with QC and sample status before biological interpretation.",
+          "Include versioned tool names and reference accessions.",
+          "State whether the result is complete genome, partial genome, VP1-only, or target-region limited.",
+          "Link interpretation to coverage and metadata rather than to a tree alone."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "MultiQC: summarize analysis results for multiple tools and samples",
+        url: "https://academic.oup.com/bioinformatics/article/32/19/3047/2196507"
+      },
+      {
+        title: "IQ-TREE 2: new models and efficient methods for phylogenetic inference",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7182206/"
+      },
+      {
+        title: "Pangolin SARS-CoV-2 lineage assignment",
+        url: "https://github.com/cov-lineages/pangolin"
+      }
+    ]
+  },
+  "depth-masking-consensus-genomes": {
+    minutes: 17,
+    sections: [
+      {
+        heading: "Primer trimming and masking are connected",
+        paragraphs: [
+          "Depth masking is often discussed after consensus generation, but the decision begins earlier. Primer trimming, read filtering, duplicate handling, mapping quality, and variant-calling thresholds all affect which positions appear supported. If primers are not handled correctly, false confidence can appear near amplicon edges.",
+          "This is one reason amplicon workflows need a primer scheme file, clear trimming steps, and a depth report. When a consensus is used for phylogeny or mutation interpretation, the analyst should be able to explain which positions were called, masked, or ignored."
+        ]
+      },
+      {
+        heading: "How I classify sequence usability",
+        paragraphs: [
+          "Not every consensus has the same use. A high-coverage, low-ambiguity genome can support lineage assignment, tree placement, and mutation summaries. A partial genome may support target confirmation or broad genotype context but not fine-scale transmission inference. A low-depth sequence may belong only in an internal follow-up note.",
+          "That classification should be visible. I prefer labels such as pass, review, limited-use, and fail because they communicate confidence without burying the reader in raw tables. The label should always be traceable to depth, breadth, ambiguity, and control performance."
+        ],
+        points: [
+          "Pass: high breadth, adequate depth, clean controls, low ambiguity.",
+          "Review: useful sequence with one or more caveats that need manual inspection.",
+          "Limited-use: partial evidence suitable only for restricted interpretation.",
+          "Fail: insufficient support for genomic interpretation."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "PrimalSeq and iVar for viral amplicon sequencing",
+        url: "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1618-7"
+      },
+      {
+        title: "iVar manual",
+        url: "https://andersen-lab.github.io/ivar/html/manualpage.html"
+      },
+      {
+        title: "ViralConsensus consensus genome calling",
+        url: "https://academic.oup.com/bioinformatics/article/39/5/btad317/7160909"
+      }
+    ]
+  },
+  "amplicon-panels-reference-diversity": {
+    minutes: 17,
+    sections: [
+      {
+        heading: "Reference selection is a design decision",
+        paragraphs: [
+          "A primer panel can fail quietly if the reference set is too narrow. Before designing or adopting a panel, I would inspect whether sequences represent the geography, year range, sample type, and viral diversity relevant to the surveillance setting. A panel designed on distant references may still work, but the risk should be visible.",
+          "For segmented viruses, each segment should be treated separately. For enteroviruses and other viruses with important typing regions, the target region should match the public-health question. Whole-genome ambition is useful only when the sample and method can support it."
+        ]
+      },
+      {
+        heading: "Validation should include failure modes",
+        paragraphs: [
+          "A good validation report does not only show beautiful coverage plots. It shows how the panel behaves with low input, degraded material, mixed samples, and controls. It also shows which amplicons drop first, where primer mismatches occur, and which regions remain interpretable when coverage is uneven.",
+          "This matters because a field pipeline should fail informatively. When coverage drops, the analyst should know whether the result is unusable, useful for detection only, useful for VP1 or genotype analysis, or strong enough for phylogeny."
+        ],
+        points: [
+          "Inspect mismatch patterns in primer-binding regions.",
+          "Evaluate coverage by amplicon, not only total read yield.",
+          "Test low-input and degraded samples during validation.",
+          "Document known weak regions and expected dropout behavior."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "ARTIC primer scheme specification",
+        url: "https://artic-network.github.io/primerscheme-specs/pdf/primerscheme.pdf"
+      },
+      {
+        title: "Optimization of SARS-CoV-2 ARTIC Network V4 primers and sequencing protocol",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8891481/"
+      },
+      {
+        title: "PrimalSeq and iVar amplicon sequencing framework",
+        url: "https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1618-7"
+      }
+    ]
+  },
+  "nextstrain-routine-outbreak-communication": {
+    minutes: 16,
+    sections: [
+      {
+        heading: "A dashboard should have a written question",
+        paragraphs: [
+          "Before building a Nextstrain or similar dashboard, I write the question in plain language. If the question is lineage surveillance, the metadata and coloring should support lineage interpretation. If the question is local clustering, the contextual dataset must be chosen carefully. If the question is importation, geographic labels and sampling density become central.",
+          "Without this discipline, a dashboard can look impressive while saying very little. The visualization should reduce ambiguity for the reader, not add new visual complexity."
+        ]
+      },
+      {
+        heading: "Metadata is part of the analysis",
+        paragraphs: [
+          "A phylogenetic dashboard depends on dates, locations, sample names, lineage fields, and contextual sequence choices. Missing or inconsistent metadata can change the apparent story. For public outputs, metadata also has a governance role: it must be useful without exposing restricted information.",
+          "The strongest dashboards pair the tree with a short interpretation note. The note should state what the tree supports, what it does not support, and what follow-up question should be asked next."
+        ],
+        points: [
+          "Choose contextual sequences with a stated rule.",
+          "Keep private metadata separate from public display metadata.",
+          "Avoid implying direct transmission from tree proximity alone.",
+          "Use dashboards as communication products, not as standalone conclusions."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "TreeTime: maximum-likelihood phylodynamic analysis",
+        url: "https://academic.oup.com/ve/article/4/1/vex042/4794731"
+      },
+      {
+        title: "IQ-TREE 2 phylogenetic inference",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7182206/"
+      },
+      {
+        title: "Phylogenetic tree building in the genomic age",
+        url: "https://www.nature.com/articles/s41576-020-0233-0"
+      }
+    ]
+  },
+  "wastewater-genomics-limits": {
+    minutes: 17,
+    sections: [
+      {
+        heading: "Sequencing wastewater is not the same as sequencing a patient sample",
+        paragraphs: [
+          "A clinical sample usually has one dominant infection context. Wastewater is pooled, diluted, and environmentally processed before it reaches the laboratory. That means a sequencing signal may represent many contributors, uneven shedding, time-lagged material, and variable RNA integrity.",
+          "This makes wastewater genomics powerful for population monitoring but difficult for individual-level interpretation. The report should keep that boundary clear. It can support early warning, trend monitoring, and variant detection, but it should not claim exact case counts or transmission chains."
+        ]
+      },
+      {
+        heading: "What a wastewater report should include",
+        paragraphs: [
+          "A useful wastewater genomics report should combine sampling context, assay result, sequencing recovery, target-region coverage, variant or lineage evidence, and caveats. If only partial genomic evidence is available, the report should say so directly and avoid over-specific conclusions.",
+          "The best reports also show change over time. A single detection can be important, but repeated signals, rising concentration, or recurring genomic evidence across sampling points are usually more informative for public-health action."
+        ],
+        points: [
+          "State catchment, sampling date, and sampling method.",
+          "Separate molecular detection from sequencing interpretation.",
+          "Include inhibition, dilution, and coverage caveats.",
+          "Use time-series context where available."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "SARS-CoV-2 wastewater genomic surveillance: approaches, challenges, and opportunities",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12794521/"
+      },
+      {
+        title: "CDC: public health interpretation of wastewater surveillance data",
+        url: "https://archive.cdc.gov/www_cdc_gov/nwss/interpretation.html"
+      },
+      {
+        title: "Environmental surveillance of pathogens from wastewater",
+        url: "https://www.mdpi.com/2073-4441/14/4/599"
+      }
+    ]
+  },
+  "surveillance-pipeline-runbook": {
+    minutes: 15,
+    sections: [
+      {
+        heading: "The runbook should reduce ambiguity",
+        paragraphs: [
+          "A strong runbook is not a long document for its own sake. It is a document that removes uncertainty at the moment an analyst has to make a decision. It should define where inputs live, how sample names are checked, what a normal run looks like, what a failed run looks like, and when a result should be escalated.",
+          "The runbook should also be written for handover. If another analyst receives the project months later, they should be able to reconstruct the logic of the run from the commands, logs, versions, config files, and output guide."
+        ]
+      },
+      {
+        heading: "Operational details worth recording",
+        paragraphs: [
+          "In surveillance, small operational details become important later. Database versions, reference accessions, primer schemes, conda environment files, sample sheet revisions, and report templates should be preserved. When a result is questioned, these details are the difference between memory and evidence.",
+          "I also like runbooks that include a short troubleshooting section. Common failure modes such as missing FASTQ pairs, mismatched sample IDs, failed controls, low coverage, missing databases, and inconsistent metadata should have a clear first response."
+        ],
+        points: [
+          "Record command logs and software versions.",
+          "Store the exact config file used for each run.",
+          "Define pass, review, limited-use, and fail rules.",
+          "Include a troubleshooting section for common errors."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "The FAIR Guiding Principles",
+        url: "https://www.nature.com/articles/sdata201618"
+      },
+      {
+        title: "Ten Simple Rules for Reproducible Computational Research",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285"
+      },
+      {
+        title: "Snakemake sustainable data analysis",
+        url: "https://pubmed.ncbi.nlm.nih.gov/34035898/"
+      }
+    ]
+  },
+  "how-i-read-genomic-surveillance-repository": {
+    minutes: 15,
+    sections: [
+      {
+        heading: "A blog can show judgment that a CV cannot",
+        paragraphs: [
+          "A CV can list publications, tools, and positions, but a blog can show how someone thinks through a problem. In genomics, that means explaining why a workflow was structured a certain way, where uncertainty enters, which outputs matter, and how a result should be communicated to a public-health audience.",
+          "This is why I see technical writing as part of scientific work. A clear article can turn a repository into a teaching resource and a methods note into evidence of applied judgment."
+        ]
+      },
+      {
+        heading: "What makes public writing credible",
+        paragraphs: [
+          "Credible technical writing is specific. It names pathogens, platforms, tools, assumptions, outputs, and limitations. It does not need to oversell. In fact, the strongest writing often becomes more convincing when it names caveats clearly.",
+          "For a research blog, consistency also matters. Articles with dates, references, repository links, and practical examples build a record over time. Readers can see both the field of work and the style of thinking."
+        ],
+        points: [
+          "Write from real workflows and real problems.",
+          "Use references for methods, tools, and public-health context.",
+          "Separate what the data support from what remains uncertain.",
+          "Keep repository links close to the articles that explain them."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Ten Simple Rules for Effective Computational Research",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003506"
+      },
+      {
+        title: "The FAIR Guiding Principles for scientific data management",
+        url: "https://www.nature.com/articles/sdata201618"
+      },
+      {
+        title: "Ten Simple Rules for Making Research Software More Robust",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005412"
+      }
+    ]
+  }
+};
+
+posts.forEach((post) => {
+  const expansion = articleExpansions[post.slug];
+  if (!expansion) return;
+  post.minutes = expansion.minutes;
+  post.body.push(...expansion.sections);
+  post.references.push(...expansion.references);
+});
+
 const pipelines = [
   {
     group: "Polio workflows",
