@@ -1,70 +1,44 @@
-# Syed Adnan Haider Blog Site
+# Syed Adnan Haider Blog
 
-This is a free static blog and portfolio site for pathogen genomics, wastewater/environmental surveillance, tutorials, 13 GitHub pipelines, long-form referenced articles, and a clear applied research record.
+Live blog:
 
-## Files
+```text
+https://adnanhaider81.github.io
+```
 
-- `index.html` - page structure
-- `styles.css` - visual design and responsive layout
-- `script.js` - blog post data, references, GitHub pipeline cards, run tutorials, filters, search, and reader view
-- `assets/genomics-hero.png` - generated hero image used by the homepage
-- `posts/` - draft space for future writing
-- `.nojekyll` - tells GitHub Pages to serve this as a plain static site
-- `GITHUB_PAGES_DEPLOYMENT.md` - step-by-step GitHub Pages publishing instructions
-- `PROFILE_LINKS.md` - CV, LinkedIn, GitHub, email, and application snippets
+This blog collects research notes, tutorials, and reproducible workflow write-ups in pathogen genomics, environmental surveillance, and public-health bioinformatics.
 
-## Add or edit posts
+## What Is In The Blog
 
-Open `script.js` and edit the `posts` array. Copy an existing post object, then change:
+- Long-form research notes on viral genomics, wastewater surveillance, metagenomic interpretation, depth masking, amplicon design, and outbreak communication.
+- Tutorial-style posts that explain how raw sequencing data move from FASTQ files to consensus genomes, lineage calls, phylogenies, mutation tables, and reports.
+- GitHub repository write-ups for 13 public workflows, with practical run notes, prerequisites, quality checks, interpretation notes, and expected outputs.
+- A dedicated polio section covering VP1 MinION analysis, WPV1 phylodynamics, and whole-capsid NGS analysis.
+- Manuscript workflow notes for SARS-CoV-2, RSV, dengue, mpox/VZV, CCHFV, CV-A24v, and mumps.
+- Training and applied-work notes from wet-lab sequencing, reproducible bioinformatics, SOPs, and public-health reporting.
 
-- `title`
-- `slug`
-- `category`
-- `date`
-- `minutes`
-- `tags`
-- `summary`
-- `body`
-- `references`
+## Main Topics
 
-Keep each `slug` lowercase, unique, and hyphenated.
+- Poliovirus environmental surveillance
+- VP1 sequencing and interpretation
+- WPV1 phylodynamics and phylogeography
+- Viral outbreak genomics
+- Wastewater and environmental surveillance
+- Metagenomic pathogen discovery
+- Reproducible Snakemake and R workflows
+- Nextstrain, phylogenetics, and genomic communication
+- Laboratory-to-report bioinformatics training
 
-## Add or edit pipeline tutorials
+## Repository Groups Featured In The Blog
 
-Open `script.js` and edit the `pipelines` array. Each card supports:
+1. Polio workflows
+2. Manuscript workflows
+3. Other repositories and teaching resources
 
-- repository URL
-- last-updated date
-- practical purpose
-- prerequisites
-- step-by-step run commands
-- output files to inspect
+## Public Profiles
 
-Use real repository dates and real commands whenever possible. This keeps the portfolio credible for collaborators, mentors, and technical readers.
-
-For each pipeline, keep the scientific question, method notes, quality checks, interpretation notes, commands, and expected outputs specific to that repository.
-
-The pipeline section is grouped in this order: polio workflows first, manuscript workflows second, and other repositories third.
-
-## Free publishing options
-
-Best fit for this version: GitHub Pages.
-
-1. Create a GitHub repository, for example `adnanhaider81.github.io`.
-2. Upload the contents of this `blogs` folder to that repository.
-3. In the repository, go to Settings -> Pages.
-4. Select Deploy from branch, choose `main`, and choose the root folder.
-5. Your site will publish at `https://adnanhaider81.github.io`.
-
-Also good:
-
-- Cloudflare Pages if you want to keep the GitHub repository private on a free hosting workflow.
-- Netlify if you want a very simple drag-and-drop or Git-connected deployment.
-- Vercel if you later move to Next.js or another React-based framework for a larger portfolio.
-
-## Optional upgrades
-
-- Add a custom domain such as `adnanhaider.com`.
-- Move posts to Markdown using Astro, Eleventy, Hugo, or Jekyll when the archive grows.
-- Add privacy-friendly analytics such as Cloudflare Web Analytics.
-- Add a downloadable CV link once the final public CV file is ready.
+- GitHub: https://github.com/adnanhaider81
+- LinkedIn: https://www.linkedin.com/in/sahaider/
+- Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
+- ORCID: https://orcid.org/0009-0008-7426-6561
+- ResearchGate: https://www.researchgate.net/profile/Syed-Haider/research

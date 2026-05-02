@@ -1,9 +1,9 @@
 # Profile and CV Links
 
-Use one consistent portfolio URL everywhere:
+Use one consistent blog URL everywhere:
 
 ```text
-Research portfolio: https://adnanhaider81.github.io
+Research blog: https://adnanhaider81.github.io
 ```
 
 ## CV Header
@@ -11,7 +11,7 @@ Research portfolio: https://adnanhaider81.github.io
 ```text
 Syed Adnan Haider
 Pathogen genomics | environmental surveillance | reproducible bioinformatics
-Portfolio: https://adnanhaider81.github.io
+Blog: https://adnanhaider81.github.io
 GitHub: https://github.com/adnanhaider81
 LinkedIn: https://www.linkedin.com/in/sahaider/
 Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
@@ -23,7 +23,7 @@ Email: adnanhaider81@gmail.com
 ## Short Application Bio
 
 ```text
-I work at the interface of wet-lab sequencing, viral genomic surveillance, and reproducible bioinformatics. My portfolio documents public GitHub pipelines, step-by-step runbooks, long-form research notes, and applied outbreak-genomics workflows across poliovirus, SARS-CoV-2, RSV, dengue, mpox/VZV, CCHFV, mumps, and metagenomic pathogen discovery.
+I work at the interface of wet-lab sequencing, viral genomic surveillance, and reproducible bioinformatics. My blog documents public GitHub pipelines, step-by-step runbooks, long-form research notes, and applied outbreak-genomics workflows across poliovirus, SARS-CoV-2, RSV, dengue, mpox/VZV, CCHFV, mumps, and metagenomic pathogen discovery.
 ```
 
 ## LinkedIn Website Field
@@ -35,15 +35,15 @@ Website: https://adnanhaider81.github.io
 ## LinkedIn Featured Section Text
 
 ```text
-Research portfolio and technical blog covering pathogen genomics, environmental surveillance, reproducible pipelines, phylodynamics, VP1 analysis, and practical public-health bioinformatics.
+Research blog covering pathogen genomics, environmental surveillance, reproducible pipelines, phylodynamics, VP1 analysis, and practical public-health bioinformatics.
 ```
 
 ## GitHub Profile README
 
 ```markdown
-### Research Portfolio
+### Research Blog
 
-I maintain a pathogen genomics portfolio with reproducible workflows, tutorial-style run notes, and long-form research articles:
+I maintain a pathogen genomics blog with reproducible workflows, tutorial-style run notes, and long-form research articles:
 
 [adnanhaider81.github.io](https://adnanhaider81.github.io)
 ```
@@ -53,7 +53,7 @@ I maintain a pathogen genomics portfolio with reproducible workflows, tutorial-s
 ```text
 Syed Adnan Haider
 Pathogen genomics and public-health bioinformatics
-Portfolio: https://adnanhaider81.github.io
+Blog: https://adnanhaider81.github.io
 GitHub: https://github.com/adnanhaider81
 LinkedIn: https://www.linkedin.com/in/sahaider/
 Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
@@ -61,7 +61,7 @@ Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
 
 ## Application Website Field
 
-Use this when a form asks for `Website`, `Portfolio`, `Personal page`, `Research page`, or `Additional link`:
+Use this when a form asks for `Website`, `Personal page`, `Research page`, or `Additional link`:
 
 ```text
 https://adnanhaider81.github.io

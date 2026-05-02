@@ -24,7 +24,7 @@ After editing files locally:
 
 ```bash
 git add .
-git commit -m "Update research portfolio"
+git commit -m "Update research blog"
 git push
 ```
 

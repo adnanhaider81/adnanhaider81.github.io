@@ -512,7 +512,7 @@ const posts = [
     category: "Career",
     date: "2025-11-22",
     minutes: 10,
-    tags: ["Portfolio", "Writing", "Research Identity"],
+    tags: ["Blog", "Writing", "Research Identity"],
     summary:
       "A reflective article on how a public repository can communicate technical maturity, applied judgment, and scientific direction without overclaiming.",
     body: [
