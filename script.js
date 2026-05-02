@@ -1177,11 +1177,6 @@ pipelines.forEach((pipeline) => {
 });
 
 const pipelineGroupOrder = ["Polio workflows", "Manuscript workflows", "Other repositories"];
-const pipelineGroupDescriptions = {
-  "Polio workflows": "VP1, phylodynamics, and whole-capsid poliovirus work listed first for a clear field identity.",
-  "Manuscript workflows": "Study-specific workflows that document reproducible analysis behind outbreak and surveillance manuscripts.",
-  "Other repositories": "Training, discovery, and dashboard-oriented repositories that broaden the applied bioinformatics profile."
-};
 
 const filters = ["All", ...Array.from(new Set(posts.map((post) => post.category)))];
 const filterRow = document.querySelector("#filterRow");
@@ -1389,7 +1384,7 @@ function renderPipelines() {
               <p class="section-kicker">Repository Group</p>
               <h3>${escapeHTML(group)}</h3>
             </div>
-            <p>${escapeHTML(pipelineGroupDescriptions[group])}</p>
+            <span class="pipeline-group-count">${groupPipelines.length} repositories</span>
           </div>
           <div class="pipeline-grid">
             ${groupPipelines.map(renderPipelineCard).join("")}
@@ -1492,7 +1487,6 @@ pipelineGrid.addEventListener("click", (event) => {
 
 searchInput.addEventListener("input", renderPosts);
 window.addEventListener("hashchange", handleRoute);
-document.querySelector("#year").textContent = new Date().getFullYear();
 
 renderFilters();
 renderPosts();

@@ -1,6 +1,6 @@
 # Profile and CV Links
 
-Use one consistent portfolio URL everywhere after publishing:
+Use one consistent portfolio URL everywhere:
 
 ```text
 Research portfolio: https://adnanhaider81.github.io
@@ -80,4 +80,3 @@ https://adnanhaider81.github.io
 - Email signature
 - PhD application website or additional-materials field
 - Scholarship, fellowship, and training application portals
-
