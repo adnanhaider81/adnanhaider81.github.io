@@ -1128,10 +1128,10 @@ const pipelines = [
   },
   {
     group: "Manuscript workflows",
-    title: "RSV Islamabad Manuscript Analysis",
-    slug: "rsv-islamabad-2022-2023-analysis",
-    repo: "https://github.com/adnanhaider81/rsv-islamabad-2022-2023-analysis",
-    updated: "2025-09-30",
+    title: "RSV Islamabad Manuscript Pipeline",
+    slug: "rsv-islamabad-2022-2023-pipeline",
+    repo: "https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline",
+    updated: "2025-10-02",
     icon: "lungs",
     tags: ["RSV-A", "RSV-B", "Nextclade", "Snakemake"],
     summary:
@@ -1140,8 +1140,8 @@ const pipelines = [
       "Use this for RSV paired-end FASTQs when you need manuscript-style consensus, Nextclade genotype calls, context trees, and amino-acid differences in G and F.",
     prerequisites: ["Python 3.11+", "Conda or mamba", "Snakemake", "NCBI email for Entrez-based steps"],
     commands: [
-      "git clone https://github.com/adnanhaider81/rsv-islamabad-2022-2023-analysis.git",
-      "cd rsv-islamabad-2022-2023-analysis",
+      "git clone https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline.git",
+      "cd rsv-islamabad-2022-2023-pipeline",
       "export NCBI_EMAIL=\"you@example.com\"",
       "conda env create -f env/environment.yml",
       "conda activate rsv-env",
@@ -1265,34 +1265,6 @@ const pipelines = [
       "results/iqtree/sh.treefile",
       "results/iqtree/wg.treefile",
       "results/mutations/SH_HN_F reports"
-    ]
-  },
-  {
-    group: "Other repositories",
-    title: "RSV Short-Read Teaching Pipeline",
-    slug: "rsv-islamabad-2022-2023-pipeline",
-    repo: "https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline",
-    updated: "2025-10-02",
-    icon: "book-open",
-    tags: ["RSV", "Manual tutorial", "BWA", "bcftools"],
-    summary:
-      "A more explicit tutorial-style RSV workflow with manual single-sample commands, Nextclade notes, and tree-building guidance.",
-    purpose:
-      "Use this as a training resource when you want learners to understand each command in the RSV reference-based consensus path.",
-    prerequisites: ["FastQC", "Trimmomatic", "BWA", "SAMtools", "BCFtools", "Picard", "Optional Snakemake/Conda"],
-    commands: [
-      "git clone https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline.git",
-      "cd rsv-islamabad-2022-2023-pipeline",
-      "export NCBI_EMAIL=\"you@example.com\"",
-      "conda env create -f env/environment.yml",
-      "conda activate rsv-env",
-      "snakemake -s workflow/Snakefile -c 4 --printshellcmds"
-    ],
-    outputs: [
-      "results/<sample>/<sample>.consensus.fasta",
-      "results/<sample>/<sample>.depth.txt",
-      "results/iqtree/rsv_tree.treefile",
-      "results/mutations_rsv_a.tsv and results/mutations_rsv_b.tsv"
     ]
   },
   {
@@ -1453,7 +1425,7 @@ const pipelineEnhancements = {
       "The confirm_summary_competitive.tsv file should be read together with per-sample coverage metrics."
     ]
   },
-  "rsv-islamabad-2022-2023-analysis": {
+  "rsv-islamabad-2022-2023-pipeline": {
     question:
       "Can RSV-A and RSV-B short-read data be converted into manuscript-ready consensus genomes, genotype calls, trees, and G/F mutation summaries?",
     methodNotes: [
@@ -1468,23 +1440,6 @@ const pipelineEnhancements = {
     interpretationNotes: [
       "Genotype and mutation interpretation should be limited when genome recovery is partial.",
       "Context trees should be described with sampling dates and sequence selection rules."
-    ]
-  },
-  "rsv-islamabad-2022-2023-pipeline": {
-    question:
-      "How can learners understand the RSV short-read consensus path command by command before moving to automated workflow execution?",
-    methodNotes: [
-      "Teaching-oriented pipeline that makes FASTQC, trimming, mapping, depth review, consensus generation, and tree-building steps explicit.",
-      "Useful for training because it exposes the reasoning behind each file produced."
-    ],
-    qualityChecks: [
-      "Ask learners to inspect each intermediate file before continuing.",
-      "Compare manual outputs with workflow outputs when both are available.",
-      "Use depth files to explain why masking and failure rules matter."
-    ],
-    interpretationNotes: [
-      "This is strongest as a training and capacity-building repository.",
-      "The manual structure helps connect command-line operations to biological interpretation."
     ]
   },
   "cchfv-segmented-analysis-2022-pakistan": {

@@ -49,8 +49,8 @@ img {
   top: 0;
   z-index: 20;
   display: grid;
-  grid-template-columns: minmax(270px, 1fr) auto auto;
-  gap: 28px;
+  grid-template-columns: minmax(270px, 1fr) auto minmax(318px, auto);
+  gap: 22px;
   align-items: center;
   min-height: 66px;
   padding: 0 3.8vw;
@@ -126,6 +126,8 @@ img {
 
 .social-actions {
   gap: 8px;
+  justify-content: flex-end;
+  min-width: 0;
 }
 
 .profile-link {
@@ -141,12 +143,22 @@ img {
   box-shadow: 0 8px 20px rgba(8, 25, 58, 0.06);
   font-size: 0.8rem;
   font-weight: 850;
+  white-space: nowrap;
+}
+
+.profile-link svg {
+  flex: 0 0 auto;
+  color: var(--teal);
 }
 
 .profile-link:hover {
   color: white;
   border-color: var(--navy);
   background: var(--navy);
+}
+
+.profile-link:hover svg {
+  color: white;
 }
 
 .profile-link svg,
@@ -165,35 +177,30 @@ img {
 
 .hero {
   position: relative;
-  min-height: 430px;
-  display: grid;
-  grid-template-columns: minmax(420px, 0.88fr) minmax(420px, 1.12fr);
-  gap: 28px;
-  align-items: center;
+  display: block;
+  min-height: 500px;
   overflow: hidden;
-  padding: 42px 3.8vw 24px;
+  padding: 74px 3.8vw 72px;
   color: var(--ink);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.92) 42%, rgba(255, 255, 255, 0.52) 68%, rgba(255, 255, 255, 0.14) 100%),
+    url("assets/genomics-hero-light.png") right center / min(58vw, 820px) auto no-repeat,
+    linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   isolation: isolate;
 }
 
 .hero::after {
-  content: "";
-  display: block;
-  grid-column: 2;
-  grid-row: 1;
-  min-height: 340px;
-  background: url("assets/genomics-hero-light.png") center right / 118% auto no-repeat;
+  display: none;
 }
 
 .hero-image,
-.hero-overlay {
+.hero-overlay,
+.hero-badges {
   display: none;
 }
 
 .hero-content {
-  grid-column: 1;
-  grid-row: 1;
-  width: min(610px, 100%);
+  width: min(650px, 100%);
 }
 
 .eyebrow,
@@ -211,7 +218,7 @@ img {
 }
 
 .hero h1 {
-  max-width: 610px;
+  max-width: 650px;
   margin: 0;
   color: var(--navy);
   font-family: Georgia, "Times New Roman", serif;
@@ -221,7 +228,7 @@ img {
 }
 
 .hero-copy {
-  max-width: 585px;
+  max-width: 610px;
   margin: 18px 0 0;
   color: #1d2944;
   font-size: 1.06rem;
@@ -487,7 +494,7 @@ h2 {
 }
 
 .pipeline-section {
-  padding-top: 58px;
+  padding-top: 62px;
 }
 
 .pipeline-grid {
@@ -943,7 +950,7 @@ h2 {
   grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1fr);
   gap: 44px;
   align-items: center;
-  margin-top: 54px;
+  margin-top: 62px;
   padding: 78px 5vw;
   color: white;
   background:
@@ -1051,18 +1058,21 @@ h2 {
 
 @media (max-width: 1060px) {
   .site-header {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding-block: 10px;
   }
 
   .main-nav {
-    grid-column: 1 / -1;
+    grid-column: auto;
     justify-content: space-between;
     overflow-x: auto;
     padding-bottom: 8px;
   }
 
   .social-actions {
-    justify-content: end;
+    justify-content: flex-start;
+    flex-wrap: wrap;
   }
 
   .hero,
@@ -1075,18 +1085,20 @@ h2 {
   }
 
   .hero {
-    min-height: auto;
+    min-height: 680px;
+    padding-top: 330px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.86) 43%, #ffffff 100%),
+      url("assets/genomics-hero-light.png") center top / min(118vw, 780px) auto no-repeat,
+      linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   }
 
   .hero::after {
-    grid-column: 1;
-    grid-row: 1;
-    min-height: 260px;
-    order: -1;
+    display: none;
   }
 
   .hero-content {
-    grid-row: 2;
+    width: min(650px, 100%);
   }
 
   .quick-stats,
@@ -1158,7 +1170,12 @@ h2 {
   }
 
   .hero {
-    padding: 28px 18px 16px;
+    min-height: 620px;
+    padding: 240px 18px 48px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.88) 38%, #ffffff 100%),
+      url("assets/genomics-hero-light.png") center top / 150vw auto no-repeat,
+      linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
   }
 
   .hero h1 {
@@ -1170,9 +1187,7 @@ h2 {
   }
 
   .hero::after {
-    min-height: 220px;
-    background-size: 145% auto;
-    background-position: center right;
+    display: none;
   }
 
   .quick-stats,
