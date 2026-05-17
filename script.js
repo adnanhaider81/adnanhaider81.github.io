@@ -174,7 +174,7 @@ const posts = [
     ]
   },
   {
-    title: "From FASTQ to public-health report: a compact viral genomics workflow",
+    title: "From FASTQ to public-health report: a viral genomics workflow",
     slug: "fastq-to-public-health-report",
     category: "Tutorials",
     date: "2026-03-26",
@@ -231,6 +231,165 @@ const posts = [
       {
         title: "Pangolin SARS-CoV-2 lineage assignment software",
         url: "https://github.com/cov-lineages/pangolin"
+      }
+    ]
+  },
+  {
+    title: "How I review an ONT/DDNS run for poliovirus VP1 evidence",
+    slug: "review-ont-ddns-run-poliovirus-vp1",
+    category: "Tutorials",
+    date: "2026-05-17",
+    minutes: 12,
+    tags: ["DDNS", "Nanopore", "Poliovirus"],
+    summary:
+      "A practical review checklist for ONT MinION barcode folders, VP1 reference hits, coverage evidence, controls, and report language in poliovirus DDNS work.",
+    body: [
+      {
+        heading: "Start with the run, not the consensus",
+        paragraphs: [
+          "When I review an ONT/DDNS run, I do not begin by asking whether a consensus FASTA was produced. I begin by asking whether the run itself supports interpretation: barcode yield, read length distribution, sample sheet integrity, controls, and whether the run report matches the laboratory notes.",
+          "For poliovirus VP1 work, early review protects the downstream call. A strong hit table is less persuasive if the barcode map is ambiguous, the read yield is very uneven, or negative controls show unexpected target-like reads."
+        ]
+      },
+      {
+        heading: "Barcode-level evidence",
+        points: [
+          "Confirm that each barcode folder maps to one neutral sample identifier.",
+          "Check total reads, filtered reads, and the proportion retained after length and quality filters.",
+          "Review whether the best VP1 reference hit is supported by both read count and coverage breadth.",
+          "Look for close second-place references that could indicate mixture, near-neighbor ambiguity, or low-confidence assignment.",
+          "Separate screening evidence from consensus evidence in the final report."
+        ]
+      },
+      {
+        heading: "Consensus confidence",
+        paragraphs: [
+          "A consensus sequence should be read with its depth profile. I look for continuous VP1 coverage, gaps near primer sites, suspicious depth spikes, and stretches of ambiguous bases. If the consensus is partial, the report should say that plainly instead of presenting a complete-genome style conclusion.",
+          "The most useful DDNS report is not just a list of references. It is a decision aid: which samples have enough evidence for review, which need repeat sequencing, and which should be treated as weak or background signal."
+        ]
+      },
+      {
+        heading: "Report language",
+        points: [
+          "Use strong wording only when read support, breadth, controls, and reference ranking agree.",
+          "Use cautious wording when the run supports a lead but not a confident genotype-level conclusion.",
+          "Keep restricted sample identities out of public reports and repositories.",
+          "Preserve enough run metadata for audit without exposing operationally sensitive details."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "DDNS MinION VP1 pipeline repository",
+        url: "https://github.com/adnanhaider81/ddns-minion-vp1-pipeline"
+      },
+      {
+        title: "Rapid and sensitive direct detection and identification of poliovirus using nanopore sequencing",
+        url: "https://www.nature.com/articles/s41564-020-00806-9"
+      },
+      {
+        title: "WHO environmental surveillance summary for poliovirus",
+        url: "https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus"
+      }
+    ]
+  },
+  {
+    title: "Why synthetic data matters in public-health bioinformatics",
+    slug: "synthetic-data-public-health-bioinformatics",
+    category: "Tutorials",
+    date: "2026-05-17",
+    minutes: 11,
+    tags: ["Synthetic data", "Reproducibility", "Training"],
+    summary:
+      "Why public repositories for surveillance workflows should include safe synthetic inputs, expected outputs, and smoke tests when restricted data cannot be shared.",
+    body: [
+      {
+        heading: "Restricted data should not make methods invisible",
+        paragraphs: [
+          "Public-health laboratories often work with clinical, environmental, or operational datasets that cannot be shared openly. That restriction is real, but it should not make the workflow unreviewable. Synthetic data gives a repository a public test path without exposing restricted surveillance material.",
+          "A good synthetic dataset does not need to recreate every biological detail. It needs to exercise the logic: input naming, configuration, read parsing, mapping or assembly steps, QC summaries, report generation, and expected failure modes."
+        ]
+      },
+      {
+        heading: "What synthetic data should prove",
+        points: [
+          "The repository can be cloned and checked without private FASTQ files.",
+          "The workflow discovers the intended sample names and input paths.",
+          "Helper scripts parse realistic file formats and write expected outputs.",
+          "Documentation matches the commands a new user can actually run.",
+          "Tests catch broken imports, malformed configs, and missing resources early."
+        ]
+      },
+      {
+        heading: "Training value",
+        paragraphs: [
+          "Synthetic inputs are also training materials. A new analyst can run the workflow, inspect the outputs, and learn what normal looks like before touching operational data. That lowers the barrier for capacity building in laboratories where people are learning sequencing and bioinformatics at the same time.",
+          "For supervisors, reviewers, and remote employers, synthetic tests are a credibility signal. They show that the repository is more than a code archive: it is a working method that can be evaluated."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Ten simple rules for reproducible computational research",
+        url: "https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285"
+      },
+      {
+        title: "The FAIR Guiding Principles",
+        url: "https://www.nature.com/articles/sdata201618"
+      },
+      {
+        title: "Snakemake sustainable data analysis",
+        url: "https://f1000research.com/articles/10-33"
+      }
+    ]
+  },
+  {
+    title: "Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny",
+    slug: "whole-capsid-poliovirus-ngs-qc-consensus-antigenic-sites-phylogeny",
+    category: "Tutorials",
+    date: "2026-05-17",
+    minutes: 13,
+    tags: ["Poliovirus", "Illumina", "Phylogeny"],
+    summary:
+      "A workflow-oriented guide to reviewing whole-capsid poliovirus NGS outputs from read QC through antigenic-site summaries and phylogenetic placement.",
+    body: [
+      {
+        heading: "Whole-capsid analysis is a chain of evidence",
+        paragraphs: [
+          "A whole-capsid poliovirus NGS workflow connects several different kinds of evidence: read quality, primer or adapter handling, reference mapping, depth masking, consensus sequence quality, amino acid changes, and tree placement. Weakness in one part of the chain should be visible in the report.",
+          "I prefer to review the workflow in the same order the evidence is generated. That makes it easier to explain why a sample passed, why a consensus is partial, or why a tree placement should be treated cautiously."
+        ]
+      },
+      {
+        heading: "QC and consensus review",
+        points: [
+          "Check paired-read counts, quality trimming, duplicate handling, and mapping rate.",
+          "Review depth across the capsid rather than relying only on mean coverage.",
+          "Mask low-depth sites and report ambiguous regions clearly.",
+          "Compare consensus names, sample metadata, and tree labels before publication.",
+          "Keep private reads, BAM files, and sample-identifying metadata outside public repositories."
+        ]
+      },
+      {
+        heading: "Antigenic sites and phylogeny",
+        paragraphs: [
+          "Antigenic-site tables are useful because they translate nucleotide variation into biologically interpretable amino acid changes. They should sit beside, not replace, the consensus and coverage evidence.",
+          "Phylogeny adds context: whether sequences cluster as expected, whether sample labels are plausible, and whether the analysis supports the surveillance question. A good public workflow documents the commands and thresholds that connect the raw reads to that final tree."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Polio whole-capsid NGS analysis repository",
+        url: "https://github.com/adnanhaider81/polio-capsid-ngs-analysis"
+      },
+      {
+        title: "IQ-TREE 2 phylogenetic inference",
+        url: "https://academic.oup.com/mbe/article/37/5/1530/5721363"
+      },
+      {
+        title: "BCFtools consensus documentation",
+        url: "https://samtools.github.io/bcftools/howtos/consensus-sequence.html"
       }
     ]
   },
