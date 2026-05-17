@@ -1488,22 +1488,22 @@ const pipelines = [
   },
   {
     group: "Other repositories",
-    title: "Nextstrain ncov Pakistan Fork",
-    slug: "ncov",
-    repo: "https://github.com/adnanhaider81/ncov",
+    title: "Pakistan SARS-CoV-2 Nextstrain Build",
+    slug: "pakistan-sars-cov-2-nextstrain-build",
+    repo: "https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build",
     updated: "2025-09-28",
     icon: "network",
-    tags: ["Nextstrain", "SARS-CoV-2", "Dashboard", "Fork"],
+    tags: ["Nextstrain", "SARS-CoV-2", "Auspice", "Dashboard"],
     summary:
-      "Fork of the Pakistan SARS-CoV-2 genomic epidemiology build, useful for showing dashboard-oriented genomic surveillance experience.",
+      "Reproducible Nextstrain community-build style workflow for Pakistan SARS-CoV-2 genomic epidemiology with metadata-driven Auspice outputs.",
     purpose:
-      "Use this to document Nextstrain/ncov exposure and dashboard-oriented surveillance work. Exact run commands depend on the active branch and upstream Nextstrain configuration.",
+      "Use this to demonstrate dashboard-oriented genomic surveillance, curated metadata handling, Nextstrain builds, and public communication outputs.",
     prerequisites: ["Nextstrain CLI", "Curated metadata", "FASTA aligned with metadata strain names", "Auspice for local viewing"],
     commands: [
-      "git clone https://github.com/adnanhaider81/ncov.git",
-      "cd ncov",
+      "git clone https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build.git",
+      "cd pakistan-sars-cov-2-nextstrain-build",
       "nextstrain check-setup",
-      "nextstrain build . --help",
+      "nextstrain build .",
       "nextstrain view auspice/"
     ],
     outputs: [
@@ -1719,12 +1719,12 @@ const pipelineEnhancements = {
       "Its value is showing clean Nextflow structure, containers, CI, and report outputs that can be adapted to real viral-genomics projects."
     ]
   },
-  "ncov": {
+  "pakistan-sars-cov-2-nextstrain-build": {
     question:
-      "How can a Nextstrain/ncov-style fork support dashboard-oriented genomic epidemiology and communication?",
+      "How can a Pakistan-focused SARS-CoV-2 build turn curated sequences and metadata into a public Nextstrain/Auspice communication product?",
     methodNotes: [
-      "Repository demonstrates exposure to Nextstrain build structure, Auspice outputs, metadata-driven visualization, and pathogen dashboard logic.",
-      "Exact commands depend on branch and upstream configuration, so the tutorial keeps this entry honest by focusing on setup inspection."
+      "Repository demonstrates Nextstrain build structure, Auspice outputs, metadata-driven visualization, and pathogen dashboard logic.",
+      "The workflow frames phylogeny as a communication product supported by reproducible configuration and curated contextual data."
     ],
     qualityChecks: [
       "Run nextstrain check-setup before attempting builds.",
