@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Why public repositories for surveillance workflows should include safe synthetic inputs, expected outputs, and smoke tests when restricted data cannot be shared." />
+    <meta property="og:title" content="Why synthetic data matters in public-health bioinformatics" />
+    <meta property="og:description" content="Why public repositories for surveillance workflows should include safe synthetic inputs, expected outputs, and smoke tests when restricted data cannot be shared." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/synthetic-data-public-health-bioinformatics.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/synthetic-data-public-health-bioinformatics.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Why synthetic data matters in public-health bioinformatics | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Tutorials</span>
+            <time datetime="2026-05-17">May 17, 2026</time>
+            <span>11 min read</span>
+          </div>
+          <h1>Why synthetic data matters in public-health bioinformatics</h1>
+          <p>Why public repositories for surveillance workflows should include safe synthetic inputs, expected outputs, and smoke tests when restricted data cannot be shared.</p>
+          <div class="static-meta">
+            <span>Synthetic data</span>
+            <span>Reproducibility</span>
+            <span>Training</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>Restricted data should not make methods invisible</h2>
+        <p>Public-health laboratories often work with clinical, environmental, or operational datasets that cannot be shared openly. That restriction is real, but it should not make the workflow unreviewable. Synthetic data gives a repository a public test path without exposing restricted surveillance material.</p>
+        <p>A good synthetic dataset does not need to recreate every biological detail. It needs to exercise the logic: input naming, configuration, read parsing, mapping or assembly steps, QC summaries, report generation, and expected failure modes.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What synthetic data should prove</h2>
+        
+        <ul>
+          <li>The repository can be cloned and checked without private FASTQ files.</li>
+          <li>The workflow discovers the intended sample names and input paths.</li>
+          <li>Helper scripts parse realistic file formats and write expected outputs.</li>
+          <li>Documentation matches the commands a new user can actually run.</li>
+          <li>Tests catch broken imports, malformed configs, and missing resources early.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Training value</h2>
+        <p>Synthetic inputs are also training materials. A new analyst can run the workflow, inspect the outputs, and learn what normal looks like before touching operational data. That lowers the barrier for capacity building in laboratories where people are learning sequencing and bioinformatics at the same time.</p>
+        <p>For supervisors, reviewers, and remote employers, synthetic tests are a credibility signal. They show that the repository is more than a code archive: it is a working method that can be evaluated.</p>
+        
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285">Ten simple rules for reproducible computational research</a></li>
+          <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a></li>
+          <li><a href="https://f1000research.com/articles/10-33">Snakemake sustainable data analysis</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

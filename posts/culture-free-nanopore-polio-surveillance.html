@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A practical article on where direct sequencing can support poliovirus environmental surveillance, what it can speed up, and where cautious interpretation is still necessary." />
+    <meta property="og:title" content="Culture-free nanopore sequencing for poliovirus environmental surveillance" />
+    <meta property="og:description" content="A practical article on where direct sequencing can support poliovirus environmental surveillance, what it can speed up, and where cautious interpretation is still necessary." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/culture-free-nanopore-polio-surveillance.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/culture-free-nanopore-polio-surveillance.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Culture-free nanopore sequencing for poliovirus environmental surveillance | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Work Notes</span>
+            <time datetime="2026-04-18">April 18, 2026</time>
+            <span>17 min read</span>
+          </div>
+          <h1>Culture-free nanopore sequencing for poliovirus environmental surveillance</h1>
+          <p>A practical article on where direct sequencing can support poliovirus environmental surveillance, what it can speed up, and where cautious interpretation is still necessary.</p>
+          <div class="static-meta">
+            <span>Poliovirus</span>
+            <span>Nanopore</span>
+            <span>Wastewater</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>The surveillance question comes first</h2>
+        <p>Wastewater and environmental surveillance are powerful because they watch populations rather than only individuals who reach clinical testing. For poliovirus, this can reveal circulation that might otherwise remain silent. The analytical challenge is that environmental samples are mixed, degraded, inhibited, and often low in target material.</p>
+        <p>Culture-free nanopore sequencing is attractive because it can shorten the path from sample to genomic signal. The goal is not to pretend that sequencing replaces every classical virology step. The goal is to ask where sequencing can add earlier evidence: confirming target signal, prioritizing samples, identifying sequence features, and deciding what needs deeper laboratory follow-up.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A field-aware workflow</h2>
+        <p>The workflow I would document begins with intake metadata: site, collection date, concentration method, extraction lot, RT-PCR result, Ct value when available, and storage history. Without those details, sequencing results become detached from sample quality and epidemiological context.</p>
+        <p>The laboratory path can then move through extraction review, RT-PCR confirmation, amplicon or targeted enrichment, ONT library preparation, run monitoring, basecalling, read filtering, reference mapping, consensus review, and report writing. For every step, the runbook should say what failure looks like. Low yield, short read distribution, primer imbalance, or a sudden rise in negative-control reads are not small details; they change confidence.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What the report should separate</h2>
+        
+        <ul>
+          <li>Confirmed laboratory evidence: PCR positivity, sequencing yield, target-specific read support, and controls.</li>
+          <li>Genomic evidence: breadth of coverage, depth distribution, consensus ambiguity, and informative regions recovered.</li>
+          <li>Interpretation: whether the result supports immediate follow-up, repeat testing, or cautious monitoring.</li>
+          <li>Limitations: inhibition, dilution, primer bias, mixed populations, and environmental degradation.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Why nanopore belongs in the discussion</h2>
+        <p>Nanopore sequencing brings portability and speed, which can be important when decisions are time-sensitive. It also makes run monitoring visible: an analyst can watch read accumulation and decide whether the run is producing useful evidence. That flexibility is valuable in surveillance settings where sample quality varies.</p>
+        <p>The tradeoff is that speed does not remove the need for controls, thresholds, and careful language. A strong direct-sequencing report should make confidence transparent rather than simply presenting a consensus sequence.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What makes environmental samples difficult</h2>
+        <p>Environmental surveillance samples are not clean clinical isolates. They may contain multiple enteroviruses, degraded RNA, PCR inhibitors, uneven concentration efficiency, and mixtures of closely related sequences. A direct sequencing workflow must therefore be written with uncertainty in mind from the beginning.</p>
+        <p>For VP1 or capsid-focused work, the first interpretive question is whether the recovered sequence is long enough, specific enough, and clean enough to support a poliovirus interpretation. The second question is whether the sequence supports a public-health conclusion or only a follow-up action.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Controls and thresholds I would not skip</h2>
+        <p>Direct sequencing becomes more convincing when every batch includes negative controls, positive or synthetic controls where appropriate, barcode review, run-yield review, and read-level classification summaries. These checks help separate true weak signal from contamination, carryover, or barcode misassignment.</p>
+        <p>A useful report should state how many reads supported the target, how the reads were distributed across VP1 or capsid regions, whether the consensus contains ambiguous positions, and whether the same result appears after repeat analysis. The conclusion should be short but the evidence trail should be complete.</p>
+        <ul>
+          <li>Record site, date, concentration method, extraction batch, and PCR result.</li>
+          <li>Keep barcode/sample maps free of patient or site identifiers in public outputs.</li>
+          <li>Inspect read length and target-region coverage before accepting consensus.</li>
+          <li>Use cautious language when coverage is partial or controls are borderline.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus">WHO: Wastewater and environmental surveillance summary for poliovirus</a></li>
+          <li><a href="https://artic.network/viruses/sars-cov-2">ARTIC Network SARS-CoV-2 sequencing resources</a></li>
+          <li><a href="https://www.cdc.gov/advanced-molecular-detection/php/success-stories/wastewater-surveillance.html">CDC: Wastewater surveillance and public health</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7448630/">Rapid and sensitive direct detection and identification of poliovirus using nanopore sequencing</a></li>
+          <li><a href="https://polioeradication.org/wp-content/uploads/2016/07/WHO_V-B_03.03_eng.pdf">WHO guidelines for environmental surveillance of poliovirus circulation</a></li>
+          <li><a href="https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus">Wastewater and Environmental Surveillance: summary for Poliovirus</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

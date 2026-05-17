@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="How to turn phylogenetic builds into focused communication products with disciplined metadata, clear questions, and careful interpretation." />
+    <meta property="og:title" content="Making Nextstrain useful for routine outbreak communication" />
+    <meta property="og:description" content="How to turn phylogenetic builds into focused communication products with disciplined metadata, clear questions, and careful interpretation." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/nextstrain-routine-outbreak-communication.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/nextstrain-routine-outbreak-communication.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Making Nextstrain useful for routine outbreak communication | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Tutorials</span>
+            <time datetime="2026-01-08">January 8, 2026</time>
+            <span>16 min read</span>
+          </div>
+          <h1>Making Nextstrain useful for routine outbreak communication</h1>
+          <p>How to turn phylogenetic builds into focused communication products with disciplined metadata, clear questions, and careful interpretation.</p>
+          <div class="static-meta">
+            <span>Nextstrain</span>
+            <span>Phylogenetics</span>
+            <span>Dashboards</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>The tree is not the message</h2>
+        <p>Phylogenetic dashboards are powerful because they make pathogen evolution visible. They can show clustering, lineage movement, sampling gaps, and time structure. But a tree is only useful when it answers a question. Without a question, it becomes a complex figure that invites overinterpretation.</p>
+        <p>For routine outbreak communication, I start by writing the questions before building the visualization: Which lineages are circulating? Are recent samples clustering with local or imported context? Is there evidence of sustained transmission? Which samples require epidemiological follow-up?</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Metadata discipline</h2>
+        <p>Nextstrain-style builds depend on metadata quality. Dates should be consistent, locations should use stable names, and restricted fields should be separated from public-display fields. Missing metadata is not just empty space; it affects interpretation of geographic and temporal patterns.</p>
+        <p>Subsampling also matters. A tree can look different depending on which contextual genomes are included. I prefer to document the contextual sampling rule so readers know whether the tree is intended for local comparison, national overview, or global placement.</p>
+        <ul>
+          <li>Use consistent sample dates and location levels.</li>
+          <li>Keep private metadata out of public builds.</li>
+          <li>Document contextual sequence selection.</li>
+          <li>Write an interpretation note beside the tree.</li>
+          <li>Avoid implying transmission from tree proximity alone.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>What a good dashboard should do</h2>
+        <p>A good dashboard helps a reader decide what to ask next. It should connect phylogeny to sampling time, geography, lineage, and relevant mutations without overwhelming the user. It should also make uncertainty visible: low coverage, missing dates, sparse context, and uneven sampling can all shape the story.</p>
+        <p>The best public-health phylogenetics outputs are not the most visually crowded ones. They are the ones that help teams act carefully.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A dashboard should have a written question</h2>
+        <p>Before building a Nextstrain or similar dashboard, I write the question in plain language. If the question is lineage surveillance, the metadata and coloring should support lineage interpretation. If the question is local clustering, the contextual dataset must be chosen carefully. If the question is importation, geographic labels and sampling density become central.</p>
+        <p>Without this discipline, a dashboard can look impressive while saying very little. The visualization should reduce ambiguity for the reader, not add new visual complexity.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Metadata is part of the analysis</h2>
+        <p>A phylogenetic dashboard depends on dates, locations, sample names, lineage fields, and contextual sequence choices. Missing or inconsistent metadata can change the apparent story. For public outputs, metadata also has a governance role: it must be useful without exposing restricted information.</p>
+        <p>The strongest dashboards pair the tree with a short interpretation note. The note should state what the tree supports, what it does not support, and what follow-up question should be asked next.</p>
+        <ul>
+          <li>Choose contextual sequences with a stated rule.</li>
+          <li>Keep private metadata separate from public display metadata.</li>
+          <li>Avoid implying direct transmission from tree proximity alone.</li>
+          <li>Use dashboards as communication products, not as standalone conclusions.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://next.nextstrain.org/">Nextstrain: real-time tracking of pathogen evolution</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13041781/">Nextstrain automates real-time phylodynamic analysis</a></li>
+          <li><a href="https://academic.oup.com/ve/article/4/1/vex042/4794731">TreeTime: maximum-likelihood phylodynamic analysis</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7182206/">IQ-TREE 2 phylogenetic inference</a></li>
+          <li><a href="https://www.nature.com/articles/s41576-020-0233-0">Phylogenetic tree building in the genomic age</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

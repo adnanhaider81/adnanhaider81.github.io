@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A methods-focused article on converting outbreak manuscripts into public repositories that preserve analysis logic, assumptions, quality checks, and reusable commands." />
+    <meta property="og:title" content="Turning a manuscript into a reproducible genomics repository" />
+    <meta property="og:description" content="A methods-focused article on converting outbreak manuscripts into public repositories that preserve analysis logic, assumptions, quality checks, and reusable commands." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/manuscript-to-reproducible-genomics-repository.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/manuscript-to-reproducible-genomics-repository.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Turning a manuscript into a reproducible genomics repository | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Reproducibility</span>
+            <time datetime="2026-05-01">May 1, 2026</time>
+            <span>18 min read</span>
+          </div>
+          <h1>Turning a manuscript into a reproducible genomics repository</h1>
+          <p>A methods-focused article on converting outbreak manuscripts into public repositories that preserve analysis logic, assumptions, quality checks, and reusable commands.</p>
+          <div class="static-meta">
+            <span>GitHub</span>
+            <span>Snakemake</span>
+            <span>Reproducibility</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>A repository is part of the method</h2>
+        <p>In pathogen genomics, the manuscript usually contains the scientific argument, but the repository contains the evidence path. A reader should be able to move from the biological question to the computational workflow without guessing which reference was used, which samples were excluded, which threshold created a masked base, or which command generated the final tree.</p>
+        <p>For outbreak work this matters because the same analysis may later be reused for a new pathogen, a new sequencing batch, or a training session. A clean repository is not decoration. It is a way of showing that the analysis was thought through, that important choices were recorded, and that another analyst could audit the logic.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What I include before I call a repository ready</h2>
+        <p>My preferred structure starts with a short scientific purpose statement. The README should say what the workflow answers, what data type it expects, what outputs it produces, and what it does not claim to solve. A repository that says only how to run commands is incomplete; it must also explain why those commands exist.</p>
+        <p>The second layer is reproducibility: environment files, workflow rules, configuration templates, sample sheets, expected output paths, and citations. Snakemake is useful here because it expresses dependencies between files, commands, environments, and outputs. A dry run can show the analysis plan before compute time is spent.</p>
+        <ul>
+          <li>README: scientific purpose, data type, input layout, main outputs, and known limitations.</li>
+          <li>Environment: conda or mamba file with pinned packages wherever possible.</li>
+          <li>Config: editable sample sheet and parameters separated from workflow code.</li>
+          <li>Workflow: one command for dry run and one command for full execution.</li>
+          <li>Outputs: a short guide to consensus FASTA, QC tables, mutation tables, trees, and reports.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Restricted data should not block transparency</h2>
+        <p>Many clinical and public-health datasets cannot be made fully public. That should not stop a repository from being useful. The solution is to separate private inputs from public logic: keep raw FASTQ paths out of the repository, provide example metadata with fake sample IDs, include small test files when allowed, and document how the real data were arranged.</p>
+        <p>For collaborators and future trainees, this communicates two things at once: the analysis is traceable, and data governance was taken seriously. In applied genomics, those two values should sit together.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A minimal command pattern</h2>
+        
+        
+        <pre><code>git clone https://github.com/adnanhaider81/example-pathogen-workflow.git
+cd example-pathogen-workflow
+mamba env create -f env/environment.yml
+conda activate pathogen-workflow
+snakemake -s workflow/Snakefile --configfile config/config.yaml -n -c 4
+snakemake -s workflow/Snakefile --configfile config/config.yaml -c 4 --printshellcmds</code></pre>
+      </section>
+
+      <section>
+        <h2>How I would audit my own repository</h2>
+        <p>Before sharing a repository publicly, I read it as if I were a collaborator seeing the project for the first time. I ask whether the scientific question is visible before the commands, whether the inputs are described without exposing private data, and whether the outputs are named in a way that a future reader can connect back to the manuscript figure or table.</p>
+        <p>The most useful audit is not only technical. It also checks whether the repository preserves decision points: why a depth threshold was used, why a reference was selected, why a sequence was excluded, and which step produced the final interpretation. These details are often more important than a long list of tools.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A practical reproducibility standard</h2>
+        <p>For my own genomics work, a repository becomes useful when it can support three readers: the analyst who wants to rerun the workflow, the collaborator who wants to understand the analysis logic, and the trainee who wants to learn the method. The same structure can serve all three if the README, config files, workflow rules, and output guide are written together.</p>
+        <p>I also separate reproducibility from full data release. Clinical and public-health sequence data may be restricted, but the workflow logic, environment files, synthetic examples, command structure, and citation trail can still be public. That balance keeps the analysis transparent while respecting governance.</p>
+        <ul>
+          <li>A repository should include the purpose, not only installation steps.</li>
+          <li>A dry run should be possible before real compute begins.</li>
+          <li>Output folders should match the biological interpretation: QC, consensus, trees, mutations, reports.</li>
+          <li>Restricted data should be represented by templates, synthetic examples, or documented local paths.</li>
+          <li>Tool citations should be close to the workflow they support.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/34035898/">Sustainable data analysis with Snakemake</a></li>
+          <li><a href="https://academic.oup.com/bioinformatics/article-abstract/28/19/2520/290322">Snakemake: a scalable bioinformatics workflow engine</a></li>
+          <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles for scientific data management and stewardship</a></li>
+          <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285">Ten Simple Rules for Reproducible Computational Research</a></li>
+          <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1005412">Ten Simple Rules for Making Research Software More Robust</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

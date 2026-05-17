@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A practical checklist for writing runbooks that help laboratory and bioinformatics teams run surveillance workflows consistently." />
+    <meta property="og:title" content="What I look for in a surveillance pipeline runbook" />
+    <meta property="og:description" content="A practical checklist for writing runbooks that help laboratory and bioinformatics teams run surveillance workflows consistently." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/surveillance-pipeline-runbook.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/surveillance-pipeline-runbook.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>What I look for in a surveillance pipeline runbook | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Work Notes</span>
+            <time datetime="2025-12-15">December 15, 2025</time>
+            <span>15 min read</span>
+          </div>
+          <h1>What I look for in a surveillance pipeline runbook</h1>
+          <p>A practical checklist for writing runbooks that help laboratory and bioinformatics teams run surveillance workflows consistently.</p>
+          <div class="static-meta">
+            <span>Runbooks</span>
+            <span>SOPs</span>
+            <span>Reproducibility</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>A runbook is for the difficult day</h2>
+        <p>A pipeline runbook is most valuable when the run does not go perfectly. Anyone can follow a few commands on a clean dataset. The real test is whether the document helps an analyst respond to missing FASTQs, failed controls, low coverage, database path errors, unexpected lineages, or a sample that passes one metric and fails another.</p>
+        <p>For surveillance teams, the runbook should reduce hesitation. It should tell the analyst what to check, what to rerun, when to stop, and when to escalate.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>The minimum useful structure</h2>
+        
+        <ul>
+          <li>Purpose: the pathogen, sample type, sequencing platform, and scientific question.</li>
+          <li>Inputs: file naming rules, metadata columns, references, databases, and config fields.</li>
+          <li>Commands: environment creation, dry run, full run, report generation, and cleanup.</li>
+          <li>Outputs: where to find consensus files, QC tables, trees, mutation reports, and logs.</li>
+          <li>Decision rules: pass, review, fail, rerun, and limited-use categories.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Make judgment visible</h2>
+        <p>Some decisions cannot be fully automated. A borderline Ct value, a partial genome, a contaminated negative control, or conflicting lineage results may require human judgment. The runbook should not hide those points. It should name them clearly and give the analyst a defensible path.</p>
+        <p>This is also useful for training. New analysts learn not only which commands to run, but why those commands matter and how evidence is weighed.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A good runbook leaves an audit trail</h2>
+        <p>I like runbooks that instruct users to save software versions, command logs, configuration files, MultiQC reports, and final interpretation notes. When a result is later used in a manuscript, partner report, or dashboard, those artifacts make the analysis traceable.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>The runbook should reduce ambiguity</h2>
+        <p>A strong runbook is not a long document for its own sake. It is a document that removes uncertainty at the moment an analyst has to make a decision. It should define where inputs live, how sample names are checked, what a normal run looks like, what a failed run looks like, and when a result should be escalated.</p>
+        <p>The runbook should also be written for handover. If another analyst receives the project months later, they should be able to reconstruct the logic of the run from the commands, logs, versions, config files, and output guide.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Operational details worth recording</h2>
+        <p>In surveillance, small operational details become important later. Database versions, reference accessions, primer schemes, conda environment files, sample sheet revisions, and report templates should be preserved. When a result is questioned, these details are the difference between memory and evidence.</p>
+        <p>I also like runbooks that include a short troubleshooting section. Common failure modes such as missing FASTQ pairs, mismatched sample IDs, failed controls, low coverage, missing databases, and inconsistent metadata should have a clear first response.</p>
+        <ul>
+          <li>Record command logs and software versions.</li>
+          <li>Store the exact config file used for each run.</li>
+          <li>Define pass, review, limited-use, and fail rules.</li>
+          <li>Include a troubleshooting section for common errors.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/34035898/">Sustainable data analysis with Snakemake</a></li>
+          <li><a href="https://academic.oup.com/bioinformatics/article-abstract/28/19/2520/290322">Snakemake workflow engine</a></li>
+          <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a></li>
+          <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285">Ten Simple Rules for Reproducible Computational Research</a></li>
+          <li><a href="https://pubmed.ncbi.nlm.nih.gov/34035898/">Snakemake sustainable data analysis</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A tutorial-style guide for turning raw reads into consensus genomes, lineage calls, mutation summaries, phylogeny, and a report that non-bioinformaticians can use." />
+    <meta property="og:title" content="From FASTQ to public-health report: a viral genomics workflow" />
+    <meta property="og:description" content="A tutorial-style guide for turning raw reads into consensus genomes, lineage calls, mutation summaries, phylogeny, and a report that non-bioinformaticians can use." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/fastq-to-public-health-report.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/fastq-to-public-health-report.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>From FASTQ to public-health report: a viral genomics workflow | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Tutorials</span>
+            <time datetime="2026-03-26">March 26, 2026</time>
+            <span>18 min read</span>
+          </div>
+          <h1>From FASTQ to public-health report: a viral genomics workflow</h1>
+          <p>A tutorial-style guide for turning raw reads into consensus genomes, lineage calls, mutation summaries, phylogeny, and a report that non-bioinformaticians can use.</p>
+          <div class="static-meta">
+            <span>FASTQ</span>
+            <span>QC</span>
+            <span>Reporting</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>A workflow should preserve decisions</h2>
+        <p>Raw sequencing reads do not become public-health evidence automatically. Between FASTQ and report, the analyst makes decisions about read quality, trimming, host screening, mapping, assembly, variant calling, consensus masking, lineage assignment, and visualization. A good workflow records those decisions as outputs.</p>
+        <p>For viral surveillance, I prefer a design where each step produces both a file for downstream analysis and a small quality artifact for review. That means the analyst can explain why a sample passed, why a sample failed, and which parts of the genome should be trusted.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Core checkpoints</h2>
+        
+        <ul>
+          <li>Read QC: raw read counts, quality distribution, adapter content, and per-sample yield.</li>
+          <li>Trimming: adapter and primer handling, minimum length, and quality thresholds.</li>
+          <li>Mapping or assembly: reference choice, percent mapped, breadth, depth, and off-target reads.</li>
+          <li>Consensus: masking threshold, ambiguous bases, low-coverage regions, and final FASTA naming.</li>
+          <li>Interpretation: lineage, clade, mutation table, phylogenetic placement, and limitations.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>A minimal command pattern</h2>
+        
+        
+        <pre><code>fastqc sample_R1.fastq.gz sample_R2.fastq.gz
+trimmomatic PE sample_R1.fastq.gz sample_R2.fastq.gz R1.trim.fq.gz R1.unpaired.fq.gz R2.trim.fq.gz R2.unpaired.fq.gz ILLUMINACLIP:adapters.fa:2:30:10 SLIDINGWINDOW:4:20 MINLEN:50
+bwa mem -t 4 reference.fasta R1.trim.fq.gz R2.trim.fq.gz | samtools sort -o sample.sorted.bam
+samtools depth -a sample.sorted.bam &gt; sample.depth.txt
+bcftools mpileup -f reference.fasta sample.sorted.bam | bcftools call -mv -Oz -o sample.vcf.gz
+nextclade run --input-dataset dataset sample.consensus.fasta --output-all nextclade/</code></pre>
+      </section>
+
+      <section>
+        <h2>The report is a translation layer</h2>
+        <p>A report should not dump every file into a PDF. It should translate the analysis into decisions: whether the sample has enough genome recovery, whether the lineage or genotype call is reliable, whether mutations require follow-up, and whether the result belongs in a public dashboard, manuscript, or internal memo.</p>
+        <p>I like reports that include one compact table, one coverage figure, one tree or lineage summary when appropriate, and a short paragraph that states confidence and caveats. The analyst should be able to defend every sentence from the underlying files.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>From files to decisions</h2>
+        <p>The important shift in a surveillance workflow is moving from file production to decision support. A FASTQ file becomes useful only after the workflow can show read quality, trimming behavior, mapping performance, depth, consensus uncertainty, lineage support, and an interpretation that a non-specialist can follow.</p>
+        <p>I like to design the output folder so it mirrors the conversation I expect to have with a laboratory or response team. First, what was the sample and how good was the run? Second, what genome or region was recovered? Third, what classification or phylogenetic placement is supported? Fourth, what caveats should travel with the result?</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What belongs in the final report</h2>
+        <p>A final public-health genomics report should be concise but not thin. It should include the dataset, tools and versions, reference used, masking threshold, coverage summary, lineage or genotype result, mutation highlights where relevant, and a short interpretation paragraph. The report should also say what was not resolved.</p>
+        <p>This is where automated outputs and human judgment meet. MultiQC can help reveal batch effects, Nextclade can organize quality flags and mutation calls, Pangolin can support SARS-CoV-2 lineage assignment, and tree-building tools can provide context. None of those outputs should replace the analyst&#039;s explanation.</p>
+        <ul>
+          <li>Start with QC and sample status before biological interpretation.</li>
+          <li>Include versioned tool names and reference accessions.</li>
+          <li>State whether the result is complete genome, partial genome, VP1-only, or target-region limited.</li>
+          <li>Link interpretation to coverage and metadata rather than to a tree alone.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://artic.network/viruses/sars-cov-2">ARTIC Network: pathogen genomics from sample to response</a></li>
+          <li><a href="https://docs.nextstrain.org/projects/nextclade/en/stable/index.html">Nextclade documentation</a></li>
+          <li><a href="https://github.com/cov-lineages/pangolin">Pangolin SARS-CoV-2 lineage assignment software</a></li>
+          <li><a href="https://academic.oup.com/bioinformatics/article/32/19/3047/2196507">MultiQC: summarize analysis results for multiple tools and samples</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7182206/">IQ-TREE 2: new models and efficient methods for phylogenetic inference</a></li>
+          <li><a href="https://github.com/cov-lineages/pangolin">Pangolin SARS-CoV-2 lineage assignment</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

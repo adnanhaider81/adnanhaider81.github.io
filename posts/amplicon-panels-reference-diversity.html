@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A methods reflection on primer design, reference bias, geographic sampling gaps, and validation choices for targeted viral sequencing." />
+    <meta property="og:title" content="Designing amplicon panels when reference diversity is uneven" />
+    <meta property="og:description" content="A methods reflection on primer design, reference bias, geographic sampling gaps, and validation choices for targeted viral sequencing." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/amplicon-panels-reference-diversity.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/amplicon-panels-reference-diversity.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Designing amplicon panels when reference diversity is uneven | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Methods</span>
+            <time datetime="2026-02-11">February 11, 2026</time>
+            <span>17 min read</span>
+          </div>
+          <h1>Designing amplicon panels when reference diversity is uneven</h1>
+          <p>A methods reflection on primer design, reference bias, geographic sampling gaps, and validation choices for targeted viral sequencing.</p>
+          <div class="static-meta">
+            <span>Amplicons</span>
+            <span>CCHFV</span>
+            <span>Primer Design</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>Primer design is also a sampling problem</h2>
+        <p>Amplicon design is often presented as a sequence-optimization problem: choose conserved regions, avoid poor melting temperatures, check specificity, and balance amplicon sizes. Those are necessary steps, but they do not solve the biggest field problem: reference diversity is rarely evenly sampled.</p>
+        <p>If available genomes come mostly from one region, one outbreak, or one time period, a panel can look excellent in silico and still miss diversity in underrepresented settings. This is especially important for segmented or highly diverse viruses, where each segment or genomic region may have a different evolutionary history.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A practical design approach</h2>
+        
+        <ul>
+          <li>Build a reference set with dates, locations, host/source, and segment labels where relevant.</li>
+          <li>Align references and inspect mismatch density by primer-binding region.</li>
+          <li>Check whether mismatches cluster in lineages relevant to local surveillance.</li>
+          <li>Avoid relying only on a single global consensus sequence.</li>
+          <li>Plan failure interpretation: a dropout should tell you something, not simply break the run.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Validation must match field conditions</h2>
+        <p>Clean controls are useful, but they are not enough. Field validation should include low-input material, degraded RNA, mixed backgrounds, realistic extraction controls, and samples with different Ct values or target abundance. The goal is not only high coverage on ideal material. The goal is predictable behavior when the sample is difficult.</p>
+        <p>I also prefer validation reports that show coverage by amplicon rather than only total reads. Amplicon imbalance can hide inside a high-yield run, and primer dropouts can affect exactly the regions needed for genotype or lineage interpretation.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What to document</h2>
+        <p>A panel should ship with primer coordinates, reference accession, amplicon sizes, expected overlap, known weak regions, and the bioinformatics assumptions needed to trim primers and mask low-depth sites. The laboratory method and computational method are connected. If the bioinformatics pipeline does not know the primer scheme, it cannot interpret the data properly.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Reference selection is a design decision</h2>
+        <p>A primer panel can fail quietly if the reference set is too narrow. Before designing or adopting a panel, I would inspect whether sequences represent the geography, year range, sample type, and viral diversity relevant to the surveillance setting. A panel designed on distant references may still work, but the risk should be visible.</p>
+        <p>For segmented viruses, each segment should be treated separately. For enteroviruses and other viruses with important typing regions, the target region should match the public-health question. Whole-genome ambition is useful only when the sample and method can support it.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Validation should include failure modes</h2>
+        <p>A good validation report does not only show beautiful coverage plots. It shows how the panel behaves with low input, degraded material, mixed samples, and controls. It also shows which amplicons drop first, where primer mismatches occur, and which regions remain interpretable when coverage is uneven.</p>
+        <p>This matters because a field pipeline should fail informatively. When coverage drops, the analyst should know whether the result is unusable, useful for detection only, useful for VP1 or genotype analysis, or strong enough for phylogeny.</p>
+        <ul>
+          <li>Inspect mismatch patterns in primer-binding regions.</li>
+          <li>Evaluate coverage by amplicon, not only total read yield.</li>
+          <li>Test low-input and degraded samples during validation.</li>
+          <li>Document known weak regions and expected dropout behavior.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://artic-network.github.io/primerscheme-specs/pdf/primerscheme.pdf">ARTIC primer scheme specification</a></li>
+          <li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0259277">Nanopore sequencing of SARS-CoV-2 amplicon protocols</a></li>
+          <li><a href="https://artic.network/viruses/sars-cov-2">ARTIC Network sequencing resources</a></li>
+          <li><a href="https://artic-network.github.io/primerscheme-specs/pdf/primerscheme.pdf">ARTIC primer scheme specification</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8891481/">Optimization of SARS-CoV-2 ARTIC Network V4 primers and sequencing protocol</a></li>
+          <li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1618-7">PrimalSeq and iVar amplicon sequencing framework</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

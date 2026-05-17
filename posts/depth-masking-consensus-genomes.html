@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Why low-depth positions, primer dropouts, and ambiguous bases should be handled visibly when producing consensus genomes for surveillance and phylogeny." />
+    <meta property="og:title" content="Depth masking is not a technical detail" />
+    <meta property="og:description" content="Why low-depth positions, primer dropouts, and ambiguous bases should be handled visibly when producing consensus genomes for surveillance and phylogeny." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/depth-masking-consensus-genomes.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/depth-masking-consensus-genomes.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Depth masking is not a technical detail | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Methods</span>
+            <time datetime="2026-03-08">March 8, 2026</time>
+            <span>17 min read</span>
+          </div>
+          <h1>Depth masking is not a technical detail</h1>
+          <p>Why low-depth positions, primer dropouts, and ambiguous bases should be handled visibly when producing consensus genomes for surveillance and phylogeny.</p>
+          <div class="static-meta">
+            <span>Consensus</span>
+            <span>Coverage</span>
+            <span>bcftools</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>A consensus genome is an interpretation</h2>
+        <p>A consensus FASTA looks simple, but it carries many decisions. Which reads were used? Were primers trimmed? What depth was required for a base? Were low-quality variants filtered? Were low-coverage positions masked as N? These choices shape downstream phylogeny, lineage calls, and mutation tables.</p>
+        <p>If low-depth sites are not masked, a consensus can look cleaner than the evidence supports. That can create false precision in trees and misleading mutation summaries. In outbreak work, where people may compare samples by a small number of differences, this matters.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Masking protects interpretation</h2>
+        <p>Masking is sometimes treated like a technical nuisance, but it is actually a statement of honesty. It tells the reader that the workflow refuses to call a base without enough evidence. The exact threshold depends on pathogen, platform, amplicon design, expected diversity, and reporting use case.</p>
+        <p>For short-read viral pipelines, I often start with a minimum depth threshold and then inspect breadth, ambiguous base percentage, and dropout patterns. For amplicon workflows, primer failure can create structured missingness, so a simple average depth is not enough.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>What I would publish with each consensus</h2>
+        
+        <ul>
+          <li>Median depth and breadth of coverage at the selected depth threshold.</li>
+          <li>Percent Ns or ambiguous bases in the final consensus.</li>
+          <li>Primer scheme, trimming method, and reference accession.</li>
+          <li>Variant-calling filters and masking threshold.</li>
+          <li>QC status: pass, review, fail, or limited-use sequence.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Why this improves communication</h2>
+        <p>When a report states the masking logic, the downstream discussion becomes more scientific. A weak sequence can still be useful for partial evidence, but it should not be overinterpreted as a complete genome. A strong sequence can be used more confidently in lineage assignment and phylogenetic context.</p>
+        <p>This is the kind of small methods discipline that improves a whole surveillance system. It makes results easier to compare across batches, laboratories, and time.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Primer trimming and masking are connected</h2>
+        <p>Depth masking is often discussed after consensus generation, but the decision begins earlier. Primer trimming, read filtering, duplicate handling, mapping quality, and variant-calling thresholds all affect which positions appear supported. If primers are not handled correctly, false confidence can appear near amplicon edges.</p>
+        <p>This is one reason amplicon workflows need a primer scheme file, clear trimming steps, and a depth report. When a consensus is used for phylogeny or mutation interpretation, the analyst should be able to explain which positions were called, masked, or ignored.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>How I classify sequence usability</h2>
+        <p>Not every consensus has the same use. A high-coverage, low-ambiguity genome can support lineage assignment, tree placement, and mutation summaries. A partial genome may support target confirmation or broad genotype context but not fine-scale transmission inference. A low-depth sequence may belong only in an internal follow-up note.</p>
+        <p>That classification should be visible. I prefer labels such as pass, review, limited-use, and fail because they communicate confidence without burying the reader in raw tables. The label should always be traceable to depth, breadth, ambiguity, and control performance.</p>
+        <ul>
+          <li>Pass: high breadth, adequate depth, clean controls, low ambiguity.</li>
+          <li>Review: useful sequence with one or more caveats that need manual inspection.</li>
+          <li>Limited-use: partial evidence suitable only for restricted interpretation.</li>
+          <li>Fail: insufficient support for genomic interpretation.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://www.nature.com/articles/s41592-025-02947-1">Addressing systematic errors in SARS-CoV-2 phylogeny</a></li>
+          <li><a href="https://joss.theoj.org/papers/10.21105/joss.03773">Nextclade: clade assignment, mutation calling and quality control</a></li>
+          <li><a href="https://epi2me.nanoporetech.com/epi2me-docs/workflows/wf-artic/">Oxford Nanopore wf-artic documentation</a></li>
+          <li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1618-7">PrimalSeq and iVar for viral amplicon sequencing</a></li>
+          <li><a href="https://andersen-lab.github.io/ivar/html/manualpage.html">iVar manual</a></li>
+          <li><a href="https://academic.oup.com/bioinformatics/article/39/5/btad317/7160909">ViralConsensus consensus genome calling</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

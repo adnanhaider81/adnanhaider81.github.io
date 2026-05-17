@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A practical review checklist for ONT MinION barcode folders, VP1 reference hits, coverage evidence, controls, and report language in poliovirus DDNS work." />
+    <meta property="og:title" content="How I review an ONT/DDNS run for poliovirus VP1 evidence" />
+    <meta property="og:description" content="A practical review checklist for ONT MinION barcode folders, VP1 reference hits, coverage evidence, controls, and report language in poliovirus DDNS work." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/review-ont-ddns-run-poliovirus-vp1.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/review-ont-ddns-run-poliovirus-vp1.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>How I review an ONT/DDNS run for poliovirus VP1 evidence | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Tutorials</span>
+            <time datetime="2026-05-17">May 17, 2026</time>
+            <span>12 min read</span>
+          </div>
+          <h1>How I review an ONT/DDNS run for poliovirus VP1 evidence</h1>
+          <p>A practical review checklist for ONT MinION barcode folders, VP1 reference hits, coverage evidence, controls, and report language in poliovirus DDNS work.</p>
+          <div class="static-meta">
+            <span>DDNS</span>
+            <span>Nanopore</span>
+            <span>Poliovirus</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>Start with the run, not the consensus</h2>
+        <p>When I review an ONT/DDNS run, I do not begin by asking whether a consensus FASTA was produced. I begin by asking whether the run itself supports interpretation: barcode yield, read length distribution, sample sheet integrity, controls, and whether the run report matches the laboratory notes.</p>
+        <p>For poliovirus VP1 work, early review protects the downstream call. A strong hit table is less persuasive if the barcode map is ambiguous, the read yield is very uneven, or negative controls show unexpected target-like reads.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Barcode-level evidence</h2>
+        
+        <ul>
+          <li>Confirm that each barcode folder maps to one neutral sample identifier.</li>
+          <li>Check total reads, filtered reads, and the proportion retained after length and quality filters.</li>
+          <li>Review whether the best VP1 reference hit is supported by both read count and coverage breadth.</li>
+          <li>Look for close second-place references that could indicate mixture, near-neighbor ambiguity, or low-confidence assignment.</li>
+          <li>Separate screening evidence from consensus evidence in the final report.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Consensus confidence</h2>
+        <p>A consensus sequence should be read with its depth profile. I look for continuous VP1 coverage, gaps near primer sites, suspicious depth spikes, and stretches of ambiguous bases. If the consensus is partial, the report should say that plainly instead of presenting a complete-genome style conclusion.</p>
+        <p>The most useful DDNS report is not just a list of references. It is a decision aid: which samples have enough evidence for review, which need repeat sequencing, and which should be treated as weak or background signal.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Report language</h2>
+        
+        <ul>
+          <li>Use strong wording only when read support, breadth, controls, and reference ranking agree.</li>
+          <li>Use cautious wording when the run supports a lead but not a confident genotype-level conclusion.</li>
+          <li>Keep restricted sample identities out of public reports and repositories.</li>
+          <li>Preserve enough run metadata for audit without exposing operationally sensitive details.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://github.com/adnanhaider81/ddns-minion-vp1-pipeline">DDNS MinION VP1 pipeline repository</a></li>
+          <li><a href="https://www.nature.com/articles/s41564-020-00806-9">Rapid and sensitive direct detection and identification of poliovirus using nanopore sequencing</a></li>
+          <li><a href="https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus">WHO environmental surveillance summary for poliovirus</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

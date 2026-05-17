@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A workflow-oriented guide to reviewing whole-capsid poliovirus NGS outputs from read QC through antigenic-site summaries and phylogenetic placement." />
+    <meta property="og:title" content="Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny" />
+    <meta property="og:description" content="A workflow-oriented guide to reviewing whole-capsid poliovirus NGS outputs from read QC through antigenic-site summaries and phylogenetic placement." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/whole-capsid-poliovirus-ngs-qc-consensus-antigenic-sites-phylogeny.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/whole-capsid-poliovirus-ngs-qc-consensus-antigenic-sites-phylogeny.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Tutorials</span>
+            <time datetime="2026-05-17">May 17, 2026</time>
+            <span>13 min read</span>
+          </div>
+          <h1>Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny</h1>
+          <p>A workflow-oriented guide to reviewing whole-capsid poliovirus NGS outputs from read QC through antigenic-site summaries and phylogenetic placement.</p>
+          <div class="static-meta">
+            <span>Poliovirus</span>
+            <span>Illumina</span>
+            <span>Phylogeny</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>Whole-capsid analysis is a chain of evidence</h2>
+        <p>A whole-capsid poliovirus NGS workflow connects several different kinds of evidence: read quality, primer or adapter handling, reference mapping, depth masking, consensus sequence quality, amino acid changes, and tree placement. Weakness in one part of the chain should be visible in the report.</p>
+        <p>I prefer to review the workflow in the same order the evidence is generated. That makes it easier to explain why a sample passed, why a consensus is partial, or why a tree placement should be treated cautiously.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>QC and consensus review</h2>
+        
+        <ul>
+          <li>Check paired-read counts, quality trimming, duplicate handling, and mapping rate.</li>
+          <li>Review depth across the capsid rather than relying only on mean coverage.</li>
+          <li>Mask low-depth sites and report ambiguous regions clearly.</li>
+          <li>Compare consensus names, sample metadata, and tree labels before publication.</li>
+          <li>Keep private reads, BAM files, and sample-identifying metadata outside public repositories.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>Antigenic sites and phylogeny</h2>
+        <p>Antigenic-site tables are useful because they translate nucleotide variation into biologically interpretable amino acid changes. They should sit beside, not replace, the consensus and coverage evidence.</p>
+        <p>Phylogeny adds context: whether sequences cluster as expected, whether sample labels are plausible, and whether the analysis supports the surveillance question. A good public workflow documents the commands and thresholds that connect the raw reads to that final tree.</p>
+        
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://github.com/adnanhaider81/polio-capsid-ngs-analysis">Polio whole-capsid NGS analysis repository</a></li>
+          <li><a href="https://academic.oup.com/mbe/article/37/5/1530/5721363">IQ-TREE 2 phylogenetic inference</a></li>
+          <li><a href="https://samtools.github.io/bcftools/howtos/consensus-sequence.html">BCFtools consensus documentation</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>

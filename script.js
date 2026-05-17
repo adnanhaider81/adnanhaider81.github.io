@@ -1291,7 +1291,7 @@ const pipelines = [
     slug: "rsv-islamabad-2022-2023-pipeline",
     repo: "https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline",
     updated: "2025-10-02",
-    icon: "lungs",
+    icon: "activity",
     tags: ["RSV-A", "RSV-B", "Nextclade", "Snakemake"],
     summary:
       "Reference-based RSV-A/RSV-B assembly, depth masking, de novo checks, phylogeny, genotype assignment, and G/F mutation analysis.",
@@ -1343,7 +1343,7 @@ const pipelines = [
   },
   {
     group: "Manuscript workflows",
-    title: "CV-A24v AHC 2023 Analysis",
+    title: "Coxsackievirus A24v Outbreak Genomics",
     slug: "cva24v-ahc-2023-analysis",
     repo: "https://github.com/adnanhaider81/cva24v-ahc-2023-analysis",
     updated: "2025-09-29",
@@ -1451,6 +1451,39 @@ const pipelines = [
       "results/nonhost_fastq/<sample>.nonhost_R1.fastq.gz",
       "results/metrics/<sample>/coverage_by_contig.tsv",
       "results/bams/<sample>/combined.bam"
+    ]
+  },
+  {
+    group: "Other repositories",
+    title: "Viral Genomics Nextflow Demo",
+    slug: "viral-genomics-nextflow-demo",
+    repo: "https://github.com/adnanhaider81/viral-genomics-nextflow-demo",
+    updated: "2026-05-18",
+    icon: "workflow",
+    tags: ["Nextflow", "DSL2", "Docker", "CI"],
+    summary:
+      "Compact Nextflow DSL2 demo that converts a toy viral FASTQ into read QC, mapped BAM, depth table, masked consensus FASTA, and HTML/Quarto report outputs.",
+    purpose:
+      "Use this as a small public demonstration of Nextflow module structure, container profiles, CI testing, and report generation for viral genomics workflows.",
+    prerequisites: [
+      "Nextflow 24.10+",
+      "Docker for the container profile",
+      "Bundled toy FASTQ and reference FASTA",
+      "No restricted surveillance data"
+    ],
+    commands: [
+      "git clone https://github.com/adnanhaider81/viral-genomics-nextflow-demo.git",
+      "cd viral-genomics-nextflow-demo",
+      "docker build -t viral-genomics-nextflow-demo:latest .",
+      "nextflow run . -profile docker"
+    ],
+    outputs: [
+      "results/qc/toy_sample.qc.tsv",
+      "results/bam/toy_sample.sorted.bam",
+      "results/depth/toy_sample.depth.tsv",
+      "results/consensus/toy_sample.consensus.fasta",
+      "results/report/toy_sample.report.html",
+      "results/report/toy_sample.report.qmd"
     ]
   },
   {
@@ -1669,6 +1702,23 @@ const pipelineEnhancements = {
       "The final report should state which level of resolution the data actually support."
     ]
   },
+  "viral-genomics-nextflow-demo": {
+    question:
+      "Can a very small viral-genomics example demonstrate Nextflow DSL2 structure, containerized execution, and CI-tested outputs without restricted data?",
+    methodNotes: [
+      "The workflow is split into DSL2 modules for FASTQ QC, mapping, depth calculation, masked consensus generation, and HTML/Quarto report writing.",
+      "Docker, base, and SLURM configuration files make the repository read like a portable workflow template rather than a one-off script."
+    ],
+    qualityChecks: [
+      "Run the GitHub Actions smoke test or Nextflow Docker profile before presenting the repository as runnable.",
+      "Inspect QC, depth, consensus, and report outputs together because the toy dataset is deliberately small.",
+      "Keep the example data synthetic so the repository stays safe for public sharing and indexing."
+    ],
+    interpretationNotes: [
+      "This repository is a workflow-engine demonstration, not a biological analysis claim.",
+      "Its value is showing clean Nextflow structure, containers, CI, and report outputs that can be adapted to real viral-genomics projects."
+    ]
+  },
   "ncov": {
     question:
       "How can a Nextstrain/ncov-style fork support dashboard-oriented genomic epidemiology and communication?",
@@ -1699,6 +1749,7 @@ const filterRow = document.querySelector("#filterRow");
 const postGrid = document.querySelector("#postGrid");
 const emptyState = document.querySelector("#emptyState");
 const searchInput = document.querySelector("#searchInput");
+const staticPostLinks = document.querySelector("#staticPostLinks");
 const reader = document.querySelector("#reader");
 const pipelineGrid = document.querySelector("#pipelineGrid");
 const pipelineDetail = document.querySelector("#pipelineDetail");
@@ -1748,10 +1799,14 @@ function renderPosts() {
   const query = searchInput.value;
   const visiblePosts = posts.filter((post) => postMatches(post, query));
 
+  if (staticPostLinks) {
+    staticPostLinks.hidden = true;
+  }
+
   postGrid.innerHTML = visiblePosts
     .map(
       (post) => `
-        <a class="post-card" href="#post/${escapeHTML(post.slug)}">
+        <a class="post-card" href="posts/${escapeHTML(post.slug)}.html">
           <div class="post-meta">
             <span>${escapeHTML(post.category)}</span>
             <time datetime="${escapeHTML(post.date)}">${formatDate(post.date)}</time>
@@ -1879,7 +1934,7 @@ function renderPipelineCard(pipeline) {
           Run notes
         </button>
         <a href="${escapeHTML(pipeline.repo)}">
-          <i data-lucide="github"></i>
+          <i data-lucide="code-2"></i>
           Repository
         </a>
       </div>
@@ -1928,7 +1983,7 @@ function renderPipelineDetail(pipeline) {
           <p>${escapeHTML(pipeline.purpose)}</p>
         </div>
         <a class="repo-link" href="${escapeHTML(pipeline.repo)}">
-          <i data-lucide="github"></i>
+          <i data-lucide="code-2"></i>
           Open repo
         </a>
       </header>

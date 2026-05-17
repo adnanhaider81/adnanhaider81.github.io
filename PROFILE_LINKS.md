@@ -4,6 +4,7 @@ Use one consistent blog URL everywhere:
 
 ```text
 Research blog: https://adnanhaider81.github.io
+Portfolio map: https://adnanhaider81.github.io/portfolio-map.html
 ```
 
 ## CV Header
@@ -12,6 +13,7 @@ Research blog: https://adnanhaider81.github.io
 Syed Adnan Haider
 Pathogen genomics | environmental surveillance | reproducible bioinformatics
 Blog: https://adnanhaider81.github.io
+Portfolio map: https://adnanhaider81.github.io/portfolio-map.html
 GitHub: https://github.com/adnanhaider81
 LinkedIn: https://www.linkedin.com/in/sahaider/
 Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
@@ -30,12 +32,15 @@ I work at the interface of wet-lab sequencing, viral genomic surveillance, and r
 
 ```text
 Website: https://adnanhaider81.github.io
+Featured link: https://adnanhaider81.github.io/portfolio-map.html
 ```
 
 ## LinkedIn Featured Section Text
 
 ```text
-Research blog covering pathogen genomics, environmental surveillance, reproducible pipelines, phylodynamics, VP1 analysis, and practical public-health bioinformatics.
+Pathogen Genomics Portfolio Map: a one-page guide linking my public GitHub repositories to applied skills in ONT/Illumina workflows, poliovirus surveillance, metagenomics, phylodynamics, and manuscript-linked outbreak genomics.
+
+URL: https://adnanhaider81.github.io/portfolio-map.html
 ```
 
 ## GitHub Profile README
@@ -46,6 +51,10 @@ Research blog covering pathogen genomics, environmental surveillance, reproducib
 I maintain a pathogen genomics blog with reproducible workflows, tutorial-style run notes, and long-form research articles:
 
 [adnanhaider81.github.io](https://adnanhaider81.github.io)
+
+Portfolio map:
+
+[Pathogen Genomics Portfolio Map](https://adnanhaider81.github.io/portfolio-map.html)
 ```
 
 ## Email Signature
@@ -54,6 +63,7 @@ I maintain a pathogen genomics blog with reproducible workflows, tutorial-style 
 Syed Adnan Haider
 Pathogen genomics and public-health bioinformatics
 Blog: https://adnanhaider81.github.io
+Portfolio map: https://adnanhaider81.github.io/portfolio-map.html
 GitHub: https://github.com/adnanhaider81
 LinkedIn: https://www.linkedin.com/in/sahaider/
 Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en

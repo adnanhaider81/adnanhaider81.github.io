@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A deeper note on conservative metagenomic interpretation: why read counts alone are not enough, and how host subtraction, database design, and competitive mapping reduce false confidence." />
+    <meta property="og:title" content="Host subtraction and competitive mapping: avoiding overconfident metagenomic calls" />
+    <meta property="og:description" content="A deeper note on conservative metagenomic interpretation: why read counts alone are not enough, and how host subtraction, database design, and competitive mapping reduce false confidence." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/host-subtraction-competitive-mapping.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/host-subtraction-competitive-mapping.html" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Host subtraction and competitive mapping: avoiding overconfident metagenomic calls | Syed Adnan Haider | Pathogen Genomics Blog</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Methods</span>
+            <time datetime="2026-04-04">April 4, 2026</time>
+            <span>18 min read</span>
+          </div>
+          <h1>Host subtraction and competitive mapping: avoiding overconfident metagenomic calls</h1>
+          <p>A deeper note on conservative metagenomic interpretation: why read counts alone are not enough, and how host subtraction, database design, and competitive mapping reduce false confidence.</p>
+          <div class="static-meta">
+            <span>Metagenomics</span>
+            <span>Host subtraction</span>
+            <span>Mapping</span>
+          </div>
+        </header>
+        
+      <section>
+        <h2>The strongest-looking hit is not always the right answer</h2>
+        <p>Metagenomic sequencing is powerful because it does not require a single target hypothesis before sequencing. That strength also creates interpretive risk. Low-complexity sequence, conserved regions, barcode bleed, index hopping, reagent contaminants, incomplete databases, and close relatives can all produce results that look more certain than they are.</p>
+        <p>A responsible pathogen-discovery workflow should therefore behave more like an evidence filter than a name generator. The first question is not simply which organism got reads. The better question is whether the reads support that organism better than plausible alternatives.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Host subtraction is necessary but not sufficient</h2>
+        <p>Host subtraction reduces background by removing reads that align to human or other expected host genomes. This can improve sensitivity for microbial reads and reduce downstream compute. However, subtracting host reads does not solve database ambiguity. A read that survives host subtraction can still map to a conserved gene shared by multiple organisms.</p>
+        <p>Competitive mapping is useful after broad classification. Instead of accepting a single top hit, it maps reads against a curated panel of close candidates and asks whether breadth, depth, mapping quality, and genomic distribution support a specific call. This is especially important for high-consequence organisms and mixed samples.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Evidence rules I would report</h2>
+        
+        <ul>
+          <li>Breadth of coverage across the genome, not only total read count.</li>
+          <li>Read distribution across independent regions rather than a single deep island.</li>
+          <li>Mapping quality and mismatch profile against close relatives.</li>
+          <li>Negative-control and batch context, especially for low-biomass samples.</li>
+          <li>Confirmation plan: PCR, targeted sequencing, culture, serology, or repeat extraction depending on the organism.</li>
+        </ul>
+        
+      </section>
+
+      <section>
+        <h2>How to write the conclusion</h2>
+        <p>The conclusion should use evidence language. Strong support, partial support, and investigation-only signal are different categories. A report that clearly labels uncertainty is more scientific than one that hides ambiguity behind a confident organism name.</p>
+        <p>In public-health genomics, that discipline protects decision-making. It helps a response team decide whether to act, repeat, sequence deeper, or treat the signal as a lead requiring independent confirmation.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>Why databases shape the answer</h2>
+        <p>Metagenomic interpretation is never independent of the reference database. If close relatives are absent, if assemblies are mislabelled, or if the database overrepresents a well-studied organism, the top hit can look more meaningful than it is. This is why I prefer a second-pass confirmatory mapping step for important signals.</p>
+        <p>The confirmatory panel should include the suspected organism, close relatives, expected background organisms, and any locally relevant alternatives. The output should not simply say present or absent. It should show whether the reads distribute across the genome and whether they map better to one organism than to plausible competitors.</p>
+        
+        
+      </section>
+
+      <section>
+        <h2>A reporting structure for uncertain signals</h2>
+        <p>For high-consequence detections, I would separate evidence into three levels. Strong evidence means independent genomic regions, convincing breadth, clean controls, and a plausible sample context. Partial evidence means some target support but not enough for a final claim. Investigation-only evidence means a lead that should trigger follow-up rather than a conclusion.</p>
+        <p>This style of reporting is slower than naming a top hit, but it is safer. It gives public-health teams a path: repeat extraction, targeted PCR, culture where appropriate, deeper sequencing, or review of sampling and contamination history.</p>
+        <ul>
+          <li>Do not rely on read count alone.</li>
+          <li>Compare breadth of coverage across close alternatives.</li>
+          <li>Inspect control samples from the same extraction and library batch.</li>
+          <li>Keep confirmatory assay recommendations next to the metagenomic call.</li>
+        </ul>
+        
+      </section>
+        
+      <section>
+        <h2>References and Further Reading</h2>
+        <ol>
+          <li><a href="https://www.annualreviews.org/content/journals/10.1146/annurev-pathmechdis-012418-012751">Clinical metagenomic next-generation sequencing for pathogen detection</a></li>
+          <li><a href="https://academic.oup.com/clinchem/article/68/1/115/6490230">Role of metagenomics and next-generation sequencing in infectious disease diagnosis</a></li>
+          <li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0">Improved metagenomic analysis with Kraken 2</a></li>
+          <li><a href="https://www.frontiersin.org/articles/10.3389/fcimb.2024.1458316/full">Application of metagenomic next-generation sequencing in the diagnosis of infectious diseases</a></li>
+          <li><a href="https://bmcinfectdis.biomedcentral.com/articles/10.1186/s12879-020-05746-5">The diagnostic value of metagenomic next-generation sequencing in infectious diseases</a></li>
+          <li><a href="https://genomebiology.biomedcentral.com/articles/10.1186/s13059-019-1891-0">Kraken 2 metagenomic sequence classification</a></li>
+        </ol>
+      </section>
+      </article>
+    </main>
+  </body>
+</html>
