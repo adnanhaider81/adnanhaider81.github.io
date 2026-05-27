@@ -1,5 +1,59 @@
 const posts = [
   {
+    title: "How I make pathogen-genomics workflows traceable: from sample sheet to public-health report",
+    slug: "sample-to-report-traceability",
+    category: "Quality Systems",
+    date: "2026-05-27",
+    minutes: 9,
+    tags: ["Traceability", "QC", "Reproducibility"],
+    summary:
+      "A public-safe note on connecting sample sheets, controls, workflow versions, QC review, reportability decisions, and final public-health outputs.",
+    body: [
+      {
+        heading: "Traceability is part of the result",
+        paragraphs: [
+          "A sequencing workflow is not only a set of commands. In public-health genomics, a useful workflow needs to be traceable from the sample sheet to the report.",
+          "That means every result should be connected to the run, barcode or index, control review, analysis version, QC decision, interpretation status, and final reporting decision."
+        ]
+      },
+      {
+        heading: "The evidence chain I use",
+        points: [
+          "Sample sheet or synthetic public-safe sample record.",
+          "Library barcode or index map.",
+          "Sequencing run and run-level QC summary.",
+          "Pipeline version, environment, and command record.",
+          "Control review and contamination-review notes.",
+          "Consensus, genotype, lineage, or target-region status.",
+          "Reportability decision and handover status."
+        ]
+      },
+      {
+        heading: "Turning quality work into public evidence",
+        paragraphs: [
+          "Internal quality-system records often cannot be shared publicly. The structure of that work can still be made visible through public-safe templates.",
+          "Sample-to-report traceability tables, run-review logs, contamination and repeat-run checklists, workflow verification summaries, release checklists, Zenodo metadata, and protocols.io-ready records show the logic without exposing restricted data."
+        ]
+      },
+      {
+        heading: "What I do not publish",
+        paragraphs: [
+          "I do not publish restricted raw sequencing data, patient identifiers, exact surveillance sites, internal sample IDs, confidential reports, credentials, or unapproved wet-lab operating details. Public examples use synthetic data and broad categories only."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "Quality & Traceability Evidence page",
+        url: "https://adnanhaider81.github.io/quality-traceability-evidence.html"
+      },
+      {
+        title: "Quality Traceability for Pathogen Genomics repository",
+        url: "https://github.com/adnanhaider81/quality-traceability-pathogen-genomics"
+      }
+    ]
+  },
+  {
     title: "Turning a manuscript into a reproducible genomics repository",
     slug: "manuscript-to-reproducible-genomics-repository",
     category: "Reproducibility",
@@ -1424,6 +1478,38 @@ const pipelines = [
       "results/iqtree/sh.treefile",
       "results/iqtree/wg.treefile",
       "results/mutations/SH_HN_F reports"
+    ]
+  },
+  {
+    group: "Other repositories",
+    title: "Quality & Traceability Evidence Package",
+    slug: "quality-traceability-pathogen-genomics",
+    repo: "https://github.com/adnanhaider81/quality-traceability-pathogen-genomics",
+    updated: "2026-05-27",
+    icon: "clipboard-check",
+    tags: ["Quality systems", "Traceability", "QC", "Zenodo"],
+    summary:
+      "Public-safe templates and checklists for sample-to-report traceability, QC/reportability review, workflow verification, training, and release metadata.",
+    purpose:
+      "Use this as public evidence that NGS and pathogen-genomics workflow implementation can be documented, reviewed, versioned, and archived without exposing restricted data.",
+    prerequisites: [
+      "Public-safe templates only",
+      "Synthetic or empty example records",
+      "No restricted raw data or internal SOPs",
+      "Manual Zenodo and protocols.io DOI backfill after publication"
+    ],
+    commands: [
+      "git clone https://github.com/adnanhaider81/quality-traceability-pathogen-genomics.git",
+      "cd quality-traceability-pathogen-genomics",
+      "python -m json.tool .zenodo.json",
+      "git tag -a v0.1.0 -m \"v0.1.0 public-safe quality and traceability evidence package\""
+    ],
+    outputs: [
+      "QUALITY_TRACEABILITY.md",
+      "DATA_AVAILABILITY_AND_GOVERNANCE.md",
+      "templates/sample_to_report_traceability_template.csv",
+      "protocols_io_ready_checklists/",
+      "RELEASE_NOTES_v0.1.0.md"
     ]
   },
   {

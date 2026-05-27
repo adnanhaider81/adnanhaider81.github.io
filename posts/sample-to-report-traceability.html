@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="How sample sheets, controls, workflow versions, QC review, and reportability decisions make pathogen-genomics workflows traceable."
+    />
+    <meta property="og:title" content="How I make pathogen-genomics workflows traceable" />
+    <meta
+      property="og:description"
+      content="A public-safe note on sample-to-report traceability for pathogen-genomics workflows."
+    />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://adnanhaider81.github.io/posts/sample-to-report-traceability.html" />
+    <link rel="canonical" href="https://adnanhaider81.github.io/posts/sample-to-report-traceability.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>How I make pathogen-genomics workflows traceable | Syed Adnan Haider</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen Genomics Blog | Portfolio</small>
+        </span>
+      </a>
+      <nav class="main-nav" aria-label="Primary navigation">
+        <a href="../index.html#pipelines">Pipelines</a>
+        <a href="../portfolio-map.html">Portfolio Map</a>
+        <a href="../quality-traceability-evidence.html">Evidence</a>
+        <a href="../index.html#writing">Writing</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </header>
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Quality Systems</span>
+            <time datetime="2026-05-27">May 27, 2026</time>
+            <span>9 min read</span>
+          </div>
+          <h1>How I make pathogen-genomics workflows traceable: from sample sheet to public-health report</h1>
+          <p>
+            A sequencing workflow is not only a set of commands. A useful public-health workflow connects each result to
+            the run, barcode or index, control review, analysis version, QC decision, interpretation status, and reporting decision.
+          </p>
+          <div class="static-meta">
+            <span>Traceability</span>
+            <span>QC</span>
+            <span>Reproducibility</span>
+          </div>
+        </header>
+
+        <section>
+          <h2>Why traceability matters</h2>
+          <p>
+            Pathogen-genomics results are often used in surveillance contexts where the evidence chain matters as much as
+            the final sequence. A result is stronger when a reviewer can see which sample or synthetic public-safe record was
+            analyzed, which run it belonged to, which controls were reviewed, which workflow version was used, and whether the
+            final output was reportable, repeated, held for manual review, or not reportable.
+          </p>
+        </section>
+
+        <section>
+          <h2>The evidence chain I use</h2>
+          <ol>
+            <li>Sample sheet or synthetic public-safe sample record.</li>
+            <li>Library barcode or index map.</li>
+            <li>Sequencing run and run-level QC summary.</li>
+            <li>Pipeline version, environment, and command record.</li>
+            <li>Control review and contamination-review notes.</li>
+            <li>Consensus, genotype, lineage, or target-region status.</li>
+            <li>Reportability decision and handover status.</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>Turning internal quality work into public evidence</h2>
+          <p>
+            Internal quality-system records often cannot be shared publicly. The structure of that work can still be made visible
+            through public-safe templates: sample-to-report traceability tables, run-review logs, contamination and repeat-run
+            checklists, workflow verification summaries, release checklists, Zenodo metadata, and protocols.io-ready checklist records.
+          </p>
+        </section>
+
+        <section>
+          <h2>What I do not publish</h2>
+          <p>
+            I do not publish restricted raw sequencing data, patient identifiers, exact surveillance sites, internal sample IDs,
+            confidential reports, credentials, or unapproved wet-lab operating details. Public examples use synthetic data and
+            broad categories only.
+          </p>
+        </section>
+
+        <section>
+          <h2>Related evidence</h2>
+          <ul>
+            <li><a href="../quality-traceability-evidence.html">Quality &amp; Traceability Evidence page</a></li>
+            <li><a href="https://github.com/adnanhaider81/quality-traceability-pathogen-genomics">Quality Traceability for Pathogen Genomics repository</a></li>
+            <li>Zenodo release: pending Zenodo release</li>
+            <li>protocols.io collection: pending protocols.io upload</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+  </body>
+</html>
