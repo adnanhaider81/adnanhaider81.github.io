@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Syed Adnan Haider" />
+    <meta name="description" content="A practical framework for separating sequencing noise, contamination, amplification artifacts, and biologically plausible mixtures in viral genomic surveillance." />
+    <meta property="og:title" content="Before calling a mixed viral population: an evidence ladder for minor variants" />
+    <meta property="og:description" content="A practical framework for separating sequencing noise, contamination, amplification artifacts, and biologically plausible mixtures in viral genomic surveillance." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://syedadnanhaider.com/posts/minor-variants-mixed-viral-populations.html" />
+    <link rel="canonical" href="https://syedadnanhaider.com/posts/minor-variants-mixed-viral-populations.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>Before calling a mixed viral population: an evidence ladder for minor variants | Syed Adnan Haider | Pathogen Genomics</title>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Genomic Surveillance &amp; Bioinformatics</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+        <i data-lucide="menu"></i>
+        <span>Menu</span>
+      </button>
+
+      <div class="header-panel" id="headerPanel">
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../index.html#pipelines">Projects</a>
+          <a href="../index.html#publications">Publications</a>
+          <a href="../index.html#writing">Writing</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+
+        <details class="profile-menu">
+          <summary>
+            <i data-lucide="user-round-check"></i>
+            Profiles
+            <i class="profile-menu-chevron" data-lucide="chevron-down"></i>
+          </summary>
+          <div class="profile-menu-list" aria-label="Profile links">
+            <a href="https://github.com/adnanhaider81"><i data-lucide="code-2"></i>GitHub</a>
+            <a href="https://www.linkedin.com/in/sahaider/"><i data-lucide="briefcase-business"></i>LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en"><i data-lucide="graduation-cap"></i>Google Scholar</a>
+            <a href="https://orcid.org/0009-0008-7426-6561"><i data-lucide="badge-check"></i>ORCID</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="../index.html#writing">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Research Notes</span>
+            <time datetime="2026-08-26">August 26, 2026</time>
+            <span>8 min read</span>
+          </div>
+          <h1>Before calling a mixed viral population: an evidence ladder for minor variants</h1>
+          <p>A practical framework for separating sequencing noise, contamination, amplification artifacts, and biologically plausible mixtures in viral genomic surveillance.</p>
+          <div class="static-meta">
+            <span>Minor Variants</span>
+            <span>Mixed Infections</span>
+            <span>Quality Control</span>
+          </div>
+        </header>
+
+        <section>
+          <h2>A minor allele is not automatically biological</h2>
+          <p>A consensus genome reports the dominant base at each position. Minor-variant analysis asks a more difficult question: is there convincing evidence for another viral population below the consensus level?</p>
+          <p>An alternative allele may represent genuine within-sample diversity, coinfection, superinfection, or an emerging mutation. It may also result from reverse-transcription error, PCR amplification, primer-related artifacts, sample cross-contamination, index misassignment, alignment ambiguity, or platform-specific sequencing error.</p>
+          <p>For that reason, I would not interpret a minor allele from frequency alone. A variant observed in 3%, 10%, or even 20% of reads is only meaningful when the assay, controls, coverage, and replication support that level of detection.</p>
+        </section>
+
+        <section>
+          <h2>Start with the assay, not the variant caller</h2>
+          <p>The first question should not be which software produced the VCF. It should be whether the complete laboratory and computational workflow was validated for the frequency range being reported.</p>
+          <p>The practical detection limit depends on viral input, reverse transcription, amplification cycles, sequencing platform, base quality, genome context, depth, and filtering. High read depth cannot recover diversity that was lost during low-input sampling, and it cannot convert repeated copies of an early PCR error into independent biological evidence.</p>
+          <p>This means that a threshold should be established experimentally for each workflow. A value borrowed from another pathogen, platform, or primer scheme may create false confidence.</p>
+        </section>
+
+        <section>
+          <h2>An evidence ladder for minor variants</h2>
+          <p>I find it useful to separate evidence into four levels.</p>
+          <ul>
+            <li><strong>Analytically plausible:</strong> the alternative allele has adequate depth and base quality, appears on both read orientations, is not concentrated at read or amplicon ends, and is not explained by a homopolymer or poorly mapped region.</li>
+            <li><strong>Consistent with the sequencing run:</strong> the signal is absent from negative controls and is not repeated suspiciously across unrelated samples in the same batch. Sample identity, barcode balance, control performance, and run-level allele-frequency patterns should be reviewed together.</li>
+            <li><strong>Reproducible from the original material:</strong> a consequential variant is supported by an independent extraction, reverse-transcription reaction, amplification, or library preparation whenever sufficient material is available.</li>
+            <li><strong>Biologically coherent:</strong> multiple lineage-compatible alleles, similar frequency patterns across informative positions, or linked variants on individual reads make a mixed-population interpretation stronger.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Replication should begin early enough</h2>
+          <p>Sequencing the same library twice may confirm instrument consistency, but it cannot reveal an error introduced earlier in the workflow. When the claim matters, replication should begin from the original material so that reverse-transcription, amplification, and library-preparation effects are tested as well.</p>
+          <p>A single low-frequency site may remain a candidate minor variant. A mixed population should usually produce a coherent pattern across several informative positions. Epidemiological context, repeat sampling, and confirmation on another sequencing method can add further support.</p>
+        </section>
+
+        <section>
+          <h2>Why platform-specific caution matters</h2>
+          <p>Consensus sequencing and minor-variant detection are different analytical tasks. A platform can produce an accurate consensus without supporting low-frequency variant calls at the same level of confidence.</p>
+          <p>This does not make one platform unsuitable. It means the reporting threshold and confirmation strategy must match the platform, chemistry, basecaller, and intended use. Synthetic controls and matched-platform comparisons are especially useful for identifying those limits.</p>
+        </section>
+
+        <section>
+          <h2>A benchmark I would like to run</h2>
+          <p>A useful validation study could begin with synthetic RNA mixtures representing two known viral genomes at 1%, 2.5%, 5%, 10%, and 20% minor-population frequencies. Starting from RNA would include reverse-transcription and amplification errors that a DNA-only control could miss.</p>
+          <p>Each mixture could be tested at high and low viral input, with independent replicates and appropriate negative controls. Illumina and nanopore workflows could then be compared using a common set of performance measures.</p>
+          <ul>
+            <li>Sensitivity at each expected allele frequency.</li>
+            <li>False-positive calls in single-population controls.</li>
+            <li>Accuracy of estimated allele frequency.</li>
+            <li>Reproducibility between independent preparations.</li>
+            <li>Performance near primer sites, amplicon edges, and low-complexity regions.</li>
+            <li>Effects of viral input, depth, and genome coverage.</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Reporting without overstatement</h2>
+          <p>For surveillance reports, I would use language that reflects the evidence level. <strong>Candidate minor variant</strong> can describe a site that passes analytical filters but lacks independent confirmation. <strong>Supported minor variant</strong> can be reserved for a reproducible site with satisfactory controls. <strong>Supported mixed population</strong> should require multiple coherent and reproducible genomic markers. <strong>Unresolved</strong> is appropriate when the signal is inconsistent or the available material cannot support confirmation.</p>
+          <p>A single low-frequency allele should not be presented as proof of mixed infection or transmission. The strongest conclusion is the one that remains valid after the controls, replication, and limitations are made visible.</p>
+          <p>Minor-variant analysis can reveal information hidden by a consensus genome, but it also creates more opportunities for technical noise to resemble biology. Treating every important call as an evidence chain—from the original sample and controls to replication, genomic coherence, and cautious reporting—turns an interesting allele frequency into a defensible surveillance result.</p>
+        </section>
+
+        <section>
+          <h2>References and Further Reading</h2>
+          <ol>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6325816/">An amplicon-based sequencing framework using PrimalSeq and iVar</a></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10470513/">Optimized quantification of intra-host viral diversity</a></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4302989/">Improved detection of artifactual viral minority variants</a></li>
+            <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7726558/">Analytical validity of nanopore sequencing for rapid viral genome analysis</a></li>
+            <li><a href="https://www.nature.com/articles/s41588-019-0349-3">Reconciling disparate estimates of viral genetic diversity</a></li>
+            <li><a href="https://www.nature.com/articles/s41467-022-31247-x">Detection of SARS-CoV-2 intra-host recombination during superinfection</a></li>
+          </ol>
+        </section>
+      </article>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="../navigation.js"></script>
+  </body>
+</html>

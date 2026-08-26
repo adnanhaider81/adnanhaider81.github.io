@@ -1,5 +1,108 @@
 const posts = [
   {
+    title: "Before calling a mixed viral population: an evidence ladder for minor variants",
+    slug: "minor-variants-mixed-viral-populations",
+    category: "Research Notes",
+    date: "2026-08-26",
+    minutes: 8,
+    tags: ["Minor Variants", "Mixed Infections", "Quality Control"],
+    summary:
+      "A practical framework for separating sequencing noise, contamination, amplification artifacts, and biologically plausible mixtures in viral genomic surveillance.",
+    body: [
+      {
+        heading: "A minor allele is not automatically biological",
+        paragraphs: [
+          "A consensus genome reports the dominant base at each position. Minor-variant analysis asks a more difficult question: is there convincing evidence for another viral population below the consensus level?",
+          "An alternative allele may represent genuine within-sample diversity, coinfection, superinfection, or an emerging mutation. It may also result from reverse-transcription error, PCR amplification, primer-related artifacts, sample cross-contamination, index misassignment, alignment ambiguity, or platform-specific sequencing error.",
+          "For that reason, I would not interpret a minor allele from frequency alone. A variant observed in 3%, 10%, or even 20% of reads is only meaningful when the assay, controls, coverage, and replication support that level of detection."
+        ]
+      },
+      {
+        heading: "Start with the assay, not the variant caller",
+        paragraphs: [
+          "The first question should not be which software produced the VCF. It should be whether the complete laboratory and computational workflow was validated for the frequency range being reported.",
+          "The practical detection limit depends on viral input, reverse transcription, amplification cycles, sequencing platform, base quality, genome context, depth, and filtering. High read depth cannot recover diversity that was lost during low-input sampling, and it cannot convert repeated copies of an early PCR error into independent biological evidence.",
+          "This means that a threshold should be established experimentally for each workflow. A value borrowed from another pathogen, platform, or primer scheme may create false confidence."
+        ]
+      },
+      {
+        heading: "An evidence ladder for minor variants",
+        paragraphs: [
+          "I find it useful to separate evidence into four levels."
+        ],
+        points: [
+          "Analytically plausible: the alternative allele has adequate depth and base quality, appears on both read orientations, is not concentrated at read or amplicon ends, and is not explained by a homopolymer or poorly mapped region.",
+          "Consistent with the sequencing run: the signal is absent from negative controls and is not repeated suspiciously across unrelated samples in the same batch. Sample identity, barcode balance, control performance, and run-level allele-frequency patterns should be reviewed together.",
+          "Reproducible from the original material: a consequential variant is supported by an independent extraction, reverse-transcription reaction, amplification, or library preparation whenever sufficient material is available.",
+          "Biologically coherent: multiple lineage-compatible alleles, similar frequency patterns across informative positions, or linked variants on individual reads make a mixed-population interpretation stronger."
+        ]
+      },
+      {
+        heading: "Replication should begin early enough",
+        paragraphs: [
+          "Sequencing the same library twice may confirm instrument consistency, but it cannot reveal an error introduced earlier in the workflow. When the claim matters, replication should begin from the original material so that reverse-transcription, amplification, and library-preparation effects are tested as well.",
+          "A single low-frequency site may remain a candidate minor variant. A mixed population should usually produce a coherent pattern across several informative positions. Epidemiological context, repeat sampling, and confirmation on another sequencing method can add further support."
+        ]
+      },
+      {
+        heading: "Why platform-specific caution matters",
+        paragraphs: [
+          "Consensus sequencing and minor-variant detection are different analytical tasks. A platform can produce an accurate consensus without supporting low-frequency variant calls at the same level of confidence.",
+          "This does not make one platform unsuitable. It means the reporting threshold and confirmation strategy must match the platform, chemistry, basecaller, and intended use. Synthetic controls and matched-platform comparisons are especially useful for identifying those limits."
+        ]
+      },
+      {
+        heading: "A benchmark I would like to run",
+        paragraphs: [
+          "A useful validation study could begin with synthetic RNA mixtures representing two known viral genomes at 1%, 2.5%, 5%, 10%, and 20% minor-population frequencies. Starting from RNA would include reverse-transcription and amplification errors that a DNA-only control could miss.",
+          "Each mixture could be tested at high and low viral input, with independent replicates and appropriate negative controls. Illumina and nanopore workflows could then be compared using a common set of performance measures."
+        ],
+        points: [
+          "Sensitivity at each expected allele frequency.",
+          "False-positive calls in single-population controls.",
+          "Accuracy of estimated allele frequency.",
+          "Reproducibility between independent preparations.",
+          "Performance near primer sites, amplicon edges, and low-complexity regions.",
+          "Effects of viral input, depth, and genome coverage."
+        ]
+      },
+      {
+        heading: "Reporting without overstatement",
+        paragraphs: [
+          "For surveillance reports, I would use language that reflects the evidence level. Candidate minor variant can describe a site that passes analytical filters but lacks independent confirmation. Supported minor variant can be reserved for a reproducible site with satisfactory controls. Supported mixed population should require multiple coherent and reproducible genomic markers. Unresolved is appropriate when the signal is inconsistent or the available material cannot support confirmation.",
+          "A single low-frequency allele should not be presented as proof of mixed infection or transmission. The strongest conclusion is the one that remains valid after the controls, replication, and limitations are made visible.",
+          "Minor-variant analysis can reveal information hidden by a consensus genome, but it also creates more opportunities for technical noise to resemble biology. Treating every important call as an evidence chain—from the original sample and controls to replication, genomic coherence, and cautious reporting—turns an interesting allele frequency into a defensible surveillance result."
+        ]
+      }
+    ],
+    references: [
+      {
+        title: "An amplicon-based sequencing framework using PrimalSeq and iVar",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6325816/"
+      },
+      {
+        title: "Optimized quantification of intra-host viral diversity",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10470513/"
+      },
+      {
+        title: "Improved detection of artifactual viral minority variants",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC4302989/"
+      },
+      {
+        title: "Analytical validity of nanopore sequencing for rapid viral genome analysis",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7726558/"
+      },
+      {
+        title: "Reconciling disparate estimates of viral genetic diversity",
+        url: "https://www.nature.com/articles/s41588-019-0349-3"
+      },
+      {
+        title: "Detection of SARS-CoV-2 intra-host recombination during superinfection",
+        url: "https://www.nature.com/articles/s41467-022-31247-x"
+      }
+    ]
+  },
+  {
     title: "Turning a manuscript into a reproducible genomics repository",
     slug: "manuscript-to-reproducible-genomics-repository",
     category: "Reproducibility",
