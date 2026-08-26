@@ -3,7 +3,7 @@
 Live portfolio:
 
 ```text
-https://adnanhaider81.github.io
+https://syedadnanhaider.com
 ```
 
 This portfolio brings together publications, research notes, tutorials, and reproducible workflows in pathogen genomics, environmental surveillance, and public-health bioinformatics.
