@@ -1,4 +1,4 @@
-# Syed Adnan Haider — Genomic Surveillance Portfolio
+# Syed Adnan Haider — Pathogen Genomics
 
 Live portfolio:
 
@@ -52,6 +52,7 @@ Verified on 26 August 2026:
 
 ## Public Profiles
 
+- Email: adnan.haider@nih.org.pk
 - GitHub: https://github.com/adnanhaider81
 - LinkedIn: https://www.linkedin.com/in/sahaider/
 - Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
