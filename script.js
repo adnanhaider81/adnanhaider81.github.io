@@ -1128,7 +1128,7 @@ const pipelines = [
     title: "DDNS MinION VP1 Pipeline",
     slug: "ddns-minion-vp1-pipeline",
     repo: "https://github.com/adnanhaider81/ddns-minion-vp1-pipeline",
-    updated: "2026-05-01",
+    updated: "2026-06-01",
     icon: "barcode",
     tags: ["Polio", "VP1", "MinION", "ONT"],
     summary:
@@ -1166,7 +1166,7 @@ const pipelines = [
     title: "WPV1 Phylodynamics and Phylogeography",
     slug: "polio-wpv1-phylodynamics",
     repo: "https://github.com/adnanhaider81/polio-wpv1-phylodynamics",
-    updated: "2026-05-01",
+    updated: "2026-06-01",
     icon: "map",
     tags: ["Polio", "WPV1", "R", "Phylodynamics"],
     summary:
@@ -1203,7 +1203,7 @@ const pipelines = [
     title: "Polio Whole-Capsid NGS Analysis",
     slug: "polio-capsid-ngs-analysis",
     repo: "https://github.com/adnanhaider81/polio-capsid-ngs-analysis",
-    updated: "2026-05-01",
+    updated: "2026-06-01",
     icon: "shield-check",
     tags: ["Polio", "Snakemake", "Illumina", "FreeBayes"],
     summary:
@@ -1232,7 +1232,7 @@ const pipelines = [
     title: "SARS-CoV-2 Fourth Wave Pakistan",
     slug: "sarscov2-fourth-wave-2021-pakistan",
     repo: "https://github.com/adnanhaider81/sarscov2-fourth-wave-2021-pakistan",
-    updated: "2026-03-14",
+    updated: "2026-06-01",
     icon: "activity",
     tags: ["SARS-CoV-2", "Pangolin", "Nextstrain", "Snakemake"],
     summary:
@@ -1261,7 +1261,7 @@ const pipelines = [
     title: "mpox and VZV Coinfection Workflow",
     slug: "mpox-vzv-coinfection-2023-pakistan",
     repo: "https://github.com/adnanhaider81/mpox-vzv-coinfection-2023-pakistan",
-    updated: "2026-03-14",
+    updated: "2026-06-01",
     icon: "scan-search",
     tags: ["mNGS", "MPXV", "VZV", "Kraken2"],
     summary:
@@ -1290,7 +1290,7 @@ const pipelines = [
     title: "RSV Islamabad Manuscript Pipeline",
     slug: "rsv-islamabad-2022-2023-pipeline",
     repo: "https://github.com/adnanhaider81/rsv-islamabad-2022-2023-pipeline",
-    updated: "2025-10-02",
+    updated: "2026-06-01",
     icon: "activity",
     tags: ["RSV-A", "RSV-B", "Nextclade", "Snakemake"],
     summary:
@@ -1318,7 +1318,7 @@ const pipelines = [
     title: "CCHFV Segmented Analysis",
     slug: "cchfv-segmented-analysis-2022-pakistan",
     repo: "https://github.com/adnanhaider81/cchfv-segmented-analysis-2022-pakistan",
-    updated: "2025-09-29",
+    updated: "2026-06-01",
     icon: "split",
     tags: ["CCHFV", "Segmented virus", "Reassortment", "Snakemake"],
     summary:
@@ -1346,7 +1346,7 @@ const pipelines = [
     title: "Coxsackievirus A24v Outbreak Genomics",
     slug: "cva24v-ahc-2023-analysis",
     repo: "https://github.com/adnanhaider81/cva24v-ahc-2023-analysis",
-    updated: "2025-09-29",
+    updated: "2026-06-01",
     icon: "eye",
     tags: ["CV-A24v", "mNGS", "VP1", "Phylogeny"],
     summary:
@@ -1375,7 +1375,7 @@ const pipelines = [
     title: "DENV 2023 Pakistan Analysis",
     slug: "denv-2023-pakistan-analysis",
     repo: "https://github.com/adnanhaider81/denv-2023-pakistan-analysis",
-    updated: "2025-09-29",
+    updated: "2026-06-01",
     icon: "syringe",
     tags: ["DENV-1", "DENV-2", "SPAdes", "IQ-TREE"],
     summary:
@@ -1403,7 +1403,7 @@ const pipelines = [
     title: "Mumps Genotype G Analysis",
     slug: "mumps-2023-pakistan-analysis",
     repo: "https://github.com/adnanhaider81/mumps-2023-pakistan-analysis",
-    updated: "2025-09-29",
+    updated: "2026-06-01",
     icon: "file-text",
     tags: ["Mumps", "SH gene", "Whole genome", "Snakemake"],
     summary:
@@ -1431,7 +1431,7 @@ const pipelines = [
     title: "Pathogen Discovery Pipeline",
     slug: "pathogen-discovery-pipeline",
     repo: "https://github.com/adnanhaider81/pathogen-discovery-pipeline",
-    updated: "2025-12-23",
+    updated: "2026-06-01",
     icon: "radar",
     tags: ["Host subtraction", "Competitive mapping", "Shell", "Metagenomics"],
     summary:
@@ -1458,7 +1458,7 @@ const pipelines = [
     title: "Viral Genomics Nextflow Demo",
     slug: "viral-genomics-nextflow-demo",
     repo: "https://github.com/adnanhaider81/viral-genomics-nextflow-demo",
-    updated: "2026-05-18",
+    updated: "2026-06-01",
     icon: "workflow",
     tags: ["Nextflow", "DSL2", "Docker", "CI"],
     summary:
@@ -1491,7 +1491,7 @@ const pipelines = [
     title: "Pakistan SARS-CoV-2 Nextstrain Build",
     slug: "pakistan-sars-cov-2-nextstrain-build",
     repo: "https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build",
-    updated: "2025-09-28",
+    updated: "2026-06-01",
     icon: "network",
     tags: ["Nextstrain", "SARS-CoV-2", "Auspice", "Dashboard"],
     summary:

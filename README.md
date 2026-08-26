@@ -8,6 +8,15 @@ https://adnanhaider81.github.io
 
 This blog collects research notes, tutorials, and reproducible workflow write-ups in pathogen genomics, environmental surveillance, and public-health bioinformatics.
 
+## Portfolio Snapshot
+
+Verified on 26 August 2026:
+
+- 16 public GitHub repositories, including 13 featured reproducible workflow repositories.
+- 36 Google Scholar records, 594 citations, and an h-index of 10.
+- 10 public PREreviews across pathogen genomics, wastewater surveillance, phylodynamics, and infectious-disease epidemiology.
+- Two 2026 peer-reviewed respiratory-virus genomics publications and one public viral-NGS traceability resource.
+
 ## What Is In The Blog
 
 - Long-form research notes on viral genomics, wastewater surveillance, metagenomic interpretation, depth masking, amplicon design, and outbreak communication.
@@ -16,6 +25,12 @@ This blog collects research notes, tutorials, and reproducible workflow write-up
 - A dedicated polio section covering VP1 MinION analysis, WPV1 phylodynamics, and whole-capsid NGS analysis.
 - Manuscript workflow notes for SARS-CoV-2, RSV, dengue, mpox/VZV, CCHFV, CV-A24v, and mumps.
 - Training and applied-work notes from wet-lab sequencing, reproducible bioinformatics, SOPs, and public-health reporting.
+
+## Selected 2026 Outputs
+
+- [Molecular Surveillance and Genomic Characterization of Influenza A(H3N2) Viruses From a Secondary-Care Surveillance Site in Pakistan During the 2025–2026 Winter Season](https://doi.org/10.1002/jmv.71075), *Journal of Medical Virology*.
+- [Sample-to-report traceability checklist for viral NGS workflows](https://doi.org/10.17504/protocols.io.3byl4meb8lo5/v1), protocols.io.
+- [Genomic surveillance of Influenza, SARS-CoV-2, and RSV in patients from Islamabad and Rawalpindi, Pakistan: a 2023–24 perspective](https://doi.org/10.1007/s00705-026-06553-0), *Archives of Virology*.
 
 ## Main Topics
 
@@ -42,3 +57,4 @@ This blog collects research notes, tutorials, and reproducible workflow write-up
 - Google Scholar: https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en
 - ORCID: https://orcid.org/0009-0008-7426-6561
 - ResearchGate: https://www.researchgate.net/profile/Syed-Haider/research
+- PREreview: https://prereview.org/profiles/0009-0008-7426-6561
