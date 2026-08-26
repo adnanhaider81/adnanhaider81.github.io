@@ -6,17 +6,17 @@
     <meta name="author" content="Syed Adnan Haider" />
     <meta
       name="description"
-      content="Pathogen genomics portfolio for Syed Adnan Haider: public-health surveillance, 2026 publications, open peer review, tutorials, and reproducible workflows."
+      content="Genomic surveillance portfolio for Syed Adnan Haider: pathogen genomics, public-health bioinformatics, 2026 publications, and reproducible workflows."
     />
-    <meta property="og:title" content="Syed Adnan Haider | Pathogen Genomics Portfolio" />
+    <meta property="og:title" content="Syed Adnan Haider | Genomic Surveillance Portfolio" />
     <meta
       property="og:description"
-      content="Public-health pathogen genomics across laboratory sequencing, reproducible workflows, publications, and open peer review."
+      content="Pathogen genomics and public-health bioinformatics across laboratory sequencing, reproducible workflows, publications, and open peer review."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://adnanhaider81.github.io/" />
     <meta property="og:image" content="https://adnanhaider81.github.io/assets/genomics-hero-light.png" />
-    <title>Syed Adnan Haider | Pathogen Genomics Blog | Portfolio</title>
+    <title>Syed Adnan Haider | Pathogen Genomics &amp; Bioinformatics</title>
     <link rel="canonical" href="https://adnanhaider81.github.io/" />
     <link rel="preconnect" href="https://unpkg.com" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
@@ -28,37 +28,49 @@
         <span class="brand-mark">SAH</span>
         <span>
           <strong>Syed Adnan Haider</strong>
-          <small>Pathogen Genomics Blog | Portfolio</small>
+          <small>Genomic Surveillance Portfolio</small>
         </span>
       </a>
 
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#pipelines">Pipelines</a>
-        <a href="portfolio-map.html">Portfolio Map</a>
-        <a href="#writing">Writing</a>
-        <a href="#publications">Publications</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+        <i data-lucide="menu"></i>
+        <span>Menu</span>
+      </button>
 
-      <div class="social-actions" aria-label="Profile links">
-        <a class="profile-link" href="https://github.com/adnanhaider81" aria-label="GitHub" title="GitHub">
-          <i data-lucide="code-2"></i>
-          <span>GitHub</span>
-        </a>
-        <a class="profile-link" href="https://www.linkedin.com/in/sahaider/" aria-label="LinkedIn" title="LinkedIn">
-          <i data-lucide="briefcase-business"></i>
-          <span>LinkedIn</span>
-        </a>
-        <a
-          class="profile-link"
-          href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en"
-          aria-label="Google Scholar"
-          title="Google Scholar"
-        >
-          <i data-lucide="graduation-cap"></i>
-          <span>Google Scholar</span>
-        </a>
+      <div class="header-panel" id="headerPanel">
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#pipelines">Projects</a>
+          <a href="#publications">Publications</a>
+          <a href="#writing">Writing</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
+        </nav>
+
+        <details class="profile-menu">
+          <summary>
+            <i data-lucide="user-round-check"></i>
+            Profiles
+            <i class="profile-menu-chevron" data-lucide="chevron-down"></i>
+          </summary>
+          <div class="profile-menu-list" aria-label="Profile links">
+            <a href="https://github.com/adnanhaider81">
+              <i data-lucide="code-2"></i>
+              GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/sahaider/">
+              <i data-lucide="briefcase-business"></i>
+              LinkedIn
+            </a>
+            <a href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en">
+              <i data-lucide="graduation-cap"></i>
+              Google Scholar
+            </a>
+            <a href="https://orcid.org/0009-0008-7426-6561">
+              <i data-lucide="badge-check"></i>
+              ORCID
+            </a>
+          </div>
+        </details>
       </div>
     </header>
 
@@ -67,96 +79,60 @@
         <img class="hero-image" src="assets/genomics-hero-v2.png" alt="" aria-hidden="true" />
         <div class="hero-overlay"></div>
         <div class="hero-content">
+          <p class="eyebrow">Public-health virology · Genomics · Bioinformatics</p>
           <h1 id="hero-title">Genomic surveillance from bench to public-health action</h1>
           <p class="hero-copy">
-            Field methods, reproducible workflows, open peer review, and public-health genomics writing across
-            poliovirus, influenza and other respiratory viruses, environmental surveillance, and outbreak response.
+            Research scientist working across laboratory sequencing, bioinformatics, and genomic surveillance to
+            turn clinical, environmental, and wastewater samples into usable public-health evidence.
           </p>
           <div class="hero-actions">
-            <a class="primary-action" href="#pipelines">
+            <a class="primary-action" href="#publications">
+              <i data-lucide="book-marked"></i>
+              View publications
+            </a>
+            <a class="secondary-action" href="#pipelines">
               <i data-lucide="workflow"></i>
-              View pipelines
+              Explore projects
             </a>
             <a class="secondary-action" href="#writing">
               <i data-lucide="book-open"></i>
-              Read articles
-            </a>
-            <a class="secondary-action" href="portfolio-map.html">
-              <i data-lucide="map"></i>
-              Portfolio map
+              Research notes
             </a>
           </div>
         </div>
       </section>
 
       <section class="quick-stats" aria-label="Research snapshot">
-        <article>
+        <a class="stat-card" href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en">
+          <span class="stat-icon"><i data-lucide="files"></i></span>
           <div>
             <strong>30+</strong>
             <span>Publications and public research outputs</span>
           </div>
-        </article>
-        <article>
+        </a>
+        <a class="stat-card" href="https://github.com/adnanhaider81?tab=repositories">
+          <span class="stat-icon"><i data-lucide="code-2"></i></span>
           <div>
             <strong>16</strong>
             <span>Public GitHub repositories</span>
           </div>
-        </article>
-        <article>
+        </a>
+        <a class="stat-card" href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en">
+          <span class="stat-icon"><i data-lucide="quote"></i></span>
           <div>
             <strong>594</strong>
             <span>Google Scholar citations</span>
-            <small>Verified 26 August 2026</small>
           </div>
-        </article>
-        <article>
+        </a>
+        <a class="stat-card" href="https://prereview.org/profiles/0009-0008-7426-6561">
+          <span class="stat-icon"><i data-lucide="message-square-check"></i></span>
           <div>
             <strong>10</strong>
             <span>Public PREreviews</span>
           </div>
-        </article>
+        </a>
+        <p class="stats-verified">Public profile snapshot verified 26 August 2026.</p>
       </section>
-
-      <section class="section-shell pipeline-section" id="pipelines" aria-labelledby="pipelines-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">GitHub Repositories</p>
-            <h2 id="pipelines-title">Reproducible pipelines with methods, runbooks, and outputs.</h2>
-          </div>
-          <p class="section-note">
-            Thirteen featured workflows across polio surveillance, manuscript-linked outbreak genomics, metagenomics,
-            Nextstrain, and reusable workflow tooling.
-          </p>
-        </div>
-        <div class="pipeline-groups" id="pipelineGrid"></div>
-        <section class="pipeline-detail" id="pipelineDetail" aria-live="polite" hidden></section>
-      </section>
-
-      <section class="section-shell" id="writing" aria-labelledby="writing-title">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">Journal</p>
-            <h2 id="writing-title">Research Notes and Tutorials</h2>
-          </div>
-          <div class="search-wrap">
-            <i data-lucide="search"></i>
-            <input id="searchInput" type="search" placeholder="Search posts" aria-label="Search posts" />
-          </div>
-        </div>
-
-        <div class="filter-row" id="filterRow" aria-label="Post filters"></div>
-        <div class="post-grid" id="postGrid"></div>
-        <div class="static-post-links" id="staticPostLinks" aria-label="Static post links">
-          <a href="posts/manuscript-to-reproducible-genomics-repository.html">Turning a manuscript into a reproducible genomics repository</a>
-          <a href="posts/culture-free-nanopore-polio-surveillance.html">Culture-free nanopore sequencing for poliovirus environmental surveillance</a>
-          <a href="posts/fastq-to-public-health-report.html">From FASTQ to public-health report: a viral genomics workflow</a>
-          <a href="posts/synthetic-data-public-health-bioinformatics.html">Why synthetic data matters in public-health bioinformatics</a>
-          <a href="posts/whole-capsid-poliovirus-ngs-qc-consensus-antigenic-sites-phylogeny.html">Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny</a>
-        </div>
-        <p class="empty-state" id="emptyState" hidden>No matching posts yet.</p>
-      </section>
-
-      <section class="reader" id="reader" aria-live="polite" hidden></section>
 
       <section class="section-shell publication-section" id="publications" aria-labelledby="publications-title">
         <div class="section-heading publication-heading">
@@ -233,17 +209,107 @@
         </div>
       </section>
 
-      <section class="work-band" id="work" aria-labelledby="work-title">
-        <div class="work-copy">
-          <p class="section-kicker">Applied Research Identity</p>
-          <h2 id="work-title">A bridge between wet lab, code, and public-health action.</h2>
+      <section class="section-shell pipeline-section" id="pipelines" aria-labelledby="pipelines-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Featured Projects</p>
+            <h2 id="pipelines-title">Six workflows that show how the analysis is built.</h2>
+          </div>
+          <p class="section-note">
+            Selected work across polio surveillance, metagenomics, Nextflow, phylodynamics, and Nextstrain. Each
+            project links to public code and practical run notes.
+          </p>
         </div>
-        <div class="focus-list">
-          <span>Poliovirus environmental surveillance</span>
-          <span>Influenza, SARS-CoV-2, dengue, RSV, mpox, norovirus, CCHFV</span>
-          <span>Oxford Nanopore, Illumina, Ion Torrent</span>
-          <span>Nextflow, Snakemake, Docker, Bash, Python, R</span>
-          <span>Nextstrain, phylogenetics, dashboards, SOPs</span>
+        <div class="pipeline-groups" id="pipelineGrid"></div>
+        <div class="section-actions">
+          <a class="primary-action" href="portfolio-map.html">
+            <i data-lucide="map"></i>
+            Open portfolio map
+          </a>
+          <a class="secondary-action" href="https://github.com/adnanhaider81?tab=repositories">
+            <i data-lucide="code-2"></i>
+            All GitHub repositories
+          </a>
+        </div>
+        <section class="pipeline-detail" id="pipelineDetail" aria-live="polite" hidden></section>
+      </section>
+
+      <section class="section-shell" id="writing" aria-labelledby="writing-title">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">Featured Writing</p>
+            <h2 id="writing-title">Research notes and practical tutorials.</h2>
+          </div>
+          <div class="search-wrap">
+            <i data-lucide="search"></i>
+            <input id="searchInput" type="search" placeholder="Search posts" aria-label="Search posts" />
+          </div>
+        </div>
+
+        <div class="filter-row" id="filterRow" aria-label="Post filters"></div>
+        <div class="post-grid" id="postGrid"></div>
+        <div class="static-post-links" id="staticPostLinks" aria-label="Static post links">
+          <a href="posts/manuscript-to-reproducible-genomics-repository.html">Turning a manuscript into a reproducible genomics repository</a>
+          <a href="posts/culture-free-nanopore-polio-surveillance.html">Culture-free nanopore sequencing for poliovirus environmental surveillance</a>
+          <a href="posts/fastq-to-public-health-report.html">From FASTQ to public-health report: a viral genomics workflow</a>
+          <a href="posts/synthetic-data-public-health-bioinformatics.html">Why synthetic data matters in public-health bioinformatics</a>
+          <a href="posts/whole-capsid-poliovirus-ngs-qc-consensus-antigenic-sites-phylogeny.html">Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny</a>
+        </div>
+        <p class="empty-state" id="emptyState" hidden>No matching posts yet.</p>
+        <div class="section-actions">
+          <a class="secondary-action" href="posts/index.html">
+            <i data-lucide="library-big"></i>
+            View all research notes
+          </a>
+        </div>
+      </section>
+
+      <section class="reader" id="reader" aria-live="polite" hidden></section>
+
+      <section class="about-section" id="about" aria-labelledby="about-title">
+        <span class="legacy-anchor" id="work" aria-hidden="true"></span>
+        <figure class="about-portrait">
+          <img
+            src="assets/syed-adnan-haider.jpg"
+            alt="Portrait of Syed Adnan Haider"
+            width="400"
+            height="400"
+          />
+          <figcaption>
+            <strong>Syed Adnan Haider</strong>
+            <span>Research Scientist · Islamabad, Pakistan</span>
+          </figcaption>
+        </figure>
+        <div class="about-copy">
+          <p class="section-kicker">About</p>
+          <h2 id="about-title">Pathogen genomics across bench, code, and public-health action.</h2>
+          <p class="about-lead">
+            I work at the interface of molecular virology, sequencing, environmental surveillance, and public-health
+            bioinformatics, turning clinical and wastewater samples into interpretable genomic evidence.
+          </p>
+          <p>
+            My current work at the National Institutes of Health Pakistan includes poliovirus environmental
+            surveillance, Oxford Nanopore and Illumina workflows, quality review, reproducible analysis, SOPs, and
+            rapid reporting. I also build public-safe repositories and training materials that make surveillance
+            methods easier to audit, reuse, and teach.
+          </p>
+          <div class="focus-list" aria-label="Areas of expertise">
+            <span>Poliovirus and wastewater surveillance</span>
+            <span>Influenza and respiratory viruses</span>
+            <span>Oxford Nanopore · Illumina · Ion Torrent</span>
+            <span>Nextflow · Snakemake · Docker</span>
+            <span>Nextstrain · Phylogenetics · SOPs</span>
+          </div>
+          <div class="about-links">
+            <a href="https://www.linkedin.com/in/sahaider/">
+              <i data-lucide="briefcase-business"></i>
+              LinkedIn profile
+            </a>
+            <a href="portfolio-map.html">
+              <i data-lucide="map"></i>
+              Research portfolio map
+            </a>
+          </div>
         </div>
       </section>
 
@@ -276,7 +342,7 @@
       <section class="section-shell contact-section" id="contact" aria-labelledby="contact-title">
         <div>
           <p class="section-kicker">Connect</p>
-          <h2 id="contact-title">For collaborations, tutorials, and research conversations.</h2>
+          <h2 id="contact-title">For collaborations, doctoral opportunities, training, and research conversations.</h2>
         </div>
         <div class="contact-actions">
           <a href="https://www.linkedin.com/in/sahaider/">
@@ -318,7 +384,8 @@
         "@type": "Person",
         "name": "Syed Adnan Haider",
         "url": "https://adnanhaider81.github.io/",
-        "jobTitle": "Research Scientist",
+        "image": "https://adnanhaider81.github.io/assets/syed-adnan-haider.jpg",
+        "jobTitle": "Pathogen Genomics Research Scientist",
         "affiliation": {
           "@type": "Organization",
           "name": "National Institute of Health, Islamabad"
@@ -335,6 +402,7 @@
     </script>
 
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="navigation.js"></script>
     <script src="script.js"></script>
   </body>
 </html>

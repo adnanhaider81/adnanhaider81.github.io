@@ -1742,7 +1742,16 @@ pipelines.forEach((pipeline) => {
   Object.assign(pipeline, pipelineEnhancements[pipeline.slug] || {});
 });
 
-const pipelineGroupOrder = ["Polio workflows", "Manuscript workflows", "Other repositories"];
+const featuredPipelineSlugs = [
+  "ddns-minion-vp1-pipeline",
+  "polio-capsid-ngs-analysis",
+  "polio-wpv1-phylodynamics",
+  "pathogen-discovery-pipeline",
+  "viral-genomics-nextflow-demo",
+  "pakistan-sars-cov-2-nextstrain-build"
+];
+
+const homepagePostLimit = 6;
 
 const filters = ["All", ...Array.from(new Set(posts.map((post) => post.category)))];
 const filterRow = document.querySelector("#filterRow");
@@ -1797,7 +1806,12 @@ function renderFilters() {
 
 function renderPosts() {
   const query = searchInput.value;
-  const visiblePosts = posts.filter((post) => postMatches(post, query));
+  const matchingPosts = posts
+    .filter((post) => postMatches(post, query))
+    .sort((first, second) => second.date.localeCompare(first.date));
+  const visiblePosts = !query.trim() && activeFilter === "All"
+    ? matchingPosts.slice(0, homepagePostLimit)
+    : matchingPosts;
 
   if (staticPostLinks) {
     staticPostLinks.hidden = true;
@@ -1910,23 +1924,18 @@ function renderPipelineCard(pipeline) {
   return `
     <article class="pipeline-card">
       <header>
-        <i data-lucide="${escapeHTML(pipeline.icon)}"></i>
+        <span class="pipeline-card-kind">
+          <i data-lucide="${escapeHTML(pipeline.icon)}"></i>
+          ${escapeHTML(pipeline.group.replace(" workflows", ""))}
+        </span>
         <span class="pipeline-updated">Updated ${formatDate(pipeline.updated)}</span>
       </header>
       <div>
         <h3>${escapeHTML(pipeline.title)}</h3>
         <p>${escapeHTML(pipeline.summary)}</p>
         <div class="pipeline-tags">
-          ${pipeline.tags.map((tag) => `<span>${escapeHTML(tag)}</span>`).join("")}
+          ${pipeline.tags.slice(0, 3).map((tag) => `<span>${escapeHTML(tag)}</span>`).join("")}
         </div>
-        ${
-          pipeline.question
-            ? `<ul class="pipeline-snapshot">
-                <li><strong>Question:</strong> ${escapeHTML(pipeline.question)}</li>
-                <li><strong>QC focus:</strong> ${escapeHTML(pipeline.qualityChecks[0])}</li>
-              </ul>`
-            : ""
-        }
       </div>
       <div class="pipeline-actions">
         <button type="button" data-pipeline="${escapeHTML(pipeline.slug)}">
@@ -1943,27 +1952,15 @@ function renderPipelineCard(pipeline) {
 }
 
 function renderPipelines() {
-  pipelineGrid.innerHTML = pipelineGroupOrder
-    .map((group) => {
-      const groupPipelines = pipelines.filter((pipeline) => pipeline.group === group);
-      if (groupPipelines.length === 0) return "";
+  const featuredPipelines = featuredPipelineSlugs
+    .map((slug) => pipelines.find((pipeline) => pipeline.slug === slug))
+    .filter(Boolean);
 
-      return `
-        <section class="pipeline-group">
-          <div class="pipeline-group-heading">
-            <div>
-              <p class="section-kicker">Repository Group</p>
-              <h3>${escapeHTML(group)}</h3>
-            </div>
-            <span class="pipeline-group-count">${groupPipelines.length} repositories</span>
-          </div>
-          <div class="pipeline-grid">
-            ${groupPipelines.map(renderPipelineCard).join("")}
-          </div>
-        </section>
-      `;
-    })
-    .join("");
+  pipelineGrid.innerHTML = `
+    <div class="pipeline-grid featured-pipeline-grid">
+      ${featuredPipelines.map(renderPipelineCard).join("")}
+    </div>
+  `;
   refreshIcons();
 }
 

@@ -1,23 +1,23 @@
-# Syed Adnan Haider Blog
+# Syed Adnan Haider — Genomic Surveillance Portfolio
 
-Live blog:
+Live portfolio:
 
 ```text
 https://adnanhaider81.github.io
 ```
 
-This blog collects research notes, tutorials, and reproducible workflow write-ups in pathogen genomics, environmental surveillance, and public-health bioinformatics.
+This portfolio brings together publications, research notes, tutorials, and reproducible workflows in pathogen genomics, environmental surveillance, and public-health bioinformatics.
 
 ## Portfolio Snapshot
 
 Verified on 26 August 2026:
 
-- 16 public GitHub repositories, including 13 featured reproducible workflow repositories.
+- 16 public GitHub repositories, with six featured on the homepage and 13 portfolio workflows overall.
 - 36 Google Scholar records, 594 citations, and an h-index of 10.
 - 10 public PREreviews across pathogen genomics, wastewater surveillance, phylodynamics, and infectious-disease epidemiology.
 - Two 2026 peer-reviewed respiratory-virus genomics publications and one public viral-NGS traceability resource.
 
-## What Is In The Blog
+## What Is In The Portfolio
 
 - Long-form research notes on viral genomics, wastewater surveillance, metagenomic interpretation, depth masking, amplicon design, and outbreak communication.
 - Tutorial-style posts that explain how raw sequencing data move from FASTQ files to consensus genomes, lineage calls, phylogenies, mutation tables, and reports.
