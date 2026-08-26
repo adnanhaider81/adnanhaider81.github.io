@@ -143,10 +143,11 @@ const posts = [
       {
         heading: "A minimal command pattern",
         commands: [
-          "git clone https://github.com/adnanhaider81/example-pathogen-workflow.git",
-          "cd example-pathogen-workflow",
+          "git clone https://github.com/adnanhaider81/polio-capsid-ngs-analysis.git",
+          "cd polio-capsid-ngs-analysis",
           "mamba env create -f env/environment.yml",
-          "conda activate pathogen-workflow",
+          "conda activate polio-capsid-env",
+          "make test",
           "snakemake -s workflow/Snakefile --configfile config/config.yaml -n -c 4",
           "snakemake -s workflow/Snakefile --configfile config/config.yaml -c 4 --printshellcmds"
         ]
@@ -210,12 +211,12 @@ const posts = [
         url: "https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus"
       },
       {
-        title: "ARTIC Network SARS-CoV-2 sequencing resources",
-        url: "https://artic.network/viruses/sars-cov-2"
+        title: "Prospective validation of nanopore sequencing for sensitive poliovirus detection",
+        url: "https://www.nature.com/articles/s41564-023-01453-4"
       },
       {
-        title: "CDC: Wastewater surveillance and public health",
-        url: "https://www.cdc.gov/advanced-molecular-detection/php/success-stories/wastewater-surveillance.html"
+        title: "Automated poliovirus detection and classification with piranha",
+        url: "https://academic.oup.com/ve/article/10/1/veae023/7636138"
       }
     ]
   },
@@ -355,6 +356,19 @@ const posts = [
         ]
       },
       {
+        heading: "Set a run-level gate before reviewing samples",
+        paragraphs: [
+          "The review should preserve the run context: flow-cell and run identifiers, basecalling and demultiplexing versions, barcode map, reference-panel version, filtering settings, and the counts entering and leaving each major step. These details make a result reproducible and help explain why two runs of the same specimen may behave differently.",
+          "Controls are interpreted at this stage, not after a sample looks interesting. Target-like reads in a negative control should trigger investigation of carryover, barcode leakage, or sample-sheet error before any positive call is accepted. A positive or synthetic control should confirm that the expected amplicon and analysis path were recovered."
+        ],
+        points: [
+          "Confirm that the fastq_pass folders and barcode map agree.",
+          "Record the checksums or release identifiers for fixed reference resources.",
+          "Compare the observed read-length distribution with the expected VP1 amplicon.",
+          "Flag unusually low-yield or dominant barcodes before interpreting reference hits."
+        ]
+      },
+      {
         heading: "Barcode-level evidence",
         points: [
           "Confirm that each barcode folder maps to one neutral sample identifier.",
@@ -365,6 +379,13 @@ const posts = [
         ]
       },
       {
+        heading: "Reference ranking should remain competitive",
+        paragraphs: [
+          "The DDNS pipeline screens each barcode against an enterovirus and poliovirus VP1 panel, shortlists candidate references, and then attempts consensus generation. The top read count is therefore a starting point, not a final identification. I compare coverage breadth, alignment quality, expected amplicon span, and the separation between the first and second candidates.",
+          "Closely ranked references can reflect limited informative sequence, conserved regions, a mixed sample, or an incomplete reference panel. The correct response is to inspect the evidence and state the ambiguity, not to force a genotype-level label from the first row of a table."
+        ]
+      },
+      {
         heading: "Consensus confidence",
         paragraphs: [
           "A consensus sequence should be read with its depth profile. I look for continuous VP1 coverage, gaps near primer sites, suspicious depth spikes, and stretches of ambiguous bases. If the consensus is partial, the report should say that plainly instead of presenting a complete-genome style conclusion.",
@@ -372,7 +393,22 @@ const posts = [
         ]
       },
       {
-        heading: "Report language",
+        heading: "Use decision categories that lead to action",
+        paragraphs: [
+          "I prefer decision categories over a single universal read threshold because the defensible cutoff depends on the validated laboratory method, run quality, controls, and intended use. The category should point directly to the next action."
+        ],
+        points: [
+          "Supported for review: clean controls, coherent reference ranking, adequate VP1 breadth and depth, and a usable consensus.",
+          "Technical review: target evidence is present, but coverage, ranking, or control behavior needs manual inspection.",
+          "Repeat recommended: the signal is plausible but the run does not support a stable consensus or confident assignment.",
+          "Inconclusive: available sequence evidence is insufficient for a poliovirus interpretation."
+        ]
+      },
+      {
+        heading: "Report language and audit trail",
+        paragraphs: [
+          "The report should connect the sample conclusion to the evidence that produced it. I include the run and barcode identifiers, reference-panel release, filtering and consensus settings, control status, target breadth and depth, ambiguity, and a clearly stated follow-up action."
+        ],
         points: [
           "Use strong wording only when read support, breadth, controls, and reference ranking agree.",
           "Use cautious wording when the run supports a lead but not a confident genotype-level conclusion.",
@@ -391,8 +427,16 @@ const posts = [
         url: "https://www.nature.com/articles/s41564-020-00806-9"
       },
       {
-        title: "WHO environmental surveillance summary for poliovirus",
-        url: "https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus"
+        title: "Prospective validation of sensitive poliovirus detection using nanopore sequencing",
+        url: "https://www.nature.com/articles/s41564-023-01453-4"
+      },
+      {
+        title: "Automated detection and classification of polioviruses with piranha",
+        url: "https://academic.oup.com/ve/article/10/1/veae023/7636138"
+      },
+      {
+        title: "WHO field guidance for poliovirus environmental surveillance",
+        url: "https://www.who.int/publications/b/58136"
       }
     ]
   },
@@ -414,6 +458,13 @@ const posts = [
         ]
       },
       {
+        heading: "Synthetic, simulated, and de-identified data are different",
+        paragraphs: [
+          "A synthetic dataset is generated rather than collected from a person or surveillance site. A simulated dataset usually follows an explicit model, such as reads generated from a known reference with controlled error and coverage. De-identified operational data remain real data and may still carry governance restrictions or re-identification risk.",
+          "A repository should name which type it contains, document how it was produced, and avoid presenting synthetic performance as evidence of field or clinical validity. The value of synthetic data is controlled ground truth and safe execution, not automatic biological realism."
+        ]
+      },
+      {
         heading: "What synthetic data should prove",
         points: [
           "The repository can be cloned and checked without private FASTQ files.",
@@ -424,10 +475,30 @@ const posts = [
         ]
       },
       {
-        heading: "Training value",
+        heading: "Build a minimum test matrix",
         paragraphs: [
-          "Synthetic inputs are also training materials. A new analyst can run the workflow, inspect the outputs, and learn what normal looks like before touching operational data. That lowers the barrier for capacity building in laboratories where people are learning sequencing and bioinformatics at the same time.",
-          "For supervisors, reviewers, and remote employers, synthetic tests are a credibility signal. They show that the repository is more than a code archive: it is a working method that can be evaluated."
+          "One happy-path sample is not enough. I would include a small matrix that tests the normal workflow and the failures most likely to confuse a new analyst. Each case should have a declared expected outcome so that the test checks scientific outputs as well as process completion."
+        ],
+        points: [
+          "A positive example with known mapping, coverage, and consensus expectations.",
+          "A zero-target or negative example that must not produce a confident call.",
+          "Low-depth and partial-coverage examples that exercise masking and limited-use reporting.",
+          "Malformed sample sheets, duplicate identifiers, or missing FASTQ mates that should fail clearly.",
+          "A versioned manifest containing generation parameters, random seed where relevant, and file checksums."
+        ]
+      },
+      {
+        heading: "Connect test data to continuous integration",
+        paragraphs: [
+          "A small dataset becomes much more useful when every code change runs it automatically. The test should confirm that required outputs exist and that key values fall within declared ranges. Checks can include mapped-read counts, breadth at the masking threshold, consensus length, expected ambiguous positions, and report generation.",
+          "My Viral Genomics Nextflow Demo follows this pattern with a tiny synthetic FASTQ dataset, modular workflow steps, expected QC and consensus outputs, and a smoke test that runs in continuous integration. This makes the repository executable evidence rather than a collection of untested scripts."
+        ]
+      },
+      {
+        heading: "Know what synthetic data cannot prove",
+        paragraphs: [
+          "Synthetic inputs cannot establish diagnostic sensitivity, robustness to extraction variation, resistance to contamination, or performance across real sample quality. Those questions require characterized reference material, operational specimens, independent replicates, and comparison with accepted methods.",
+          "Synthetic data are still valuable for training. A new analyst can learn the expected file structure, run the workflow safely, inspect normal and failed outputs, and understand the reporting logic before receiving access to restricted data."
         ]
       }
     ],
@@ -443,6 +514,18 @@ const posts = [
       {
         title: "Snakemake sustainable data analysis",
         url: "https://f1000research.com/articles/10-33"
+      },
+      {
+        title: "CIEVaD workflows for synthetic genomic test data and continuous evaluation",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11437481/"
+      },
+      {
+        title: "Genomic reproducibility in the bioinformatics era",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11312195/"
+      },
+      {
+        title: "Validation of a routine pathogen-typing bioinformatics workflow",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC6414443/"
       }
     ]
   },
@@ -464,7 +547,17 @@ const posts = [
         ]
       },
       {
+        heading: "Define the comparison before mapping",
+        paragraphs: [
+          "Whole-capsid analysis should begin with a declared reference accession, expected capsid coordinates, primer scheme when applicable, and a consistent amino-acid numbering convention for VP1, VP2, and VP3. Those choices determine how variants, masked sites, and antigenic-site changes will be reported.",
+          "Reference choice should be checked against the sample's serotype and surveillance question. When mapping is weak or the best reference is uncertain, an assembly or broader reference screen can be used as a diagnostic step rather than forcing all reads onto one sequence."
+        ]
+      },
+      {
         heading: "QC and consensus review",
+        paragraphs: [
+          "The workflow in my public repository uses fastp for read QC, BWA-MEM for mapping, optional primer clipping, duplicate marking, depth calculation, FreeBayes variant calling, and BCFtools consensus generation with a depth mask. The report should preserve the configuration used for each of those steps rather than showing only the final FASTA."
+        ],
         points: [
           "Check paired-read counts, quality trimming, duplicate handling, and mapping rate.",
           "Review depth across the capsid rather than relying only on mean coverage.",
@@ -474,10 +567,27 @@ const posts = [
         ]
       },
       {
-        heading: "Antigenic sites and phylogeny",
+        heading: "Interpret antigenic-site tables conservatively",
         paragraphs: [
-          "Antigenic-site tables are useful because they translate nucleotide variation into biologically interpretable amino acid changes. They should sit beside, not replace, the consensus and coverage evidence.",
-          "Phylogeny adds context: whether sequences cluster as expected, whether sample labels are plausible, and whether the analysis supports the surveillance question. A good public workflow documents the commands and thresholds that connect the raw reads to that final tree."
+          "Antigenic-site tables translate nucleotide variation into amino-acid changes at defined capsid positions. They are useful for screening and comparison, but a substitution in a named site is not by itself proof of antigenic escape or altered neutralization.",
+          "I would report the reference residue, sample residue, protein and coordinate, underlying coverage, and whether the call intersects a masked or ambiguous region. Interpretation should be tied to published poliovirus antigenic-site definitions and, when biologically important, laboratory evidence."
+        ]
+      },
+      {
+        heading: "Phylogeny adds context, not direct transmission proof",
+        paragraphs: [
+          "Capsid sequences and contextual references should cover the same homologous region, pass comparable QC, and use transparent inclusion rules. I check alignment quality, sample labels, collection dates, model selection, and branch support before interpreting clusters.",
+          "Tree proximity can support questions about genetic relatedness and lineage context, but it does not establish a direct transmission event. Sampling gaps and uneven geographic coverage should travel with the interpretation."
+        ]
+      },
+      {
+        heading: "A decision-ready output bundle",
+        points: [
+          "Run and sample QC table with explicit pass, review, limited-use, or fail status.",
+          "Depth profile and masking summary for the complete capsid region.",
+          "Versioned consensus FASTA with traceable sample names and reference accession.",
+          "Amino-acid and antigenic-site table with conservative interpretation.",
+          "Alignment, tree, contextual-sequence manifest, and a short statement of limitations."
         ]
       }
     ],
@@ -493,6 +603,22 @@ const posts = [
       {
         title: "BCFtools consensus documentation",
         url: "https://samtools.github.io/bcftools/howtos/consensus-sequence.html"
+      },
+      {
+        title: "High-throughput next-generation sequencing of polioviruses",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5277531/"
+      },
+      {
+        title: "The role of genetic sequencing and analysis in polio eradication",
+        url: "https://academic.oup.com/ve/article/6/2/veaa040/5841225"
+      },
+      {
+        title: "Evolution of poliovirus neutralizing antigenic sites",
+        url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC5899205/"
+      },
+      {
+        title: "Conserved antigenic structure of wild poliovirus type 1 strains in Pakistan",
+        url: "https://academic.oup.com/jid/article/226/5/843/6430438"
       }
     ]
   },
@@ -1070,16 +1196,17 @@ const articleExpansions = {
         ]
       },
       {
-        heading: "Metadata is part of the analysis",
+        heading: "Sampling context belongs beside the tree",
         paragraphs: [
-          "A phylogenetic dashboard depends on dates, locations, sample names, lineage fields, and contextual sequence choices. Missing or inconsistent metadata can change the apparent story. For public outputs, metadata also has a governance role: it must be useful without exposing restricted information.",
-          "The strongest dashboards pair the tree with a short interpretation note. The note should state what the tree supports, what it does not support, and what follow-up question should be asked next."
+          "A phylogeny displays sampled genomes, not every infection that occurred. Uneven sequencing across locations, dates, and patient groups can make a cluster look more isolated or more dominant than it is. Context-sequence selection can also change the apparent nearest neighbours.",
+          "I would publish a small sampling summary with the dashboard: counts by period and location, the rule used to select contextual sequences, the amount of missing metadata, and any important surveillance gaps. The interpretation note should state what the tree supports and which conclusions remain limited by sampling."
         ],
         points: [
-          "Choose contextual sequences with a stated rule.",
+          "Show sample counts across time and geography.",
+          "Choose contextual sequences with a reproducible rule.",
           "Keep private metadata separate from public display metadata.",
           "Avoid implying direct transmission from tree proximity alone.",
-          "Use dashboards as communication products, not as standalone conclusions."
+          "Keep branch support, QC exclusions, and missing-data caveats visible."
         ]
       }
     ],
@@ -1102,10 +1229,10 @@ const articleExpansions = {
     minutes: 17,
     sections: [
       {
-        heading: "Sequencing wastewater is not the same as sequencing a patient sample",
+        heading: "Mixtures require a different analytical model",
         paragraphs: [
-          "A clinical sample usually has one dominant infection context. Wastewater is pooled, diluted, and environmentally processed before it reaches the laboratory. That means a sequencing signal may represent many contributors, uneven shedding, time-lagged material, and variable RNA integrity.",
-          "This makes wastewater genomics powerful for population monitoring but difficult for individual-level interpretation. The report should keep that boundary clear. It can support early warning, trend monitoring, and variant detection, but it should not claim exact case counts or transmission chains."
+          "Wastewater contains fragmented genomes from many contributors, so a single consensus sequence usually does not represent one biological viral genome. Mutation frequencies or lineage-deconvolution methods are more appropriate when the purpose is to estimate known mixtures.",
+          "Those estimates remain dependent on genome coverage, primer dropout, the lineage-definition library, and the clinical sequences available to define circulating diversity. A novel or recombinant lineage can be misallocated among known lineages. I therefore separate estimates for known lineages from unusual mutation patterns that require investigation."
         ]
       },
       {
@@ -1134,6 +1261,10 @@ const articleExpansions = {
       {
         title: "Environmental surveillance of pathogens from wastewater",
         url: "https://www.mdpi.com/2073-4441/14/4/599"
+      },
+      {
+        title: "Wastewater sequencing and lineage deconvolution with Freyja",
+        url: "https://www.nature.com/articles/s41586-022-05049-6"
       }
     ]
   },
@@ -1141,10 +1272,16 @@ const articleExpansions = {
     minutes: 15,
     sections: [
       {
-        heading: "The runbook should reduce ambiguity",
+        heading: "Add an escalation matrix",
         paragraphs: [
-          "A strong runbook is not a long document for its own sake. It is a document that removes uncertainty at the moment an analyst has to make a decision. It should define where inputs live, how sample names are checked, what a normal run looks like, what a failed run looks like, and when a result should be escalated.",
-          "The runbook should also be written for handover. If another analyst receives the project months later, they should be able to reconstruct the logic of the run from the commands, logs, versions, config files, and output guide."
+          "A runbook becomes operational when it connects a trigger to an action, an owner, and a recorded artifact. For example, target-like reads in a negative control should lead to a defined contamination review; an unexpected lineage should lead to identity checks, reference review, and supervisor escalation; a database checksum mismatch should stop the run.",
+          "The matrix should distinguish a technical failure from a scientifically limited result. That prevents an analyst from silently rerunning until an output looks acceptable and makes it possible to audit why a sample was repeated, withheld, or reported with caveats."
+        ],
+        points: [
+          "Trigger: the measurable condition that starts the review.",
+          "Action: the immediate check, repeat, or containment step.",
+          "Owner: the person or role responsible for the decision.",
+          "Evidence: the log, QC table, ticket, or report note that records the outcome."
         ]
       },
       {
@@ -1180,23 +1317,23 @@ const articleExpansions = {
     minutes: 15,
     sections: [
       {
-        heading: "A blog can show judgment that a CV cannot",
+        heading: "Try the smallest complete run",
         paragraphs: [
-          "A CV can list publications, tools, and positions, but a blog can show how someone thinks through a problem. In genomics, that means explaining why a workflow was structured a certain way, where uncertainty enters, which outputs matter, and how a result should be communicated to a public-health audience.",
-          "This is why I see technical writing as part of scientific work. A clear article can turn a repository into a teaching resource and a methods note into evidence of applied judgment."
+          "After reading the purpose and data policy, I try the smallest supported execution path in a clean environment. A strong repository provides synthetic or example inputs, a smoke test or dry run, and an output guide that lets me compare what I generated with what the author intended.",
+          "I record where the run depends on an undocumented path, mutable database, manual edit, or unavailable file. Reproducibility is not proved because a workflow worked once on the author's computer; it is strengthened when a new user can reproduce a declared output and understand a clear failure."
         ]
       },
       {
-        heading: "What makes public writing credible",
+        heading: "Trace claims to outputs",
         paragraphs: [
-          "Credible technical writing is specific. It names pathogens, platforms, tools, assumptions, outputs, and limitations. It does not need to oversell. In fact, the strongest writing often becomes more convincing when it names caveats clearly.",
-          "For a research blog, consistency also matters. Articles with dates, references, repository links, and practical examples build a record over time. Readers can see both the field of work and the style of thinking."
+          "A repository is easier to trust when each major scientific claim has a visible output path. A statement about consensus quality should point to depth and masking summaries. A lineage or genotype result should point to the classification table and reference version. A tree should have an alignment, contextual-sequence manifest, model, and support values.",
+          "This traceability also improves technical writing. The article can explain the reasoning while the repository supplies the executable details and evidence. Neither needs to overstate what the data support."
         ],
         points: [
-          "Write from real workflows and real problems.",
-          "Use references for methods, tools, and public-health context.",
-          "Separate what the data support from what remains uncertain.",
-          "Keep repository links close to the articles that explain them."
+          "Link each result to a versioned workflow step and output.",
+          "Record references, databases, accessions, and parameters.",
+          "Keep expected outputs small enough for another person to inspect.",
+          "Separate computational reproducibility from biological validation."
         ]
       }
     ],
@@ -1220,9 +1357,11 @@ const articleExpansions = {
 posts.forEach((post) => {
   const expansion = articleExpansions[post.slug];
   if (!expansion) return;
-  post.minutes = expansion.minutes;
   post.body.push(...expansion.sections);
-  post.references.push(...expansion.references);
+  const newReferences = expansion.references.filter(
+    (reference) => !post.references.some((existingReference) => existingReference.url === reference.url)
+  );
+  post.references.push(...newReferences);
 });
 
 const pipelines = [
@@ -1933,7 +2072,7 @@ function renderPosts() {
             <p>${escapeHTML(post.summary)}</p>
           </div>
           <div class="post-footer">
-            <span>${post.minutes} min read</span>
+            <span>Read note</span>
             <i data-lucide="arrow-up-right"></i>
           </div>
         </a>
@@ -2004,7 +2143,6 @@ function renderReader(post) {
         <div class="post-meta">
           <span>${escapeHTML(post.category)}</span>
           <time datetime="${escapeHTML(post.date)}">${formatDate(post.date)}</time>
-          <span>${post.minutes} min read</span>
         </div>
         <h2>${escapeHTML(post.title)}</h2>
         <p>${escapeHTML(post.summary)}</p>

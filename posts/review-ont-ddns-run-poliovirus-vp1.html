@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Tutorials</span>
             <time datetime="2026-05-17">May 17, 2026</time>
-            <span>12 min read</span>
           </div>
           <h1>How I review an ONT/DDNS run for poliovirus VP1 evidence</h1>
           <p>A practical review checklist for ONT MinION barcode folders, VP1 reference hits, coverage evidence, controls, and report language in poliovirus DDNS work.</p>
@@ -80,6 +79,18 @@
       </section>
 
       <section>
+        <h2>Set a run-level gate before reviewing samples</h2>
+        <p>The review should preserve the run context: flow-cell and run identifiers, basecalling and demultiplexing versions, barcode map, reference-panel version, filtering settings, and the counts entering and leaving each major step. These details make a result reproducible and help explain why two runs of the same specimen may behave differently.</p>
+        <p>Controls are interpreted at this stage, not after a sample looks interesting. Target-like reads in a negative control should trigger investigation of carryover, barcode leakage, or sample-sheet error before any positive call is accepted. A positive or synthetic control should confirm that the expected amplicon and analysis path were recovered.</p>
+        <ul>
+          <li>Confirm that the fastq_pass folders and barcode map agree.</li>
+          <li>Record the checksums or release identifiers for fixed reference resources.</li>
+          <li>Compare the observed read-length distribution with the expected VP1 amplicon.</li>
+          <li>Flag unusually low-yield or dominant barcodes before interpreting reference hits.</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Barcode-level evidence</h2>
         
         <ul>
@@ -93,6 +104,12 @@
       </section>
 
       <section>
+        <h2>Reference ranking should remain competitive</h2>
+        <p>The DDNS pipeline screens each barcode against an enterovirus and poliovirus VP1 panel, shortlists candidate references, and then attempts consensus generation. The top read count is therefore a starting point, not a final identification. I compare coverage breadth, alignment quality, expected amplicon span, and the separation between the first and second candidates.</p>
+        <p>Closely ranked references can reflect limited informative sequence, conserved regions, a mixed sample, or an incomplete reference panel. The correct response is to inspect the evidence and state the ambiguity, not to force a genotype-level label from the first row of a table.</p>
+      </section>
+
+      <section>
         <h2>Consensus confidence</h2>
         <p>A consensus sequence should be read with its depth profile. I look for continuous VP1 coverage, gaps near primer sites, suspicious depth spikes, and stretches of ambiguous bases. If the consensus is partial, the report should say that plainly instead of presenting a complete-genome style conclusion.</p>
         <p>The most useful DDNS report is not just a list of references. It is a decision aid: which samples have enough evidence for review, which need repeat sequencing, and which should be treated as weak or background signal.</p>
@@ -101,7 +118,19 @@
       </section>
 
       <section>
-        <h2>Report language</h2>
+        <h2>Use decision categories that lead to action</h2>
+        <p>I prefer decision categories over a single universal read threshold because the defensible cutoff depends on the validated laboratory method, run quality, controls, and intended use. The category should point directly to the next action.</p>
+        <ul>
+          <li><strong>Supported for review:</strong> clean controls, coherent reference ranking, adequate VP1 breadth and depth, and a usable consensus.</li>
+          <li><strong>Technical review:</strong> target evidence is present, but coverage, ranking, or control behavior needs manual inspection.</li>
+          <li><strong>Repeat recommended:</strong> the signal is plausible but the run does not support a stable consensus or confident assignment.</li>
+          <li><strong>Inconclusive:</strong> available sequence evidence is insufficient for a poliovirus interpretation.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Report language and audit trail</h2>
+        <p>The report should connect the sample conclusion to the evidence that produced it. I include the run and barcode identifiers, reference-panel release, filtering and consensus settings, control status, target breadth and depth, ambiguity, and a clearly stated follow-up action.</p>
         
         <ul>
           <li>Use strong wording only when read support, breadth, controls, and reference ranking agree.</li>
@@ -117,7 +146,9 @@
         <ol>
           <li><a href="https://github.com/adnanhaider81/ddns-minion-vp1-pipeline">DDNS MinION VP1 pipeline repository</a></li>
           <li><a href="https://www.nature.com/articles/s41564-020-00806-9">Rapid and sensitive direct detection and identification of poliovirus using nanopore sequencing</a></li>
-          <li><a href="https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus">WHO environmental surveillance summary for poliovirus</a></li>
+          <li><a href="https://www.nature.com/articles/s41564-023-01453-4">Prospective validation of sensitive poliovirus detection using nanopore sequencing</a></li>
+          <li><a href="https://academic.oup.com/ve/article/10/1/veae023/7636138">Automated detection and classification of polioviruses with piranha</a></li>
+          <li><a href="https://www.who.int/publications/b/58136">WHO field guidance for poliovirus environmental surveillance</a></li>
         </ol>
       </section>
       </article>

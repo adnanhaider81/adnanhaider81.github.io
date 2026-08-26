@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Tutorials</span>
             <time datetime="2026-05-17">May 17, 2026</time>
-            <span>13 min read</span>
           </div>
           <h1>Whole-capsid poliovirus NGS: QC, consensus, antigenic sites, and phylogeny</h1>
           <p>A workflow-oriented guide to reviewing whole-capsid poliovirus NGS outputs from read QC through antigenic-site summaries and phylogenetic placement.</p>
@@ -80,7 +79,14 @@
       </section>
 
       <section>
+        <h2>Define the comparison before mapping</h2>
+        <p>Whole-capsid analysis should begin with a declared reference accession, expected capsid coordinates, primer scheme when applicable, and a consistent amino-acid numbering convention for VP1, VP2, and VP3. Those choices determine how variants, masked sites, and antigenic-site changes will be reported.</p>
+        <p>Reference choice should be checked against the sample's serotype and surveillance question. When mapping is weak or the best reference is uncertain, an assembly or broader reference screen can be used as a diagnostic step rather than forcing all reads onto one sequence.</p>
+      </section>
+
+      <section>
         <h2>QC and consensus review</h2>
+        <p>The workflow in my public repository uses fastp for read QC, BWA-MEM for mapping, optional primer clipping, duplicate marking, depth calculation, FreeBayes variant calling, and BCFtools consensus generation with a depth mask. The report should preserve the configuration used for each of those steps rather than showing only the final FASTA.</p>
         
         <ul>
           <li>Check paired-read counts, quality trimming, duplicate handling, and mapping rate.</li>
@@ -93,9 +99,26 @@
       </section>
 
       <section>
-        <h2>Antigenic sites and phylogeny</h2>
-        <p>Antigenic-site tables are useful because they translate nucleotide variation into biologically interpretable amino acid changes. They should sit beside, not replace, the consensus and coverage evidence.</p>
-        <p>Phylogeny adds context: whether sequences cluster as expected, whether sample labels are plausible, and whether the analysis supports the surveillance question. A good public workflow documents the commands and thresholds that connect the raw reads to that final tree.</p>
+        <h2>Interpret antigenic-site tables conservatively</h2>
+        <p>Antigenic-site tables translate nucleotide variation into amino-acid changes at defined capsid positions. They are useful for screening and comparison, but a substitution in a named site is not by itself proof of antigenic escape or altered neutralization.</p>
+        <p>I would report the reference residue, sample residue, protein and coordinate, underlying coverage, and whether the call intersects a masked or ambiguous region. Interpretation should be tied to published poliovirus antigenic-site definitions and, when biologically important, laboratory evidence.</p>
+      </section>
+
+      <section>
+        <h2>Phylogeny adds context, not direct transmission proof</h2>
+        <p>Capsid sequences and contextual references should cover the same homologous region, pass comparable QC, and use transparent inclusion rules. I check alignment quality, sample labels, collection dates, model selection, and branch support before interpreting clusters.</p>
+        <p>Tree proximity can support questions about genetic relatedness and lineage context, but it does not establish a direct transmission event. Sampling gaps and uneven geographic coverage should travel with the interpretation.</p>
+      </section>
+
+      <section>
+        <h2>A decision-ready output bundle</h2>
+        <ul>
+          <li>Run and sample QC table with explicit pass, review, limited-use, or fail status.</li>
+          <li>Depth profile and masking summary for the complete capsid region.</li>
+          <li>Versioned consensus FASTA with traceable sample names and reference accession.</li>
+          <li>Amino-acid and antigenic-site table with conservative interpretation.</li>
+          <li>Alignment, tree, contextual-sequence manifest, and a short statement of limitations.</li>
+        </ul>
         
         
       </section>
@@ -106,6 +129,10 @@
           <li><a href="https://github.com/adnanhaider81/polio-capsid-ngs-analysis">Polio whole-capsid NGS analysis repository</a></li>
           <li><a href="https://academic.oup.com/mbe/article/37/5/1530/5721363">IQ-TREE 2 phylogenetic inference</a></li>
           <li><a href="https://samtools.github.io/bcftools/howtos/consensus-sequence.html">BCFtools consensus documentation</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5277531/">High-throughput next-generation sequencing of polioviruses</a></li>
+          <li><a href="https://academic.oup.com/ve/article/6/2/veaa040/5841225">The role of genetic sequencing and analysis in polio eradication</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5899205/">Evolution of poliovirus neutralizing antigenic sites</a></li>
+          <li><a href="https://academic.oup.com/jid/article/226/5/843/6430438">Conserved antigenic structure of wild poliovirus type 1 strains in Pakistan</a></li>
         </ol>
       </section>
       </article>

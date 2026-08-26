@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Reproducibility</span>
             <time datetime="2026-05-01">May 1, 2026</time>
-            <span>18 min read</span>
           </div>
           <h1>Turning a manuscript into a reproducible genomics repository</h1>
           <p>A methods-focused article on converting outbreak manuscripts into public repositories that preserve analysis logic, assumptions, quality checks, and reusable commands.</p>
@@ -105,10 +104,11 @@
         <h2>A minimal command pattern</h2>
         
         
-        <pre><code>git clone https://github.com/adnanhaider81/example-pathogen-workflow.git
-cd example-pathogen-workflow
+        <pre><code>git clone https://github.com/adnanhaider81/polio-capsid-ngs-analysis.git
+cd polio-capsid-ngs-analysis
 mamba env create -f env/environment.yml
-conda activate pathogen-workflow
+conda activate polio-capsid-env
+make test
 snakemake -s workflow/Snakefile --configfile config/config.yaml -n -c 4
 snakemake -s workflow/Snakefile --configfile config/config.yaml -c 4 --printshellcmds</code></pre>
       </section>

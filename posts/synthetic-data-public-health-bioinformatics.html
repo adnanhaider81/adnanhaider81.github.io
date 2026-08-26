@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Tutorials</span>
             <time datetime="2026-05-17">May 17, 2026</time>
-            <span>11 min read</span>
           </div>
           <h1>Why synthetic data matters in public-health bioinformatics</h1>
           <p>Why public repositories for surveillance workflows should include safe synthetic inputs, expected outputs, and smoke tests when restricted data cannot be shared.</p>
@@ -80,6 +79,12 @@
       </section>
 
       <section>
+        <h2>Synthetic, simulated, and de-identified data are different</h2>
+        <p>A synthetic dataset is generated rather than collected from a person or surveillance site. A simulated dataset usually follows an explicit model, such as reads generated from a known reference with controlled error and coverage. De-identified operational data remain real data and may still carry governance restrictions or re-identification risk.</p>
+        <p>A repository should name which type it contains, document how it was produced, and avoid presenting synthetic performance as evidence of field or clinical validity. The value of synthetic data is controlled ground truth and safe execution, not automatic biological realism.</p>
+      </section>
+
+      <section>
         <h2>What synthetic data should prove</h2>
         
         <ul>
@@ -93,9 +98,27 @@
       </section>
 
       <section>
-        <h2>Training value</h2>
-        <p>Synthetic inputs are also training materials. A new analyst can run the workflow, inspect the outputs, and learn what normal looks like before touching operational data. That lowers the barrier for capacity building in laboratories where people are learning sequencing and bioinformatics at the same time.</p>
-        <p>For supervisors, reviewers, and remote employers, synthetic tests are a credibility signal. They show that the repository is more than a code archive: it is a working method that can be evaluated.</p>
+        <h2>Build a minimum test matrix</h2>
+        <p>One happy-path sample is not enough. I would include a small matrix that tests the normal workflow and the failures most likely to confuse a new analyst. Each case should have a declared expected outcome so that the test checks scientific outputs as well as process completion.</p>
+        <ul>
+          <li>A positive example with known mapping, coverage, and consensus expectations.</li>
+          <li>A zero-target or negative example that must not produce a confident call.</li>
+          <li>Low-depth and partial-coverage examples that exercise masking and limited-use reporting.</li>
+          <li>Malformed sample sheets, duplicate identifiers, or missing FASTQ mates that should fail clearly.</li>
+          <li>A versioned manifest containing generation parameters, random seed where relevant, and file checksums.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Connect test data to continuous integration</h2>
+        <p>A small dataset becomes much more useful when every code change runs it automatically. The test should confirm that required outputs exist and that key values fall within declared ranges. Checks can include mapped-read counts, breadth at the masking threshold, consensus length, expected ambiguous positions, and report generation.</p>
+        <p>My Viral Genomics Nextflow Demo follows this pattern with a tiny synthetic FASTQ dataset, modular workflow steps, expected QC and consensus outputs, and a smoke test that runs in continuous integration. This makes the repository executable evidence rather than a collection of untested scripts.</p>
+      </section>
+
+      <section>
+        <h2>Know what synthetic data cannot prove</h2>
+        <p>Synthetic inputs cannot establish diagnostic sensitivity, robustness to extraction variation, resistance to contamination, or performance across real sample quality. Those questions require characterized reference material, operational specimens, independent replicates, and comparison with accepted methods.</p>
+        <p>Synthetic data are still valuable for training. A new analyst can learn the expected file structure, run the workflow safely, inspect normal and failed outputs, and understand the reporting logic before receiving access to restricted data.</p>
         
         
       </section>
@@ -106,6 +129,9 @@
           <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285">Ten simple rules for reproducible computational research</a></li>
           <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a></li>
           <li><a href="https://f1000research.com/articles/10-33">Snakemake sustainable data analysis</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11437481/">CIEVaD workflows for synthetic genomic test data and continuous evaluation</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11312195/">Genomic reproducibility in the bioinformatics era</a></li>
+          <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6414443/">Validation of a routine pathogen-typing bioinformatics workflow</a></li>
         </ol>
       </section>
       </article>

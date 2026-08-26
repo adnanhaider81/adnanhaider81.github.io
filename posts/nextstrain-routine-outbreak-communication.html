@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Tutorials</span>
             <time datetime="2026-01-08">January 8, 2026</time>
-            <span>16 min read</span>
           </div>
           <h1>Making Nextstrain useful for routine outbreak communication</h1>
           <p>How to turn phylogenetic builds into focused communication products with disciplined metadata, clear questions, and careful interpretation.</p>
@@ -110,14 +109,15 @@
       </section>
 
       <section>
-        <h2>Metadata is part of the analysis</h2>
-        <p>A phylogenetic dashboard depends on dates, locations, sample names, lineage fields, and contextual sequence choices. Missing or inconsistent metadata can change the apparent story. For public outputs, metadata also has a governance role: it must be useful without exposing restricted information.</p>
-        <p>The strongest dashboards pair the tree with a short interpretation note. The note should state what the tree supports, what it does not support, and what follow-up question should be asked next.</p>
+        <h2>Sampling context belongs beside the tree</h2>
+        <p>A phylogeny displays sampled genomes, not every infection that occurred. Uneven sequencing across locations, dates, and patient groups can make a cluster look more isolated or more dominant than it is. Context-sequence selection can also change the apparent nearest neighbours.</p>
+        <p>I would publish a small sampling summary with the dashboard: counts by period and location, the rule used to select contextual sequences, the amount of missing metadata, and any important surveillance gaps. The interpretation note should state what the tree supports and which conclusions remain limited by sampling.</p>
         <ul>
-          <li>Choose contextual sequences with a stated rule.</li>
+          <li>Show sample counts across time and geography.</li>
+          <li>Choose contextual sequences with a reproducible rule.</li>
           <li>Keep private metadata separate from public display metadata.</li>
           <li>Avoid implying direct transmission from tree proximity alone.</li>
-          <li>Use dashboards as communication products, not as standalone conclusions.</li>
+          <li>Keep branch support, QC exclusions, and missing-data caveats visible.</li>
         </ul>
         
       </section>

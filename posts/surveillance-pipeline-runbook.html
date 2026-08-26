@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Work Notes</span>
             <time datetime="2025-12-15">December 15, 2025</time>
-            <span>15 min read</span>
           </div>
           <h1>What I look for in a surveillance pipeline runbook</h1>
           <p>A practical checklist for writing runbooks that help laboratory and bioinformatics teams run surveillance workflows consistently.</p>
@@ -108,9 +107,15 @@
       </section>
 
       <section>
-        <h2>The runbook should reduce ambiguity</h2>
-        <p>A strong runbook is not a long document for its own sake. It is a document that removes uncertainty at the moment an analyst has to make a decision. It should define where inputs live, how sample names are checked, what a normal run looks like, what a failed run looks like, and when a result should be escalated.</p>
-        <p>The runbook should also be written for handover. If another analyst receives the project months later, they should be able to reconstruct the logic of the run from the commands, logs, versions, config files, and output guide.</p>
+        <h2>Add an escalation matrix</h2>
+        <p>A runbook becomes operational when it connects a trigger to an action, an owner, and a recorded artifact. For example, target-like reads in a negative control should lead to a defined contamination review; an unexpected lineage should lead to identity checks, reference review, and supervisor escalation; a database checksum mismatch should stop the run.</p>
+        <p>The matrix should distinguish a technical failure from a scientifically limited result. That prevents an analyst from silently rerunning until an output looks acceptable and makes it possible to audit why a sample was repeated, withheld, or reported with caveats.</p>
+        <ul>
+          <li>Trigger: the measurable condition that starts the review.</li>
+          <li>Action: the immediate check, repeat, or containment step.</li>
+          <li>Owner: the person or role responsible for the decision.</li>
+          <li>Evidence: the log, QC table, ticket, or report note that records the outcome.</li>
+        </ul>
         
         
       </section>
@@ -135,7 +140,6 @@
           <li><a href="https://academic.oup.com/bioinformatics/article-abstract/28/19/2520/290322">Snakemake workflow engine</a></li>
           <li><a href="https://www.nature.com/articles/sdata201618">The FAIR Guiding Principles</a></li>
           <li><a href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285">Ten Simple Rules for Reproducible Computational Research</a></li>
-          <li><a href="https://pubmed.ncbi.nlm.nih.gov/34035898/">Snakemake sustainable data analysis</a></li>
         </ol>
       </section>
       </article>

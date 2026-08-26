@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Career</span>
             <time datetime="2025-11-22">November 22, 2025</time>
-            <span>15 min read</span>
           </div>
           <h1>How I read a genomic surveillance repository</h1>
           <p>A reflective article on how a public repository can communicate technical maturity, applied judgment, and scientific direction without overclaiming.</p>
@@ -109,22 +108,22 @@
       </section>
 
       <section>
-        <h2>A blog can show judgment that a CV cannot</h2>
-        <p>A CV can list publications, tools, and positions, but a blog can show how someone thinks through a problem. In genomics, that means explaining why a workflow was structured a certain way, where uncertainty enters, which outputs matter, and how a result should be communicated to a public-health audience.</p>
-        <p>This is why I see technical writing as part of scientific work. A clear article can turn a repository into a teaching resource and a methods note into evidence of applied judgment.</p>
+        <h2>Try the smallest complete run</h2>
+        <p>After reading the purpose and data policy, I try the smallest supported execution path in a clean environment. A strong repository provides synthetic or example inputs, a smoke test or dry run, and an output guide that lets me compare what I generated with what the author intended.</p>
+        <p>I record where the run depends on an undocumented path, mutable database, manual edit, or unavailable file. Reproducibility is not proved because a workflow worked once on the author's computer; it is strengthened when a new user can reproduce a declared output and understand a clear failure.</p>
         
         
       </section>
 
       <section>
-        <h2>What makes public writing credible</h2>
-        <p>Credible technical writing is specific. It names pathogens, platforms, tools, assumptions, outputs, and limitations. It does not need to oversell. In fact, the strongest writing often becomes more convincing when it names caveats clearly.</p>
-        <p>For a research blog, consistency also matters. Articles with dates, references, repository links, and practical examples build a record over time. Readers can see both the field of work and the style of thinking.</p>
+        <h2>Trace claims to outputs</h2>
+        <p>A repository is easier to trust when each major scientific claim has a visible output path. A statement about consensus quality should point to depth and masking summaries. A lineage or genotype result should point to the classification table and reference version. A tree should have an alignment, contextual-sequence manifest, model, and support values.</p>
+        <p>This traceability also improves technical writing. The article can explain the reasoning while the repository supplies the executable details and evidence. Neither needs to overstate what the data support.</p>
         <ul>
-          <li>Write from real workflows and real problems.</li>
-          <li>Use references for methods, tools, and public-health context.</li>
-          <li>Separate what the data support from what remains uncertain.</li>
-          <li>Keep repository links close to the articles that explain them.</li>
+          <li>Link each result to a versioned workflow step and output.</li>
+          <li>Record references, databases, accessions, and parameters.</li>
+          <li>Keep expected outputs small enough for another person to inspect.</li>
+          <li>Separate computational reproducibility from biological validation.</li>
         </ul>
         
       </section>

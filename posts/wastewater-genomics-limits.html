@@ -60,7 +60,6 @@
           <div class="static-meta">
             <span>Field Issues</span>
             <time datetime="2025-12-21">December 21, 2025</time>
-            <span>17 min read</span>
           </div>
           <h1>What wastewater genomics can and cannot tell public-health teams</h1>
           <p>A practical explainer on early warning, sampling design, inhibition, dilution, genomic resolution, and responsible public-health interpretation.</p>
@@ -109,9 +108,9 @@
       </section>
 
       <section>
-        <h2>Sequencing wastewater is not the same as sequencing a patient sample</h2>
-        <p>A clinical sample usually has one dominant infection context. Wastewater is pooled, diluted, and environmentally processed before it reaches the laboratory. That means a sequencing signal may represent many contributors, uneven shedding, time-lagged material, and variable RNA integrity.</p>
-        <p>This makes wastewater genomics powerful for population monitoring but difficult for individual-level interpretation. The report should keep that boundary clear. It can support early warning, trend monitoring, and variant detection, but it should not claim exact case counts or transmission chains.</p>
+        <h2>Mixtures require a different analytical model</h2>
+        <p>Wastewater contains fragmented genomes from many contributors, so a single consensus sequence usually does not represent one biological viral genome. Mutation frequencies or lineage-deconvolution methods are more appropriate when the purpose is to estimate known mixtures.</p>
+        <p>Those estimates remain dependent on genome coverage, primer dropout, the lineage-definition library, and the clinical sequences available to define circulating diversity. A novel or recombinant lineage can be misallocated among known lineages. I therefore separate estimates for known lineages from unusual mutation patterns that require investigation.</p>
         
         
       </section>
@@ -136,8 +135,8 @@
           <li><a href="https://www.cdc.gov/advanced-molecular-detection/php/success-stories/wastewater-surveillance.html">CDC: Wastewater surveillance as a public-health tool</a></li>
           <li><a href="https://www.who.int/publications/m/item/wastewater-and-environmental-surveillance--summary-for-poliovirus">WHO: Wastewater and environmental surveillance for poliovirus</a></li>
           <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12794521/">SARS-CoV-2 wastewater genomic surveillance: approaches, challenges, and opportunities</a></li>
-          <li><a href="https://archive.cdc.gov/www_cdc_gov/nwss/interpretation.html">CDC: public health interpretation of wastewater surveillance data</a></li>
           <li><a href="https://www.mdpi.com/2073-4441/14/4/599">Environmental surveillance of pathogens from wastewater</a></li>
+          <li><a href="https://www.nature.com/articles/s41586-022-05049-6">Wastewater sequencing and lineage deconvolution with Freyja</a></li>
         </ol>
       </section>
       </article>
