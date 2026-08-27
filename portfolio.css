@@ -25,6 +25,7 @@ html {
 #publications,
 #pipelines,
 #writing,
+#service,
 #about,
 #contact {
   scroll-margin-top: 6rem;
@@ -339,7 +340,7 @@ h1 em {
 
 .hero-visual {
   position: relative;
-  min-height: 590px;
+  min-height: 700px;
   isolation: isolate;
 }
 
@@ -369,9 +370,9 @@ h1 em {
 
 .portrait-card {
   z-index: 2;
-  top: 0;
-  right: 5%;
-  width: min(82%, 410px);
+  top: 3%;
+  right: 7%;
+  width: min(74%, 372px);
   border-radius: 18rem 18rem 1.5rem 1.5rem;
 }
 
@@ -409,9 +410,9 @@ h1 em {
 
 .work-card {
   z-index: 4;
-  right: 47%;
+  right: 48%;
   bottom: 1%;
-  width: 49%;
+  width: 50%;
   border: 5px solid var(--paper);
   border-radius: 1.2rem;
   transform: rotate(-2.5deg);
@@ -422,10 +423,18 @@ h1 em {
   transform: rotate(0deg) translateY(-4px);
 }
 
+.work-card-media {
+  overflow: hidden;
+  aspect-ratio: 1.25 / 1;
+}
+
 .work-card img {
   width: 100%;
-  aspect-ratio: 1.25 / 1;
+  height: 100%;
   object-fit: cover;
+  object-position: 50% 75%;
+  transform: scale(1.55);
+  transform-origin: 50% 75%;
 }
 
 .work-card figcaption {
@@ -675,6 +684,7 @@ h1 em {
 .career-section,
 .project-stage,
 .writing-section,
+.service-section,
 .about-editorial,
 .training-preview,
 .contact-section,
@@ -688,6 +698,7 @@ h1 em {
 .career-section,
 .project-stage,
 .writing-section,
+.service-section,
 .about-editorial,
 .training-preview {
   margin-top: clamp(5rem, 10vw, 9rem);
@@ -1676,6 +1687,116 @@ h1 em {
   right: 0.8rem;
   bottom: 1.8rem;
   color: var(--coral);
+}
+
+.service-section {
+  padding-top: 1rem;
+}
+
+.service-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.service-card {
+  display: flex;
+  min-height: 325px;
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+  flex-direction: column;
+  border-right: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.service-card:last-child {
+  border-right: 0;
+}
+
+.service-card-featured {
+  background:
+    radial-gradient(circle at 92% 9%, rgba(8, 125, 130, 0.16), transparent 12rem),
+    var(--white);
+}
+
+.service-label,
+.membership-row > span {
+  color: var(--teal);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.service-card h3 {
+  max-width: 18ch;
+  margin: 1.4rem 0 0;
+  font-family: var(--serif);
+  font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.service-card p {
+  max-width: 45ch;
+  margin: 1rem 0 1.5rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.service-card a {
+  width: fit-content;
+  margin-top: auto;
+  padding-bottom: 0.12rem;
+  border-bottom: 1px solid var(--ink);
+  font-size: 0.75rem;
+  font-weight: 850;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.service-card a:hover,
+.service-card a:focus-visible,
+.membership-row a:hover strong,
+.membership-row a:focus-visible strong {
+  color: var(--teal);
+  border-color: var(--teal);
+}
+
+.service-card small {
+  margin-top: 0.75rem;
+  color: #788397;
+  font-size: 0.62rem;
+}
+
+.membership-row {
+  display: grid;
+  grid-template-columns: 230px minmax(240px, 0.7fr) minmax(330px, 1.3fr);
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.membership-row a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.membership-row strong {
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  line-height: 1.25;
+  transition: color 180ms ease;
+}
+
+.membership-row small {
+  color: var(--muted);
+  font-size: 0.62rem;
+  font-weight: 850;
 }
 
 .about-editorial {
@@ -3157,6 +3278,7 @@ h1 em {
   .project-feature,
   .public-resource-feature,
   .writing-layout,
+  .service-section,
   .about-editorial,
   .training-preview,
   .contact-section,
@@ -3169,6 +3291,14 @@ h1 em {
   .section-intro-wide > p,
   .section-intro-wide > .inline-action {
     justify-self: start;
+  }
+
+  .membership-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .membership-row > span {
+    grid-column: 1 / -1;
   }
 
   .publication-feature {
@@ -3268,6 +3398,7 @@ h1 em {
   .career-section,
   .project-stage,
   .writing-section,
+  .service-section,
   .about-editorial,
   .training-preview,
   .contact-section,
@@ -3352,7 +3483,7 @@ h1 em {
   }
 
   .hero-visual {
-    min-height: 500px;
+    min-height: 570px;
   }
 
   .research-agenda {
@@ -3376,13 +3507,18 @@ h1 em {
   }
 
   .portrait-card {
-    right: 1%;
-    width: 87%;
+    right: 2%;
+    width: min(78%, 372px);
   }
 
   .work-card {
-    right: 45%;
-    width: 54%;
+    right: 40%;
+    bottom: 0;
+    width: 58%;
+  }
+
+  .work-card img {
+    transform: scale(1.5);
   }
 
   .credibility {
@@ -3416,6 +3552,7 @@ h1 em {
   .career-section,
   .project-stage,
   .writing-section,
+  .service-section,
   .about-editorial,
   .training-preview {
     margin-top: 4.5rem;
@@ -3431,6 +3568,36 @@ h1 em {
   .training-preview-copy h2,
   .contact-section h2 {
     font-size: 2.85rem;
+  }
+
+  .service-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .service-card {
+    min-height: 290px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .service-card:last-child {
+    border-bottom: 0;
+  }
+
+  .membership-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .membership-row > span {
+    grid-column: auto;
+    padding-bottom: 0.8rem;
+  }
+
+  .membership-row a {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--line);
+    border-left: 0;
   }
 
   .publication-feature {
