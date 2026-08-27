@@ -576,10 +576,10 @@ h1 em {
 }
 
 .institution-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.4rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 1rem 1.5rem;
   color: #47546a;
   font-family: var(--serif);
   font-size: 0.95rem;
@@ -598,6 +598,18 @@ h1 em {
   font-weight: 850;
   letter-spacing: 0.07em;
   text-transform: uppercase;
+}
+
+.institution-row a {
+  width: fit-content;
+  border-bottom: 1px solid transparent;
+  transition: color 180ms ease, border-color 180ms ease;
+}
+
+.institution-row a:hover,
+.institution-row a:focus-visible {
+  color: var(--teal);
+  border-color: var(--teal);
 }
 
 .research-flow {
@@ -3270,8 +3282,7 @@ h1 em {
   }
 
   .institution-row {
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .research-flow {
@@ -3535,13 +3546,14 @@ h1 em {
   }
 
   .institution-row {
+    grid-template-columns: 1fr;
     gap: 0.55rem;
   }
 
   .institution-row span {
     padding: 0.4rem 0.7rem;
     border: 1px solid var(--line);
-    border-radius: 999px;
+    border-radius: 1rem;
     font-family: var(--sans);
     font-size: 0.68rem;
   }
