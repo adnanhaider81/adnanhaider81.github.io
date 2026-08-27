@@ -1199,6 +1199,48 @@ h2 {
   margin: 8px 0;
 }
 
+.static-article > section {
+  width: min(100%, 72ch);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.static-article > section a {
+  color: var(--teal);
+  font-weight: 750;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+.note-index-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.note-index-list li {
+  margin: 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.note-index-list li:first-child {
+  border-top: 0;
+}
+
+.note-index-list a {
+  color: var(--navy);
+}
+
+.note-index-list a:hover,
+.note-index-list a:focus-visible {
+  color: var(--teal);
+}
+
 .static-article pre {
   overflow-x: auto;
   padding: 16px;

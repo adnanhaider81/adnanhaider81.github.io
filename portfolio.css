@@ -72,6 +72,7 @@ img {
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
+  min-width: 0;
   width: fit-content;
 }
 
@@ -86,6 +87,7 @@ img {
 
 .brand-copy {
   display: grid;
+  min-width: 0;
   line-height: 1.15;
 }
 
@@ -106,12 +108,21 @@ img {
   letter-spacing: 0.02em;
 }
 
+.brand-affiliation {
+  width: fit-content;
+  margin-top: 0.25rem;
+  color: #3f4d63;
+  font-size: 0.63rem;
+  font-weight: 750;
+  line-height: 1.2;
+}
+
 .brand-email {
   width: fit-content;
-  margin-top: 0.28rem;
+  margin-top: 0.22rem;
   border-bottom: 1px solid transparent;
   color: var(--muted);
-  font-size: 0.64rem;
+  font-size: 0.68rem;
   font-weight: 750;
   letter-spacing: 0.015em;
   transition: color 180ms ease, border-color 180ms ease;
@@ -181,7 +192,7 @@ img {
   width: min(100% - 3rem, 1320px);
   min-height: 750px;
   margin: 0 auto;
-  padding: clamp(4.5rem, 8vw, 8rem) 0 5rem;
+  padding: clamp(3rem, 4vw, 4.25rem) 0 4.5rem;
 }
 
 .eyebrow,
@@ -616,7 +627,7 @@ h1 em {
 .institution-row small {
   color: var(--teal);
   font-family: var(--sans);
-  font-size: 0.52rem;
+  font-size: 0.64rem;
   font-weight: 850;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -735,7 +746,7 @@ h1 em {
 .service-section,
 .about-editorial,
 .training-preview {
-  margin-top: clamp(5rem, 10vw, 9rem);
+  margin-top: clamp(4.5rem, 7vw, 7rem);
 }
 
 .section-intro-wide {
@@ -2106,7 +2117,7 @@ h1 em {
   align-items: center;
   gap: clamp(3rem, 6vw, 6.5rem);
   min-height: 760px;
-  padding: clamp(4.5rem, 8vw, 8rem) 0 clamp(3.5rem, 7vw, 6rem);
+  padding: clamp(3rem, 4vw, 4.25rem) 0 clamp(3.5rem, 6vw, 5rem);
 }
 
 .case-breadcrumb {
@@ -2545,7 +2556,7 @@ h1 em {
   align-items: center;
   gap: clamp(3rem, 6vw, 6rem);
   min-height: 760px;
-  padding: clamp(4.5rem, 8vw, 7rem) 0 5rem;
+  padding: clamp(3rem, 4vw, 4.25rem) 0 4.5rem;
 }
 
 .training-hero-copy-v2 h1 {
@@ -2718,7 +2729,7 @@ h1 em {
 .timeline-section,
 .teaching-record,
 .credential-wall {
-  margin-top: clamp(5rem, 10vw, 9rem);
+  margin-top: clamp(4.5rem, 7vw, 7rem);
   scroll-margin-top: 9rem;
 }
 
@@ -3454,10 +3465,13 @@ h1 em {
   }
 
   .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
     padding: 0.85rem 0;
   }
 
   .brand-mark {
+    padding-right: 0.65rem;
     font-size: 1.75rem;
   }
 
@@ -3465,8 +3479,15 @@ h1 em {
     display: none;
   }
 
+  .brand-affiliation {
+    max-width: 100%;
+    margin-top: 0.18rem;
+    font-size: 0.58rem;
+    overflow-wrap: anywhere;
+  }
+
   .brand-email {
-    margin-top: 0.2rem;
+    margin-top: 0.16rem;
     font-size: 0.59rem;
   }
 
