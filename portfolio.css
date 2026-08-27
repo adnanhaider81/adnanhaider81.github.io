@@ -1779,11 +1779,12 @@ h1 em {
 
 .membership-row a {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 1rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 0.35rem;
   padding-left: 1.5rem;
   border-left: 1px solid var(--line);
+  flex-direction: column;
 }
 
 .membership-row strong {
@@ -1797,6 +1798,14 @@ h1 em {
   color: var(--muted);
   font-size: 0.62rem;
   font-weight: 850;
+  line-height: 1.4;
+}
+
+.membership-detail {
+  max-width: 56ch;
+  color: #788397;
+  font-size: 0.6rem;
+  line-height: 1.45;
 }
 
 .about-editorial {
