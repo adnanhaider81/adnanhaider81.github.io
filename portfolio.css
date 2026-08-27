@@ -1270,6 +1270,129 @@ h1 em {
   font-size: 0.72rem;
 }
 
+.wes-credential {
+  display: grid;
+  grid-template-columns: 166px minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0 1.4rem;
+  padding: 1rem;
+  border: 1px solid rgba(133, 227, 169, 0.42);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(19, 143, 82, 0.2), rgba(255, 255, 255, 0.05));
+}
+
+.wes-credential-embed {
+  display: grid;
+  min-height: 286px;
+  padding: 0.5rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  background: #f8faf7;
+  box-shadow: 0 12px 30px rgba(2, 13, 35, 0.2);
+}
+
+.wes-credential-embed iframe {
+  display: block;
+  max-width: 100%;
+  border-radius: 0.65rem;
+}
+
+.wes-credential-copy span,
+.wes-credential-copy strong,
+.wes-credential-copy small,
+.wes-credential-copy a {
+  display: block;
+}
+
+.wes-credential-copy span {
+  color: #9ad8d6;
+  font-size: 0.56rem;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.wes-credential-copy strong {
+  margin-top: 0.45rem;
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  line-height: 1.15;
+}
+
+.wes-credential-copy small {
+  margin-top: 0.5rem;
+  color: #c3cedd;
+  font-size: 0.61rem;
+  line-height: 1.4;
+}
+
+.wes-credential-copy a {
+  width: fit-content;
+  margin-top: 0.8rem;
+  padding-bottom: 0.16rem;
+  border-bottom: 1px solid rgba(185, 240, 206, 0.6);
+  color: #b9f0ce;
+  font-size: 0.64rem;
+  font-weight: 800;
+}
+
+.wes-credential-copy a:hover,
+.wes-credential-copy a:focus-visible {
+  color: var(--white);
+  border-bottom-color: var(--white);
+}
+
+.education-card article .degree-equivalency {
+  color: #b9f0ce;
+  font-weight: 750;
+}
+
+.degree-grades {
+  display: grid;
+  grid-template-columns: minmax(8rem, 11rem);
+  gap: 0.55rem;
+  margin: 0.9rem 0 0;
+}
+
+.degree-grades > div {
+  padding: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.degree-grades dt {
+  color: #aebbd0;
+  font-size: 0.55rem;
+  font-weight: 850;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.degree-grades dd {
+  margin: 0.22rem 0 0;
+  color: var(--white);
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.degree-credits {
+  display: block;
+  margin-top: 0.75rem;
+  color: #c3cedd;
+  font-size: 0.62rem;
+}
+
+.education-card .wes-note {
+  margin: 1rem 0 0;
+  color: #aebbd0;
+  font-size: 0.58rem;
+  line-height: 1.45;
+}
+
 .compact-projects h3 {
   max-width: 23ch;
   font-size: 1.65rem;
@@ -2636,6 +2759,17 @@ h1 em {
 
   .career-layout {
     gap: 2.5rem;
+  }
+
+  .wes-credential {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .wes-credential-copy a {
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .career-timeline::before {
