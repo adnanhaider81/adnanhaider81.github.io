@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Syed Adnan Haider" />
+    <meta name="description" content="How Syed Adnan Haider maintains the reproducible workflow and publishing path behind a Pakistan-focused SARS-CoV-2 Nextstrain Community build." />
+    <title>Pakistan SARS-CoV-2 Nextstrain Community Build | Syed Adnan Haider</title>
+    <link rel="canonical" href="https://syedadnanhaider.com/pakistan-sars-cov-2-nextstrain.html" />
+    <meta property="og:site_name" content="Syed Adnan Haider" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Maintaining Pakistan’s SARS-CoV-2 Nextstrain Community Build" />
+    <meta property="og:description" content="Syed Adnan Haider maintains the reproducible workflow and publishing path behind NIH Bioinformatics Group of Virology’s Pakistan-focused Nextstrain Community build." />
+    <meta property="og:url" content="https://syedadnanhaider.com/pakistan-sars-cov-2-nextstrain.html" />
+    <meta property="og:image" content="https://syedadnanhaider.com/assets/pakistan-nextstrain-community-build.png" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta property="og:image:alt" content="Pakistan SARS-CoV-2 phylogeny in the public Nextstrain Community build" />
+    <meta property="article:author" content="https://syedadnanhaider.com/" />
+    <meta property="article:published_time" content="2026-08-27" />
+    <meta property="article:modified_time" content="2026-08-27" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Maintaining Pakistan’s SARS-CoV-2 Nextstrain Community Build" />
+    <meta name="twitter:description" content="Syed Adnan Haider maintains the reproducible, DOI-archived workflow behind a Pakistan-focused SARS-CoV-2 Nextstrain Community build." />
+    <meta name="twitter:image" content="https://syedadnanhaider.com/assets/pakistan-nextstrain-community-build.png" />
+    <meta name="twitter:image:alt" content="Pakistan SARS-CoV-2 phylogeny in the public Nextstrain Community build" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="portfolio.css?v=20260827-nextstrain" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://syedadnanhaider.com/#person",
+            "name": "Syed Adnan Haider",
+            "url": "https://syedadnanhaider.com/",
+            "sameAs": [
+              "https://orcid.org/0009-0008-7426-6561",
+              "https://github.com/adnanhaider81",
+              "https://www.linkedin.com/in/sahaider/"
+            ]
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://syedadnanhaider.com/pakistan-sars-cov-2-nextstrain.html",
+            "name": "Maintaining Pakistan’s SARS-CoV-2 Nextstrain Community Build",
+            "description": "A case study of the reproducible workflow and publishing path behind a Pakistan-focused SARS-CoV-2 Nextstrain Community build.",
+            "datePublished": "2026-08-27",
+            "dateModified": "2026-08-27",
+            "author": { "@id": "https://syedadnanhaider.com/#person" },
+            "image": "https://syedadnanhaider.com/assets/pakistan-nextstrain-community-build.png",
+            "mainEntity": {
+              "@type": "SoftwareSourceCode",
+              "name": "Pakistan SARS-CoV-2 Nextstrain Build",
+              "codeRepository": "https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build",
+              "version": "0.1.1",
+              "datePublished": "2026-05-17",
+              "dateModified": "2026-06-01",
+              "author": { "@id": "https://syedadnanhaider.com/#person" },
+              "license": "https://opensource.org/license/mit",
+              "url": "https://nextstrain.org/community/NIH-BIGVI-PAKISTAN/ncov/Pakistan"
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body id="top">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Syed Adnan Haider home">
+        <span class="brand-mark">SAH</span>
+        <span class="brand-copy">
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen genomics · Public-health bioinformatics</small>
+        </span>
+      </a>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="index.html#agenda">Research</a>
+        <a href="index.html#publications">Publications</a>
+        <a class="nav-active" href="index.html#pipelines">Projects</a>
+        <a href="training.html">Training</a>
+        <a href="index.html#writing">Notes</a>
+        <a href="index.html#about">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="index.html#agenda">Research</a>
+          <a href="index.html#publications">Publications</a>
+          <a href="index.html#pipelines">Projects</a>
+          <a href="training.html">Training</a>
+          <a href="index.html#writing">Notes</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+
+    <main class="case-study-main">
+      <section class="case-hero" aria-labelledby="case-title">
+        <div class="case-hero-copy">
+          <a class="case-breadcrumb" href="index.html#pipelines">← Selected projects</a>
+          <p class="eyebrow"><span></span> Maintained public genomic-surveillance resource</p>
+          <h1 id="case-title">Maintaining Pakistan&rsquo;s SARS-CoV-2 <em>Nextstrain Community Build.</em></h1>
+          <p class="case-lead">
+            I maintain the reproducible analysis and publishing workflow behind the NIH Bioinformatics Group of
+            Virology&rsquo;s Pakistan-focused public build—connecting quality control, time-resolved phylogenetics,
+            responsible data handling, and interactive outbreak communication.
+          </p>
+          <div class="case-role">
+            <span>My role</span>
+            <strong>Maintainer &amp; workflow developer</strong>
+            <small>Workflow release v0.1.1 · archived on Zenodo</small>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://nextstrain.org/community/NIH-BIGVI-PAKISTAN/ncov/Pakistan">Explore live build ↗</a>
+            <a class="button button-secondary" href="https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build">View workflow ↗</a>
+          </div>
+        </div>
+
+        <figure class="case-hero-visual">
+          <a href="https://nextstrain.org/community/NIH-BIGVI-PAKISTAN/ncov/Pakistan" aria-label="Open the interactive Pakistan SARS-CoV-2 Nextstrain Community build">
+            <img src="assets/pakistan-nextstrain-community-build.png" width="1280" height="720" alt="Public Nextstrain phylogeny for SARS-CoV-2 in Pakistan, updated May 2026" />
+          </a>
+          <figcaption>
+            <span>Live public resource</span>
+            <strong>Genomic epidemiology of SARS-CoV-2 in Pakistan</strong>
+            <small>Community build · data updated 6 May 2026</small>
+          </figcaption>
+        </figure>
+      </section>
+
+      <dl class="case-proof-strip" aria-label="May 2026 build snapshot">
+        <div><dt>5,351</dt><dd>Pakistan genomes entering the May 2026 workflow</dd></div>
+        <div><dt>5,059</dt><dd>sequences in the public tree after filtering and context selection</dd></div>
+        <div><dt>4,897</dt><dd>Pakistan sequences retained in the final tree</dd></div>
+        <div><dt>162</dt><dd>international sequences retained for context</dd></div>
+      </dl>
+
+      <section class="case-section" id="contribution" aria-labelledby="contribution-title">
+        <div class="case-section-heading">
+          <p class="section-kicker">Contribution</p>
+          <h2 id="contribution-title">A maintained resource, not a one-off visualization.</h2>
+        </div>
+        <div class="case-section-copy">
+          <p class="case-section-lead">
+            The public build is presented institutionally by the NIH Bioinformatics Group of Virology, Pakistan.
+            My contribution is the reproducible workflow and the publishing path that carries a reviewed build from
+            controlled inputs to the institutional repository and then to the public Nextstrain Community view.
+          </p>
+          <div class="case-capability-grid">
+            <article><span>01</span><h3>Workflow stewardship</h3><p>Versioned configuration, scripts, environments, tests, and release documentation support repeatable builds.</p></article>
+            <article><span>02</span><h3>Analytical review</h3><p>Sequence quality, metadata consistency, filtering decisions, phylogeny, and time structure are reviewed as one chain of evidence.</p></article>
+            <article><span>03</span><h3>Public communication</h3><p>Auspice turns the reviewed output into an explorable view while the written record preserves scope and interpretation limits.</p></article>
+          </div>
+          <p class="community-note">
+            Nextstrain Community builds are independently maintained resources hosted through GitHub. The wording here
+            distinguishes this resource from datasets maintained directly by the Nextstrain team.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section" id="workflow" aria-labelledby="workflow-title">
+        <div class="case-section-heading">
+          <p class="section-kicker">Reproducible workflow</p>
+          <h2 id="workflow-title">From controlled inputs to a public phylogeny.</h2>
+        </div>
+        <div class="case-section-copy">
+          <ol class="case-workflow">
+            <li><span>01</span><div><h3>Prepare inputs</h3><p>Locally held GISAID sequence and metadata files are mapped into the documented Pakistan build profile.</p></div></li>
+            <li><span>02</span><div><h3>Review sequence quality</h3><p>Nextclade quality signals and workflow filters identify records that do not meet the build criteria.</p></div></li>
+            <li><span>03</span><div><h3>Select context</h3><p>Pakistan sequences are combined with a bounded international context set for more careful interpretation.</p></div></li>
+            <li><span>04</span><div><h3>Infer phylogeny</h3><p>The Nextstrain SARS-CoV-2 workflow uses IQ-TREE to estimate the tree from the retained alignment.</p></div></li>
+            <li><span>05</span><div><h3>Resolve time structure</h3><p>TreeTime places genomic relationships on a temporal scale and supports the dated public view.</p></div></li>
+            <li><span>06</span><div><h3>Publish with provenance</h3><p>Auspice JSON is released through the institutional repository, with the reusable workflow versioned and archived separately.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="case-section" id="governance" aria-labelledby="governance-title">
+        <div class="case-section-heading">
+          <p class="section-kicker">Data governance</p>
+          <h2 id="governance-title">Open methods, responsible sequence handling.</h2>
+        </div>
+        <div class="case-section-copy">
+          <div class="governance-card">
+            <div>
+              <span>Published openly</span>
+              <ul>
+                <li>Workflow configuration and scripts</li>
+                <li>Environment and container definitions</li>
+                <li>Release notes, documentation, and tests</li>
+                <li>Public Auspice visualization outputs</li>
+              </ul>
+            </div>
+            <div>
+              <span>Kept outside the code repository</span>
+              <ul>
+                <li>Raw GISAID sequence downloads</li>
+                <li>Restricted or non-public metadata</li>
+                <li>Credentials and local data paths</li>
+                <li>Any input that cannot be redistributed</li>
+              </ul>
+            </div>
+          </div>
+          <p>
+            This separation makes the analytical method inspectable without representing access-controlled sequence
+            data as unrestricted material. It also keeps the public repository usable as a reproducibility record.
+          </p>
+        </div>
+      </section>
+
+      <section class="case-section" id="records" aria-labelledby="records-title">
+        <div class="case-section-heading">
+          <p class="section-kicker">Public records</p>
+          <h2 id="records-title">Explore, inspect, and cite the work.</h2>
+        </div>
+        <div class="case-section-copy">
+          <div class="case-link-grid">
+            <a href="https://nextstrain.org/community/NIH-BIGVI-PAKISTAN/ncov/Pakistan"><span>Interactive resource</span><strong>Explore the live build</strong><small>Phylogeny, dates, geography, and filters ↗</small></a>
+            <a href="https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build"><span>Reproducible method</span><strong>Review the workflow</strong><small>Configuration, scripts, tests, and releases ↗</small></a>
+            <a href="https://github.com/NIH-BIGVI-PAKISTAN/ncov"><span>Institutional publishing record</span><strong>View the public build repository</strong><small>Auspice outputs served by Nextstrain Community ↗</small></a>
+            <a href="https://doi.org/10.5281/zenodo.20257882"><span>Archived release</span><strong>Cite version 0.1.1</strong><small>Permanent Zenodo record and DOI ↗</small></a>
+          </div>
+          <div class="case-note-link">
+            <div><span>Research note</span><strong>How a phylogenetic build becomes a useful communication product</strong></div>
+            <a href="posts/nextstrain-routine-outbreak-communication.html">Read the field note →</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-contact" aria-labelledby="case-contact-title">
+        <div>
+          <p class="section-kicker">Discuss the work</p>
+          <h2 id="case-contact-title">Pathogen genomics, reproducible workflows, and surveillance collaboration.</h2>
+        </div>
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:adnan.haider@nih.org.pk">adnan.haider@nih.org.pk ↗</a>
+          <a class="button button-secondary" href="https://www.linkedin.com/in/sahaider/">Connect on LinkedIn ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Syed Adnan Haider · Pathogen genomics</span>
+      <a href="#top">Back to top ↑</a>
+    </footer>
+  </body>
+</html>

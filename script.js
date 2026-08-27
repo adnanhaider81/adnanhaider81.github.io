@@ -1729,17 +1729,17 @@ const pipelines = [
     ]
   },
   {
-    group: "Other repositories",
-    title: "Pakistan SARS-CoV-2 Nextstrain Build",
+    group: "Maintained public resources",
+    title: "Pakistan SARS-CoV-2 Nextstrain Community Build",
     slug: "pakistan-sars-cov-2-nextstrain-build",
     repo: "https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build",
     updated: "2026-06-01",
     icon: "network",
-    tags: ["Nextstrain", "SARS-CoV-2", "Auspice", "Dashboard"],
+    tags: ["Nextstrain", "SARS-CoV-2", "Auspice", "Phylogenetics"],
     summary:
-      "Reproducible Nextstrain community-build style workflow for Pakistan SARS-CoV-2 genomic epidemiology with metadata-driven Auspice outputs.",
+      "Maintained reproducible workflow behind a public Pakistan-focused SARS-CoV-2 Nextstrain Community build, with quality control, time-resolved phylogenetics, and Auspice outputs.",
     purpose:
-      "Use this to demonstrate dashboard-oriented genomic surveillance, curated metadata handling, Nextstrain builds, and public communication outputs.",
+      "Maintain an inspectable analysis and publishing path from controlled sequence inputs to a public genomic-surveillance visualization.",
     prerequisites: ["Nextstrain CLI", "Curated metadata", "FASTA aligned with metadata strain names", "Auspice for local viewing"],
     commands: [
       "git clone https://github.com/adnanhaider81/pakistan-sars-cov-2-nextstrain-build.git",
@@ -1751,7 +1751,7 @@ const pipelines = [
     outputs: [
       "Auspice JSON files",
       "time-resolved phylogenetic visualizations",
-      "curated metadata and contextual sequence outputs"
+      "workflow reports and release documentation"
     ]
   }
 ];
@@ -1963,10 +1963,10 @@ const pipelineEnhancements = {
   },
   "pakistan-sars-cov-2-nextstrain-build": {
     question:
-      "How can a Pakistan-focused SARS-CoV-2 build turn curated sequences and metadata into a public Nextstrain/Auspice communication product?",
+      "How can a maintained, Pakistan-focused SARS-CoV-2 workflow turn controlled sequence inputs into a reproducible public Nextstrain/Auspice communication product?",
     methodNotes: [
-      "Repository demonstrates Nextstrain build structure, Auspice outputs, metadata-driven visualization, and pathogen dashboard logic.",
-      "The workflow frames phylogeny as a communication product supported by reproducible configuration and curated contextual data."
+      "The repository records Nextstrain build configuration, quality review, Auspice outputs, release documentation, and the institutional publishing path.",
+      "The workflow frames phylogeny as a communication product supported by reproducible configuration, bounded contextual sampling, and responsible data handling."
     ],
     qualityChecks: [
       "Run nextstrain check-setup before attempting builds.",
@@ -1975,7 +1975,7 @@ const pipelineEnhancements = {
     ],
     interpretationNotes: [
       "Dashboard outputs are only as strong as metadata quality and contextual sampling.",
-      "This repository is best framed as surveillance visualization experience rather than a fixed one-command analysis."
+      "The public resource is an independently maintained Nextstrain Community build, not a dataset maintained directly by the Nextstrain team."
     ]
   }
 };
