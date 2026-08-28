@@ -1094,6 +1094,89 @@ h1 em {
   margin-top: 1.5rem;
 }
 
+.ddns-pathway {
+  margin: clamp(1.5rem, 3vw, 2.6rem) 0 0;
+  padding: clamp(1.4rem, 3vw, 2.4rem);
+  border: 1px solid rgba(8, 125, 130, 0.22);
+  border-radius: 1.35rem;
+  background: linear-gradient(135deg, rgba(223, 243, 241, 0.72), rgba(255, 255, 255, 0.82));
+}
+
+.ddns-pathway-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1.1fr);
+  gap: clamp(1rem, 4vw, 4rem);
+  align-items: end;
+}
+
+.ddns-pathway-heading .section-kicker {
+  margin-bottom: 0.55rem;
+}
+
+.ddns-pathway-heading h3 {
+  max-width: 23ch;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(1.65rem, 2.5vw, 2.45rem);
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+}
+
+.ddns-pathway-heading > p {
+  max-width: 49rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.ddns-pathway-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  margin: 1.5rem 0 0;
+  padding: 1px 0;
+  list-style: none;
+  background: rgba(7, 25, 54, 0.13);
+}
+
+.ddns-pathway-steps li {
+  display: grid;
+  align-content: start;
+  gap: 0.3rem;
+  min-width: 0;
+  padding: 1rem;
+  background: #f6faf8;
+}
+
+.ddns-pathway-steps span {
+  color: var(--teal);
+  font-size: 0.61rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
+
+.ddns-pathway-steps strong {
+  font-family: var(--serif);
+  font-size: 1.02rem;
+  line-height: 1.2;
+}
+
+.ddns-pathway-steps small {
+  color: var(--muted);
+  font-size: 0.66rem;
+  line-height: 1.45;
+}
+
+.ddns-pathway-note {
+  margin: 0.85rem 0 0;
+  color: var(--muted);
+  font-size: 0.65rem;
+}
+
+.ddns-pathway-note strong {
+  color: var(--ink);
+}
+
 .public-resource-feature {
   display: grid;
   grid-template-columns: minmax(420px, 1.08fr) minmax(0, 0.92fr);
@@ -3381,6 +3464,14 @@ h1 em {
     grid-template-columns: 1fr;
   }
 
+  .ddns-pathway-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .ddns-pathway-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .case-hero {
     min-height: auto;
   }
@@ -3698,6 +3789,14 @@ h1 em {
 
   .public-resource-feature {
     padding: 2.4rem 0;
+  }
+
+  .ddns-pathway {
+    padding: 1.25rem 1rem;
+  }
+
+  .ddns-pathway-steps {
+    grid-template-columns: 1fr;
   }
 
   .resource-visual figcaption {
