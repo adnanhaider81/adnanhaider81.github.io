@@ -1434,19 +1434,22 @@ h1 em {
 
 .compact-projects {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .compact-projects > article {
   display: grid;
   gap: 0.75rem;
-  padding: 2.2rem 2.5rem 0 0;
+  padding: 2.2rem 2rem 0;
   border-right: 1px solid var(--line);
 }
 
-.compact-projects > article + article {
+.compact-projects > article:first-child {
+  padding-left: 0;
+}
+
+.compact-projects > article:last-child {
   padding-right: 0;
-  padding-left: 2.5rem;
   border-right: 0;
 }
 
@@ -3130,6 +3133,22 @@ h1 em {
   line-height: 1.45;
 }
 
+.credential-evidence {
+  justify-self: start;
+  margin-top: 0.65rem;
+  padding-bottom: 0.12rem;
+  border-bottom: 1px solid currentColor;
+  color: var(--teal);
+  font-size: 0.66rem;
+  font-weight: 850;
+  line-height: 1.2;
+}
+
+.credential-evidence:hover,
+.credential-evidence:focus-visible {
+  color: var(--coral);
+}
+
 .credential-list-short {
   grid-template-columns: repeat(3, 1fr);
 }
@@ -3462,6 +3481,18 @@ h1 em {
 
   .project-feature {
     grid-template-columns: 1fr;
+  }
+
+  .compact-projects {
+    grid-template-columns: 1fr;
+  }
+
+  .compact-projects > article,
+  .compact-projects > article:first-child,
+  .compact-projects > article:last-child {
+    padding: 1.5rem 0;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
   }
 
   .ddns-pathway-heading {
@@ -3919,6 +3950,13 @@ h1 em {
     padding: 1.5rem 2.5rem 1.5rem 0;
     border-right: 0;
     border-bottom: 1px solid var(--line);
+  }
+
+  .compact-projects > article,
+  .compact-projects > article + article,
+  .compact-projects > article:first-child,
+  .compact-projects > article:last-child {
+    padding: 1.5rem 0;
   }
 
   .output-list a + a:hover,
