@@ -143,27 +143,28 @@
 
       <section class="research-agenda" id="agenda" aria-labelledby="agenda-title">
         <div class="agenda-heading">
-          <p class="section-kicker">Current research &amp; future direction</p>
-          <h2 id="agenda-title">Three questions anchor the work.</h2>
+          <p class="section-kicker">Research questions &amp; future direction</p>
+          <h2 id="agenda-title">From pathogen detection to public-health action.</h2>
           <p>
-            My interests sit where laboratory practice, genomic inference, and deployable public-health systems meet.
+            I am interested in how integrated molecular and computational approaches can detect viral threats earlier,
+            explain how they spread and evolve, and turn genomic evidence into practical surveillance systems.
           </p>
         </div>
         <div class="agenda-grid">
           <article>
             <span>01</span>
-            <h3>How can poliovirus surveillance move closer to direct detection?</h3>
-            <p>Culture-free nanopore sequencing, whole-capsid analysis, and evidence-aware reporting for environmental surveillance.</p>
+            <h3>How can genomic surveillance detect viral threats earlier?</h3>
+            <p>Integrating molecular assays, metagenomic discovery, targeted sequencing, and clinical and environmental sampling to identify credible signals before outbreaks become obvious.</p>
           </article>
           <article>
             <span>02</span>
-            <h3>When does a viral signal become biologically credible?</h3>
-            <p>Quality-controlled interpretation of minor variants, mixed populations, antigenic sites, and transmission context.</p>
+            <h3>What can viral genomes reveal about transmission and evolution?</h3>
+            <p>Phylogenetics, phylodynamics, variant and antigenic-site interpretation, and epidemiological context to distinguish introductions, sustained transmission, and meaningful change.</p>
           </article>
           <article>
             <span>03</span>
-            <h3>What makes genomic workflows usable beyond one analysis?</h3>
-            <p>Reproducible pipelines, public-safe data, traceable reports, SOPs, and training designed for resource-limited settings.</p>
+            <h3>How can advanced genomic methods become routine public-health practice?</h3>
+            <p>Reproducible workflows, public-safe data, traceable reporting, SOPs, and training that make sequencing useful and sustainable in resource-limited settings.</p>
           </article>
         </div>
       </section>
@@ -193,7 +194,7 @@
           <ol class="career-timeline">
             <li>
               <time>2024–present</time>
-              <div><strong>Research Scientist</strong><span>Department of Virology · National Institute of Health · Islamabad, Pakistan</span><p>Work spans molecular biology, clinical and environmental sample processing, Illumina/ONT sequencing, reproducible bioinformatics, phylogenetic interpretation, and public-health reporting for emerging, re-emerging, and priority viral pathogens—including poliovirus.</p></div>
+              <div><strong>Research Scientist</strong><span>Department of Virology · National Institute of Health · Islamabad, Pakistan</span><p>Work spans molecular biology, clinical and environmental sample processing, Illumina/ONT sequencing, reproducible bioinformatics, phylogenetic and phylodynamic interpretation, and public-health reporting for emerging, re-emerging, and priority viral pathogens—including poliovirus.</p></div>
             </li>
             <li>
               <time>2021–2024</time>
@@ -322,53 +323,33 @@
 
         <article class="project-feature">
           <div class="project-copy">
-            <div class="meta-row"><span>Featured pipeline</span><time datetime="2026-06-01">Updated June 2026</time></div>
-            <h3>DDNS MinION VP1 Pipeline</h3>
+            <div class="meta-row"><span>Featured pipeline</span><time datetime="2026">Version 0.1.1 · 2026</time></div>
+            <h3>Pathogen Discovery &amp; Confirmatory Mapping Pipeline</h3>
             <p>
-              A public ONT MinION workflow for reviewing barcode folders, benchmarking VP1 reference hits, assessing
-              coverage evidence, attempting consensus, and producing an auditable HTML report.
+              A conservative, panel-driven metagenomic workflow for host subtraction, candidate screening,
+              competitive confirmatory mapping, coverage assessment, and evidence-based follow-up.
             </p>
-            <div class="tag-row"><span>Polio</span><span>VP1</span><span>MinION</span><span>ONT</span></div>
+            <div class="tag-row"><span>Metagenomics</span><span>Host subtraction</span><span>Competitive mapping</span></div>
             <div class="project-evidence">
-              <span>Release v1.0.3</span>
-              <a href="https://doi.org/10.5281/zenodo.20257879">Zenodo DOI ↗</a>
-              <span>Public-safe workflow</span>
+              <span>Release v0.1.1</span>
+              <a href="https://doi.org/10.5281/zenodo.20257429">Zenodo DOI ↗</a>
+              <span>Public, reproducible workflow</span>
             </div>
             <div class="text-links">
-              <a href="https://github.com/adnanhaider81/ddns-minion-vp1-pipeline">View repository ↗</a>
-              <a href="https://doi.org/10.5281/zenodo.20257879">Cite this release ↗</a>
+              <a href="https://github.com/adnanhaider81/pathogen-discovery-pipeline">View repository ↗</a>
+              <a href="https://doi.org/10.5281/zenodo.20257881">Cite this release ↗</a>
             </div>
           </div>
-          <div class="pipeline-console" aria-label="Illustration of the DDNS analysis workflow">
-            <div class="console-top"><span></span><span></span><span></span><b>sample_to_report.run</b></div>
+          <div class="pipeline-console" aria-label="Illustration of the pathogen-discovery and confirmatory-mapping workflow">
+            <div class="console-top"><span></span><span></span><span></span><b>signal_to_evidence.run</b></div>
             <ol>
-              <li><span>01</span><div><strong>Barcode review</strong><small>FASTQ folders + sample map</small></div><b>READY</b></li>
-              <li><span>02</span><div><strong>Reference screen</strong><small>VP1 mapping + benchmarking</small></div><b>SCREEN</b></li>
-              <li><span>03</span><div><strong>Coverage evidence</strong><small>Depth, breadth + controls</small></div><b>REVIEW</b></li>
-              <li><span>04</span><div><strong>Consensus &amp; report</strong><small>FASTA + tables + HTML</small></div><b>REPORT</b></li>
+              <li><span>01</span><div><strong>Host subtraction</strong><small>Retain non-host read pairs</small></div><b>FILTER</b></li>
+              <li><span>02</span><div><strong>Candidate panel</strong><small>Curated references + close relatives</small></div><b>SCREEN</b></li>
+              <li><span>03</span><div><strong>Competitive mapping</strong><small>Preferential alignment evidence</small></div><b>MAP</b></li>
+              <li><span>04</span><div><strong>Evidence review</strong><small>Breadth, depth + confirmatory follow-up</small></div><b>REVIEW</b></li>
             </ol>
           </div>
         </article>
-
-        <section class="ddns-pathway" aria-labelledby="ddns-pathway-title">
-          <div class="ddns-pathway-heading">
-            <div>
-              <p class="section-kicker">Integrated case · poliovirus DDNS</p>
-              <h3 id="ddns-pathway-title">One workflow across bench, sequence, code, and reporting.</h3>
-            </div>
-            <p>
-              Within the NIH–Imperial DDNS collaboration, I work across laboratory processing, Oxford Nanopore
-              sequencing, analysis review, and evidence-based reporting for stool and wastewater surveillance samples.
-            </p>
-          </div>
-          <ol class="ddns-pathway-steps">
-            <li><span>01</span><strong>Prepare &amp; amplify</strong><small>Sample processing, extraction, RT-PCR, nested amplification, and controls</small></li>
-            <li><span>02</span><strong>Build &amp; sequence</strong><small>ONT library preparation, barcode and sample-map review, and MinION run monitoring</small></li>
-            <li><span>03</span><strong>Review evidence</strong><small>Read triage, VP1 reference screening, coverage, consensus, and run QC</small></li>
-            <li><span>04</span><strong>Interpret &amp; report</strong><small>VP1 and capsid interpretation, auditable HTML outputs, SOPs, and implementation notes</small></li>
-          </ol>
-          <p class="ddns-pathway-note"><strong>Role:</strong> Collaborative method development with Imperial College London; the public repository documents the analysis and reporting component.</p>
-        </section>
 
         <article class="public-resource-feature">
           <figure class="resource-visual">
@@ -400,6 +381,56 @@
           </div>
         </article>
 
+        <article class="project-feature project-feature--later">
+          <div class="project-copy">
+            <div class="meta-row"><span>Specialised workflow</span><time datetime="2026-06-01">Updated June 2026</time></div>
+            <h3>Direct-Detection Nanopore Sequencing for Poliovirus</h3>
+            <p>
+              An auditable VP1 analysis and reporting pipeline for Oxford Nanopore MinION data, spanning barcode-folder
+              review, reference screening, coverage assessment, consensus attempts, and structured HTML reporting.
+            </p>
+            <div class="tag-row"><span>Polio</span><span>VP1</span><span>MinION</span><span>ONT</span></div>
+            <div class="project-evidence">
+              <span>Release v1.0.3</span>
+              <a href="https://doi.org/10.5281/zenodo.20257879">Zenodo DOI ↗</a>
+              <span>Public-safe workflow</span>
+            </div>
+            <div class="text-links">
+              <a href="https://github.com/adnanhaider81/ddns-minion-vp1-pipeline">View repository ↗</a>
+              <a href="https://doi.org/10.5281/zenodo.20257879">Cite this release ↗</a>
+            </div>
+          </div>
+          <div class="pipeline-console" aria-label="Illustration of the DDNS analysis workflow">
+            <div class="console-top"><span></span><span></span><span></span><b>sample_to_report.run</b></div>
+            <ol>
+              <li><span>01</span><div><strong>Barcode review</strong><small>FASTQ folders + sample map</small></div><b>READY</b></li>
+              <li><span>02</span><div><strong>Reference screen</strong><small>VP1 mapping + benchmarking</small></div><b>SCREEN</b></li>
+              <li><span>03</span><div><strong>Coverage evidence</strong><small>Depth, breadth + controls</small></div><b>REVIEW</b></li>
+              <li><span>04</span><div><strong>Consensus &amp; report</strong><small>FASTA + tables + HTML</small></div><b>REPORT</b></li>
+            </ol>
+          </div>
+        </article>
+
+        <section class="ddns-pathway" aria-labelledby="ddns-pathway-title">
+          <div class="ddns-pathway-heading">
+            <div>
+              <p class="section-kicker">Integrated case · direct-detection nanopore sequencing</p>
+              <h3 id="ddns-pathway-title">One workflow across bench, sequence, code, and reporting.</h3>
+            </div>
+            <p>
+              Within the NIH–Imperial direct-detection nanopore sequencing (DDNS) collaboration, I work across laboratory processing, Oxford Nanopore
+              sequencing, analysis review, and evidence-based reporting for stool and wastewater surveillance samples.
+            </p>
+          </div>
+          <ol class="ddns-pathway-steps">
+            <li><span>01</span><strong>Prepare &amp; amplify</strong><small>Sample processing, extraction, RT-PCR, nested amplification, and controls</small></li>
+            <li><span>02</span><strong>Build &amp; sequence</strong><small>ONT library preparation, barcode and sample-map review, and MinION run monitoring</small></li>
+            <li><span>03</span><strong>Review evidence</strong><small>Read triage, VP1 reference screening, coverage, consensus, and run QC</small></li>
+            <li><span>04</span><strong>Interpret &amp; report</strong><small>VP1 and capsid interpretation, auditable HTML outputs, SOPs, and implementation notes</small></li>
+          </ol>
+          <p class="ddns-pathway-note"><strong>Role:</strong> Collaborative method development with Imperial College London; the public repository documents the analysis and reporting component.</p>
+        </section>
+
         <div class="compact-projects">
           <article>
             <span>03 · Disease elimination</span>
@@ -410,15 +441,15 @@
           </article>
           <article>
             <span>04 · Poliovirus</span>
-            <h3>Polio Whole-Capsid NGS Analysis</h3>
-            <p>Consensus, antigenic-site review, coverage, and phylogeny for post-culture Illumina data.</p>
+            <h3>Whole-Capsid Genomic Analysis for Poliovirus Surveillance</h3>
+            <p>A reproducible Illumina and Snakemake workflow for consensus generation, coverage assessment, antigenic-site interpretation, and phylogenetic analysis of post-culture data.</p>
             <div class="tag-row"><i>Snakemake</i><i>Illumina</i><i>Phylogeny</i></div>
             <div class="text-links"><a href="https://github.com/adnanhaider81/polio-capsid-ngs-analysis">GitHub ↗</a><a href="https://doi.org/10.5281/zenodo.20257888">Zenodo DOI ↗</a></div>
           </article>
           <article>
             <span>05 · Phylodynamics</span>
-            <h3>WPV1 Phylodynamics and Phylogeography</h3>
-            <p>A reproducible R template for exploratory movement analysis using public-safe synthetic data.</p>
+            <h3>Phylodynamics and Phylogeography for Viral Surveillance</h3>
+            <p>A reproducible R workflow demonstrated with wild poliovirus type 1 using public-safe synthetic data.</p>
             <div class="tag-row"><i>WPV1</i><i>R</i><i>GIS</i></div>
             <div class="text-links"><a href="https://github.com/adnanhaider81/polio-wpv1-phylodynamics">GitHub ↗</a><a href="https://doi.org/10.5281/zenodo.20257880">Zenodo DOI ↗</a></div>
           </article>
