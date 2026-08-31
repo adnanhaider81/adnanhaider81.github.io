@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Syed Adnan Haider" />
+    <meta name="description" content="A research agenda connecting earlier viral-threat detection, rigorous transmission inference, and sustainable implementation of genomic surveillance." />
+    <meta property="og:title" content="Three research questions at the bench–code interface" />
+    <meta property="og:description" content="A research agenda connecting earlier viral-threat detection, rigorous transmission inference, and sustainable implementation of genomic surveillance." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://syedadnanhaider.com/posts/three-research-questions-bench-code-interface.html" />
+    <meta property="og:site_name" content="Syed Adnan Haider" />
+    <meta property="article:published_time" content="2026-08-31" />
+    <meta property="article:author" content="https://syedadnanhaider.com/" />
+    <meta property="article:section" content="Research Agenda" />
+    <meta property="article:tag" content="Earlier Detection" />
+    <meta property="article:tag" content="Phylodynamics" />
+    <meta property="article:tag" content="Implementation Science" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Three research questions at the bench–code interface" />
+    <meta name="twitter:description" content="A research agenda connecting earlier viral-threat detection, rigorous transmission inference, and sustainable implementation of genomic surveillance." />
+    <link rel="canonical" href="https://syedadnanhaider.com/posts/three-research-questions-bench-code-interface.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="../styles.css?v=20260828-visual" />
+    <title>Three research questions at the bench–code interface | Syed Adnan Haider</title>
+    <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"BlogPosting","headline":"Three research questions at the bench–code interface","description":"A research agenda connecting earlier viral-threat detection, rigorous transmission inference, and sustainable implementation of genomic surveillance.","datePublished":"2026-08-31","dateModified":"2026-08-31","mainEntityOfPage":{"@type":"WebPage","@id":"https://syedadnanhaider.com/posts/three-research-questions-bench-code-interface.html"},"author":{"@type":"Person","name":"Syed Adnan Haider","url":"https://syedadnanhaider.com/","sameAs":["https://orcid.org/0009-0008-7426-6561","https://www.linkedin.com/in/sahaider/","https://github.com/adnanhaider81"]}}
+    </script>
+  </head>
+  <body>
+    <header class="site-header" id="top">
+      <a class="brand" href="../index.html" aria-label="Home">
+        <span class="brand-mark">SAH</span>
+        <span>
+          <strong>Syed Adnan Haider</strong>
+          <small>Pathogen genomics · Public-health bioinformatics</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="headerPanel">
+        <i data-lucide="menu"></i>
+        <span>Menu</span>
+      </button>
+
+      <div class="header-panel" id="headerPanel">
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="../index.html#pipelines">Projects</a>
+          <a href="../index.html#publications">Publications</a>
+          <a href="../training.html">Training</a>
+          <a href="../index.html#writing">Writing</a>
+          <a href="../index.html#about">About</a>
+          <a href="../index.html#contact">Contact</a>
+        </nav>
+
+        <details class="profile-menu">
+          <summary>
+            <i data-lucide="user-round-check"></i>
+            Profiles
+            <i class="profile-menu-chevron" data-lucide="chevron-down"></i>
+          </summary>
+          <div class="profile-menu-list" aria-label="Profile links">
+            <a href="https://github.com/adnanhaider81"><i data-lucide="code-2"></i>GitHub</a>
+            <a href="https://www.linkedin.com/in/sahaider/"><i data-lucide="briefcase-business"></i>LinkedIn</a>
+            <a href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en"><i data-lucide="graduation-cap"></i>Google Scholar</a>
+            <a href="https://orcid.org/0009-0008-7426-6561"><i data-lucide="badge-check"></i>ORCID</a>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main class="static-main">
+      <article class="static-article">
+        <a class="static-back" href="index.html">Back to Research Notes and Tutorials</a>
+        <header>
+          <div class="static-meta">
+            <span>Research Agenda</span>
+            <time datetime="2026-08-31">August 31, 2026</time>
+          </div>
+          <h1>Three research questions at the bench–code interface</h1>
+          <p>A research agenda for earlier detection, transmission inference, and deployable genomic surveillance.</p>
+          <p class="article-byline">By <a rel="author" href="../index.html#about">Syed Adnan Haider</a></p>
+          <div class="static-meta">
+            <span>Earlier Detection</span>
+            <span>Phylodynamics</span>
+            <span>Implementation Science</span>
+          </div>
+        </header>
+
+        <aside class="practice-callout" aria-labelledby="agenda-summary-title">
+          <span class="practice-callout-label">Research direction</span>
+          <h3 id="agenda-summary-title">One connected problem, from specimen to public-health decision</h3>
+          <p>My research experience has moved across clinical and environmental specimens, targeted and metagenomic sequencing, Illumina and Oxford Nanopore platforms, reproducible bioinformatics, phylogenetics, phylodynamics, and public-health reporting. The pathogens have varied, but three questions have remained connected: how to detect credible viral threats earlier, explain their transmission and evolution, and make advanced genomic methods sustainable in routine practice.</p>
+          <p>These themes define a core direction while remaining adaptable to adjacent questions in pathogen genomics, bioinformatics, molecular surveillance, and public-health implementation.</p>
+        </aside>
+
+        <section>
+          <h2>Why these questions belong together</h2>
+          <p>Earlier detection is not only a laboratory problem. A sensitive assay or metagenomic signal still requires appropriate sampling, quality controls, reference databases, confirmation rules, and cautious reporting.</p>
+          <p>Transmission inference is not only a phylogenetic problem. A tree is shaped by which specimens were collected, which genomes passed quality thresholds, which contextual sequences were included, and how dates and locations were recorded.</p>
+          <p>Implementation is not only a software problem. A reproducible workflow must also fit the laboratory, computing environment, staff capacity, data-governance requirements, and decisions that the surveillance programme needs to make.</p>
+          <p>I am interested in research that studies these connections rather than treating the bench, analysis, and public-health use as separate stages.</p>
+        </section>
+
+        <section>
+          <h2>Question 1: How can genomic surveillance detect viral threats earlier?</h2>
+          <p>The central challenge is to recognise a credible signal before the outbreak is obvious, without lowering the evidential standard so far that noise becomes a finding.</p>
+          <p>My work on the 2023 CV-A24v conjunctivitis outbreak showed why this is a complete-chain problem. When a suitable targeted test was not readily available, specimen processing, metagenomic sequencing, reference-database design, confirmatory analysis, and phylogenetic interpretation all contributed to the final conclusion.</p>
+          <p>The same principle applies beyond one virus. Clinical specimens, environmental samples, and wastewater each contain different mixtures of target material, host background, inhibitors, and biological complexity. Targeted sequencing may provide depth and efficiency when the agent is known. Metagenomic approaches may broaden discovery when it is not. Direct sequencing may shorten parts of the workflow but can change the balance between sensitivity, speed, and interpretability.</p>
+          <h3>Testable directions</h3>
+          <ol>
+            <li>Compare metagenomic, targeted-amplicon, and direct-sequencing strategies under defined input and background conditions.</li>
+            <li>Develop a candidate-to-confirmation evidence framework combining controls, breadth, depth, mapping specificity, close-relative competition, replication, and orthogonal confirmation.</li>
+            <li>Quantify how specimen type, viral input, storage history, and library strategy affect the practical detection boundary.</li>
+            <li>Use public-safe synthetic datasets and benchmark mixtures to make performance and failure modes comparable across laboratories.</li>
+            <li>Design reporting categories that distinguish a candidate signal, supported detection, confirmed finding, and unresolved result.</li>
+          </ol>
+          <p>The aim would not be one universal threshold. It would be a transparent framework showing what a workflow can support under defined conditions.</p>
+        </section>
+
+        <section>
+          <h2>Question 2: What can viral genomes reveal about transmission and evolution?</h2>
+          <p>Genomes can help identify introductions, lineage replacement, local persistence, reassortment, and changing viral diversity. They cannot, on their own, prove a direct transmission event or fully represent an outbreak that was sampled unevenly.</p>
+          <p>My experience with SARS-CoV-2, dengue, CCHFV, RSV, influenza, and poliovirus has reinforced the need to connect sequence quality with evolutionary interpretation. Low coverage can weaken a lineage assignment. Reference choice can change apparent relatedness. A segmented virus requires separate histories for each segment. A public phylogeny needs sampling and metadata context beside it.</p>
+          <p>This is why I am interested not only in generating trees, but in measuring how robust an interpretation remains when sampling, metadata, contextual sequences, or quality thresholds change.</p>
+          <h3>Testable directions</h3>
+          <ol>
+            <li>Evaluate how geographic and temporal sampling imbalance affects inference about introductions and sustained transmission.</li>
+            <li>Compare phylogenetic and phylodynamic conclusions across alternative context-selection and quality-control strategies.</li>
+            <li>Integrate epidemiological metadata with genomic evidence while keeping uncertainty and missingness visible.</li>
+            <li>Develop segment-aware approaches for identifying reassortment and comparing evolutionary histories across viral genome segments.</li>
+            <li>Examine how longitudinal surveillance across multiple seasons changes conclusions about viral population structure and persistence.</li>
+          </ol>
+          <p>The intended output would be more than a tree. It would be an interpretation package that states the question, sampling frame, quality boundaries, sensitivity analyses, and conclusions that the available evidence can genuinely support.</p>
+        </section>
+
+        <section>
+          <h2>Question 3: How can advanced genomic methods become routine public-health practice?</h2>
+          <p>A method has limited public-health value if it works only for the person who developed it, on one computer, for one paper.</p>
+          <p>Routine implementation requires controlled inputs, versioned configurations, acceptance criteria, logs, interpretable outputs, escalation rules, and training. It also requires a realistic understanding of compute, reagent, staffing, internet, and data-sharing constraints.</p>
+          <p>My public workflows, SOP and runbook work, Pakistan-focused SARS-CoV-2 Nextstrain Community Build, and practical training experience have made this implementation question increasingly important to me.</p>
+          <h3>Testable directions</h3>
+          <ol>
+            <li>Define a minimum reproducibility standard for public-health genomics workflows using public-safe test data, expected outputs, and automated checks.</li>
+            <li>Measure whether structured runbooks and decision categories improve agreement between analysts reviewing the same result.</li>
+            <li>Compare implementation models for laboratories with different compute, staffing, and data-governance constraints.</li>
+            <li>Develop traceable sample-to-report records that preserve both automated results and human review decisions.</li>
+            <li>Evaluate training approaches using practical outcomes such as successful independent runs, error recognition, documentation quality, and reproducibility.</li>
+          </ol>
+          <p>The goal would be a surveillance method that can be inspected, taught, maintained, and improved locally—not a black box that creates long-term dependence.</p>
+        </section>
+
+        <section>
+          <h2>A possible doctoral programme</h2>
+          <p>These questions could form one connected programme rather than three unrelated projects.</p>
+          <h3>Phase 1 — Establish the evidence framework</h3>
+          <p>Build public-safe benchmark datasets and define laboratory, sequencing, and analytical quality dimensions. Compare candidate-to-confirmation rules and identify the failure modes most likely to produce false confidence.</p>
+          <h3>Phase 2 — Test inference under realistic surveillance conditions</h3>
+          <p>Apply the framework to selected clinical and environmental viral-genomics use cases. Evaluate how input quality, sampling design, reference choice, and context selection change detection and evolutionary interpretation.</p>
+          <h3>Phase 3 — Translate the method into routine practice</h3>
+          <p>Package the strongest approach as a versioned workflow with runbooks, traceable outputs, training material, and an implementation evaluation across users or laboratory settings.</p>
+          <p>Potential outputs would include a benchmark dataset, a methods paper, a pathogen-specific application study, a reproducible software release, and an implementation framework.</p>
+        </section>
+
+        <section>
+          <h2>What I would bring to this work</h2>
+          <ul>
+            <li>More than ten years across clinical and public-health genomics roles</li>
+            <li>Experience with molecular assays, library preparation, Illumina, Ion Torrent, and Oxford Nanopore sequencing</li>
+            <li>Bioinformatics experience spanning quality control, mapping, assembly, consensus and variant analysis, metagenomics, phylogenetics, phylodynamics, and public-database submission</li>
+            <li>First-author outbreak-genomics research, with additional contributions across multi-pathogen surveillance studies</li>
+            <li>Public, versioned workflows and a maintained Pakistan-focused Nextstrain Community Build</li>
+            <li>Experience writing SOPs, runbooks, review criteria, technical reports, and training material</li>
+            <li>Practical training and scientific collaboration across local and international settings</li>
+          </ul>
+          <p>I would be particularly interested in doctoral environments that combine emerging-virus research, genomic epidemiology, metagenomics, methods validation, and implementation in under-sampled or resource-constrained settings.</p>
+        </section>
+
+        <section>
+          <h2>Closing perspective</h2>
+          <p>The research direction I want to pursue is not limited to one virus or platform. It is centred on a recurring public-health problem: how to move from a difficult specimen and an uncertain signal to a genomic conclusion that is scientifically defensible, operationally useful, and reproducible by others.</p>
+          <p>That requires the bench, the code, the epidemiological context, and the implementation setting to remain part of the same research question.</p>
+          <p>If this agenda overlaps with your doctoral programme, laboratory, or research team, I would welcome a conversation about where my experience could contribute and develop further.</p>
+          <p><a href="../index.html#contact">Contact me about research and doctoral opportunities →</a></p>
+        </section>
+
+        <footer class="article-footer">
+          <div class="article-author">
+            <img src="../assets/syed-adnan-haider-portrait.jpg" alt="Syed Adnan Haider" />
+            <div class="article-author-copy">
+              <span>About the author</span>
+              <strong>Syed Adnan Haider</strong>
+              <p>Research scientist working across pathogen genomics, viral surveillance, reproducible bioinformatics, and public-health implementation.</p>
+              <div class="article-author-links"><a href="https://orcid.org/0009-0008-7426-6561">ORCID ↗</a><a href="https://www.linkedin.com/in/sahaider/">LinkedIn ↗</a><a href="https://github.com/adnanhaider81">GitHub ↗</a></div>
+            </div>
+          </div>
+          <nav class="article-related" aria-label="Continue reading">
+            <a href="from-outbreak-signal-to-whole-genome-cva24v.html"><span>Case study</span><strong>From an outbreak signal to a whole genome</strong></a>
+            <a href="index.html"><span>Research notes</span><strong>Browse all notes</strong></a>
+          </nav>
+        </footer>
+      </article>
+    </main>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="../navigation.js"></script>
+  </body>
+</html>
