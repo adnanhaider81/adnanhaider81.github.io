@@ -26,27 +26,49 @@
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Syed Adnan Haider",
-        "url": "https://syedadnanhaider.com/",
-        "image": "https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg",
-        "jobTitle": "Research Scientist",
-        "worksFor": {
-          "@type": "Organization",
-          "name": "Department of Virology, National Institute of Health",
-          "address": {
-            "@type": "PostalAddress",
-            "addressLocality": "Islamabad",
-            "addressCountry": "Pakistan"
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://syedadnanhaider.com/#person",
+            "name": "Syed Adnan Haider",
+            "url": "https://syedadnanhaider.com/about.html",
+            "image": "https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg",
+            "jobTitle": "Research Scientist",
+            "worksFor": {
+              "@type": "Organization",
+              "name": "National Institute of Health, Islamabad",
+              "department": {
+                "@type": "Organization",
+                "name": "Department of Virology"
+              }
+            },
+            "knowsAbout": [
+              "Genomics",
+              "Bioinformatics",
+              "Genomic epidemiology",
+              "Public-health surveillance",
+              "Reproducible research",
+              "Scientific training"
+            ],
+            "sameAs": [
+              "https://orcid.org/0009-0008-7426-6561",
+              "https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en",
+              "https://github.com/adnanhaider81",
+              "https://www.linkedin.com/in/sahaider/",
+              "https://www.researchgate.net/profile/Syed-Haider",
+              "https://prereview.org/profiles/0009-0008-7426-6561"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://syedadnanhaider.com/#website",
+            "url": "https://syedadnanhaider.com/",
+            "name": "Syed Adnan Haider",
+            "inLanguage": "en",
+            "publisher": {
+              "@id": "https://syedadnanhaider.com/#person"
+            }
           }
-        },
-        "knowsAbout": ["Molecular biology", "Next-generation sequencing", "Pathogen genomics", "Emerging viral pathogens", "Viral genomic surveillance", "Bioinformatics", "Phylogenetics", "Nextstrain", "Poliovirus environmental surveillance"],
-        "sameAs": [
-          "https://scholar.google.com/citations?user=EGyDc4kAAAAJ&hl=en",
-          "https://orcid.org/0009-0008-7426-6561",
-          "https://github.com/adnanhaider81",
-          "https://www.linkedin.com/in/sahaider/",
-          "https://prereview.org/profiles/0009-0008-7426-6561"
         ]
       }
     </script>
@@ -65,12 +87,12 @@
       </div>
 
       <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="#agenda">Research</a>
-        <a href="#publications">Publications</a>
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
         <a href="#pipelines">Projects</a>
         <a href="training.html">Training</a>
-        <a href="#writing">Notes</a>
-        <a href="#about">About</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
       </nav>
 
       <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
@@ -78,12 +100,12 @@
       <details class="mobile-menu">
         <summary>Menu</summary>
         <nav aria-label="Mobile navigation">
-          <a href="#agenda">Research</a>
-          <a href="#publications">Publications</a>
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
           <a href="#pipelines">Projects</a>
           <a href="training.html">Training</a>
-          <a href="#writing">Notes</a>
-          <a href="#about">About</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
           <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
         </nav>
       </details>
@@ -100,8 +122,8 @@
             across emerging, re-emerging, and other priority viral pathogens—including poliovirus—to produce evidence that public-health teams can use.
           </p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#agenda">Explore my research <span aria-hidden="true">↓</span></a>
-            <a class="button button-secondary" href="#publications">View publications <span aria-hidden="true">↓</span></a>
+            <a class="button button-primary" href="/research.html">Explore my research <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="/publications.html">View publications <span aria-hidden="true">→</span></a>
           </div>
           <div class="hero-profile-links" aria-label="Academic profile links">
             <a href="https://scholar.google.com/citations?user=EGyDc4kAAAAJ&amp;hl=en">Google Scholar ↗</a>
@@ -128,7 +150,6 @@
             <img src="assets/syed-adnan-haider-portrait.jpg" width="627" height="627" alt="Portrait of Syed Adnan Haider" />
             <figcaption>
               <span>Research scientist</span>
-              <strong>Bench · Code · Evidence</strong>
             </figcaption>
           </figure>
           <figure class="work-card">
@@ -153,7 +174,7 @@
             <br /><a class="inline-action" href="posts/three-research-questions-bench-code-interface.html">Read the full research agenda ↗</a>
           </p>
         </div>
-        <div class="agenda-grid">
+        <div class="agenda-grid agenda-grid-four">
           <article>
             <span>01</span>
             <h3>How can genomic surveillance detect viral threats earlier?</h3>
@@ -168,6 +189,11 @@
             <span>03</span>
             <h3>How can advanced genomic methods become routine public-health practice?</h3>
             <p>Reproducible workflows, public-safe data, traceable reporting, SOPs, and training that make sequencing useful and sustainable in resource-limited settings.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>How do pathogen evolution, immunity and ecology shape infection patterns?</h3>
+            <p>Combining genomic and epidemiological evidence with statistical modelling to understand why infection patterns change across populations and over time.</p>
           </article>
         </div>
       </section>
@@ -253,7 +279,7 @@
             <p class="section-kicker">Selected publications</p>
             <h2 id="publications-title">Contribution, method, and evidence.</h2>
           </div>
-          <p>Author position, study question, method, and primary evidence help reviewers understand the contribution—not just count papers.</p>
+          <p>Author position, study question, method, and primary evidence help reviewers understand the contribution—not just count papers. <a class="inline-action" href="/publications.html">Explore selected publications and findings →</a></p>
         </div>
 
         <article class="publication-feature">
@@ -518,7 +544,7 @@
             <p class="section-kicker">Research notes</p>
             <h2 id="writing-title">Practical reasoning behind the workflow.</h2>
           </div>
-          <a class="inline-action" href="posts/index.html">Browse all notes →</a>
+          <a class="inline-action" href="/posts/">Browse all notes →</a>
         </div>
 
         <div class="writing-layout">
@@ -535,7 +561,7 @@
           <div class="note-list">
             <a href="posts/three-research-questions-bench-code-interface.html">
               <span>Research Agenda · 31 August 2026</span>
-              <strong>Three research questions at the bench–code interface</strong>
+              <strong>Four research questions at the bench–code interface</strong>
               <b aria-hidden="true">↗</b>
             </a>
             <a href="posts/minor-variants-mixed-viral-populations.html">

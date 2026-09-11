@@ -544,7 +544,7 @@ h1 em {
   line-height: 0.98;
 }
 
-.agenda-heading > p:last-child {
+.agenda-heading > p:not(.section-kicker) {
   max-width: 29rem;
   margin: 1.5rem 0 0;
   color: var(--muted);
@@ -557,6 +557,10 @@ h1 em {
   border-bottom: 1px solid var(--line);
 }
 
+.agenda-grid-four {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .agenda-grid article {
   padding: 1.6rem;
   border-right: 1px solid var(--line);
@@ -564,6 +568,14 @@ h1 em {
 
 .agenda-grid article:last-child {
   border-right: 0;
+}
+
+.agenda-grid-four article:nth-child(even) {
+  border-right: 0;
+}
+
+.agenda-grid-four article:nth-child(-n + 2) {
+  border-bottom: 1px solid var(--line);
 }
 
 .agenda-grid span {
@@ -586,6 +598,11 @@ h1 em {
   color: var(--muted);
   font-size: 0.76rem;
   line-height: 1.55;
+}
+
+.agenda-grid-four p {
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .credibility {
