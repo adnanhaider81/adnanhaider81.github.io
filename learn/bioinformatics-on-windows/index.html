@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Bioinformatics on a Windows PC: From FASTQ to Phylogeny | Syed Adnan Haider</title>
+  <meta name="description" content="A practical beginner bioinformatics series by Syed Adnan Haider. Start with WSL2, Ubuntu, and the command line on your Windows PC." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Bioinformatics on a Windows PC: From FASTQ to Phylogeny" />
+  <meta property="og:description" content="A practical beginner bioinformatics series by Syed Adnan Haider. Start with WSL2, Ubuntu, and the command line on your Windows PC." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260921" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "CollectionPage", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/", "name": "Bioinformatics on a Windows PC: From FASTQ to Phylogeny", "description": "A practical beginner bioinformatics series by Syed Adnan Haider. Start with WSL2, Ubuntu, and the command line on your Windows PC.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "hasPart": [{"@type": "TechArticle", "name": "Part 1: Set up WSL2 and Ubuntu", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-1-wsl2.html"}]}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/#pipelines">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/#pipelines">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">
+  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/posts/">Notes &amp; tutorials</a><span aria-hidden="true">/</span><span>Beginner series</span></nav>
+  <section class="learning-hero" aria-labelledby="series-title">
+    <div>
+      <p class="section-kicker">A practical beginner series · Free to follow</p>
+      <h1 id="series-title">Bioinformatics on a <em>Windows PC.</em></h1>
+      <p class="learning-subtitle">From FASTQ to Phylogeny</p>
+      <p class="learning-lead">For wet-lab scientists, students, and anyone taking their first steps at the command line. Start with the computer you already use, and build your understanding one small exercise at a time.</p>
+      <div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Start with Part 1 <span aria-hidden="true">→</span></a><a class="button button-secondary" href="https://www.linkedin.com/in/sahaider/">Follow the series on LinkedIn ↗</a></div>
+      <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Research scientist &amp; bioinformatics trainer</p>
+    </div>
+    <aside class="learning-terminal" aria-label="Preview of the first exercise">
+      <div class="terminal-title"><span class="terminal-dot"></span> Your first workspace <span>Ubuntu</span></div>
+      <pre><code><span class="terminal-muted"># One small step at a time</span>
+<span class="terminal-prompt">$</span> whoami
+your_username
+
+<span class="terminal-prompt">$</span> pwd
+/home/your_username
+
+<span class="terminal-prompt">$</span> mkdir -p bioinformatics_training
+<span class="terminal-prompt">$</span> cd bioinformatics_training
+<span class="terminal-cursor" aria-hidden="true">▌</span></code></pre>
+      <p>A familiar laptop. A new way to work.</p>
+    </aside>
+  </section>
+
+  <div class="learning-facts" aria-label="Series at a glance"><span><strong>Start here</strong>No previous Linux experience</span><span><strong>Learn by doing</strong>One focused exercise at a time</span><span><strong>Keep progressing</strong>New lessons added as published</span></div>
+
+  <section class="learning-section" aria-labelledby="lessons-title">
+    <div class="learning-section-heading"><div><p class="section-kicker">The learning path</p><h2 id="lessons-title">Begin with the basics.</h2></div><p>One lesson is available. The next topic is FASTA and FASTQ.</p></div>
+    <ol class="lesson-list">
+      <li class="lesson-card lesson-introduction"><span class="lesson-number" aria-hidden="true">00</span><div><span class="lesson-status">Series introduction</span><h3>From the laboratory bench to the command line</h3><p>Why I started this series, who it is for, and what I hope to make easier.</p><a class="learning-text-link" href="https://www.linkedin.com/posts/sahaider_bioinformatics-genomics-ngs-activity-7505943873278337024-iYPc">Read the announcement on LinkedIn ↗</a></div></li>
+      <li class="lesson-card lesson-current"><span class="lesson-number" aria-hidden="true">01</span><div><span class="lesson-status">Available now · Beginner</span><h3><a href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Set up WSL2 and Ubuntu</a></h3><p>Open a Linux environment on Windows, try your first commands, and create a tidy workspace for the exercises ahead.</p><p class="lesson-detail">About 10 minutes of hands-on practice, plus installation and restart time.</p><div class="lesson-links"><a class="button button-primary" href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Open Part 1 →</a><a class="learning-text-link" href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-1-wsl2-activity-7507386864237170688-dGXE">View the original six-slide lesson ↗</a></div></div></li>
+      <li class="lesson-card lesson-upcoming"><span class="lesson-number" aria-hidden="true">02</span><div><span class="lesson-status">Coming next</span><h3>FASTA vs FASTQ</h3><p>What is actually inside a sequencing file? The next lesson will introduce these two formats and how to inspect them.</p><p class="lesson-detail">Follow on LinkedIn for the next instalment.</p></div></li>
+    </ol>
+  </section>
+
+  <section class="learning-about learning-section" aria-labelledby="teaching-story"><div><p class="section-kicker">Why this series</p><h2 id="teaching-story">I started at the bench, too.</h2></div><div><p>I came into bioinformatics from a wet-lab background. Learning to connect the data I generated with the work needed to understand it shaped how I now teach.</p><p>In this series, I explain what we are doing, why it matters, and how each step connects to the next. The exercises begin with a working environment and basic files before moving into analysis.</p><a class="learning-text-link" href="/training.html">Explore my teaching and training work →</a></div></section>
+
+  <section class="learning-next" aria-labelledby="join-title"><p class="section-kicker">Learn together</p><h2 id="join-title">Try the exercise. Bring your questions.</h2><p>The LinkedIn lesson posts are the place to discuss each exercise and share where you got stuck. This page keeps the series in order so you can return to the right step.</p><a class="button button-primary" href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-1-wsl2-activity-7507386864237170688-dGXE">Join the Part 1 discussion ↗</a></section>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
