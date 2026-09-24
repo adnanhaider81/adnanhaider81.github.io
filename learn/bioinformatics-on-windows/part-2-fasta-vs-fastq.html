@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Part 2: FASTA vs FASTQ - From the Wet Lab to Sequence Files | Syed Adnan Haider</title>
+  <meta name="description" content="Learn where FASTA and FASTQ files come from, create practice files, and count sequences in Ubuntu. Free beginner bioinformatics training with eight-slide PDF." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Part 2: FASTA vs FASTQ - From the Wet Lab to Sequence Files" />
+  <meta property="og:description" content="Learn where FASTA and FASTQ files come from, create practice files, and count sequences in Ubuntu. Free beginner bioinformatics training with eight-slide PDF." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260924-final" />
+<script src="/learning-series.js?v=20260924" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html", "name": "Part 2: FASTA vs FASTQ - From the Wet Lab to Sequence Files", "description": "Learn where FASTA and FASTQ files come from, create practice files, and count sequences in Ubuntu. Free beginner bioinformatics training with eight-slide PDF.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 2: FASTA vs FASTQ - From the Wet Lab to Sequence Files", "datePublished": "2026-09-24", "dateModified": "2026-09-24", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "associatedMedia": {"@type": "MediaObject", "name": "Part 2: FASTA vs FASTQ - Eight-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/Bioinformatics_on_Windows_Part_2_FASTA_vs_FASTQ.pdf"}, "discussionUrl": "https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-2-fasta-ugcPost-7508805798219649024-95d5/"}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 2</span></nav>
+  <header class="lesson-header">
+    <p class="section-kicker">Part 2 · Free beginner exercise</p>
+    <h1>FASTA <em>vs FASTQ.</em></h1>
+    <p class="learning-lead">Where do these files come from? Connect the wet lab to the sequence files on your computer, then create two tiny practice files and look inside them.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#where-files-come-from">Start the lesson <span aria-hidden="true">→</span></a><a class="button button-secondary" href="/assets/learning/Bioinformatics_on_Windows_Part_2_FASTA_vs_FASTQ.pdf" download>Download the eight-slide lesson (PDF)</a></div>
+    <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Web companion prepared <time datetime="2026-09-24">24 September 2026</time></p>
+    <a class="learning-text-link" href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-2-fasta-ugcPost-7508805798219649024-95d5/">View the LinkedIn post and discussion ↗</a>
+  </header>
+
+  <div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>Learn, then practise</strong>A short overview and a 10-minute challenge</span><span><strong>No new software</strong>Use Ubuntu from Part 1</span><span><strong>Slides included</strong>The complete eight-page lesson</span></div>
+  <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="lesson-layout">
+    <aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#before-you-start">Before you start</a><a href="#where-files-come-from">From the wet lab to FASTQ</a><a href="#formats">FASTA vs FASTQ</a><a href="#create-files">1. Create the practice files</a><a href="#inspect-files">2. Look inside the files</a><a href="#count-records">3. Count sequences and reads</a><a href="#challenge">4. Try the challenge</a><a href="#help">If you get stuck</a></aside>
+    <article class="lesson-body">
+      <section id="before-you-start">
+        <h2>Before you start</h2>
+        <p>In <a href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Part 1</a>, we set up WSL2, opened Ubuntu, and created a workspace. Now we can start looking at sequence data before using analysis tools.</p>
+        <p>There is no new software to install. The files in this exercise are deliberately small so we can focus on their structure.</p>
+        <div class="learning-callout"><strong>What you should have at the end</strong><p>Two files in your <code>bioinformatics_training</code> workspace: a FASTA file containing two sequences and a FASTQ file containing two reads. You will understand where these formats come from, recognise their structure, and count their records.</p></div>
+      </section>
+
+      <section id="where-files-come-from">
+        <p class="section-kicker">Start here · Connect the wet lab to the files</p><h2>From the wet lab to FASTQ</h2>
+        <p>Before learning file syntax, it helps to understand how sequence data reaches your computer.</p>
+        <ol class="sequence-journey" aria-label="From sample to FASTQ">
+          <li><span aria-hidden="true">1</span><div><strong>Sample</strong><p>Biological material containing DNA or RNA.</p></div></li>
+          <li><span aria-hidden="true">2</span><div><strong>Extraction</strong><p>Nucleic acid is extracted.</p></div></li>
+          <li><span aria-hidden="true">3</span><div><strong>Library prep</strong><p>Fragments are prepared for sequencing.</p></div></li>
+          <li><span aria-hidden="true">4</span><div><strong>Sequencing</strong><p>The instrument generates measurement signals.</p></div></li>
+          <li><span aria-hidden="true">5</span><div><strong>Base calling</strong><p>Signals are converted into sequence bases with quality estimates.</p></div></li>
+          <li><span aria-hidden="true">6</span><div><strong>FASTQ</strong><p>Reads together with their per-base quality scores.</p></div></li>
+        </ol>
+        <div class="learning-callout"><strong>The exact files depend on the platform</strong><p>FASTQ is commonly produced after base calling and, when needed, demultiplexing. Demultiplexing separates reads by sample. FASTQ is the practical sequence file you will usually work with.</p></div>
+        <div class="format-comparison">
+          <div class="format-card"><h3>Illumina</h3><p class="format-summary">BCL → FASTQ</p><p>BCL instrument files already contain base calls and quality scores. Conversion and demultiplexing produce FASTQ files.</p><a href="https://support-docs.illumina.com/SW/BCL_Convert/Content/SW/BCLConvert/OutputFiles__swBCL_swBS_appBCL.htm">Illumina: BCL Convert output files ↗</a></div>
+          <div class="format-card"><h3>Nanopore</h3><p class="format-summary">Raw signal → FASTQ</p><p>Raw signal is stored in POD5 or older FAST5 files. After base calling, reads and their quality scores can be exported as FASTQ.</p><a href="https://software-docs.nanoporetech.com/dorado/latest/basecaller/simplex/">Nanopore: base calling and FASTQ output ↗</a></div>
+        </div>
+      </section>
+
+      <section id="formats">
+        <h2>FASTA vs FASTQ</h2>
+        <div class="format-comparison">
+          <div class="format-card"><h3>FASTQ</h3><p>Stores sequencing reads together with a per-base quality string. Our examples use four lines per read, beginning with an <code>@</code> identifier.</p><pre><code>@read_001
+ATGCGTACGTAGC
++
+IIIIIIIIIIIII</code></pre><p class="format-summary">Reads + quality scores</p></div>
+          <div class="format-card"><h3>FASTA</h3><p>Stores sequence information without a per-base quality string. Each record has a header starting with <code>&gt;</code>, followed by the sequence.</p><pre><code>&gt;virus_A
+ATGCGTACGTAGC
+&gt;virus_B
+ATGCGTACCTAGC</code></pre><p class="format-summary">Sequence + identifier</p></div>
+        </div>
+        <h3>Why does FASTQ need a quality line?</h3>
+        <p>The sequencer is not equally confident about every base call. The quality string records that confidence so we can assess read quality before downstream analysis. There must be one quality character for every base.</p>
+        <h3>Where can FASTA come from?</h3>
+        <dl class="fasta-sources">
+          <div><dt>Reference databases</dt><dd>Genome, gene, or protein sequences downloaded for comparison or analysis.</dd></div>
+          <div><dt>Assembly</dt><dd>Reads assembled into longer contigs or genomes.</dd></div>
+          <div><dt>Consensus</dt><dd>A representative sequence generated after mapping reads.</dd></div>
+        </dl>
+        <p>FASTA is a general sequence format. It can store reads converted from FASTQ, as well as reference, assembled, and consensus sequences.</p>
+        <div class="lesson-table-wrap" role="region" aria-label="FASTA and FASTQ comparison" tabindex="0"><table class="lesson-table format-table"><caption>FASTA vs FASTQ at a glance</caption><thead><tr><th scope="col">Feature</th><th scope="col">FASTA</th><th scope="col">FASTQ</th></tr></thead><tbody>
+          <tr><th scope="row">Starts with</th><td><code>&gt;</code> identifier</td><td><code>@</code> read identifier</td></tr>
+          <tr><th scope="row">Stores</th><td>Sequence</td><td>Sequence + quality</td></tr>
+          <tr><th scope="row">Per-base quality</th><td>No</td><td>Yes</td></tr>
+          <tr><th scope="row">Typical use</th><td>References, genes, contigs, consensus</td><td>Sequencing reads</td></tr>
+          <tr><th scope="row">Record structure</th><td>Header + sequence</td><td>Four lines per read in this exercise</td></tr>
+        </tbody></table></div>
+      </section>
+
+      <section id="create-files">
+        <p class="section-kicker">Step 01 · Ubuntu terminal</p><h2>Create two tiny practice files</h2>
+        <p>Open <strong>Ubuntu</strong>. Move into the workspace you created in Part 1:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Open your workspace</span><button type="button" class="lesson-copy" data-copy-target="code-workspace" aria-label="Copy workspace command" hidden>Copy</button></div><pre><code id="code-workspace">cd ~/bioinformatics_training</code></pre></div>
+        <h3>Create example.fasta</h3>
+        <p>Copy the entire block, including the final <code>EOF</code>, into Ubuntu and press Enter.</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Create the FASTA file</span><button type="button" class="lesson-copy" data-copy-target="code-create-fasta" aria-label="Copy FASTA creation command" hidden>Copy</button></div><pre><code id="code-create-fasta">cat &gt; example.fasta &lt;&lt; 'EOF'
+&gt;virus_A
+ATGCGTACGTAGC
+&gt;virus_B
+ATGCGTACCTAGC
+EOF</code></pre></div>
+        <h3>Create example.fastq</h3>
+        <p>Now copy this complete block to create the FASTQ file:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Create the FASTQ file</span><button type="button" class="lesson-copy" data-copy-target="code-create-fastq" aria-label="Copy FASTQ creation command" hidden>Copy</button></div><pre><code id="code-create-fastq">cat &gt; example.fastq &lt;&lt; 'EOF'
+@read_001
+ATGCGTACGTAGC
++
+IIIIIIIIIIIII
+@read_002
+ATGCGTACCTAGC
++
+BBBBBBBBBBBBB
+EOF</code></pre></div>
+        <div class="learning-callout"><strong>What does EOF do?</strong><p>Here, <code>&lt;&lt; 'EOF'</code> lets us enter several lines of text into a file. The final <code>EOF</code>, on a line by itself, marks the end. Keep the commands and line breaks exactly as shown.</p></div>
+        <p>Check that both files exist:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · List the files</span><button type="button" class="lesson-copy" data-copy-target="code-list-files" aria-label="Copy file listing command" hidden>Copy</button></div><pre><code id="code-list-files">ls -lh</code></pre></div>
+        <p>You should see <code>example.fasta</code> and <code>example.fastq</code>. Dates, file sizes, and your username may differ from someone else's output.</p>
+      </section>
+
+      <section id="inspect-files">
+        <p class="section-kicker">Step 02 · Read the records</p><h2>Now look inside the files</h2>
+        <p>The <code>cat</code> command prints a file's contents in the terminal. Run these two commands:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Show both files</span><button type="button" class="lesson-copy" data-copy-target="code-show-files" aria-label="Copy file inspection commands" hidden>Copy</button></div><pre><code id="code-show-files">cat example.fasta
+cat example.fastq</code></pre></div>
+        <h3>FASTA: header, then sequence</h3>
+        <p>In <code>example.fasta</code>, <code>&gt;virus_A</code> identifies the first sequence. The next line contains that sequence. The next <code>&gt;</code> header begins the second record.</p>
+        <h3>FASTQ: four lines in each example read</h3>
+        <div class="lesson-table-wrap"><table class="lesson-table"><caption>The first read in example.fastq</caption><thead><tr><th scope="col">Line and example</th><th scope="col">What it means</th></tr></thead><tbody>
+          <tr><th scope="row"><span>1 · Identifier</span><code>@read_001</code></th><td>The name of the read. The identifier line starts with <code>@</code>.</td></tr>
+          <tr><th scope="row"><span>2 · Sequence</span><code>ATGCGTACGTAGC</code></th><td>The bases in the read.</td></tr>
+          <tr><th scope="row"><span>3 · Separator</span><code>+</code></th><td>Separates the sequence from its quality information.</td></tr>
+          <tr><th scope="row"><span>4 · Quality string</span><code>IIIIIIIIIIIII</code></th><td>One quality character for every base. This first read uses capital <code>I</code> characters.</td></tr>
+        </tbody></table></div>
+        <p>The sequence and quality string must have the same number of characters. Each practice read has <strong>13 bases and 13 quality characters</strong>. The first uses capital <code>I</code> characters; the second uses capital <code>B</code> characters. We will explain what they mean in Part 3.</p>
+      </section>
+
+      <section id="count-records">
+        <p class="section-kicker">Step 03 · A little analysis</p><h2>Count sequences and reads</h2>
+        <h3>1. Show only the first FASTQ read</h3>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Show the first four lines</span><button type="button" class="lesson-copy" data-copy-target="code-first-read" aria-label="Copy first read command" hidden>Copy</button></div><pre><code id="code-first-read">head -n 4 example.fastq</code></pre></div>
+        <p>Our FASTQ records use four lines each, so this shows exactly one read:</p>
+        <div class="lesson-output"><span>Expected output</span><pre><code>@read_001
+ATGCGTACGTAGC
++
+IIIIIIIIIIIII</code></pre></div>
+        <h3>2. Count sequences in the FASTA file</h3>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Count FASTA headers</span><button type="button" class="lesson-copy" data-copy-target="code-count-fasta" aria-label="Copy FASTA counting command" hidden>Copy</button></div><pre><code id="code-count-fasta">grep -c '^&gt;' example.fasta</code></pre></div>
+        <p><strong>Expected result: <code>2</code>.</strong> The pattern <code>^&gt;</code> matches lines that begin with <code>&gt;</code>, and <code>-c</code> counts them.</p>
+        <h3>3. Count reads in this four-line FASTQ</h3>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Count the reads</span><button type="button" class="lesson-copy" data-copy-target="code-count-fastq" aria-label="Copy FASTQ counting command" hidden>Copy</button></div><pre><code id="code-count-fastq">awk 'END {print NR/4}' example.fastq</code></pre></div>
+        <p><strong>Expected result: <code>2</code>.</strong> At the end of the file, this divides the total number of lines by four.</p>
+        <p>Two reads, with four lines each, give us eight lines in total.</p>
+        <div class="learning-callout"><strong>Why NR/4?</strong><p>For this toy FASTQ file, each read occupies four lines, so eight lines represent two reads. For real datasets, we will use dedicated bioinformatics tools instead of relying on <code>NR/4</code>.</p></div>
+      </section>
+
+      <section id="challenge">
+        <p class="section-kicker">10-minute challenge</p><h2>Your turn.</h2>
+        <p>Try these without scrolling back to the commands above:</p>
+        <ol><li>Open <code>example.fastq</code> and identify the read ID, sequence, separator, and quality string.</li><li>Which file contains per-base quality information: FASTA or FASTQ?</li><li>Count the sequences in <code>example.fasta</code>.</li><li>Count the reads in <code>example.fastq</code>.</li><li>Explain in one sentence where FASTQ commonly comes from and where FASTA may come from.</li></ol>
+        <details class="lesson-faq"><summary>Check your answers</summary><ol><li><code>head -n 4 example.fastq</code> shows the first read: <code>@read_001</code>, its sequence, the <code>+</code> separator, and the quality string.</li><li><strong>FASTQ</strong> contains per-base quality information.</li><li>The FASTA file contains <strong>2 sequences</strong>.</li><li>The FASTQ file contains <strong>2 reads</strong> across <strong>8 lines</strong>.</li><li>FASTQ commonly comes from base calling and, when needed, demultiplexing; FASTA may come from reference databases, assembly, or consensus generation.</li></ol></details>
+        <div class="learning-callout"><strong>To remember</strong><p>FASTQ usually contains sequencing reads plus quality scores. FASTA contains sequence information without per-base quality scores.</p></div>
+      </section>
+
+      <section id="help">
+        <h2>If you get stuck</h2>
+        <details class="lesson-faq"><summary>Ubuntu says the workspace does not exist.</summary><p>Complete the workspace step in <a href="/learn/bioinformatics-on-windows/part-1-wsl2.html#workspace">Part 1</a>, then return here. The folder used in both lessons is <code>~/bioinformatics_training</code>.</p></details>
+        <details class="lesson-faq"><summary>I see a &gt; prompt and the file is not finished.</summary><p>Ubuntu is waiting for the end of the text block. Type <code>EOF</code> on its own line, without quotes or spaces, and press Enter. If you want to cancel and start again, press Ctrl+C and copy the complete block.</p></details>
+        <details class="lesson-faq"><summary>My FASTQ count is not 2.</summary><p>Inspect the file with <code>cat example.fastq</code>. Compare it with the example above, including all eight lines. Extra blank lines or missing lines will affect the simple counting command. Re-running the creation block replaces that practice file with the example contents.</p></details>
+        <details class="lesson-faq"><summary>Can I use PowerShell for these commands?</summary><p>Use the Ubuntu terminal you set up in Part 1. The file-creation syntax and commands in this exercise are written for that environment.</p></details>
+        <p>For more detail on the file formats, see the <a href="https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/">NCBI SRA File Format Guide</a>.</p>
+        <p>Have a question? Share the command, error, or step you are working on in the <a href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-2-fasta-ugcPost-7508805798219649024-95d5/">Part 2 discussion on LinkedIn</a>.</p>
+        <p><a href="/assets/learning/Bioinformatics_on_Windows_Part_2_FASTA_vs_FASTQ.pdf" download>Keep a copy of the eight-slide lesson (PDF)</a> for your next practice session.</p>
+      </section>
+
+      <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 3</p><h2 id="next-lesson">What do FASTQ quality scores actually mean?</h2><p>We will decode quality characters and connect them to sequencing confidence.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Revisit Part 1</a></div></section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
