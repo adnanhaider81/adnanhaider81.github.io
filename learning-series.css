@@ -122,6 +122,27 @@
 .lesson-table td { color: #334158; }
 .format-table { min-width: 440px; }
 .format-table tbody th { width: 28%; }
+.quality-journey { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.quality-formula { margin: 1.5rem 0; padding: 1.4rem; border: 1px solid #087d8250; border-radius: 10px; background: #e5efeb; }
+.quality-formula > span { display: block; color: #087d82; font-size: .8rem; font-weight: 750; }
+.quality-formula p { margin: .55rem 0 0; color: #071936; font-size: clamp(1.15rem, 3vw, 1.7rem); font-weight: 750; line-height: 1.5; }
+.quality-formula .quality-formula-inverse { color: #334158; font-size: 1rem; font-weight: 500; }
+.quality-score-table { min-width: 500px; }
+.quality-score-table tbody th { width: auto; }
+.quality-key { display: grid; gap: .8rem; margin: 1.5rem 0; }
+.quality-key > div { display: grid; grid-template-columns: 3rem 3.5rem minmax(0, 1fr); align-items: center; gap: 1rem; padding: 1rem 1.2rem; border: 1px solid #07193620; border-radius: 9px; background: #fff; }
+.quality-key > div > code { display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 7px; background: #071a3d; color: #e4ed79; font-size: 1.6rem; font-weight: 750; }
+.quality-key strong { color: #087d82; }
+.quality-key p { margin: 0; font-size: .9rem; line-height: 1.7; }
+.quality-key p span { color: #536075; font-size: .83rem; }
+.quality-read-table { min-width: 600px; text-align: center; }
+.quality-read-table th, .quality-read-table td { padding: .9rem .6rem; }
+.quality-read-table tbody th, .quality-read-table thead th:first-child { width: 21%; text-align: left; padding-left: 1rem; }
+.quality-read-table td code { display: inline-block; min-width: 1.7rem; padding: .1rem .35rem; color: #e4ed79; background: #071a3d; border-radius: 4px; font-weight: 750; }
+.quality-read-table .quality-lowest { background: #fff2d9; font-weight: 750; }
+.lesson-body .table-scroll-hint { margin-top: -.8rem; color: #536075; font-size: .8rem; }
+.lesson-body .lesson-reference { color: #536075; font-size: .86rem; }
+.lesson-table-wrap:focus-visible { outline: 3px solid #c86648; outline-offset: 4px; }
 @media (max-width: 900px) {
   .learning-hero { grid-template-columns: minmax(0, 1fr); gap: 2.3rem; }
   .learning-hero h1 { max-width: 17ch; }
@@ -147,6 +168,9 @@
   .series-feature-lesson { padding: 1.3rem; }
   .format-comparison { grid-template-columns: minmax(0, 1fr); }
   .sequence-journey { grid-template-columns: minmax(0, 1fr); }
+  .quality-key > div { grid-template-columns: 2.8rem minmax(0, 1fr); gap: .5rem .8rem; padding: 1rem; }
+  .quality-key > div > code { grid-row: span 2; }
+  .quality-key p { grid-column: 2; }
   .fasta-sources > div { grid-template-columns: minmax(0, 1fr); gap: .4rem; }
   .lesson-code-header { padding: .65rem .9rem; }
   .lesson-table th, .lesson-table td { padding: .75rem; }
@@ -156,3 +180,4 @@
 @media print { .site-header, .lesson-toc, .site-footer, .learning-breadcrumb, .learning-skip { display: none; } .learning-main { width: 100%; } .lesson-layout { display: block; } .lesson-code { color: #000; background: #eee; border: 1px solid #bbb; } .lesson-code > span { color: #333; } .lesson-body { max-width: none; } .lesson-code, .learning-callout { break-inside: avoid; } }
 @media print { .lesson-copy { display: none; } .lesson-code-header > span { color: #333; } .format-card, .lesson-output, .lesson-table-wrap { break-inside: avoid; } }
 @media print { .sequence-journey li, .fasta-sources > div { break-inside: avoid; } .format-table { min-width: 0; } }
+@media print { .quality-score-table, .quality-read-table { min-width: 0; } .quality-formula, .quality-key > div { break-inside: avoid; } .table-scroll-hint { display: none; } }

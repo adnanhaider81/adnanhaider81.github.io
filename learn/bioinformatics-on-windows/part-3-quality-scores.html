@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Part 3: Can I Trust This Base? Understanding FASTQ Quality Scores | Syed Adnan Haider</title>
+  <meta name="description" content="Understand Phred scores, decode FASTQ quality characters, and create a mixed-quality practice read in Ubuntu. Free beginner lesson with an eight-slide PDF." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Part 3: Can I Trust This Base? Understanding FASTQ Quality Scores" />
+  <meta property="og:description" content="Understand Phred scores, decode FASTQ quality characters, and create a mixed-quality practice read in Ubuntu. Free beginner lesson with an eight-slide PDF." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260928" />
+<script src="/learning-series.js?v=20260924" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html", "name": "Part 3: Can I Trust This Base? Understanding FASTQ Quality Scores", "description": "Understand Phred scores, decode FASTQ quality characters, and create a mixed-quality practice read in Ubuntu. Free beginner lesson with an eight-slide PDF.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 3: Can I Trust This Base? Understanding FASTQ Quality Scores", "dateModified": "2026-09-28", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "dateCreated": "2026-09-28", "datePublished": "2026-09-28", "discussionUrl": "https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-3-fastq-ugcPost-7510248198515605504-BuuE/", "associatedMedia": {"@type": "MediaObject", "name": "Part 3: Understanding FASTQ Quality Scores - Eight-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_3_Quality_Scores.pdf"}}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 3</span></nav>
+  <header class="lesson-header">
+    <p class="section-kicker">FASTQ to Phylogeny · Part 3 · Free beginner exercise</p>
+    <h1>Can I trust <em>this base?</em></h1>
+    <p class="learning-subtitle">Understanding FASTQ quality scores</p>
+    <p class="learning-lead">What do the letters and symbols on the fourth FASTQ line actually mean? Connect each character to a quality score, then read the confidence behind each base call.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#signal-to-confidence">Start the lesson <span aria-hidden="true">→</span></a><a class="button button-secondary" href="/assets/learning/FASTQ_to_Phylogeny_Part_3_Quality_Scores.pdf" download>Download the eight-slide lesson (PDF)</a></div>
+    <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Published <time datetime="2026-09-28">28 September 2026</time></p>
+    <a class="learning-text-link" href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-3-fastq-ugcPost-7510248198515605504-BuuE/">View the LinkedIn post and discussion ↗</a>
+  </header>
+
+  <div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>One read, eight bases</strong>Understand each quality character</span><span><strong>No new software</strong>Use Ubuntu from Parts 1 and 2</span><span><strong>Learn, then practise</strong>Eight slides and a 10-minute challenge</span></div>
+  <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="lesson-layout">
+    <aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#before-you-start">Before you start</a><a href="#signal-to-confidence">1. From signal to confidence</a><a href="#phred-scores">2. Understand Phred scores</a><a href="#quality-characters">3. Decode the characters</a><a href="#decode-read">4. Read one base at a time</a><a href="#wet-lab-context">5. Connect to the wet lab</a><a href="#exercise">6. Try the Ubuntu exercise</a><a href="#challenge">7. Check your understanding</a><a href="#help">If you get stuck</a></aside>
+    <article class="lesson-body">
+      <section id="before-you-start">
+        <h2>The fourth line has a job.</h2>
+        <p>In <a href="/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html">Part 2</a>, we created FASTA and FASTQ files and identified the four lines in a FASTQ read. Now we will focus on the quality string.</p>
+        <div class="lesson-output"><span>Our example throughout this lesson</span><pre><code>@read_demo
+ATGCGTAC
++
+IIII5?I+</code></pre></div>
+        <p>The second line contains the bases. The fourth line contains one quality character for every base. Both strings have <strong>eight characters</strong>.</p>
+        <div class="learning-callout"><strong>The key idea</strong><p>A quality score describes the estimated confidence in a base call. It gives us a way to express how likely that call is to be wrong.</p></div>
+      </section>
+
+      <section id="signal-to-confidence">
+        <p class="section-kicker">Step 01 · Wet lab to dry lab</p><h2>From sequencing signal to confidence</h2>
+        <p>A sequencer measures a physical signal. Software then decides which base is most likely and estimates how confident that call is.</p>
+        <ol class="sequence-journey quality-journey" aria-label="From sequencing signal to FASTQ quality">
+          <li><span aria-hidden="true">1</span><div><strong>Signal measured</strong><p>The instrument records fluorescence, an electrical signal, or another platform-specific measurement.</p></div></li>
+          <li><span aria-hidden="true">2</span><div><strong>Base called</strong><p>Base-calling software interprets the signal as a base such as A, C, G, or T.</p></div></li>
+          <li><span aria-hidden="true">3</span><div><strong>Confidence estimated</strong><p>The software assigns an estimated probability that the base call could be wrong.</p></div></li>
+          <li><span aria-hidden="true">4</span><div><strong>Stored in FASTQ</strong><p>The sequence is stored with one quality character for every base.</p></div></li>
+        </ol>
+        <p>A quality score tells us about confidence in the call. By itself, it does not explain why that confidence is high or low.</p>
+      </section>
+
+      <section id="phred-scores">
+        <p class="section-kicker">Step 02 · Read the probability</p><h2>What does a Phred score mean?</h2>
+        <p>FASTQ quality values are usually expressed as <strong>Phred scores</strong>, written as Q. A higher Q means a lower estimated probability of an incorrect base call.</p>
+        <div class="quality-formula"><span>The Phred relationship</span><p>Q = −10 log<sub>10</sub>(P<sub>error</sub>)</p><p class="quality-formula-inverse">P<sub>error</sub> = 10<sup>−Q/10</sup></p></div>
+        <p>You do not need to calculate logarithms for this exercise. Focus on what the values mean:</p>
+        <div class="lesson-table-wrap" role="region" aria-label="Phred scores and estimated error probabilities" tabindex="0"><table class="lesson-table quality-score-table"><caption>Estimated error probability for a base call</caption><thead><tr><th scope="col">Quality</th><th scope="col">Error probability</th><th scope="col">About 1 error in</th><th scope="col">Estimated accuracy</th></tr></thead><tbody>
+          <tr><th scope="row">Q10</th><td>0.1</td><td>10 base calls</td><td>90%</td></tr>
+          <tr><th scope="row">Q20</th><td>0.01</td><td>100 base calls</td><td>99%</td></tr>
+          <tr><th scope="row">Q30</th><td>0.001</td><td>1,000 base calls</td><td>99.9%</td></tr>
+          <tr><th scope="row">Q40</th><td>0.0001</td><td>10,000 base calls</td><td>99.99%</td></tr>
+        </tbody></table></div>
+        <p>Every increase of 10 in Q corresponds to a tenfold decrease in the estimated error probability. Q30 has one tenth the estimated error probability of Q20.</p>
+        <div class="learning-callout"><strong>What Q30 means</strong><p>Q30 means an estimated error probability of <strong>0.1%, or about 1 in 1,000</strong>. It does not mean “30% quality.” This is an estimate for a base call, not a guarantee of exactly one error in a particular set of 1,000 bases.</p></div>
+        <p class="lesson-reference">The definition and values follow <a href="https://www.illumina.com/content/dam/illumina-marketing/documents/products/technotes/technote_understanding_quality_scores.pdf">Illumina’s explanation of quality scores</a>.</p>
+      </section>
+
+      <section id="quality-characters">
+        <p class="section-kicker">Step 03 · Phred+33 encoding</p><h2>Why are there letters and symbols?</h2>
+        <p>Modern FASTQ commonly uses <strong>Phred+33</strong> encoding: the numerical quality score is stored as a printable character. These characters represent quality values; they are not additional nucleotides.</p>
+        <div class="quality-key" aria-label="The four quality characters used in this lesson">
+          <div><code>+</code><strong>Q10</strong><p>About 1 in 10 incorrect<br><span>90% estimated accuracy</span></p></div>
+          <div><code>5</code><strong>Q20</strong><p>About 1 in 100 incorrect<br><span>99% estimated accuracy</span></p></div>
+          <div><code>?</code><strong>Q30</strong><p>About 1 in 1,000 incorrect<br><span>99.9% estimated accuracy</span></p></div>
+          <div><code>I</code><strong>Q40</strong><p>About 1 in 10,000 incorrect<br><span>99.99% estimated accuracy</span></p></div>
+        </div>
+        <p>The <code>I</code> here is a capital letter I, and <code>5</code> is the digit five. Their meaning comes from their character codes.</p>
+        <details class="lesson-faq"><summary>What does the “+33” mean?</summary><p>The character’s ASCII code equals the Phred score plus 33. To decode it, subtract 33: the ASCII code for capital <code>I</code> is 73, so <code>73 − 33 = 40</code>, or Q40. You do not need to memorise ASCII codes; software handles this for real datasets.</p></details>
+        <p class="lesson-reference">This lesson uses Phred+33. Other encodings occur in older data; the <a href="https://www.ncbi.nlm.nih.gov/sra/docs/submitformats/#fastq-files">NCBI SRA File Format Guide</a> describes the main variants.</p>
+      </section>
+
+      <section id="decode-read">
+        <p class="section-kicker">Step 04 · One read</p><h2>Read one base at a time</h2>
+        <p>Line up each base with the quality character at the same position. Our eight-base sequence, <code>ATGCGTAC</code>, pairs with <code>IIII5?I+</code>.</p>
+        <div class="lesson-table-wrap" role="region" aria-label="Base-by-base decoding of the example FASTQ read" tabindex="0"><table class="lesson-table quality-read-table"><caption>One quality character for every base</caption><thead><tr><th scope="col">Position</th><th scope="col">1</th><th scope="col">2</th><th scope="col">3</th><th scope="col">4</th><th scope="col">5</th><th scope="col">6</th><th scope="col">7</th><th scope="col" class="quality-lowest">8</th></tr></thead><tbody>
+          <tr><th scope="row">Sequence</th><td>A</td><td>T</td><td>G</td><td>C</td><td>G</td><td>T</td><td>A</td><td class="quality-lowest">C</td></tr>
+          <tr><th scope="row">Quality character</th><td><code>I</code></td><td><code>I</code></td><td><code>I</code></td><td><code>I</code></td><td><code>5</code></td><td><code>?</code></td><td><code>I</code></td><td class="quality-lowest"><code>+</code></td></tr>
+          <tr><th scope="row">Phred score</th><td>Q40</td><td>Q40</td><td>Q40</td><td>Q40</td><td>Q20</td><td>Q30</td><td>Q40</td><td class="quality-lowest">Q10</td></tr>
+        </tbody></table></div>
+        <p class="table-scroll-hint">On a narrow screen, scroll the table sideways to see all eight positions.</p>
+        <details class="lesson-faq"><summary>Which base has the lowest confidence?</summary><p><strong>Position 8: C.</strong> Its quality character is <code>+</code>, which represents Q10, the lowest score in this example. That means a 10% estimated probability that this call is wrong; it does not prove that this particular C is incorrect.</p></details>
+        <div class="learning-callout"><strong>Two different uses of the plus sign</strong><p>The <code>+</code> on the third FASTQ line separates sequence and quality. The final <code>+</code> on the fourth line is a quality character for the eighth base. Its role depends on which line it appears on.</p></div>
+      </section>
+
+      <section id="wet-lab-context">
+        <p class="section-kicker">Step 05 · Wet-lab perspective</p><h2>Why should the wet lab care?</h2>
+        <p>Quality scores connect the sequence files back to the experiment. Several factors can affect confidence, so a low score alone cannot identify the cause.</p>
+        <dl class="fasta-sources">
+          <div><dt>Input material</dt><dd>The condition of the nucleic acid can affect the library entering sequencing.</dd></div>
+          <div><dt>Library preparation</dt><dd>Suboptimal or uneven libraries can contribute to poorer or less consistent reads.</dd></div>
+          <div><dt>Sequencing run</dt><dd>Loading, chemistry, instrument conditions, and run performance can influence read quality.</dd></div>
+          <div><dt>Read position and platform</dt><dd>Quality patterns differ by sequencing technology and can change across a read.</dd></div>
+          <div><dt>Base calling</dt><dd>The software interprets the measured signal and estimates confidence in its calls.</dd></div>
+        </dl>
+        <div class="learning-callout"><strong>Low quality is a symptom, not a diagnosis</strong><p>Investigating the cause requires the sample, library, run, and platform context. A quality score shows where confidence is low, but does not establish which part of the experiment caused it.</p></div>
+      </section>
+
+      <section id="exercise">
+        <p class="section-kicker">Step 06 · Ubuntu terminal</p><h2>Create a mixed-quality FASTQ read</h2>
+        <p>No new software is needed. Open the Ubuntu terminal from Part 1 and use the same workspace as Part 2.</p>
+        <h3>1. Move into your workspace</h3>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Open your workspace</span><button type="button" class="lesson-copy" data-copy-target="code-quality-workspace" aria-label="Copy workspace command" hidden>Copy</button></div><pre><code id="code-quality-workspace">cd ~/bioinformatics_training</code></pre></div>
+        <h3>2. Create quality_demo.fastq</h3>
+        <p>Copy the entire block, including the final <code>EOF</code>, into Ubuntu and press Enter.</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Create the practice read</span><button type="button" class="lesson-copy" data-copy-target="code-create-quality-demo" aria-label="Copy mixed-quality FASTQ creation command" hidden>Copy</button></div><pre><code id="code-create-quality-demo">cat &gt; quality_demo.fastq &lt;&lt; 'EOF'
+@read_demo
+ATGCGTAC
++
+IIII5?I+
+EOF</code></pre></div>
+        <p>The last <code>EOF</code> must be on its own line. Re-running this block replaces <code>quality_demo.fastq</code> with the same practice read.</p>
+        <h3>3. Inspect the file</h3>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu · Show the file contents</span><button type="button" class="lesson-copy" data-copy-target="code-inspect-quality-demo" aria-label="Copy quality file inspection command" hidden>Copy</button></div><pre><code id="code-inspect-quality-demo">cat quality_demo.fastq</code></pre></div>
+        <div class="lesson-output"><span>Expected output</span><pre><code>@read_demo
+ATGCGTAC
++
+IIII5?I+</code></pre></div>
+        <h3>Your task</h3>
+        <p>Identify the lowest-quality base, the Q30 character, and why the sequence and quality strings must both contain eight characters.</p>
+        <details class="lesson-faq"><summary>Check the practice-file answers</summary><ul><li>The lowest-quality base is <strong>C at position 8</strong>: <code>+</code> means Q10.</li><li>The Q30 character is <code>?</code>, paired with T at position 6.</li><li>Each of the eight bases needs its own quality character, so the two strings must have equal lengths.</li></ul></details>
+      </section>
+
+      <section id="challenge">
+        <p class="section-kicker">Step 07 · 10-minute challenge</p><h2>Your turn.</h2>
+        <p>Try these without looking back at the explanations above:</p>
+        <ol><li>What does a FASTQ quality score describe?</li><li>What does Q30 mean in plain language?</li><li>Which has lower confidence: Q10 or Q40?</li><li>In Phred+33, which character in our example represents Q20?</li><li>Why can a low quality score not identify the exact wet-lab cause by itself?</li></ol>
+        <details class="lesson-faq"><summary>Check your answers</summary><ol><li>It describes the estimated confidence in a base call, expressed through the probability that the call is wrong.</li><li>Q30 means an estimated error probability of <strong>about 1 in 1,000</strong>, or 0.1%.</li><li><strong>Q10</strong> has lower confidence and a higher estimated error probability than Q40.</li><li>The digit <code>5</code> represents <strong>Q20</strong> in Phred+33.</li><li>Different sample, library, sequencing, and software factors can affect quality. The score does not identify which factor caused a particular low-confidence call.</li></ol></details>
+        <div class="learning-callout"><strong>To remember</strong><p>Each FASTQ quality character belongs to one base. Higher Phred scores mean lower estimated error probabilities.</p></div>
+      </section>
+
+      <section id="help">
+        <h2>If you get stuck</h2>
+        <p>Have a question? Share the command, error, or step you are working on in the <a href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-3-fastq-ugcPost-7510248198515605504-BuuE/">Part 3 discussion on LinkedIn</a>.</p>
+        <details class="lesson-faq"><summary>Ubuntu says the workspace does not exist.</summary><p>Complete the workspace step in <a href="/learn/bioinformatics-on-windows/part-1-wsl2.html#workspace">Part 1</a>, then return here. This exercise uses <code>~/bioinformatics_training</code>.</p></details>
+        <details class="lesson-faq"><summary>I see a &gt; prompt and the file is not finished.</summary><p>Ubuntu is waiting for the end of the text block. Type <code>EOF</code> on its own line, without quotes or spaces, and press Enter. To cancel and start again, press Ctrl+C and copy the complete creation block.</p></details>
+        <details class="lesson-faq"><summary>My quality string does not have eight characters.</summary><p>Compare it with <code>IIII5?I+</code>: four capital I characters, then <code>5</code>, <code>?</code>, one more capital I, and <code>+</code>. Keep this on one line with no spaces. Copy the complete creation block again if needed.</p></details>
+        <details class="lesson-faq"><summary>Does the + quality character mean the base is definitely wrong?</summary><p>No. In Phred+33, <code>+</code> means Q10, an estimated error probability of 10%. It indicates lower confidence, not a confirmed error.</p></details>
+        <details class="lesson-faq"><summary>Should I use PowerShell or Ubuntu?</summary><p>Use Ubuntu for the commands in this lesson. The file-creation syntax is the same as in Part 2.</p></details>
+        <p><a href="/assets/learning/FASTQ_to_Phylogeny_Part_3_Quality_Scores.pdf" download>Keep a copy of the eight-slide lesson (PDF)</a> for your next practice session.</p>
+      </section>
+
+      <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 4</p><h2 id="next-lesson">One read is easy. What about millions?</h2><p>Assessing sequencing data with FastQC: move from reading individual quality characters to reviewing a dataset.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html">Revisit Part 2</a></div></section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
