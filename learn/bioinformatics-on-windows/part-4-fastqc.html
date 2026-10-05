@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Part 4: Assessing Sequencing Data with FastQC | Syed Adnan Haider</title>
+  <meta name="description" content="Install and run FastQC in Ubuntu on Windows, compare quality reports, and interpret report flags. Free lesson with slides and two FASTQ practice datasets." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Part 4: Assessing Sequencing Data with FastQC" />
+  <meta property="og:description" content="Install and run FastQC in Ubuntu on Windows, compare quality reports, and interpret report flags. Free lesson with slides and two FASTQ practice datasets." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260928" />
+<script src="/learning-series.js?v=20260924" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html", "name": "Part 4: Assessing Sequencing Data with FastQC", "description": "Install and run FastQC in Ubuntu on Windows, compare quality reports, and interpret report flags. Free lesson with slides and two FASTQ practice datasets.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 4: Assessing Sequencing Data with FastQC", "dateModified": "2026-10-05", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "datePublished": "2026-10-05", "dateCreated": "2026-10-05", "discussionUrl": "https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-4-fastqc-ugcPost-7512554664140099584-OqJX/", "associatedMedia": [{"@type": "MediaObject", "name": "Part 4: Assessing sequencing data with FastQC - Eight-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/Part4_FastQC.pdf"}, {"@type": "DataDownload", "name": "Part 4: Two synthetic FASTQ practice datasets and README", "encodingFormat": "application/zip", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_4_Practice_Files.zip"}]}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 4</span></nav>
+  <header class="lesson-header">
+    <p class="section-kicker">FASTQ to Phylogeny · Part 4 · Free beginner exercise</p>
+    <h1>One read is easy. <em>What about millions?</em></h1>
+    <p class="learning-subtitle">Assessing sequencing data with FastQC</p>
+    <p class="learning-lead">Move from individual quality scores to a whole dataset. Install FastQC in Ubuntu, compare two small FASTQ files, and learn what the report is helping you ask.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#downloads">Get the slides &amp; practice files ↓</a><a class="button button-secondary" href="#before-you-start">Start the lesson →</a></div>
+    <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Published <time datetime="2026-10-05">5 October 2026</time></p>
+    <a class="learning-text-link" href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-4-fastqc-ugcPost-7512554664140099584-OqJX/">View the LinkedIn post and discussion ↗</a>
+  </header>
+
+  <div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>Two small datasets</strong>5,000 synthetic reads in each file</span><span><strong>Same sequences, different quality</strong>Compare full-length quality with a tail drop</span><span><strong>Learn, then practise</strong>Eight slides and a 10-minute challenge</span></div>
+  <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="lesson-layout">
+    <aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#downloads">Slides &amp; practice files</a><a href="#before-you-start">Before you start</a><a href="#install">1. Install FastQC</a><a href="#prepare-files">2. Prepare the datasets</a><a href="#run-fastqc">3. Run FastQC</a><a href="#read-report">4. Read the reports</a><a href="#interpret-flags">5. Interpret the flags</a><a href="#challenge">6. Try the challenge</a><a href="#help">If you get stuck</a></aside>
+    <article class="lesson-body">
+      <section id="downloads" class="learning-next" aria-labelledby="downloads-title">
+        <p class="section-kicker">Everything for Part 4</p>
+        <h2 id="downloads-title">Download. Run. Compare.</h2>
+        <p>Get the eight-slide lesson and the two practice FASTQ datasets used in the exercise. Both downloads are free.</p>
+        <div class="hero-actions"><a class="button button-primary" href="/assets/learning/FASTQ_to_Phylogeny_Part_4_Practice_Files.zip" download>Download practice files (ZIP)</a><a class="button button-secondary" href="/assets/learning/Part4_FastQC.pdf" download>Download slides (PDF)</a></div>
+        <p class="lesson-reference">Practice ZIP: about 354 KB · Slides: eight pages, about 20 KB</p>
+        <p><strong>Inside the ZIP:</strong> <code>fastqc_good.fastq.gz</code>, <code>fastqc_tail_drop.fastq.gz</code>, and <code>README.txt</code>.</p>
+        <p>These are synthetic teaching files, not biological sequencing data. Extract the outer ZIP, but keep the two <code>.fastq.gz</code> files compressed. FastQC can read them directly.</p>
+        <a class="learning-text-link" href="#prepare-files">How to put the files in your Ubuntu workspace →</a>
+      </section>
+
+      <section id="before-you-start">
+        <h2>From one read to a whole dataset.</h2>
+        <p>In <a href="/learn/bioinformatics-on-windows/part-3-quality-scores.html">Part 3</a>, we decoded the quality characters for individual bases. FastQC summarizes patterns across a FASTQ file so we can decide what needs a closer look before downstream analysis.</p>
+        <ol class="sequence-journey"><li><span>1</span><div><strong>FASTQ file</strong><p>Reads and their quality scores.</p></div></li><li><span>2</span><div><strong>FastQC</strong><p>Checks patterns across the dataset.</p></div></li><li><span>3</span><div><strong>HTML report</strong><p>Plots, statistics, and flags to inspect.</p></div></li></ol>
+        <div class="learning-callout"><strong>FastQC inspects the data.</strong><p>It does not trim, filter, or fix the reads.</p></div>
+        <p>Use the Ubuntu/WSL2 environment from <a href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Part 1</a>. You will need internet access and your Ubuntu password for the one-time installation. All command blocks below belong in <strong>Ubuntu</strong>.</p>
+        <h3>Keep three questions in mind</h3>
+        <ul><li>Does confidence stay high across the read?</li><li>Do the base and GC patterns look plausible for this library?</li><li>Are adapters, duplication, changing read lengths, or other unusual patterns visible?</li></ul>
+      </section>
+
+      <section id="install">
+        <p class="section-kicker">Step 01 · One-time setup</p><h2>Install FastQC in Ubuntu</h2>
+        <p>Update the package list, install FastQC, and check the version. Run these lines in order:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal</span><button class="lesson-copy" type="button" data-copy-target="install-fastqc" aria-label="Copy FastQC installation commands" hidden>Copy</button></div><pre><code id="install-fastqc">sudo apt update
+sudo apt install fastqc -y
+fastqc --version</code></pre></div>
+        <p>If a FastQC version is printed, the command-line installation is ready. The version number may differ between Ubuntu releases. If FastQC is already installed, you can simply check it with <code>fastqc --version</code>.</p>
+      </section>
+
+      <section id="prepare-files">
+        <p class="section-kicker">Step 02 · Practice datasets</p><h2>Put the files in your training folder</h2>
+        <div class="format-comparison"><div class="format-card"><h3>High quality throughout</h3><p><code>fastqc_good.fastq.gz</code></p><p>5,000 synthetic reads, each 100 bases long, with high quality across the full read.</p></div><div class="format-card"><h3>Quality drops at the end</h3><p><code>fastqc_tail_drop.fastq.gz</code></p><p>The same 5,000 reads, with lower quality toward the read end. Only the quality strings differ.</p></div></div>
+        <ol><li><a href="#downloads">Download the practice ZIP above</a>. In Windows File Explorer, right-click it and choose <strong>Extract All</strong>.</li><li>In Ubuntu, run the block below. It opens your training folder in Windows File Explorer.</li></ol>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Open your workspace</span><button class="lesson-copy" type="button" data-copy-target="open-workspace" aria-label="Copy workspace commands" hidden>Copy</button></div><pre><code id="open-workspace">mkdir -p ~/bioinformatics_training
+cd ~/bioinformatics_training
+explorer.exe .</code></pre></div>
+        <p>Copy <strong>both <code>.fastq.gz</code> files</strong> from the extracted download into the training folder you just opened. Keep their names unchanged. You do not need to extract the gzip files or copy the README over your existing workspace README.</p>
+        <p>Back in Ubuntu, confirm that both files are in place:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Check the input files</span><button class="lesson-copy" type="button" data-copy-target="check-files" aria-label="Copy input file check commands" hidden>Copy</button></div><pre><code id="check-files">cd ~/bioinformatics_training
+ls -lh fastqc_*.fastq.gz</code></pre></div>
+        <p>You should see <code>fastqc_good.fastq.gz</code> and <code>fastqc_tail_drop.fastq.gz</code>. Each compressed file is about 177 KB.</p>
+      </section>
+
+      <section id="run-fastqc">
+        <p class="section-kicker">Step 03 · Run FastQC</p><h2>Generate the quality-control reports</h2>
+        <p>From your training folder, run FastQC once for each file:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Analyse both datasets</span><button class="lesson-copy" type="button" data-copy-target="run-reports" aria-label="Copy FastQC analysis commands" hidden>Copy</button></div><pre><code id="run-reports">fastqc fastqc_good.fastq.gz
+fastqc fastqc_tail_drop.fastq.gz</code></pre></div>
+        <p>Then list the files and open the folder in Windows:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Find and open the reports</span><button class="lesson-copy" type="button" data-copy-target="open-reports" aria-label="Copy report viewing commands" hidden>Copy</button></div><pre><code id="open-reports">ls -lh *fastqc*
+explorer.exe .</code></pre></div>
+        <p>Each input produces an HTML report for viewing and a ZIP archive containing the report data. Double-click each <strong>HTML report</strong> to open it in your browser.</p>
+        <div class="lesson-output"><span>Four new output files, alongside your two inputs</span><pre><code>fastqc_good_fastqc.html
+fastqc_good_fastqc.zip
+fastqc_tail_drop_fastqc.html
+fastqc_tail_drop_fastqc.zip</code></pre></div>
+      </section>
+
+      <section id="read-report">
+        <p class="section-kicker">Step 04 · Read the report</p><h2>Start with three sections</h2>
+        <p>Open both reports side by side. You do not need to interpret every FastQC module at once.</p>
+        <p>In Basic Statistics, the practice files should be identified as <strong>Sanger / Illumina 1.9</strong> encoding: the Phred+33 convention used in Part 3.</p>
+        <dl class="fasta-sources"><div><dt>Basic Statistics</dt><dd>Check the number of reads, read length, and GC content. Both files contain 5,000 reads of 100 bases, so those values should agree.</dd></div><div><dt>Per base sequence quality</dt><dd>Compare quality from the beginning to the end of the read. Read position runs along the horizontal axis; the vertical axis shows the quality score.</dd></div><div><dt>Adapter Content</dt><dd>Inspect whether known adapter sequences become more common at particular positions. These two datasets have identical base sequences, so changing their quality scores alone does not create an adapter difference.</dd></div></dl>
+        <div class="learning-callout"><strong>The Part 3 connection</strong><p>The per-base plot summarizes Phred quality across many reads. The tail-drop file should show lower quality near the end; the high-quality file should remain high across its full length.</p></div>
+        <p>These deliberately simple teaching files isolate a quality difference. Real sequencing data can show more variation, so use them to learn how to read the report rather than as a template for every experiment.</p>
+      </section>
+
+      <section id="interpret-flags">
+        <p class="section-kicker">Step 05 · Interpretation</p><h2>Green, yellow, and red are clues.</h2>
+        <p>FastQC uses thresholds to flag patterns for your attention. Read the module name and the plot together with its status.</p>
+        <dl class="fasta-sources"><div><dt>PASS</dt><dd>The result is within that module’s default expectations.</dd></div><div><dt>WARN</dt><dd>The pattern is unusual enough to inspect.</dd></div><div><dt>FAIL</dt><dd>The pattern is strongly unusual by that module’s threshold.</dd></div></dl>
+        <div class="learning-callout"><strong>A warning or failure does not automatically mean unusable data.</strong><p>Ask whether the pattern fits the sample type, library design, sequencing platform, and expected biology. A flag points to something to investigate; it does not identify the exact cause.</p></div>
+        <p>Likewise, a PASS does not establish that the dataset is suitable for every downstream analysis. Interpret the report in the context of the question you are trying to answer.</p>
+      </section>
+
+      <section id="challenge">
+        <p class="section-kicker">Step 06 · 10-minute challenge</p><h2>Your turn.</h2>
+        <ol><li>Run FastQC on both FASTQ files.</li><li>Open both HTML reports.</li><li>Which dataset shows lower quality toward the end of the read?</li><li>Which FastQC module makes that easiest to see?</li><li>Does the report tell you the exact wet-lab or sequencing cause? Why not?</li></ol>
+        <details class="lesson-faq"><summary>Check your answers after trying the exercise</summary><ol><li>Run <code>fastqc fastqc_good.fastq.gz</code> and <code>fastqc fastqc_tail_drop.fastq.gz</code> from the folder containing the inputs.</li><li>Open <code>fastqc_good_fastqc.html</code> and <code>fastqc_tail_drop_fastqc.html</code>.</li><li><code>fastqc_tail_drop.fastq.gz</code> shows the quality drop toward the read end.</li><li><strong>Per base sequence quality</strong> is the clearest module for comparing this pattern.</li><li>No. FastQC summarizes the data it receives; it does not observe your experiment. Different causes can produce similar patterns, and these particular files are synthetic examples.</li></ol></details>
+      </section>
+
+      <section id="help">
+        <h2>If you get stuck</h2>
+        <p>Share the command, error, or step you are working on in the <a href="https://www.linkedin.com/posts/sahaider_bioinformatics-on-windows-part-4-fastqc-ugcPost-7512554664140099584-OqJX/">Part 4 discussion on LinkedIn</a>.</p>
+        <details class="lesson-faq"><summary>Ubuntu says “fastqc: command not found”.</summary><p>Run the installation commands in Ubuntu, then check <code>fastqc --version</code>. The command name is lowercase. If installation fails, keep the exact error message so you can identify the cause.</p></details>
+        <details class="lesson-faq"><summary>My password does not appear when I type it.</summary><p>That is normal for <code>sudo</code> in Ubuntu. Type your Ubuntu password and press Enter; no letters or dots appear as you type.</p></details>
+        <details class="lesson-faq"><summary>The FASTQ files cannot be found.</summary><p>Check that you extracted the outer practice ZIP and copied both <code>.fastq.gz</code> files into <code>~/bioinformatics_training</code>. Run <code>pwd</code> to check your location and <code>ls -lh</code> to check the filenames. Files still in Windows Downloads are not automatically in your Ubuntu training folder.</p></details>
+        <details class="lesson-faq"><summary>Do I need to unzip the .fastq.gz files?</summary><p>No. Keep those two files compressed. FastQC reads gzip-compressed FASTQ directly. The outer practice ZIP is just the download package; the ZIP files produced after running FastQC contain report data.</p></details>
+        <details class="lesson-faq"><summary>File Explorer did not open.</summary><p>Make sure you are running <code>explorer.exe .</code> in Ubuntu under WSL2, with a space before the final dot. The dot means the current folder. See <a href="https://learn.microsoft.com/en-us/windows/wsl/filesystems">Microsoft’s guide to working across Windows and Linux file systems</a> for another way to find your files.</p></details>
+        <details class="lesson-faq"><summary>Why is an HTML report flagged even though FastQC finished successfully?</summary><p>A report flag describes a data pattern; it is not the same as a software error. Read the named module, compare its plot, and return to the experimental context before deciding what to do.</p></details>
+        <p class="lesson-reference">Further reading: <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/">Babraham Bioinformatics: FastQC</a>, including the official documentation and example reports.</p>
+      </section>
+
+      <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 5</p><h2 id="next-lesson">Which FastQC warnings matter?</h2><p>What should you do next? Connect the report’s patterns to decisions about your data.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-3-quality-scores.html">Revisit Part 3: Quality scores</a></div></section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
