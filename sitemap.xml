@@ -8,7 +8,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://syedadnanhaider.com/</loc><lastmod>2026-10-05</lastmod>
+    <loc>https://syedadnanhaider.com/</loc><lastmod>2026-10-10</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg</image:loc>
     </image:image>
@@ -32,7 +32,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/</loc><lastmod>2026-10-05</lastmod>
+    <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/</loc><lastmod>2026-10-10</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-1-wsl2.html</loc>
@@ -89,7 +89,7 @@
     </image:image>
   </url>
   <url>
-    <loc>https://syedadnanhaider.com/posts/</loc><lastmod>2026-10-05</lastmod>
+    <loc>https://syedadnanhaider.com/posts/</loc><lastmod>2026-10-10</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/posts/manuscript-to-reproducible-genomics-repository.html</loc>
@@ -225,5 +225,6 @@
   </url>
   <url><loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-2-fasta-vs-fastq.html</loc></url>
   <url><loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html</loc><lastmod>2026-10-05</lastmod></url>
-  <url><loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html</loc><lastmod>2026-10-05</lastmod></url>
+  <url><loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html</loc><lastmod>2026-10-10</lastmod></url>
+  <url><loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html</loc><lastmod>2026-10-10</lastmod></url>
 </urlset>

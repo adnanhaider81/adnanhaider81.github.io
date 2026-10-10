@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Part 5: Which FastQC Warnings Actually Matter? | Syed Adnan Haider</title>
+  <meta name="description" content="Interpret FastQC quality, adapter, duplication, GC, and sequence-content warnings. Free beginner lesson with slides and three tested FASTQ practice datasets." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Part 5: Which FastQC Warnings Actually Matter?" />
+  <meta property="og:description" content="Interpret FastQC quality, adapter, duplication, GC, and sequence-content warnings. Free beginner lesson with slides and three tested FASTQ practice datasets." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260928" />
+<script src="/learning-series.js?v=20260924" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html", "name": "Part 5: Which FastQC Warnings Actually Matter?", "description": "Interpret FastQC quality, adapter, duplication, GC, and sequence-content warnings. Free beginner lesson with slides and three tested FASTQ practice datasets.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 5: Which FastQC Warnings Actually Matter?", "dateModified": "2026-10-10", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "datePublished": "2026-10-10", "dateCreated": "2026-10-10", "discussionUrl": "https://lnkd.in/p/dgRFcmk4", "associatedMedia": [{"@type": "MediaObject", "name": "Part 5: Which FastQC warnings actually matter? - Eight-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_5_FastQC_Warning.pdf"}, {"@type": "DataDownload", "name": "Part 5: Three synthetic FASTQ practice datasets and README", "encodingFormat": "application/zip", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_5_Practice_Files.zip"}]}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 5</span></nav>
+  <header class="lesson-header">
+    <p class="section-kicker">FASTQ to Phylogeny · Part 5 · Free beginner exercise</p>
+    <h1>Which FastQC warnings <em>actually matter?</em></h1>
+    <p class="learning-subtitle">Flags are clues. Context determines the action.</p>
+    <p class="learning-lead">Read the pattern behind a warning, ask whether it fits the experiment, and decide what deserves attention before your next analysis.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#downloads">Get the slides &amp; practice files ↓</a><a class="button button-secondary" href="#before-you-start">Start the lesson →</a></div>
+    <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Published <time datetime="2026-10-10">10 October 2026</time></p>
+    <a class="learning-text-link" href="https://lnkd.in/p/dgRFcmk4">Join the Part 5 discussion on LinkedIn ↗</a>
+  </header>
+
+  <div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>Three small datasets</strong>5,000 synthetic 100-base reads in each</span><span><strong>Interpret before processing</strong>Compare quality loss and adapter signals</span><span><strong>Continue from Part 4</strong>Use your existing FastQC installation</span></div>
+  <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="lesson-layout">
+    <aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#downloads">Slides &amp; practice files</a><a href="#before-you-start">1. Ask three questions</a><a href="#quality-drop">2. Inspect quality loss</a><a href="#adapters">3. Identify unusual sequences</a><a href="#library-context">4. Consider the library</a><a href="#action-guide">5. Choose the next step</a><a href="#exercise">6. Compare three reports</a><a href="#expected-results">Expected results</a><a href="#challenge">7. Try the challenge</a><a href="#help">If you get stuck</a></aside>
+    <article class="lesson-body">
+      <section id="downloads" class="learning-next" aria-labelledby="downloads-title">
+        <p class="section-kicker">Everything for Part 5</p><h2 id="downloads-title">Download. Compare. Interpret.</h2>
+        <p>Get the eight-slide lesson and all three practice datasets in one ZIP. You can start this exercise without downloading the Part 4 files separately.</p>
+        <div class="hero-actions"><a class="button button-primary" href="/assets/learning/FASTQ_to_Phylogeny_Part_5_Practice_Files.zip" download>Download practice files (ZIP)</a><a class="button button-secondary" href="/assets/learning/FASTQ_to_Phylogeny_Part_5_FastQC_Warning.pdf" download>Download slides (PDF)</a></div>
+        <p class="lesson-reference">Practice ZIP: about 502 KB · Slides: eight pages, about 26 KB</p>
+        <p><strong>Inside the ZIP:</strong> <code>fastqc_good.fastq.gz</code>, <code>fastqc_tail_drop.fastq.gz</code>, <code>fastqc_adapter_rich.fastq.gz</code>, and <code>README.txt</code>.</p>
+        <p>These are synthetic teaching files, not biological sequencing data. Extract the outer ZIP and keep the three <code>.fastq.gz</code> files compressed.</p>
+        <a class="learning-text-link" href="#exercise">Set up the practice folder and run the exercise →</a>
+      </section>
+
+      <section id="before-you-start">
+        <p class="section-kicker">Step 01 · Before you fix anything</p><h2>Ask three questions first.</h2>
+        <p>In <a href="/learn/bioinformatics-on-windows/part-4-fastqc.html">Part 4</a>, we generated our first FastQC reports. Now we will decide what their warnings mean. The goal is to recognize patterns that could affect the analysis, rather than make every module green.</p>
+        <ol class="sequence-journey quality-journey"><li><span>1</span><div><strong>Flag</strong><p>A module shows WARN or FAIL.</p></div></li><li><span>2</span><div><strong>Plot</strong><p>Inspect the actual pattern.</p></div></li><li><span>3</span><div><strong>Context</strong><p>Ask whether it fits this library.</p></div></li><li><span>4</span><div><strong>Action</strong><p>Investigate, process, continue, or document.</p></div></li></ol>
+        <dl class="fasta-sources"><div><dt>Is it expected?</dt><dd>Amplicon, targeted, RNA-seq, small-RNA, and other libraries can legitimately look unusual.</dd></div><div><dt>Could it be technical?</dt><dd>Adapters, primers, poor-quality tails, contamination, or run problems may explain a warning.</dd></div><div><dt>Will it affect my next step?</dt><dd>Consider whether the pattern could bias mapping, assembly, variant calling, or the analysis you actually plan to perform.</dd></div></dl>
+        <div class="learning-callout"><strong>Inspect the plot first.</strong><p>Never make a processing decision from the PASS, WARN, or FAIL label alone.</p></div>
+      </section>
+
+      <section id="quality-drop">
+        <p class="section-kicker">Step 02 · Per base sequence quality</p><h2>How serious is the quality drop?</h2>
+        <p>Lower quality toward the end of a read can reflect lower-confidence calls in later cycles or a subset of reads with poor-quality tails. Look at how large the drop is, where it begins, and how many reads it affects.</p>
+        <p>The mean line alone does not describe the full spread. Use the box and whiskers to judge variation across the reads, then consider the read length and quality needed for the next analysis. Trimming may help when poor-quality tails would interfere with that analysis.</p>
+        <div class="learning-callout"><strong>The plot shows a symptom.</strong><p>Sequencing chemistry, signal quality, library quality, and platform behaviour can all contribute. The pattern alone does not identify the exact wet-lab cause.</p></div>
+        <p class="lesson-reference">See the official <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/2%20Per%20Base%20Sequence%20Quality.html">Per Base Sequence Quality guide</a> for the plot elements and default thresholds.</p>
+      </section>
+
+      <section id="adapters">
+        <p class="section-kicker">Step 03 · Adapter content and overrepresentation</p><h2>Identify the sequence before removing it.</h2>
+        <p>When a biological insert is shorter than the sequencing read, sequencing can extend into the adapter. Confirm which adapter or unwanted primer is present before choosing an appropriate trimming approach.</p>
+        <p>An overrepresented sequence needs the same careful identification. It may be a technical sequence, but it can also reflect real biology, such as an abundant amplicon or transcript.</p>
+        <div class="learning-callout"><strong>These modules ask different questions.</strong><p>Adapter Content searches for configured adapter sequences. Overrepresented sequences looks for individual sequences that recur unusually often. A result in one module does not guarantee a matching result in the other.</p></div>
+      </section>
+
+      <section id="library-context">
+        <p class="section-kicker">Step 04 · Context first</p><h2>Some warnings can be expected.</h2>
+        <dl class="fasta-sources"><div><dt>Sequence duplication</dt><dd>High duplication may be expected in an amplicon or targeted library. In a diverse whole-genome library, extreme duplication may deserve closer investigation. A duplication flag alone cannot distinguish technical copies from biological repetition.</dd></div><div><dt>GC distribution</dt><dd>GC content depends on the organism and library. An unexpected extra peak could reflect a mixed population, contamination, or a biased subset of sequences. Compare the observation with what the experiment should contain.</dd></div><div><dt>Per-base sequence content</dt><dd>Early-position bias can arise from primers, transposase activity, or library-preparation chemistry. It is not automatically evidence of a failed run.</dd></div></dl>
+        <p>FastQC is a general screening tool. Specialized libraries do not always resemble random whole-genome libraries, so the same flag can mean different things in different experiments.</p>
+      </section>
+
+      <section id="action-guide">
+        <p class="section-kicker">Step 05 · Action guide</p><h2>Match the pattern to the next step.</h2>
+        <div class="lesson-table-wrap" role="region" aria-label="FastQC warning action guide" tabindex="0"><table class="lesson-table format-table"><caption>A decision starts with the plot and experimental context.</caption><thead><tr><th scope="col">Pattern</th><th scope="col">What to consider next</th></tr></thead><tbody><tr><th scope="row">Low-quality tail</th><td>Assess its severity and extent. Trim or filter when the poor-quality sequence could affect the planned analysis.</td></tr><tr><th scope="row">Adapter signal</th><td>Confirm adapter or primer identity, then trim the unwanted sequence with a suitable tool.</td></tr><tr><th scope="row">Overrepresented sequence</th><td>Identify it before deciding whether it is technical or biological.</td></tr><tr><th scope="row">Duplication, GC, or base bias</th><td>Compare it with the library design and expected biology. Investigate unexpected patterns.</td></tr></tbody></table></div>
+        <p class="table-scroll-hint">On a small screen, scroll the table sideways.</p>
+        <div class="learning-callout"><strong>Record the reason for your decision.</strong><p>Note what you observed, what you expected, and why you trimmed, filtered, investigated, or chose to continue. Reproducibility includes the reasoning behind preprocessing.</p></div>
+      </section>
+
+      <section id="exercise">
+        <p class="section-kicker">Step 06 · Hands-on comparison</p><h2>Compare three FastQC reports.</h2>
+        <p>Use the FastQC installation from <a href="/learn/bioinformatics-on-windows/part-4-fastqc.html#install">Part 4</a>. All commands below belong in <strong>Ubuntu</strong>. Use a separate <code>part5</code> folder to keep the earlier lesson files and reports intact.</p>
+        <p><a href="#downloads">Download the Part 5 practice ZIP</a> and choose <strong>Extract All</strong> in Windows File Explorer. Then open your new practice folder:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Prepare the workspace</span><button class="lesson-copy" type="button" data-copy-target="part5-workspace" aria-label="Copy Part 5 workspace commands" hidden>Copy</button></div><pre><code id="part5-workspace">mkdir -p ~/bioinformatics_training/part5
+cd ~/bioinformatics_training/part5
+explorer.exe .</code></pre></div>
+        <p>Copy the three <code>.fastq.gz</code> files from the extracted ZIP into the folder that opens. Keep the gzip files compressed and retain their filenames. Check that Ubuntu can see all three:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Check the inputs</span><button class="lesson-copy" type="button" data-copy-target="part5-inputs" aria-label="Copy Part 5 input checks" hidden>Copy</button></div><pre><code id="part5-inputs">cd ~/bioinformatics_training/part5
+ls -lh fastqc_*.fastq.gz
+fastqc --version</code></pre></div>
+        <p>Run FastQC on all three files:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Compare the datasets</span><button class="lesson-copy" type="button" data-copy-target="part5-run" aria-label="Copy Part 5 FastQC command" hidden>Copy</button></div><pre><code id="part5-run">fastqc fastqc_good.fastq.gz fastqc_tail_drop.fastq.gz \
+       fastqc_adapter_rich.fastq.gz</code></pre></div>
+        <p>The single backslash at the end of the first line continues the command on the next line. Copy both lines together, with no spaces after the backslash.</p>
+        <p>Once analysis finishes, list the reports and open the folder:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Open the reports</span><button class="lesson-copy" type="button" data-copy-target="part5-reports" aria-label="Copy Part 5 report viewing commands" hidden>Copy</button></div><pre><code id="part5-reports">ls -lh *_fastqc.html
+explorer.exe .</code></pre></div>
+        <div class="lesson-output"><span>Open these three HTML reports in your browser</span><pre><code>fastqc_good_fastqc.html
+fastqc_tail_drop_fastqc.html
+fastqc_adapter_rich_fastqc.html</code></pre></div>
+        <p>Each input also produces a ZIP archive containing its report data. Compare <strong>Per base sequence quality</strong>, <strong>Adapter Content</strong>, and <strong>Overrepresented sequences</strong> across the reports.</p>
+      </section>
+
+      <section id="expected-results">
+        <h2>What should you see?</h2>
+        <p>The website practice files were tested with <strong>FastQC 0.11.9</strong>. Each report shows <strong>5,000 sequences</strong>, a <strong>100-base</strong> read length, and <strong>Sanger / Illumina 1.9</strong> (Phred+33) encoding.</p>
+        <div class="lesson-table-wrap" role="region" aria-label="Expected Part 5 FastQC comparison" tabindex="0"><table class="lesson-table format-table"><caption>These flags describe deliberate teaching patterns.</caption><thead><tr><th scope="col">Dataset</th><th scope="col">Per base sequence quality</th><th scope="col">Adapter Content</th></tr></thead><tbody><tr><th scope="row"><code>fastqc_good.fastq.gz</code></th><td>PASS. High quality across the read, approximately Q40.</td><td>PASS. No adapter signal detected in this test.</td></tr><tr><th scope="row"><code>fastqc_tail_drop.fastq.gz</code></th><td>FAIL. Quality declines from Q40 to Q10 at the read end.</td><td>PASS. No adapter signal detected in this test.</td></tr><tr><th scope="row"><code>fastqc_adapter_rich.fastq.gz</code></th><td>PASS. High quality across the read, approximately Q40.</td><td>FAIL. The adapter trace rises to 75%, with adapter sequence after position 60.</td></tr></tbody></table></div>
+        <p class="table-scroll-hint">On a small screen, scroll the table sideways.</p>
+        <div class="learning-callout"><strong>An empty overrepresentation table is expected here.</strong><p>All three files pass Overrepresented sequences in this test. In the adapter-rich file, many reads share an adapter near the end but have different beginnings. For these 100-base reads, FastQC 0.11.9 checks the first 50 bases for overrepresentation, so it does not count that shared adapter suffix as a repeated read.</p></div>
+        <p>This is a useful comparison: <strong>Adapter Content can flag an adapter even when Overrepresented sequences is empty.</strong> If a different dataset lists an overrepresented sequence, identify it before choosing an action. The official <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/9%20Overrepresented%20Sequences.html">Overrepresented Sequences guide</a> explains the length rule.</p>
+        <p>Other modules can also flag the deliberate patterns in these synthetic files. A completed run with WARN or FAIL entries is a valid result; inspect the relevant plots rather than trying to make every section green.</p>
+      </section>
+
+      <section id="challenge">
+        <p class="section-kicker">Step 07 · 10-minute challenge</p><h2>Interpret first. Decide second.</h2>
+        <ol><li>A read has a quality drop only at the final bases. What would you inspect before trimming?</li><li>FastQC reports adapter content. What should you confirm before removing sequence?</li><li>An amplicon library has high duplication. Is that automatically a problem?</li><li>A GC plot has an unexpected second peak. What possibilities would you investigate?</li><li>Why is an all-green FastQC report not the goal of quality control?</li></ol>
+        <details class="lesson-faq"><summary>Check your answers after trying the exercise</summary><ol><li>Inspect how far quality drops, how many positions and reads are affected, the spread of scores, and whether the remaining read length and quality would suit the next analysis.</li><li>Confirm the identity of the adapter or unwanted primer and whether it is expected from the library preparation. Choose the processing method after that check.</li><li>No. Constrained sequence starts and repeated targets can make duplication expected in amplicon libraries. Interpret it against the design.</li><li>Consider mixed populations, contamination, or a biased subset of reads. Compare with the expected sample and library; a second peak alone does not identify its cause.</li><li>Default thresholds cannot describe every experiment. Quality control is about fitness for the intended analysis and justified decisions, not collecting green ticks.</li></ol></details>
+      </section>
+
+      <section id="help">
+        <h2>If you get stuck</h2>
+        <p>Share the command, error, or report pattern you are unsure about in the <a href="https://lnkd.in/p/dgRFcmk4">Part 5 LinkedIn discussion</a>.</p>
+        <details class="lesson-faq"><summary>The command says “fastqc: command not found”.</summary><p>Complete the <a href="/learn/bioinformatics-on-windows/part-4-fastqc.html#install">Part 4 installation</a> in Ubuntu, then check <code>fastqc --version</code>.</p></details>
+        <details class="lesson-faq"><summary>One of the input files is missing.</summary><p>Run <code>pwd</code> and <code>ls -lh</code>. The command must run from the folder containing all three compressed FASTQ files. The Part 5 ZIP includes every input, so use those files together in the <code>part5</code> folder.</p></details>
+        <details class="lesson-faq"><summary>Why did the “good” file in an earlier download show Q9?</summary><p>A synthetic file containing only Q40 characters can make FastQC guess the older Phred+64 encoding. The website copies of the high-quality and adapter-rich files each include one Q30 character, which keeps the data high quality while making Phred+33 detection unambiguous. Their sequences and read counts are unchanged. The README records this adjustment.</p></details>
+        <details class="lesson-faq"><summary>Does the adapter-rich file need an overrepresented-sequence warning?</summary><p>No. These modules measure different patterns. See the <a href="#expected-results">tested results above</a>: this file has a strong adapter signal and an empty overrepresentation table.</p></details>
+        <details class="lesson-faq"><summary>Do I need to trim the practice files now?</summary><p>This exercise is about reading reports and explaining a decision. Compare the patterns and record what you would investigate. Part 6 will consider when to trim, filter, or leave reads alone.</p></details>
+        <p class="lesson-reference">Further reading: Babraham Bioinformatics documentation for <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/10%20Adapter%20Content.html">Adapter Content</a>, <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/8%20Duplicate%20Sequences.html">Duplicate Sequences</a>, <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/5%20Per%20Sequence%20GC%20Content.html">GC Content</a>, and <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/4%20Per%20Base%20Sequence%20Content.html">Per Base Sequence Content</a>.</p>
+      </section>
+
+      <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 6</p><h2 id="next-lesson">Cleaning reads: when should we trim or filter?</h2><p>And when should we leave them alone? Use the report and the experimental context to choose a sensible next step.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-4-fastqc.html">Revisit Part 4: Running FastQC</a></div></section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>
