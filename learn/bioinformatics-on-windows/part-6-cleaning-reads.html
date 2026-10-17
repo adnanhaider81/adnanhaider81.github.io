@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="author" content="Syed Adnan Haider" />
+  <title>Part 6: Should We Trim Every Read? Cleaning FASTQ Reads with fastp | Syed Adnan Haider</title>
+  <meta name="description" content="Learn when to trim, filter, or keep reads unchanged. Run fastp and compare FastQC reports with nine slides and three tested synthetic FASTQ practice datasets." />
+  <link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html" />
+  <meta property="og:site_name" content="Syed Adnan Haider" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Part 6: Should We Trim Every Read? Cleaning FASTQ Reads with fastp" />
+  <meta property="og:description" content="Learn when to trim, filter, or keep reads unchanged. Run fastp and compare FastQC reports with nine slides and three tested synthetic FASTQ practice datasets." />
+  <meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html" />
+  <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
+  <link rel="stylesheet" href="/learning-series.css?v=20260928" />
+<script src="/learning-series.js?v=20260924" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html", "name": "Part 6: Should We Trim Every Read? Cleaning FASTQ Reads with fastp", "description": "Learn when to trim, filter, or keep reads unchanged. Run fastp and compare FastQC reports with nine slides and three tested synthetic FASTQ practice datasets.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 6: Should We Trim Every Read? Cleaning FASTQ Reads with fastp", "dateModified": "2026-10-17", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "datePublished": "2026-10-17", "dateCreated": "2026-10-17", "associatedMedia": [{"@type": "MediaObject", "name": "Part 6: Should we trim every read? - Nine-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/Part6_Carousel.pdf"}, {"@type": "DataDownload", "name": "Part 6: Three synthetic FASTQ datasets, adapter FASTA, and README", "encodingFormat": "application/zip", "contentUrl": "https://syedadnanhaider.com/assets/learning/Part6_Practice.zip"}]}</script>
+</head>
+<body id="top" class="learning-page">
+<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
+<header class="site-header">
+      <div class="brand">
+        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
+        <span class="brand-copy">
+          <a class="brand-home" href="/">
+            <strong>Syed Adnan Haider</strong>
+            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
+          </a>
+          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
+        </span>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="/research.html">Research</a>
+        <a href="/publications.html">Publications</a>
+        <a href="/projects.html">Projects</a>
+        <a href="/training.html">Training</a>
+        <a href="/posts/">Notes</a>
+        <a href="/about.html">About</a>
+      </nav>
+
+      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
+
+      <details class="mobile-menu">
+        <summary>Menu</summary>
+        <nav aria-label="Mobile navigation">
+          <a href="/research.html">Research</a>
+          <a href="/publications.html">Publications</a>
+          <a href="/projects.html">Projects</a>
+          <a href="/training.html">Training</a>
+          <a href="/posts/">Notes</a>
+          <a href="/about.html">About</a>
+          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
+        </nav>
+      </details>
+    </header>
+<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 6</span></nav>
+  <header class="lesson-header">
+    <p class="section-kicker">FASTQ to Phylogeny · Part 6 · Free beginner exercise</p>
+    <h1>Should we trim <em>every read?</em></h1>
+    <p class="learning-subtitle">When should you trim, filter, or keep reads unchanged?</p>
+    <p class="learning-lead">Use the quality-control evidence to choose an action, try two small fastp exercises, and check what you gained and what you removed.</p>
+    <div class="hero-actions"><a class="button button-primary" href="#downloads">Get the slides &amp; practice files ↓</a><a class="button button-secondary" href="#before-you-start">Start the lesson →</a></div>
+    <p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Published <time datetime="2026-10-17">17 October 2026</time></p>
+  </header>
+
+  <div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>Three small datasets</strong>5,000 synthetic 100-base reads in each</span><span><strong>One new tool</strong>Install fastp inside Ubuntu</span><span><strong>Inspect · Decide · Verify</strong>Compare before and after with FastQC</span></div>
+  <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
+
+  <div class="lesson-layout">
+    <aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#downloads">Slides &amp; practice files</a><a href="#before-you-start">1. Decide before processing</a><a href="#install">2. Install fastp</a><a href="#workspace">3. Prepare the files</a><a href="#quality-trimming">4. Trim a poor tail</a><a href="#adapter-trimming">5. Remove a known adapter</a><a href="#compare">6. Check quality again</a><a href="#expected-results">Tested results</a><a href="#challenge">7. Try the challenge</a><a href="#help">If you get stuck</a></aside>
+    <article class="lesson-body">
+      <section id="downloads" class="learning-next" aria-labelledby="downloads-title">
+        <p class="section-kicker">Everything for Part 6</p><h2 id="downloads-title">Download. Process. Compare.</h2>
+        <p>Get the nine-slide lesson and a ZIP containing all three FASTQ datasets, the known adapter sequence, and step-by-step commands.</p>
+        <div class="hero-actions"><a class="button button-primary" href="/assets/learning/Part6_Practice.zip" download>Download practice files (ZIP)</a><a class="button button-secondary" href="/assets/learning/Part6_Carousel.pdf" download>Download slides (PDF)</a></div>
+        <p class="lesson-reference">Practice ZIP: about 495 KB · Slides: nine pages, about 90 KB</p>
+        <p><strong>Inside the ZIP:</strong> <code>good.fq.gz</code>, <code>tail.fq.gz</code>, <code>adapter.fq.gz</code>, <code>a.fa</code>, and <code>README.txt</code>.</p>
+        <p>These are synthetic teaching files. Extract the outer ZIP; keep the three <code>.fq.gz</code> files compressed. You do not need the Part 5 downloads for this exercise.</p>
+        <p class="lesson-reference">The website edition changes one high-quality character in each FASTQ file to make its Phred+33 encoding clear to FastQC, including after trimming. Read sequences, identifiers, lengths, and counts are unchanged. The README records the adjustment.</p>
+      </section>
+
+      <section id="before-you-start">
+        <p class="section-kicker">Step 01 · Choose a reason</p><h2>More trimming is not always better.</h2>
+        <p>In <a href="/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html">Part 5</a>, we interpreted FastQC warnings in context. Now we will act on two specific problems and check the results. Keep your existing <a href="/learn/bioinformatics-on-windows/part-4-fastqc.html#install">FastQC installation</a> ready.</p>
+        <ol class="sequence-journey"><li><span>1</span><div><strong>Inspect</strong><p>Read the QC pattern and consider the experiment.</p></div></li><li><span>2</span><div><strong>Decide</strong><p>Choose a reason to trim, filter, or leave reads unchanged.</p></div></li><li><span>3</span><div><strong>Verify</strong><p>Recheck quality, read lengths, and retained reads.</p></div></li></ol>
+        <div class="format-comparison"><div class="format-card"><h3>Trimming</h3><p>Remove unwanted bases and keep a shorter read. For example, remove a known adapter or a poor-quality end.</p></div><div class="format-card"><h3>Filtering</h3><p>Discard the whole read if it fails a rule. For example, exclude a read that is too short after trimming.</p></div></div>
+        <p>Both operations can remove useful information. A known adapter may justify targeted removal; a poor-quality tail needs a decision about its effect on the next analysis. GC, duplication, or composition warnings may reflect the library design and do not automatically call for trimming.</p>
+        <div class="learning-callout"><strong>Do not trim just to make flags green.</strong><p>The useful question is whether processing improves the data for your biological question while retaining enough reliable sequence.</p></div>
+      </section>
+
+      <section id="install">
+        <p class="section-kicker">Step 02 · Ubuntu terminal</p><h2>Install fastp once.</h2>
+        <p>Run these commands inside Ubuntu, the same environment used for FastQC:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Install fastp</span><button class="lesson-copy" type="button" data-copy-target="part6-install" aria-label="Copy fastp installation commands" hidden>Copy</button></div><pre><code id="part6-install">sudo apt update
+sudo apt install fastp -y
+fastp --version</code></pre></div>
+        <p>Your Ubuntu password may be requested; typing it does not display characters. If fastp is already installed, check its version and continue.</p>
+      </section>
+
+      <section id="workspace">
+        <p class="section-kicker">Step 03 · Keep the exercise together</p><h2>Prepare a separate Part 6 folder.</h2>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Create the workspace</span><button class="lesson-copy" type="button" data-copy-target="part6-workspace" aria-label="Copy Part 6 workspace commands" hidden>Copy</button></div><pre><code id="part6-workspace">mkdir -p ~/bioinformatics_training/part6
+cd ~/bioinformatics_training/part6
+explorer.exe .</code></pre></div>
+        <p>In the Windows Explorer window, copy the four extracted inputs into this folder: <code>good.fq.gz</code>, <code>tail.fq.gz</code>, <code>adapter.fq.gz</code>, and <code>a.fa</code>. Return to Ubuntu and confirm they are present:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Check the inputs</span><button class="lesson-copy" type="button" data-copy-target="part6-inputs" aria-label="Copy input check command" hidden>Copy</button></div><pre><code id="part6-inputs">ls *.fq.gz a.fa</code></pre></div>
+        <dl class="fasta-sources"><div><dt>good.fq.gz</dt><dd>A high-quality control. All 5,000 reads are 100 bases long.</dd></div><div><dt>tail.fq.gz</dt><dd>The same sequences as the control, with 70 high-quality bases followed by 30 Q10 bases.</dd></div><div><dt>adapter.fq.gz</dt><dd>High-quality reads; exactly 4,000 of 5,000 contain a 67-base insert followed by the known 33-base adapter. The remaining 1,000 have no deliberately added adapter.</dd></div><div><dt>a.fa</dt><dd>The known adapter in FASTA format. This is a sequence file, not a program to run.</dd></div></dl>
+        <p>High-quality positions are Q40, except for one Q30 base in the first read of each website input. Both Q30 and Q40 are high-quality calls.</p>
+      </section>
+
+      <section id="quality-trimming">
+        <p class="section-kicker">Step 04 · Exercise A</p><h2>Trim the poor-quality tail.</h2>
+        <p>Run this command from the Part 6 folder. It writes a new FASTQ file and preserves the original input.</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Quality trimming</span><button class="lesson-copy" type="button" data-copy-target="part6-tail" aria-label="Copy quality trimming command" hidden>Copy</button></div><pre><code id="part6-tail">fastp -i tail.fq.gz -o tail.clean.fq.gz -r -l 50 \
+  -h tail.fastp.html -j tail.fastp.json</code></pre></div>
+        <dl class="command-explainer"><div><dt><code>-i</code> / <code>-o</code></dt><dd>Name the input and output FASTQ files.</dd></div><div><dt><code>-r</code></dt><dd>Enable cut-right quality trimming: scan from the start with a sliding window. In the tested version, a failing window triggers trimming from its first low-quality base through the end of the read.</dd></div><div><dt><code>-l 50</code></dt><dd>Discard reads shorter than 50 bases after processing.</dd></div><div><dt><code>-h</code> / <code>-j</code></dt><dd>Give this run its own HTML and JSON report names.</dd></div></dl>
+        <p>Cut-right can remove more than trimming backwards from the end, so check the output rather than assuming every read loses exactly the visibly poor bases. For these particular practice reads, the tested output is 70 bases long.</p>
+        <div class="learning-callout"><strong>The commands include default processing.</strong><p>These single-end demonstrations also use fastp’s normal filtering and adapter processing. They are not isolated tests of one option. Record the tool version and consult its settings before applying them to real libraries.</p></div>
+      </section>
+
+      <section id="adapter-trimming">
+        <p class="section-kicker">Step 05 · Exercise B</p><h2>Remove the known adapter.</h2>
+        <p>Use the supplied FASTA file to tell fastp which adapter was deliberately added to this dataset:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Adapter trimming</span><button class="lesson-copy" type="button" data-copy-target="part6-adapter" aria-label="Copy adapter trimming command" hidden>Copy</button></div><pre><code id="part6-adapter">fastp -i adapter.fq.gz -o a.clean.fq.gz --adapter_fasta a.fa \
+  -h adapter.fastp.html -j adapter.fastp.json</code></pre></div>
+        <p><code>--adapter_fasta a.fa</code> supplies the adapter sequence. For a read containing the full added adapter, the intended change is from 100 bases to a 67-base insert.</p>
+        <p>The slide commands work as written. The website adds distinct report names so the second run does not overwrite the first run’s default <code>fastp.html</code> and <code>fastp.json</code>. Re-running either command with the same output names will replace its previous outputs.</p>
+        <p>In real data, confirm the library’s adapters and primers first. These examples use synthetic single-end reads; paired-end, amplicon, UMI, and long-read workflows need settings appropriate to their design.</p>
+      </section>
+
+      <section id="compare">
+        <p class="section-kicker">Step 06 · Verify the output</p><h2>Run quality control again.</h2>
+        <p>Once both fastp commands finish, there should be five <code>.fq.gz</code> files: three originals and two cleaned outputs. Run FastQC on all five:</p>
+        <div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Compare before and after</span><button class="lesson-copy" type="button" data-copy-target="part6-fastqc" aria-label="Copy before and after FastQC commands" hidden>Copy</button></div><pre><code id="part6-fastqc">fastqc *.fq.gz
+explorer.exe .</code></pre></div>
+        <p>Open <code>tail_fastqc.html</code> beside <code>tail.clean_fastqc.html</code>, and <code>adapter_fastqc.html</code> beside <code>a.clean_fastqc.html</code>. Use <code>good_fastqc.html</code> as the control. You can also open <code>tail.fastp.html</code> and <code>adapter.fastp.html</code> for the processing summaries.</p>
+        <ul><li><strong>Per base sequence quality:</strong> did the low-quality tail disappear?</li><li><strong>Adapter Content:</strong> is the unwanted adapter signal reduced?</li><li><strong>Basic Statistics:</strong> how many reads remain, and how long are they?</li><li><strong>The next analysis:</strong> is enough useful sequence left for mapping?</li></ul>
+      </section>
+
+      <section id="expected-results">
+        <h2>What happened in the tested exercise?</h2>
+        <p>The website practice files were checked with <strong>fastp 0.20.1</strong> and <strong>FastQC 0.11.9</strong> in Ubuntu. All input FASTQs contain 5,000 valid records with matching sequence and quality lengths. Counts and exact trimming behaviour can vary with other tool versions.</p>
+        <div class="lesson-table-wrap" role="region" aria-label="Part 6 tested results" tabindex="0"><table class="lesson-table format-table"><caption>Compare the intended improvement with the sequence retained.</caption><thead><tr><th scope="col">File</th><th scope="col">Reads and lengths</th><th scope="col">What to look for</th></tr></thead><tbody><tr><th scope="row"><code>good.fq.gz</code></th><td>5,000 reads; 100 bases</td><td>High quality and no substantial adapter signal. Kept unchanged as the control.</td></tr><tr><th scope="row"><code>tail.fq.gz</code> → <code>tail.clean.fq.gz</code></th><td>5,000 reads retained; all 70 bases after processing</td><td>The Q10 suffix is removed and the remaining bases are high quality.</td></tr><tr><th scope="row"><code>adapter.fq.gz</code> → <code>a.clean.fq.gz</code></th><td>5,000 reads retained: 4,000 × 67 bases, 2 × 95 bases, and 998 × 100 bases</td><td>The strong 80% adapter signal falls to background. fastp records 4,002 adapter-trimmed reads.</td></tr></tbody></table></div>
+        <p class="table-scroll-hint">On a small screen, scroll the table sideways.</p>
+        <p><strong>Why 4,002 rather than 4,000?</strong> Two reads without a deliberately added adapter end with short incidental matches to the adapter prefix. fastp also removes five bases from each of those reads. This is a useful reminder that matching rules can remove some sequence beyond the intended full adapters.</p>
+        <p>The tail output retains 350,000 of 500,000 input bases (70%). The adapter output retains 367,990 bases (about 73.6%). Keeping every read does not mean keeping every base.</p>
+        <div class="learning-callout"><strong>Judge the targeted change.</strong><p>A different FastQC module may still show WARN or FAIL, especially after read lengths change. These exercises demonstrate processing and comparison; green flags alone do not establish that data are suitable for a particular analysis.</p></div>
+      </section>
+
+      <section id="challenge">
+        <p class="section-kicker">Step 07 · 10-minute challenge</p><h2>Was the trade-off worth it?</h2>
+        <ol><li>Run the two fastp commands.</li><li>Compare FastQC reports for the original and cleaned reads.</li><li>Describe what changed in the quality and adapter plots, read lengths, and retained counts.</li><li>Would you trim <code>good.fq.gz</code>? Explain your reason.</li></ol>
+        <details class="lesson-faq"><summary>Check your reasoning</summary><p>The tail dataset has a clear low-quality suffix; the adapter dataset has a known unwanted sequence. Processing improves those targeted patterns while shortening reads. The good control has no demonstrated quality or adapter problem that justifies trimming in this exercise. For real data, the decision also depends on the library and downstream requirements.</p></details>
+        <p>Write one sentence recording your observation, your processing decision, and the evidence that supports it.</p>
+      </section>
+
+      <section id="help">
+        <h2>If you get stuck</h2>
+        <details class="lesson-faq"><summary>The command says “fastp: command not found”.</summary><p>Run the <a href="#install">installation commands</a> in Ubuntu, then check <code>fastp --version</code>. FastQC is a separate tool; see the <a href="/learn/bioinformatics-on-windows/part-4-fastqc.html#install">Part 4 installation</a> if needed.</p></details>
+        <details class="lesson-faq"><summary>An input file or a.fa cannot be found.</summary><p>Run <code>pwd</code> and <code>ls -lh</code>. All four extracted inputs must be in the Part 6 working folder. Keep the FASTQ files compressed and use the exact file names shown above.</p></details>
+        <details class="lesson-faq"><summary>Why does an earlier copy of a high-quality file show Q9?</summary><p>FastQC can infer older Phred+64 encoding when every synthetic quality character is <code>I</code>. The website files include one retained Q30 character per input so all five reports identify Phred+33 correctly. Download the website ZIP and repeat the exercise in a fresh folder if your original copy shows this issue.</p></details>
+        <details class="lesson-faq"><summary>Why did a different warning appear after trimming?</summary><p>Processing changes the read lengths and the composition of the remaining data. Compare the plots and the targeted problem. For example, a variable-length output can flag Sequence Length Distribution without showing that adapter trimming failed.</p></details>
+        <details class="lesson-faq"><summary>fastp says “No adapter detected for read1”. Did the adapter command fail?</summary><p>This message refers to automatic adapter detection. The sequences supplied through <code>--adapter_fasta a.fa</code> are still used. Check the trimming summary and before-and-after FastQC reports; the tested exercise removes all 4,000 deliberately added full adapters.</p></details>
+        <p class="lesson-reference">Further reading: the <a href="https://github.com/OpenGene/fastp">official fastp documentation</a> explains trimming, adapter FASTA input, defaults, and report options; the <a href="https://github.com/OpenGene/fastp/blob/v0.20.1/src/filter.cpp#L132-L163">tested version’s cut-right implementation</a> shows how it retains leading high-quality bases in a failing window. The <a href="https://www.bioinformatics.babraham.ac.uk/projects/fastqc/Help/3%20Analysis%20Modules/2%20Per%20Base%20Sequence%20Quality.html">FastQC quality guide</a> explains the plots and the synthetic-data encoding edge case.</p>
+      </section>
+
+      <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 7</p><h2 id="next-lesson">Map reads against a reference genome.</h2><p>Continue from quality control and read cleaning to reference mapping.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html">Revisit Part 5: FastQC warnings</a></div></section>
+    </article>
+  </div>
+</main>
+<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
+</body>
+</html>

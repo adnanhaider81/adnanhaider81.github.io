@@ -9,7 +9,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg</image:loc>
     </image:image>
@@ -37,7 +37,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-1-wsl2.html</loc>
@@ -95,7 +95,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/posts/</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/posts/manuscript-to-reproducible-genomics-repository.html</loc>
@@ -248,7 +248,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/national-biorisk-management-guidelines-workshop-2026.html</loc>
@@ -268,5 +268,9 @@
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/national-biorisk-workshop-certificate-2026.webp</image:loc>
     </image:image>
+  </url>
+  <url>
+    <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
 </urlset>
