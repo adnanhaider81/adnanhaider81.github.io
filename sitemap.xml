@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://syedadnanhaider.com/about.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg</image:loc>
     </image:image>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/syed-adnan-haider-portrait.jpg</image:loc>
     </image:image>
@@ -153,6 +153,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/publications.html</loc>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/research.html</loc>
@@ -194,7 +195,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/projects.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/nih-islamabad-ngs-workshop-2026.html</loc>

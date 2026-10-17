@@ -961,11 +961,13 @@ h1 em {
   display: grid;
   grid-template-columns: 1fr 1fr;
   border-bottom: 1px solid var(--line);
+  scroll-margin-top: 7rem;
 }
 
-.selected-output-grid a {
+.selected-output-grid > :is(a, article) {
   position: relative;
   display: grid;
+  grid-template-rows: auto auto 1fr auto;
   align-content: start;
   gap: 0.6rem;
   min-height: 220px;
@@ -975,20 +977,20 @@ h1 em {
   transition: padding-left 180ms ease, background 180ms ease;
 }
 
-.selected-output-grid a:nth-child(even) {
+.selected-output-grid > :is(a, article):nth-child(even) {
   padding-right: 0;
   padding-left: 2.2rem;
   border-right: 0;
 }
 
-.selected-output-grid a:hover,
-.selected-output-grid a:focus-visible {
+.selected-output-grid > a:hover,
+.selected-output-grid > a:focus-visible {
   padding-left: 1rem;
   background: rgba(255, 255, 255, 0.52);
 }
 
-.selected-output-grid a:nth-child(even):hover,
-.selected-output-grid a:nth-child(even):focus-visible {
+.selected-output-grid > a:nth-child(even):hover,
+.selected-output-grid > a:nth-child(even):focus-visible {
   padding-left: 3.2rem;
 }
 
@@ -1452,10 +1454,12 @@ h1 em {
 .compact-projects {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  scroll-margin-top: 8rem;
 }
 
 .compact-projects > article {
   display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
   gap: 0.75rem;
   padding: 2.2rem 2rem 0;
   border-right: 1px solid var(--line);
@@ -3959,8 +3963,8 @@ h1 em {
 
   .output-list a,
   .output-list a + a,
-  .selected-output-grid a,
-  .selected-output-grid a:nth-child(even),
+  .selected-output-grid > :is(a, article),
+  .selected-output-grid > :is(a, article):nth-child(even),
   .compact-projects > article,
   .compact-projects > article + article {
     min-height: 0;
@@ -3981,10 +3985,10 @@ h1 em {
     padding-left: 1rem;
   }
 
-  .selected-output-grid a:hover,
-  .selected-output-grid a:focus-visible,
-  .selected-output-grid a:nth-child(even):hover,
-  .selected-output-grid a:nth-child(even):focus-visible {
+  .selected-output-grid > a:hover,
+  .selected-output-grid > a:focus-visible,
+  .selected-output-grid > a:nth-child(even):hover,
+  .selected-output-grid > a:nth-child(even):focus-visible {
     padding-left: 1rem;
   }
 
