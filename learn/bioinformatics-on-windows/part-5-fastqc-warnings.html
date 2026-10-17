@@ -15,50 +15,14 @@
   <meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="/portfolio.css?v=20260828-dicecamp-certificate" />
-  <link rel="stylesheet" href="/learning-series.css?v=20260928" />
 <script src="/learning-series.js?v=20260924" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html", "name": "Part 5: Which FastQC Warnings Actually Matter?", "description": "Interpret FastQC quality, adapter, duplication, GC, and sequence-content warnings. Free beginner lesson with slides and three tested FASTQ practice datasets.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/#website"}, "headline": "Part 5: Which FastQC Warnings Actually Matter?", "dateModified": "2026-10-17", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "datePublished": "2026-10-10", "dateCreated": "2026-10-10", "discussionUrl": "https://lnkd.in/p/dgRFcmk4", "associatedMedia": [{"@type": "MediaObject", "name": "Part 5: Which FastQC warnings actually matter? - Eight-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_5_FastQC_Warning.pdf"}, {"@type": "DataDownload", "name": "Part 5: Three synthetic FASTQ practice datasets and README", "encodingFormat": "application/zip", "contentUrl": "https://syedadnanhaider.com/assets/learning/FASTQ_to_Phylogeny_Part_5_Practice_Files.zip"}]}</script>
+
+<meta name="robots" content="index, follow" />
+<link rel="stylesheet" href="/theme.css?v=2" />
+<link rel="stylesheet" href="/lessons.css?v=1" />
 </head>
-<body id="top" class="learning-page">
-<a class="learning-skip" href="#learning-main">Skip to lesson content</a>
-<header class="site-header">
-      <div class="brand">
-        <a class="brand-mark" href="/" aria-label="Syed Adnan Haider home">SAH</a>
-        <span class="brand-copy">
-          <a class="brand-home" href="/">
-            <strong>Syed Adnan Haider</strong>
-            <small>Molecular virology · Pathogen genomics · Bioinformatics</small>
-          </a>
-          <span class="brand-affiliation">National Institute of Health, Islamabad</span>
-        </span>
-      </div>
-
-      <nav class="desktop-nav" aria-label="Primary navigation">
-        <a href="/research.html">Research</a>
-        <a href="/publications.html">Publications</a>
-        <a href="/projects.html">Projects</a>
-        <a href="/training.html">Training</a>
-        <a href="/posts/">Notes</a>
-        <a href="/about.html">About</a>
-      </nav>
-
-      <a class="header-cta" href="mailto:adnan.haider@nih.org.pk">Let&rsquo;s connect <span aria-hidden="true">↗</span></a>
-
-      <details class="mobile-menu">
-        <summary>Menu</summary>
-        <nav aria-label="Mobile navigation">
-          <a href="/research.html">Research</a>
-          <a href="/publications.html">Publications</a>
-          <a href="/projects.html">Projects</a>
-          <a href="/training.html">Training</a>
-          <a href="/posts/">Notes</a>
-          <a href="/about.html">About</a>
-          <a href="mailto:adnan.haider@nih.org.pk">Contact</a>
-        </nav>
-      </details>
-    </header>
-<main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 5</span></nav>
+<body id="top" class="learning-page course-lesson"><a class="skip" href="#learning-main">Skip to lesson content</a><header class="masthead"><a class="brand" href="/"><span class="brand-symbol">SH<span>•</span></span><span>Syed Adnan Haider<small>Clinical &amp; pathogen genomics</small></span></a><nav class="main-nav" aria-label="Primary navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav><a class="nav-contact" href="mailto:adnan.haider@nih.org.pk">Get in touch <span aria-hidden="true">↗</span></a><details class="mobile-nav"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav></details></header><main id="learning-main" class="learning-main">  <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 5</span></nav>
   <header class="lesson-header">
     <p class="section-kicker">FASTQ to Phylogeny · Part 5 · Free beginner exercise</p>
     <h1>Which FastQC warnings <em>actually matter?</em></h1>
@@ -175,7 +139,4 @@ fastqc_adapter_rich_fastqc.html</code></pre></div>
       <section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Continue with Part 6</p><h2 id="next-lesson">Should we trim every read?</h2><p>Use fastp to trim a poor-quality tail and a known adapter, then compare the original and cleaned reads with FastQC.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/part-6-cleaning-reads.html">Open Part 6 →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/">Back to the series</a></div></section>
     </article>
   </div>
-</main>
-<footer class="site-footer"><span>Syed Adnan Haider · Bioinformatics on a Windows PC</span><a href="#top">Back to top ↑</a></footer>
-</body>
-</html>
+</main><footer class="page-footer wrap"><span>Syed Adnan Haider · Islamabad, Pakistan</span><a href="#top">Back to top ↑</a></footer></body></html>

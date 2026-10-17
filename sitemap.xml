@@ -37,7 +37,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-1-wsl2.html</loc>
@@ -95,7 +95,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/posts/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/posts/manuscript-to-reproducible-genomics-repository.html</loc>
@@ -157,11 +157,11 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/research.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/training-nih-ngs-2026.jpg</image:loc>
     </image:image>
@@ -195,11 +195,11 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/projects.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/nih-islamabad-ngs-workshop-2026.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/training-delivered-nih-islamabad-2026.jpeg</image:loc>
     </image:image>
@@ -209,7 +209,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/imperial-london-scientific-exchange-2025.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/scientific-exchange-imperial-london-2025.jpeg</image:loc>
     </image:image>
@@ -219,7 +219,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/monash-malaysia-bioinformatics-2024.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/training-bioinformatics-malaysia-2024.jpeg</image:loc>
     </image:image>
@@ -229,7 +229,7 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/duke-nus-singapore-sequencing-2023.html</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/training-duke-nus-singapore-2023.jpeg</image:loc>
     </image:image>
@@ -242,19 +242,19 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-3-quality-scores.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-4-fastqc.html</loc>
-    <lastmod>2026-10-10</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-5-fastqc-warnings.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
   <url>
     <loc>https://syedadnanhaider.com/training/national-biorisk-management-guidelines-workshop-2026.html</loc>
-    <lastmod>2026-10-14</lastmod>
+    <lastmod>2026-10-18</lastmod>
     <image:image>
       <image:loc>https://syedadnanhaider.com/assets/national-biorisk-workshop-presentation-2026.webp</image:loc>
     </image:image>
@@ -273,6 +273,6 @@
   </url>
   <url>
     <loc>https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-6-cleaning-reads.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-18</lastmod>
   </url>
 </urlset>
