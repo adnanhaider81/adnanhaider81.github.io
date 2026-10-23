@@ -1,74 +1,77 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Part 7: Mapping Reads to a Reference Genome | FASTQ to Phylogeny</title>
-<meta name="description" content="Free practical bioinformatics lesson: learn reference mapping with minimap2 and SAMtools on Windows using Ubuntu/WSL2. Download synthetic FASTQ and FASTA data.">
-<link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html">
-<meta property="og:type" content="article"><meta property="og:title" content="FASTQ to Phylogeny Part 7 | Reference Mapping"><meta property="og:description" content="A hands-on, beginner-friendly reference mapping exercise with synthetic reads and copyable commands."><meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html"><meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="/theme.css?v=2"><link rel="stylesheet" href="/lessons.css?v=1">
-<script src="/learning-series.js?v=20260924" defer></script>
-</head>
-<body id="top" class="learning-page course-lesson"><a class="skip" href="#learning-main">Skip to lesson content</a>
-<header class="masthead"><a class="brand" href="/"><span class="brand-symbol">SH<span>•</span></span><span>Syed Adnan Haider<small>Clinical &amp; pathogen genomics</small></span></a><nav class="main-nav" aria-label="Primary navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav><a class="nav-contact" href="mailto:adnan.haider@nih.org.pk">Get in touch <span aria-hidden="true">↗</span></a><details class="mobile-nav"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav></details></header>
+<html lang="en"><head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Syed Adnan Haider" /><meta name="robots" content="index, follow" />
+<title>Part 7: Where Do Sequencing Reads Belong? Reference Mapping | Syed Adnan Haider</title><meta name="description" content="Free beginner reference-mapping lesson on Ubuntu/WSL2. Map synthetic FASTQ reads with minimap2, sort and index BAM with SAMtools, and download ten slides and tested practice files." />
+<link rel="canonical" href="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html" /><meta property="og:site_name" content="Syed Adnan Haider" />
+<meta property="og:type" content="article" /><meta property="og:title" content="Part 7: Where Do Sequencing Reads Belong? Reference Mapping" /><meta property="og:description" content="Free beginner reference-mapping lesson on Ubuntu/WSL2. Map synthetic FASTQ reads with minimap2, sort and index BAM with SAMtools, and download ten slides and tested practice files." /><meta property="og:url" content="https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html" />
+<meta property="og:image" content="https://syedadnanhaider.com/assets/syed-adnan-haider-social-card.png" /><meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" /><link rel="stylesheet" href="/theme.css?v=2" /><link rel="stylesheet" href="/lessons.css?v=1" />
+<script src="/learning-series.js?v=20260924" defer></script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "TechArticle", "@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html#webpage", "url": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/part-7-reference-mapping.html", "name": "Part 7: Where Do Sequencing Reads Belong? Reference Mapping", "headline": "Part 7: Where Do Sequencing Reads Belong? Reference Mapping", "description": "Free beginner reference-mapping lesson on Ubuntu/WSL2. Map synthetic FASTQ reads with minimap2, sort and index BAM with SAMtools, and download ten slides and tested practice files.", "inLanguage": "en", "author": {"@type": "Person", "@id": "https://syedadnanhaider.com/#person", "name": "Syed Adnan Haider", "url": "https://syedadnanhaider.com/about.html"}, "isPartOf": {"@id": "https://syedadnanhaider.com/learn/bioinformatics-on-windows/#webpage"}, "datePublished": "2026-10-24", "dateModified": "2026-10-24", "educationalLevel": "Beginner", "learningResourceType": "Tutorial", "associatedMedia": [{"@type": "MediaObject", "name": "Part 7 reference mapping ten-slide lesson", "encodingFormat": "application/pdf", "contentUrl": "https://syedadnanhaider.com/assets/learning/Part_7_Reference_Mapping_Carousel.pdf"}, {"@type": "DataDownload", "name": "Part 7 synthetic reference FASTA, FASTQ reads and instructions", "encodingFormat": "application/zip", "contentUrl": "https://syedadnanhaider.com/assets/learning/Part7_Practice.zip"}]}</script>
+</head><body id="top" class="learning-page course-lesson"><a class="skip" href="#learning-main">Skip to lesson content</a><header class="masthead"><a class="brand" href="/"><span class="brand-symbol">SH<span>•</span></span><span>Syed Adnan Haider<small>Clinical &amp; pathogen genomics</small></span></a><nav class="main-nav" aria-label="Primary navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav><a class="nav-contact" href="mailto:adnan.haider@nih.org.pk">Get in touch <span aria-hidden="true">↗</span></a><details class="mobile-nav"><summary>Menu</summary><nav aria-label="Mobile navigation"><a href="/research.html">Research</a><a href="/publications.html">Publications</a><a href="/projects.html">Projects</a><a href="/training.html">Training</a><a href="/posts/">Notes</a><a href="/about.html">About</a></nav></details></header>
 <main id="learning-main" class="learning-main">
 <nav class="learning-breadcrumb" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/learn/bioinformatics-on-windows/">Bioinformatics on a Windows PC</a><span aria-hidden="true">/</span><span>Part 7</span></nav>
-<header class="lesson-header">
-<p class="section-kicker">FASTQ to Phylogeny · Part 7 · Free beginner exercise</p>
-<h1>Where do sequencing reads <em>belong?</em></h1>
-<p class="learning-subtitle">Mapping FASTQ reads against a reference genome</p>
-<p class="learning-lead">Follow the reads from the wet lab to a reference alignment, then inspect which reads map and why mapping alone cannot guarantee complete genome coverage.</p>
-<div class="hero-actions"><a class="button button-primary" href="#downloads">Download practice data ↓</a><a class="button button-secondary" href="#start">Start the exercise →</a></div>
-</header>
-<div class="learning-facts lesson-facts"><span><strong>One small reference</strong>2,400 bases, synthetic</span><span><strong>300 practice reads</strong>Single-end, 100 bases each</span><span><strong>Two command-line tools</strong>minimap2 + SAMtools</span></div>
+<header class="lesson-header"><p class="section-kicker">FASTQ to Phylogeny · Part 7 · Free beginner exercise</p>
+<h1>Where do our reads <em>belong?</em></h1><p class="learning-subtitle">From individual FASTQ reads to positions on a chosen reference.</p>
+<p class="learning-lead">Map a small set of reads with minimap2, create a sorted and indexed BAM with SAMtools, and learn what the mapping summary can tell you.</p>
+<div class="hero-actions"><a class="button button-primary" href="#downloads">Get the slides &amp; practice files ↓</a><a class="button button-secondary" href="#start">Start the lesson →</a></div>
+<p class="learning-byline">By <a rel="author" href="/about.html">Syed Adnan Haider</a> · Published <time datetime="2026-10-24">24 October 2026</time></p></header>
+<div class="learning-facts lesson-facts" aria-label="Exercise at a glance"><span><strong>300 synthetic reads</strong>Single-end, 100 bases each</span><span><strong>One small reference</strong>2,400 synthetic bases</span><span><strong>Map · Sort · Index · Inspect</strong>minimap2 and SAMtools in Ubuntu</span></div>
 <p class="lesson-copy-status" role="status" aria-live="polite" aria-atomic="true"></p>
-<div class="lesson-layout">
-<aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong>
-<a href="#downloads">Download the data</a><a href="#start">1. What is mapping?</a><a href="#files">2. FASTQ, SAM and BAM</a><a href="#setup">3. Install tools</a><a href="#workspace">4. Prepare the folder</a><a href="#mapping">5. Map the reads</a><a href="#bam">6. Sort and index</a><a href="#results">7. Interpret results</a><a href="#challenge">8. Your exercise</a>
-</aside>
+<div class="lesson-layout"><aside class="lesson-toc" aria-label="On this page"><strong>In this lesson</strong><a href="#downloads">Slides &amp; practice files</a><a href="#start">1. Understand mapping</a><a href="#files">2. Know the file types</a><a href="#install">3. Install the tools</a><a href="#workspace">4. Prepare your folder</a><a href="#mapping">5. Map the reads</a><a href="#bam">6. Sort and index</a><a href="#results">7. Inspect the result</a><a href="#expected-results">Tested results</a><a href="#challenge">8. Try the challenge</a><a href="#help">If you get stuck</a></aside>
 <article class="lesson-body">
-<section id="downloads" class="learning-next"><p class="section-kicker">Part 7 practice materials</p><h2>Download, map, and interpret.</h2>
-<p>This ZIP contains the <code>reference.fasta</code> file, <code>reads.fastq.gz</code>, and a README with the complete step-by-step commands. These are synthetic teaching files, not patient samples or real viral sequences.</p>
-<div class="hero-actions"><a class="button button-primary" href="/assets/learning/Part7_Practice.zip" download>Download practice ZIP ↓</a><a class="button button-secondary" href="/learn/bioinformatics-on-windows/">View all lessons</a></div>
-</section>
-<section id="start"><p class="section-kicker">1. From the bench to the computer</p><h2>What does reference mapping mean?</h2>
-<p>After sequencing and initial quality control, the FASTQ file holds short reads. Reference mapping asks where each of those reads best aligns on a chosen reference sequence. Reads may align on either strand, contain differences from the reference, or fail to align under the chosen settings.</p>
-<p>Think of the reference as a map you are comparing the reads against, not as proof that the sample belongs to a particular organism. A high mapped fraction answers a different question from how much of the genome has been covered.</p>
-</section>
-<section id="files"><p class="section-kicker">2. Understand the output</p><h2>FASTQ → SAM → BAM → BAI</h2>
-<div class="format-comparison"><div class="format-card"><h3>FASTQ</h3><p>Sequences and base-call quality scores for each read.</p></div><div class="format-card"><h3>SAM</h3><p>A human-readable text file describing alignments to the reference.</p></div><div class="format-card"><h3>BAM</h3><p>A compressed binary representation of the alignments, useful for processing and storage.</p></div><div class="format-card"><h3>BAI</h3><p>An index that lets software retrieve alignments from regions of a sorted BAM efficiently.</p></div></div>
-</section>
-<section id="setup"><p class="section-kicker">3. One-time setup</p><h2>Install minimap2 and SAMtools.</h2>
-<p>Open Ubuntu inside WSL2, then run these commands:</p>
-<pre class="lesson-code"><code>sudo apt update
-sudo apt install minimap2 samtools -y</code></pre>
-<p>These packages only need to be installed once in your Ubuntu environment.</p>
-</section>
-<section id="workspace"><p class="section-kicker">4. Prepare your workspace</p><h2>Copy the two files into your folder.</h2>
-<pre class="lesson-code"><code>mkdir -p ~/bioinformatics_training/part7
+<section id="downloads" class="learning-next" aria-labelledby="downloads-title"><p class="section-kicker">Everything for Part 7</p><h2 id="downloads-title">Download. Map. Interpret.</h2>
+<p>Get the ten-slide lesson and a small practice ZIP containing <code>reference.fasta</code>, <code>reads.fastq.gz</code> and a README with the complete commands.</p>
+<div class="hero-actions"><a class="button button-primary" href="/assets/learning/Part7_Practice.zip" download>Download practice files (ZIP)</a><a class="button button-secondary" href="/assets/learning/Part_7_Reference_Mapping_Carousel.pdf" download>Download slides (PDF)</a></div>
+<p class="lesson-reference">Practice ZIP: about 8 KB · Slides: ten pages, about 130 KB</p>
+<p>These are completely synthetic teaching files. Extract the outer ZIP and keep <code>reads.fastq.gz</code> compressed. Copy the two data files into your Part 7 folder; no real sequencing data or earlier practice downloads are needed.</p></section>
+<section id="start"><p class="section-kicker">Step 01 · Read placement</p><h2>A reference gives the reads a coordinate system.</h2>
+<p>In <a href="/learn/bioinformatics-on-windows/part-6-cleaning-reads.html">Part 6</a>, we considered whether reads needed cleaning. Now we ask where reads align on a chosen reference sequence. A read may align on either strand, contain a mismatch, or have no suitable alignment.</p>
+<p>The reference is the comparison target you select. Alignment to it does not by itself prove the sample’s organism identity. Likewise, a high-quality read can remain unmapped when it does not match the reference under the selected settings.</p>
+<ol class="sequence-journey"><li><span>1</span><div><strong>Choose a comparison</strong><p>Use the supplied synthetic reference and reads.</p></div></li><li><span>2</span><div><strong>Place the reads</strong><p>Record alignment positions, strand and differences.</p></div></li><li><span>3</span><div><strong>Review the evidence</strong><p>Inspect mapped records and consider what remains unknown.</p></div></li></ol></section>
+<section id="files"><p class="section-kicker">Step 02 · Follow the information</p><h2>From FASTA and FASTQ to SAM, BAM and BAI.</h2>
+<dl class="fasta-sources"><div><dt>reference.fasta</dt><dd>The selected reference DNA sequence, used as the coordinate system.</dd></div><div><dt>reads.fastq.gz</dt><dd>Compressed reads with base-call quality scores.</dd></div><div><dt>mapped.sam</dt><dd>Text-based alignment records produced by minimap2.</dd></div><div><dt>mapped.sorted.bam</dt><dd>Compressed binary alignments sorted by reference coordinate.</dd></div><div><dt>mapped.sorted.bam.bai</dt><dd>An index for efficient access to positions within the BAM.</dd></div></dl>
+<p>Sorting changes the order of alignment records; it does not change the DNA sequences. The BAI is an index, rather than a second set of reads.</p></section>
+<section id="install"><p class="section-kicker">Step 03 · Ubuntu terminal</p><h2>Install minimap2 and SAMtools once.</h2><p>Open the Ubuntu environment you set up in <a href="/learn/bioinformatics-on-windows/part-1-wsl2.html">Part 1</a> and run:</p><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Install and check tools</span><button class="lesson-copy" type="button" data-copy-target="part7-install" aria-label="Copy install and check tools commands" hidden>Copy</button></div><pre><code id="part7-install">sudo apt update
+sudo apt install minimap2 samtools -y
+minimap2 --version
+samtools --version</code></pre></div>
+<p>Your Ubuntu password may be requested. If both tools are already installed, check their versions and continue.</p></section>
+<section id="workspace"><p class="section-kicker">Step 04 · Keep the files together</p><h2>Prepare a separate Part 7 folder.</h2><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Prepare the workspace</span><button class="lesson-copy" type="button" data-copy-target="part7-workspace" aria-label="Copy prepare the workspace commands" hidden>Copy</button></div><pre><code id="part7-workspace">mkdir -p ~/bioinformatics_training/part7
 cd ~/bioinformatics_training/part7
-explorer.exe .</code></pre>
-<p>In the Windows folder that opens, copy <code>reference.fasta</code> and <code>reads.fastq.gz</code> from the downloaded ZIP into the folder. Back in Ubuntu, check:</p>
-<pre class="lesson-code"><code>ls -lh reference.fasta reads.fastq.gz</code></pre>
-</section>
-<section id="mapping"><p class="section-kicker">5. Align reads</p><h2>Run short-read reference mapping.</h2>
-<pre class="lesson-code"><code>minimap2 -ax sr reference.fasta reads.fastq.gz &gt; mapped.sam</code></pre>
-<p>The <code>-ax sr</code> preset is for short reads and produces SAM alignments. We are using single-end reads and a small synthetic reference for this beginner exercise.</p>
-</section>
-<section id="bam"><p class="section-kicker">6. Process alignments</p><h2>Sort the BAM file and build an index.</h2>
-<pre class="lesson-code"><code>samtools sort -o mapped.sorted.bam mapped.sam
-samtools index mapped.sorted.bam</code></pre>
-<p>Sorting organizes alignments by reference coordinates, and indexing supports efficient access to genomic regions.</p>
-</section>
-<section id="results"><p class="section-kicker">7. Interpret, do not just count</p><h2>How many reads mapped?</h2>
-<pre class="lesson-code"><code>samtools flagstat mapped.sorted.bam
-samtools view -c -F 4 mapped.sorted.bam</code></pre>
-<p>The second command counts mapped alignment records. The exercise contains 280 reads constructed from reference regions and 20 synthetic background reads; these are dataset-design numbers, not guaranteed alignment outputs. Check what your tools actually report.</p>
-<div class="learning-callout"><h3>Mapping is not coverage</h3><p>The reference has an intentionally uncovered middle region. Even when most reads map, some reference positions can have zero depth. Part 8 will examine depth and breadth of coverage using this same workflow.</p></div>
-<p>Also remember that unmapped means there was no suitable alignment against <em>this reference under these settings</em>; it does not automatically indicate a failed sequencing read.</p>
-</section>
-<section id="challenge"><p class="section-kicker">8. Ten-minute challenge</p><h2>Your turn.</h2>
-<ol><li>Run the mapping, sorting, and indexing commands.</li><li>Check the mapped count with <code>samtools flagstat</code> and <code>samtools view -c -F 4</code>.</li><li>Explain the difference between FASTQ, SAM, BAM, and BAI.</li><li>Why could most reads map while part of the reference remains uncovered?</li><li>Why should an unmapped read not be labeled a failed sequencing read without investigation?</li></ol>
-</section>
-<section class="learning-next"><p class="section-kicker">Coming next · Part 8</p><h2>How much of the reference is actually covered?</h2><p>Next we will calculate sequencing depth and coverage breadth from the alignments you created in Part 7.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the complete series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-6-cleaning-reads.html">Revisit Part 6</a></div></section>
-</article></div></main><footer class="page-footer wrap"><span>Bioinformatics on a Windows PC · FASTQ to Phylogeny</span><a href="#top">Back to top ↑</a></footer></body></html>
+explorer.exe .</code></pre></div>
+<p>In the Windows Explorer window, copy <code>reference.fasta</code> and <code>reads.fastq.gz</code> from the extracted practice ZIP into this folder. Return to Ubuntu and check:</p><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Check the inputs</span><button class="lesson-copy" type="button" data-copy-target="part7-inputs" aria-label="Copy check the inputs commands" hidden>Copy</button></div><pre><code id="part7-inputs">ls -lh reference.fasta reads.fastq.gz</code></pre></div>
+<p>The reference is 2,400 bases long. The FASTQ contains 300 reads of 100 bases each: 280 were constructed from two reference flanks and 20 are unrelated synthetic background reads. Some reference-derived reads are reverse-complemented or contain one substitution. These are data-design counts; the aligner’s output still needs checking.</p></section>
+<section id="mapping"><p class="section-kicker">Step 05 · Create the alignment</p><h2>Map the single-end short reads.</h2><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Map single-end short reads</span><button class="lesson-copy" type="button" data-copy-target="part7-map" aria-label="Copy map single-end short reads commands" hidden>Copy</button></div><pre><code id="part7-map">minimap2 -ax sr reference.fasta reads.fastq.gz &gt; mapped.sam</code></pre></div>
+<p><code>-x sr</code> selects minimap2’s short-read preset; <code>-a</code> requests SAM output. Together they appear as <code>-ax sr</code>. The <code>&gt;</code> redirects the alignment output into <code>mapped.sam</code>. Progress messages may still appear in the terminal.</p>
+<p>This exercise uses single-end short reads. Different sequencing data can require a different preset. Running this command again replaces the existing <code>mapped.sam</code> in the current folder.</p></section>
+<section id="bam"><p class="section-kicker">Step 06 · Organise the alignments</p><h2>Sort the BAM and create its index.</h2><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Sort and index alignments</span><button class="lesson-copy" type="button" data-copy-target="part7-sort" aria-label="Copy sort and index alignments commands" hidden>Copy</button></div><pre><code id="part7-sort">samtools sort -o mapped.sorted.bam mapped.sam
+samtools index mapped.sorted.bam</code></pre></div>
+<p>The first command reads the SAM and writes a coordinate-sorted BAM. The second creates <code>mapped.sorted.bam.bai</code>. Both commands can finish without printing a success message.</p>
+<p>Keep the reference, reads, sorted BAM and BAI together: you will use these files again for the next exercise.</p></section>
+<section id="results"><p class="section-kicker">Step 07 · Check the result</p><h2>How many alignment records are mapped?</h2><div class="lesson-code"><div class="lesson-code-header"><span>Ubuntu terminal · Inspect mapping statistics</span><button class="lesson-copy" type="button" data-copy-target="part7-stats" aria-label="Copy inspect mapping statistics commands" hidden>Copy</button></div><pre><code id="part7-stats">samtools flagstat mapped.sorted.bam
+samtools view -c -F 4 mapped.sorted.bam</code></pre></div>
+<p><code>flagstat</code> summarises alignment records and their flags. In <code>view -c -F 4</code>, <code>-c</code> counts records and <code>-F 4</code> excludes records flagged as unmapped. Secondary or supplementary alignments can make record counts differ from read counts in other datasets.</p>
+<p>For this tested dataset there are no secondary or supplementary records, so the mapped record count also equals the number of mapped reads.</p></section>
+<section id="expected-results"><h2>What happened in the tested exercise?</h2>
+<p>The supplied commands were run in <strong>Ubuntu 22.04</strong> with <strong>minimap2 2.24-r1122</strong> and <strong>SAMtools 1.13</strong>. All commands completed successfully, and the sorted BAM passed an integrity check.</p>
+<div class="lesson-table-wrap" role="region" aria-label="Part 7 tested mapping results" tabindex="0"><table class="lesson-table format-table"><caption>Observed results for the supplied synthetic files.</caption><thead><tr><th scope="col">Check</th><th scope="col">Observed result</th><th scope="col">Interpretation</th></tr></thead><tbody>
+<tr><th scope="row">Input reads</th><td>300 reads, all 100 bases</td><td>All FASTQ records have matching sequence and quality lengths.</td></tr>
+<tr><th scope="row">Mapped</th><td>280 / 300 (93.33%)</td><td>The reference-derived reads aligned under the tested settings.</td></tr>
+<tr><th scope="row">Unmapped</th><td>20 / 300 (6.67%)</td><td>The unrelated synthetic background reads did not align.</td></tr>
+<tr><th scope="row"><code>samtools view -c -F 4</code></th><td><code>280</code></td><td>No secondary or supplementary alignments were produced in this run.</td></tr>
+<tr><th scope="row">Reference region 1051–1400</th><td>No aligned reads across the designed gap</td><td>Most reads can map while part of the reference remains uncovered.</td></tr>
+</tbody></table></div><p class="table-scroll-hint">On a small screen, scroll the table sideways.</p>
+<p>Exact outputs can vary with software versions or settings. Compare your results with these observations and investigate differences.</p>
+<div class="learning-callout"><strong>Mapping rate is not coverage.</strong><p>Mapping rate describes the fraction of reads that align. Depth describes reads covering each position; breadth describes the fraction of reference positions covered. Part 8 will show how to measure the last two.</p></div></section>
+<section id="challenge"><p class="section-kicker">Step 08 · Ten-minute challenge</p><h2>Explain the result in your own words.</h2>
+<ol><li>Run mapping, sorting and indexing from your Part 7 folder.</li><li>Check the mapping summary and mapped record count.</li><li>Explain what information is stored in FASTQ, SAM, BAM and BAI.</li><li>Why does 93.33% mapping not establish complete reference coverage?</li><li>Why does an unmapped read not automatically mean failed sequencing?</li></ol>
+<details class="lesson-faq"><summary>Check your reasoning</summary><p>A read can have no suitable match to the selected reference despite having high base-call quality. Mapped reads can cluster in some regions and leave others without evidence. Interpret the mapping summary alongside the reference choice and the distribution of alignments.</p></details></section>
+<section id="help"><h2>If you get stuck</h2>
+<details class="lesson-faq"><summary>The terminal says “command not found”.</summary><p>Run the <a href="#install">installation commands</a> inside Ubuntu and check the version of each tool. Windows PowerShell and Ubuntu are separate environments.</p></details>
+<details class="lesson-faq"><summary>The reference or FASTQ cannot be found.</summary><p>Check <code>pwd</code> and <code>ls -lh</code>. The two files must be in your Part 7 working folder, rather than only inside the downloaded ZIP or Windows Downloads folder.</p></details>
+<details class="lesson-faq"><summary>Indexing fails or reports unsorted positions.</summary><p>Run <code>samtools sort -o mapped.sorted.bam mapped.sam</code> successfully before indexing <code>mapped.sorted.bam</code>. Use the default coordinate sort for this exercise.</p></details>
+<details class="lesson-faq"><summary>I get a different mapped count.</summary><p>Confirm the exact file names, short-read preset and tool versions. Use a fresh exercise folder if an earlier run left different outputs. Inspect the preceding command’s messages before continuing.</p></details>
+<p class="lesson-reference">Further reading: the <a href="https://github.com/lh3/minimap2">official minimap2 documentation</a> and the SAMtools guides for <a href="https://www.htslib.org/doc/samtools-sort.html">sort</a>, <a href="https://www.htslib.org/doc/samtools-index.html">index</a> and <a href="https://www.htslib.org/doc/samtools-view.html">view</a>.</p></section>
+<section class="learning-next" aria-labelledby="next-lesson"><p class="section-kicker">Coming next · Part 8</p><h2 id="next-lesson">How much of the reference is covered?</h2><p>Measure read depth and breadth of genome coverage using the alignments you created here.</p><div class="hero-actions"><a class="button button-primary" href="/learn/bioinformatics-on-windows/">Back to the series →</a><a class="learning-text-link" href="/learn/bioinformatics-on-windows/part-6-cleaning-reads.html">Revisit Part 6: Cleaning reads</a></div></section>
+</article></div></main><footer class="page-footer wrap"><span>Syed Adnan Haider · Islamabad, Pakistan</span><a href="#top">Back to top ↑</a></footer></body></html>
